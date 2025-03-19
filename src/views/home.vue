@@ -1,102 +1,115 @@
 <template>
   <div class="homepage">
     <div class="home_bg"></div>
+
+    <!-- 第一部分：标题和文本 -->
     <div class="page_cont1">
-      <div class="title animation_hide" v-animate="{delay: 0, class:'amplify'}">
+      <div class="title animation_hide" v-animate="{ delay: 0, class: 'amplify' }">
         <p>{{ $t('home.title1') }}</p>
         <p>{{ $t('home.title2') }}</p>
       </div>
-      <div class="text delay100 animation_hide" v-animate="{delay: 100, class:'amplify'}">{{ $t('home.text') }}</div>
-      <!-- <div class="text1 delay200 animation_hide" v-animate="{delay: 200, class:'amplify'}">{{ $t('home.text1', {gpu_num: gpu_num}) }}</div> -->
-      <div class="text1 delay200 animation_hide" v-animate="{delay: 200, class:'amplify'}">{{ $t('home.text2') }}</div>
+      <div class="text delay100 animation_hide" v-animate="{ delay: 100, class: 'amplify' }">
+        {{ $t('home.text') }}
+      </div>
+      <div class="text1 delay200 animation_hide" v-animate="{ delay: 200, class: 'amplify' }">
+        {{ $t('home.text2') }}
+      </div>
+      <!-- 按钮列表 -->
       <div class="btnList">
-        <div class="btn delay300 animation_hide" v-animate="{delay: 300, class:'fadeInUp'}">
-          <div class="top_text">{{ $t('home.btn_text1') }}</div>
-          <div class="top_title">{{ $t('home.btn_title1', {long_term: long_term}) }}</div>
-        </div>
-        <div class="btn delay400 animation_hide" v-animate="{delay: 400, class:'fadeInUp'}">
-          <div class="top_text">{{ $t('home.btn_text2') }}</div>
-          <div class="top_title">{{ $t('home.btn_title2', {short_term: short_term}) }}</div>
+        <div
+          v-for="(btn, index) in btnList"
+          :key="index"
+          class="btn animation_hide"
+          :class="`delay${300 + index * 100}`"
+          v-animate="{ delay: 300 + index * 100, class: 'fadeInUp' }"
+        >
+          <div class="top_text">{{ $t(btn.textKey) }}</div>
+          <div class="top_title">{{ $t(btn.titleKey, { [btn.valueKey]: btn.value }) }}</div>
         </div>
       </div>
     </div>
+
+    <!-- 第二部分：文本和切换按钮 -->
     <div class="page_cont2">
-      <div class="cont2_text delay500 animation_hide" v-animate="{delay: 500, class:'fadeInUp'}">{{ $t('home.cont2_text1') }}</div>
-      <div class="cont2_btns delay600 animation_hide" v-animate="{delay: 600, class:'fadeInUp'}">
-        <div class="cont2_btn" :class="{ active: model_type == 'long' }" @click="getModelData('long')">{{ $t('home.cont2_btn1') }}</div>
-        <div class="cont2_btn" :class="{ active: model_type == 'short' }" @click="getModelData('short')">{{ $t('home.cont2_btn2') }}</div>
+      <div class="cont2_text delay500 animation_hide" v-animate="{ delay: 500, class: 'fadeInUp' }">
+        {{ $t('home.cont2_text1') }}
+      </div>
+      <div class="cont2_btns delay600 animation_hide" v-animate="{ delay: 600, class: 'fadeInUp' }">
+        <div
+          v-for="(btn, index) in cont2Buttons"
+          :key="index"
+          class="cont2_btn"
+          :class="{ active: model_type === btn.type }"
+          @click="changeModelType(btn.type)"
+        >
+          {{ $t(btn.label) }}
+        </div>
       </div>
     </div>
-    <div class="page_cont3 delay300 animation_hide" v-animate="{delay: 300, class:'fadeInDown'}">
-      <div class="cont3_btn">
-        <div class="title">{{ $t('home.cont3.text1') }}</div>
-        <div class="text">{{ OrionData.total_calc_point }}</div>
-      </div>
-      <div class="cont3_btn">
-        <div class="title">{{ $t('home.cont3.text2') }}</div>
-        <div class="text">{{ OrionData.total_gpu_num }}</div>
-      </div>
-      <div class="cont3_btn">
-        <div class="title">{{ $t('home.cont3.text3') }}</div>
-        <div class="text">{{ OrionData.total_address }}</div>
-      </div>
-      <div class="cont3_btn">
-        <div class="title">{{ $t('home.cont3.text4') }}</div>
-        <div class="text">{{ OrionData.rental_rate }}</div>
-      </div>
-      <div class="cont3_btn">
-        <div class="title">{{ $t('home.cont3.text5') }}</div>
-        <div class="text">{{ OrionData.total_dlc }}</div>
-      </div>
-      <div class="cont3_btn">
-        <div class="title">{{ $t('home.cont3.text6') }}</div>
-        <div class="text">{{ OrionData.total_dlc }}</div>
-      </div>
-      <div class="cont3_btn">
-        <div class="title">{{ $t('home.cont3.text7') }}</div>
-        <div class="text">{{ OrionData.total_rent_dlc }}</div>
+
+    <!-- 第三部分：统计数据 -->
+    <div class="page_cont3 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInDown' }">
+      <div v-for="(item, index) in OrionDataList" :key="index" class="cont3_btn">
+        <div class="title">{{ $t(item.titleKey) }}</div>
+        <div class="text">{{ item.value }}</div>
       </div>
     </div>
+
+    <!-- 第四部分：表格 -->
     <div class="page_cont4">
       <div class="page4_bg"></div>
       <div class="page_cont">
         <el-scrollbar>
-          <div class="cont_table animation_hide" v-animate="{delay: 0, class:'amplify'}">
-            <table class="table_cont" v-if="DataList.length">
-              <tr class="theader">
-                <th class="">{{ $t('home.cont4.li1') }}</th>
-                <th class="width270">{{ $t('home.cont4.li2') }}</th>
-                <th class="">{{ $t('home.cont4.li3') }}</th>
-                <th class="">{{ $t('home.cont4.li4') }}</th>
-                <th class="">{{ $t('home.cont4.li5') }}</th>
-                <th class="">{{ $t('home.cont4.li6') }}(DLC)</th>
-                <th class="">{{ $t('home.cont4.li7') }}(DLC)</th>
-                <th class="">{{ $t('home.cont4.li8') }}(DLC)</th>
+          <div class="cont_table animation_hide" v-animate="{ delay: 0, class: 'amplify' }">
+            <table v-if="currentDataList.length" class="table_cont w-full border-collapse text-left font-monda">
+              <tr class="theader bg-[#03ff91] text-black text-[18px] font-semibold">
+                <th v-for="(header, index) in tableHeaders" :key="index" :class="header.class" class="p-[15px]">
+                  {{ $t(header.label) }} {{ header.suffix || '' }}
+                </th>
               </tr>
-              <tr v-for="(el) in DataList">
-                <td class="num">{{ el.index }}</td>
-                <td class="width270">{{ el.holder.substr(0, 30) }} <br> {{ el.holder.substr(30, 100) }}</td>
-                <td class="">{{ el.calc_point }}</td>
-                <td class="">{{ el.gpu_num }}</td>
-                <td class="">{{ el.gpu_num ? (((el.rent_gpu/el.gpu_num)*100).toFixed(2))+'%' : '0.00%' }}</td>
-                <td class="">{{ el.rent_reward }} </td>
-                <td class="">{{ el.released_reward }} </td>
-                <td class="">{{ el.total_reward }} </td>
+              <tr v-for="el in currentDataList" :key="el.index" class="border-t-[10px] border-t-black">
+                <td class="num text-white font-semibold text-[16px] bg-[rgba(255,255,255,0.1)] p-[15px]">
+                  {{ el.index }}
+                </td>
+                <td
+                  class="w-[270px] text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px] break-all"
+                >
+                  {{ el.holder.substr(0, 30) }} <br />
+                  {{ el.holder.substr(30, 100) }}
+                </td>
+                <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
+                  {{ el.calc_point }}
+                </td>
+                <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
+                  {{ el.gpu_num }}
+                </td>
+                <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
+                  {{ el.gpu_num ? ((el.rent_gpu / el.gpu_num) * 100).toFixed(2) + '%' : '0.00%' }}
+                </td>
+                <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
+                  {{ el.rent_reward }}
+                </td>
+                <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
+                  {{ el.released_reward }}
+                </td>
+                <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
+                  {{ el.total_reward }}
+                </td>
               </tr>
             </table>
-            <table class="table_cont width100" v-else>
-              <tr class="theader">
-                <th class="">{{ $t('home.cont4.li1') }}</th>
-                <th class="width270">{{ $t('home.cont4.li2') }}</th>
-                <th class="">{{ $t('home.cont4.li3') }}</th>
-                <th class="">{{ $t('home.cont4.li4') }}</th>
-                <th class="">{{ $t('home.cont4.li5') }}</th>
-                <th class="">{{ $t('home.cont4.li6') }}</th>
-                <th class="">{{ $t('home.cont4.li7') }}</th>
-                <th class="">{{ $t('home.cont4.li8') }}</th>
+            <table v-else class="table_cont w-full border-collapse text-left font-monda">
+              <tr class="theader bg-[#03ff91] text-black text-[18px] font-semibold">
+                <th v-for="(header, index) in tableHeaders" :key="index" :class="header.class" class="p-[15px]">
+                  {{ $t(header.label) }}
+                </th>
               </tr>
               <tr>
-                <td colspan="8" class="nodata" >No Data</td>
+                <td
+                  colspan="8"
+                  class="nodata h-[400px] text-center text-[40px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)]"
+                >
+                  No Data
+                </td>
               </tr>
             </table>
           </div>
@@ -106,147 +119,174 @@
   </div>
 </template>
 
-<script>
-  import { defineComponent, computed, ref, onBeforeMount, onBeforeUnmount, onMounted, getCurrentInstance, watch, nextTick, inject } from "vue";
-  import { useI18n } from "vue-i18n";
-  import { useStore } from "vuex"
-  import { useRoute, useRouter } from 'vue-router'
-  import { getLongTopStakeHolders, getLongDataInfo, getShortDataInfo, getShortTopStakeHolders } from '@/utils/getWeb3Connect.js'
-  export default defineComponent({
-    name: 'homepage',
-    setup() {
-      const store = useStore()
-      const router = useRouter()
-      const loading = inject( '$loading')
-      let lan = computed(() => {
-        return store.state.lan
-      })
-      const { t, locale } = useI18n();
-      const instance = getCurrentInstance()
-      const timer = ref(null)
-      const model_type = ref('long')
-      const gpu_num = ref(0)
-      const long_term = ref(500)
-      const short_term = ref(500)
-      const linkHref = (el) => {
-        window.open(el, 'target')
-      }
-      const OrionData = ref({
-        total_calc_point: 0,
-        total_gpu_num: 0,
-        total_address: 0,
-        total_dlc: 0,
-        total_rent_gpu: 0,
-        total_rent_dlc: 0,
-        rental_rate: '0.00%',
-        total_destr_dlc: 0
-      })
-      const DataList = ref([])
-      const data_loading = ref(null)
-      const data_loading1 = ref([])
-      const getData = async () => {
-        const longdata =  await getLongDataInfo()
-        const shortdata =  await getShortDataInfo()
-        long_term.value = 500 - Number(longdata.total_gpu_num)
-        short_term.value = 500 - Number(shortdata.total_gpu_num)
-      }
-      const getLongData = async (el) => {
-        const button = document.querySelectorAll('.cont3_btn')
-        for (let i = 0; i< button.length; i ++) {
-          data_loading1.value.push(loading.service({target: button[i], background: 'rgba(122, 122, 122, 0.6)'}))
-        }
-        data_loading.value = loading.service({target: '.table_cont', background: 'rgba(122, 122, 122, 0.6)'})
-        try {
-          OrionData.value = {
-            total_calc_point: 0,
-            total_gpu_num: 0,
-            total_address: 0,
-            total_dlc: 0,
-            total_rent_gpu: 0,
-            total_rent_dlc: 0,
-            rental_rate: '0.00%',
-            total_destr_dlc: 0
-          }
-          DataList.value = []
-          data_loading.value.close()
-          data_loading1.value.forEach(loading => loading.close());
-          return
-          if (el == 'long') {
-            OrionData.value = await getLongDataInfo()
-            const data = await getLongTopStakeHolders()
-            data[0].map((el, index) => {
-              let li_data = {
-                index: index + 1,
-                holder: el.holder,
-                calc_point: Number(el.totalCalcPoint),
-                gpu_num: Number(el.totalGPUCount),
-                rent_gpu: Number(el.rentedGPUCount),
-                rent_reward: Number(el.burnedRentFee) ? (Number(el.burnedRentFee)/Math.pow(10, 18)).toFixed(4) : 0,
-                released_reward: Number(el.releasedRewardAmount) ? (Number(el.releasedRewardAmount)/Math.pow(10, 18)).toFixed(4) : 0,
-                total_reward: Number(el.totalClaimedRewardAmount) ? (Number(el.totalClaimedRewardAmount)/Math.pow(10, 18)).toFixed(4) : 0,
-              }
-              DataList.value.push(li_data)
-            })
-            // long_term.value = 500 - Number(data.total)
-          } else {
-            OrionData.value = await getShortDataInfo()
-            const data = await getShortTopStakeHolders()
-            data[0].map((el, index) => {
-              let li_data = {
-                index: index + 1,
-                holder: el.holder,
-                calc_point: Number(el.totalCalcPoint),
-                gpu_num: Number(el.totalGPUCount),
-                rent_gpu: Number(el.rentedGPUCount),
-                rent_reward: Number(el.burnedRentFee) ? (Number(el.burnedRentFee)/Math.pow(10, 18)).toFixed(4) : 0,
-                released_reward: Number(el.releasedRewardAmount) ? (Number(el.releasedRewardAmount)/Math.pow(10, 18)).toFixed(4) : 0,
-                total_reward: Number(el.totalClaimedRewardAmount) ? (Number(el.totalClaimedRewardAmount)/Math.pow(10, 18)).toFixed(4) : 0,
-              }
-              DataList.value.push(li_data)
-            })
-            // short_term.value = 500 - Number(data.total)
-          }
-          data_loading.value.close()
-          data_loading1.value.forEach(loading => loading.close());
-        } catch (error) {
-          data_loading.value.close()
-          data_loading1.value.forEach(loading => loading.close());
-        }
-      }
-      const getModelData = async (el) => {
-        model_type.value = el
-        await getLongData(el)
-      }
-      onMounted(async () => {
-        // await getData()
-        await nextTick();
-        await getLongData('long')
-      })
-      onBeforeUnmount(() => {
-        if (timer.value) {
-          clearInterval(timer.value);
-          timer.value = null;
-        }
-      })
-      watch(
-        () => locale.value,
-        () => {
-          
-        }
-      )
-      return {
-        lan,
-        gpu_num,
-        model_type,
-        long_term,
-        short_term,
-        OrionData,
-        getModelData,
-        DataList
-      };
-    }
-  })
-</script> 
+<script setup>
+import { ref, onMounted, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import BN from 'bn.js';
+import { getStateSummaries, getLongStakeHolders } from '@/api/home';
+
+// i18n
+const { t } = useI18n();
+
+// 模拟数据
+const model_type = ref('long');
+const long_term = ref(500);
+const short_term = ref(500);
+
+// 第一部分按钮数据
+const btnList = ref([
+  { textKey: 'home.btn_text1', titleKey: 'home.btn_title1', valueKey: 'long_term', value: long_term.value },
+  { textKey: 'home.btn_text2', titleKey: 'home.btn_title2', valueKey: 'short_term', value: short_term.value },
+]);
+
+// 第二部分切换按钮
+const cont2Buttons = [
+  { type: 'long', label: 'home.cont2_btn1' },
+  { type: 'short', label: 'home.cont2_btn2' },
+];
+
+// 第三部分统计数据
+const OrionDataList = ref([
+  { titleKey: 'home.cont3.text1', value: '' }, // total_calc_point
+  { titleKey: 'home.cont3.text2', value: '' }, // total_gpu_num
+  { titleKey: 'home.cont3.text3', value: '' }, // total_address
+  { titleKey: 'home.cont3.text4', value: '' }, // rental_rate
+  { titleKey: 'home.cont3.text5', value: '' }, // total_dlc
+  { titleKey: 'home.cont3.text6', value: '' }, // total_dlc (重复)
+  { titleKey: 'home.cont3.text7', value: '' }, // total_rent_dlc
+]);
+
+// 长租和短租表格数据，统一管理在一个响应式对象中
+const tableData = ref({
+  long: [
+    {
+      index: 1,
+      holder: '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',
+      calc_point: 12500,
+      gpu_num: 10,
+      rent_gpu: 8,
+      rent_reward: 150.75,
+      released_reward: 50.25,
+      total_reward: 200.0,
+    },
+    {
+      index: 2,
+      holder: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+      calc_point: 9800,
+      gpu_num: 8,
+      rent_gpu: 4,
+      rent_reward: 80.5,
+      released_reward: 20.0,
+      total_reward: 100.5,
+    },
+  ],
+  short: [
+    {
+      index: 1,
+      holder: '0x9876543210fedcba9876543210fedcba9876543210fedcba9876543210fedcba',
+      calc_point: 7500,
+      gpu_num: 5,
+      rent_gpu: 3,
+      rent_reward: 60.0,
+      released_reward: 15.0,
+      total_reward: 75.0,
+    },
+    {
+      index: 2,
+      holder: '0xfedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210',
+      calc_point: 3200,
+      gpu_num: 3,
+      rent_gpu: 1,
+      rent_reward: 25.0,
+      released_reward: 5.0,
+      total_reward: 30.0,
+    },
+  ],
+});
+
+// 根据 model_type 计算当前显示的表格数据
+const currentDataList = computed(() => tableData.value[model_type.value]);
+
+// 表格头部配置
+const tableHeaders = [
+  { label: 'home.cont4.li1', class: '' },
+  { label: 'home.cont4.li2', class: '' },
+  { label: 'home.cont4.li3', class: '' },
+  { label: 'home.cont4.li4', class: '' },
+  { label: 'home.cont4.li5', class: '' },
+  { label: 'home.cont4.li6', class: '', suffix: '(DLC)' },
+  { label: 'home.cont4.li7', class: '', suffix: '(DLC)' },
+  { label: 'home.cont4.li8', class: '', suffix: '(DLC)' },
+];
+
+// 获取门槛数据（不动）
+const getStateSummariesH = async () => {
+  const res = await getStateSummaries();
+  console.log(res, 'Pppppp');
+  const totalStaking = new BN(res.stateSummaries[0].totalStakingGPUCount);
+  const result = new BN(500).sub(totalStaking);
+  btnList.value[0].value = result.toNumber(); // 直接更新 btnList 中的值
+  // text1: '总算力值',
+  //     text2: 'GPU总数',
+  //     text3: '算池总数',
+  //     text4: 'GPU租用率',
+  //     text5: 'DLC租金数',
+  //     text6: 'DLC销毁数',
+  //     text7: '矿机DLC质押数'
+  OrionDataList.value[0].value = res.stateSummaries[0].totalCalcPoint;
+  OrionDataList.value[1].value = res.stateSummaries[0].totalRentedGPUCount;
+  OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
+  OrionDataList.value[3].value = `${
+    (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) * 100
+  }%`;
+
+  OrionDataList.value[4].value = res.stateSummaries[0].totalBurnedRentFee;
+  OrionDataList.value[5].value = res.stateSummaries[0].totalBurnedRentFee;
+  OrionDataList.value[6].value = res.stateSummaries[0].totalReservedAmount;
+};
+// 请求并同步长租数据
+const fetchLongStakeHolders = async () => {
+  try {
+    const response = await getLongStakeHolders();
+    const stakeHolders = response.stakeHolders || [];
+    tableData.value.long = stakeHolders.map((el, index) => ({
+      index: index + 1, // 竞赛排名
+      holder: el.holder, // 矿工名称
+      calc_point: Number(el.totalCalcPoint), // 算力值
+      gpu_num: Number(el.totalStakingGPUCount), // GPU数量
+      rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
+      rent_reward: Number(el.burnedRentFee) / 1e18, // 租金数 (DLC)
+      released_reward: Number(el.totalReleasedRewardAmount) / 1e18, // 已解锁奖励数 (DLC)
+      total_reward: (Number(el.totalClaimedRewardAmount) + Number(el.totalReleasedRewardAmount)) / 1e18, // 奖励总数 (DLC)
+    }));
+  } catch (error) {
+    console.error('Failed to fetch long stake holders:', error);
+    tableData.value.long = []; // 请求失败时清空长租数据
+  }
+};
+// 切换长租和短租
+const changeModelType = (type) => {
+  model_type.value = type;
+};
+
+onMounted(() => {
+  getStateSummariesH();
+  fetchLongStakeHolders();
+});
+
+// 映射表
+
+// 竞赛排名	不做要求
+// 矿工名称	holder	直接显示地址
+// 算力值	totalCalcPoint
+// GPU数量	totalStakingGPUCount
+// 租用率	rentedGPUCount / totalStakingGPUCount
+// 租金数 (DLC)	burnedRentFee	除以 1e18
+// 已解锁奖励数 (DLC)	totalReleasedRewardAmount	除以 1e18
+// 奖励总数 (DLC)	totalClaimedRewardAmount + totalClaimedRewardAmount	除以 1e18
+</script>
+
+<!-- 样式保持不变 -->
 
 <style lang="scss" scoped>
 .homepage {
@@ -298,7 +338,7 @@
       font-weight: 600;
       font-family: Monda;
       margin-bottom: 20px;
-      color: rgba(255, 255, 255, 0.5)
+      color: rgba(255, 255, 255, 0.5);
     }
     .text1 {
       width: 80%;
@@ -306,7 +346,7 @@
       font-weight: 600;
       font-family: Monda;
       margin-bottom: 70px;
-      color: rgba(255, 255, 255, 0.5)
+      color: rgba(255, 255, 255, 0.5);
     }
     .btnList {
       width: 90%;
@@ -330,7 +370,7 @@
         border: 1px solid rgba(3, 255, 145, 0.2);
         .top_text {
           font-size: 16px;
-          color: #03FF91;
+          color: #03ff91;
           font-family: Monda;
           margin-bottom: 10px;
         }
@@ -382,11 +422,11 @@
         }
         &.active {
           color: #000;
-          background: #03FF91;
+          background: #03ff91;
         }
         &:hover {
           color: #000;
-          background: #03FF91;
+          background: #03ff91;
         }
       }
     }
@@ -419,7 +459,7 @@
         color: rgba(255, 255, 255, 0.6);
       }
       .text {
-        color: #03FF91;
+        color: #03ff91;
         font-size: 16px;
         font-weight: 600;
         font-family: Monda;
@@ -463,7 +503,7 @@
             font-size: 18px;
             font-weight: 600;
             font-family: Monda;
-            background: #03FF91;
+            background: #03ff91;
             th {
               border: none;
               line-height: 1;
@@ -493,9 +533,6 @@
           text-align: center;
           font-size: 40px !important;
         }
-        .width270 {
-          width: 270px;
-        }
       }
     }
   }
@@ -503,9 +540,7 @@
 
 @media screen and (max-width: 1300px) {
   .homepage {
-    
   }
-  
 }
 
 @media screen and (max-width: 900px) {
@@ -527,16 +562,12 @@
               tr.theader {
                 font-size: 10px;
               }
-              .width270 {
-                width: unset;
-              }
             }
           }
         }
       }
     }
   }
-  
 }
 </style>
 
@@ -545,4 +576,3 @@ td {
   margin: 0;
 }
 </style>
-
