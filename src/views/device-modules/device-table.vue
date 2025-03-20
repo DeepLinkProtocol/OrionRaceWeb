@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col md:flex-row">
+  <div class="flex flex-col md:flex-row w-full">
     <!-- 左侧型号选择 -->
     <div class="cont_left">
       <div
@@ -16,7 +16,7 @@
     <!-- 右侧内容 -->
     <div class="cont_right">
       <!-- 筛选部分 -->
-      <div class="right_top">
+      <div class="right_top px-[10px]">
         <p v-for="(filter, index) in filters" :key="index" class="text2_tx">
           {{ $t(filter.label) }}
           <el-select
@@ -33,12 +33,12 @@
               :value="option.value"
             />
           </el-select>
-          <span v-else>{{ filter.v }}</span>
+          <span v-else class="text-[#03ff91]">{{ filter.v }}</span>
         </p>
       </div>
 
       <!-- 机器列表 -->
-      <div class="right_con">
+      <div class="right_con flex flex-col">
         <div class="deviceInfo" v-for="(machine, index) in filteredMachineList" :key="index">
           <div class="machine_top">
             <div class="machine_id flex items-center">
@@ -52,10 +52,10 @@
               </el-tooltip>
             </div>
             <div class="machine_text">
-              是否被租用：<span class="text">{{ machine.isRented ? '被租用' : '空闲' }}</span>
+              是否被租用：<span class="text-[#03ff91]">{{ machine.isRented ? '被租用' : '空闲' }}</span>
             </div>
             <div class="machine_text">
-              是否在线：<span class="text">{{ machine.online ? '是' : '否' }}</span>
+              是否在线：<span class="text-[#03ff91]">{{ machine.online ? '是' : '否' }}</span>
             </div>
           </div>
           <div class="machine_info">
@@ -74,14 +74,26 @@
                 >
                   <el-tooltip>
                     <template #content> {{ formatCellValue(machine, header.key) }}</template>
-                    <div class="!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden">
-                      {{ formatCellValue(machine, header.key) }}
+                    <div class="flex items-center">
+                      <span :class="header.class">
+                        {{ formatCellValue(machine, header.key) }}
+                      </span>
+                      <component
+                        v-if="header.c"
+                        :is="header.c"
+                        class="cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-110 active:scale-95"
+                        @click="copyText(machine[header.key])"
+                      />
                     </div>
                   </el-tooltip>
                 </td>
               </tr>
             </table>
           </div>
+          <ElDivider
+            v-if="index !== filteredMachineList.length - 1"
+            style="border-top: 1px #03ff91 var(--el-border-style)"
+          />
         </div>
       </div>
     </div>
@@ -89,13 +101,27 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted, h } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { getMachineInfos } from '@/api/home';
+import { getMachineInfos, getStateSummaries } from '@/api/home';
 import { ElTooltip } from 'element-plus';
+import { ElDivider } from 'element-plus';
+import BN from 'bn.js';
+import { Icon } from '@iconify/vue';
+import { useClipboard } from '@vueuse/core';
 
 const { t, locale } = useI18n();
+// 使用 VueUse 的 useClipboard 钩子
+const { copy, copied } = useClipboard();
 
+// 复制函数
+const copyText = async (text) => {
+  console.log(text);
+  await copy(text);
+  if (copied.value) {
+    window.$message.success('复制成功');
+  }
+};
 // GPU 型号
 const gpuModels = ref([
   { label: 'RTX 4060', value: 1 },
@@ -126,8 +152,8 @@ const filters = ref([
     onChange: (val) => console.log('Status:', val),
   },
 
-  { label: 'device.table.text3', type: 'static', v: 666 },
-  { label: 'device.table.text4', type: 'static', v: 666 },
+  { label: 'device.table.text3', type: 'static', v: 500 },
+  { label: 'device.table.text4', type: 'static', v: 0 },
 ]);
 
 // 机器列表（更新为新字段）
@@ -135,15 +161,33 @@ const machine_list = ref([]);
 
 // 表格表头（使用指定字段）
 const tableHeaders = ref([
-  { label: '机器ID', key: 'machineId' },
-  { label: '旷工地址', key: 'holder', colspan: 2 }, // 地址较长，占两列
-  { label: 'GPU数量', key: 'totalGPUCount' },
-  { label: '总算力', key: 'totalCalcPoint' },
-  { label: '是否在线', key: 'online' },
-  { label: '是否被租用', key: 'isRented' },
-  { label: '是否质押', key: 'isStaking' },
-  { label: '质押总金额', key: 'totalReservedAmount' },
-  { label: '质押结束时间', key: 'stakeEndTimestamp' },
+  {
+    label: '机器ID',
+    key: 'machineId',
+    class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
+    c: () => h(Icon, { icon: `mdi:content-copy` }),
+  },
+  {
+    label: '旷工地址',
+    key: 'holder',
+    class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
+    c: () => h(Icon, { icon: `mdi:content-copy` }),
+  }, // 地址较长，占两列
+  { label: 'GPU数量', key: 'totalGPUCount', class: '!max-w-[30px] text-nowrap overflow-ellipsis overflow-hidden' },
+  { label: '总算力', key: 'totalCalcPoint', class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden' },
+  { label: '是否在线', key: 'online', class: '!max-w-[40px] text-nowrap overflow-ellipsis overflow-hidden' },
+  // { label: '是否被租用', key: 'isRented' },
+  { label: '是否质押', key: 'isStaking', class: '!max-w-[40px] text-nowrap overflow-ellipsis overflow-hidden' },
+  {
+    label: '质押总金额',
+    key: 'totalReservedAmount',
+    class: '!max-w-[90px] text-nowrap overflow-ellipsis overflow-hidden',
+  },
+  {
+    label: '质押结束时间',
+    key: 'stakeEndTimestamp',
+    class: '!max-w-[90px] text-nowrap overflow-ellipsis overflow-hidden',
+  },
 ]);
 
 // 过滤后的机器列表
@@ -181,17 +225,26 @@ const formatCellValue = (machine, key) => {
 
 // 初始化加载数据
 onMounted(async () => {
+  getStateSummariesH();
   const response = await getMachineInfos();
   machine_list.value = response.machineInfos;
   console.log('Machine Infos:', response.machineInfos);
 });
+// 获取门槛数据（不动）
+const getStateSummariesH = async () => {
+  const res = await getStateSummaries();
+  console.log(res, 'Pppppp');
+  const totalStaking = new BN(res.stateSummaries[0].totalStakingGPUCount);
+  const result = new BN(500).sub(totalStaking);
+  filters.value[2].v = result.toNumber(); // 直接更新 btnList 中的值
+};
 </script>
 
 <style lang="scss" scoped>
 .cont_left {
   position: sticky;
   top: 50px;
-  width: 264px;
+  width: 200px;
   min-height: 600px;
   padding: 20px;
   margin-right: 30px;
@@ -231,6 +284,7 @@ onMounted(async () => {
   }
 }
 .cont_right {
+  flex: 1;
   padding: 20px 10px;
   border-radius: 23px;
   box-sizing: border-box;
@@ -263,8 +317,7 @@ onMounted(async () => {
   .right_con {
     .deviceInfo {
       width: 100%;
-      padding: 10px;
-      margin-top: 50px;
+      padding: 0 10px;
       border-radius: 19px;
       box-sizing: border-box;
       background: rgba(255, 255, 255, 0.05);
@@ -297,10 +350,6 @@ onMounted(async () => {
           margin-right: 20px;
           font-family: Monda;
           margin-bottom: 10px;
-
-          .text {
-            color: rgba(255, 255, 255, 0.6);
-          }
         }
       }
 

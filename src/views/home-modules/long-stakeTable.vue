@@ -293,4 +293,8 @@ const { t, locale } = useI18n();
     }
   }
 }
+:deep(.el-select__selected-item) {
+  color: #38eed6 !important;
+  background-color: red;
+}
 </style>

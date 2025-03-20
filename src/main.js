@@ -15,6 +15,8 @@ import {
   ElSelect,
   ElOption,
   ElLoading,
+  ElMessage,
+  ElMessageBox,
 } from 'element-plus';
 import 'element-plus/dist/index.css';
 import '@/style/index.css';
@@ -38,6 +40,9 @@ app.component('Icon', Icon);
 
 app.provide('$loading', ElLoading);
 app.mount('#app');
+// 将 ElMessage 和 ElMessageBox 挂载到 window 对象
+window.$message = ElMessage;
+window.$messageBox = ElMessageBox;
 
 app.directive('animate', {
   mounted: function (el, binding) {

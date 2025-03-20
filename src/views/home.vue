@@ -234,7 +234,7 @@ const getStateSummariesH = async () => {
   //     text6: 'DLC销毁数',
   //     text7: '矿机DLC质押数'
   OrionDataList.value[0].value = res.stateSummaries[0].totalCalcPoint;
-  OrionDataList.value[1].value = res.stateSummaries[0].totalRentedGPUCount;
+  OrionDataList.value[1].value = res.stateSummaries[0].totalGPUCount;
   OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
   OrionDataList.value[3].value = `${
     (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) * 100
@@ -255,9 +255,9 @@ const fetchLongStakeHolders = async () => {
       calc_point: Number(el.totalCalcPoint), // 算力值
       gpu_num: Number(el.totalStakingGPUCount), // GPU数量
       rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
-      rent_reward: Number(el.burnedRentFee) / 1e18, // 租金数 (DLC)
-      released_reward: Number(el.totalReleasedRewardAmount) / 1e18, // 已解锁奖励数 (DLC)
-      total_reward: (Number(el.totalClaimedRewardAmount) + Number(el.totalReleasedRewardAmount)) / 1e18, // 奖励总数 (DLC)
+      rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
+      released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4), // 已解锁奖励数 (DLC)
+      total_reward: ((Number(el.totalClaimedRewardAmount) + Number(el.totalReleasedRewardAmount)) / 1e18).toFixed(4), // 奖励总数 (DLC)
     }));
   } catch (error) {
     console.error('Failed to fetch long stake holders:', error);

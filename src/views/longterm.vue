@@ -2,64 +2,148 @@
   <div class="longTerm">
     <div class="home_bg"></div>
     <div class="page_cont1">
-      <div class="title animation_hide" v-animate="{delay: 0, class:'amplify'}">
+      <div class="title animation_hide" v-animate="{ delay: 0, class: 'amplify' }">
         <p>{{ $t('long_rule.title') }}</p>
       </div>
-      <div class="text animation_hide" v-animate="{delay: 0, class:'amplify'}">{{ $t('long_rule.text1', {long_num: long_num}) }}</div>
-      <div class="text1 animation_hide" v-animate="{delay: 0, class:'amplify'}">{{ $t('long_rule.text2') }}</div>
+      <div class="text animation_hide" v-animate="{ delay: 0, class: 'amplify' }">
+        {{ $t('long_rule.text1', { long_num: long_num }) }}
+      </div>
+      <div class="text1 animation_hide" v-animate="{ delay: 0, class: 'amplify' }">{{ $t('long_rule.text2') }}</div>
     </div>
-    <div class="page_cont5 delay300 animation_hide" v-animate="{delay: 300, class:'fadeInUp'}">
-      <div class="title1">{{ $t('long_rule.cont5.title4') }}</div>
+    <div class="page_cont5 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
+      <div class="title1">{{ $t('long_rule.cont5.title4', { price: dlcPrice?.dlc_price || 0 }) }}</div>
       <div class="text2">
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont5.text4_1') }}</p>
-          <el-select class="el-select-type select_width210" v-model="gpu_type2" :placeholder="$t('long_rule.cont4.text6')" @change='SelectGPU2'>
-            <el-option v-for="(item, index) in options " :key="item.value" :label="item.name + '-Mem:' + item.men" :value="item.cuda+'_'+item.men+'_'+item.large+'_'+index"></el-option>
-          </el-select> 
+          <el-select
+            class="el-select-type select_width210"
+            v-model="gpu_type2"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectGPU2"
+          >
+            <el-option
+              v-for="(item, index) in options"
+              :key="item.value"
+              :label="item.name + '-Mem:' + item.men"
+              :value="item.cuda + '_' + item.men + '_' + item.large + '_' + index"
+            ></el-option>
+          </el-select>
         </div>
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont5.text4_2') }}</p>
-          <el-select class="el-select-type select_width210" v-model="mem_num2" :placeholder="$t('long_rule.cont4.text6')" @change='SelectMem2'>
-            <el-option v-for="(item, index) in mem_num_list " :key="item.value" :label="item.name" :value="item.value"></el-option>
-          </el-select> 
+          <el-select
+            class="el-select-type select_width210"
+            v-model="mem_num2"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectMem2"
+          >
+            <el-option
+              v-for="(item, index) in mem_num_list"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </div>
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont5.text4_3') }}</p>
-          <el-select class="el-select-type select_width210" v-model="nft_num" :placeholder="$t('long_rule.cont4.text6')" @change='SelectNftnum2'>
-            <el-option v-for="(item, index) in nft_num_list " :key="item.value" :label="item.label" :value="item.value"></el-option>
-          </el-select> 
+          <el-select
+            class="el-select-type select_width210"
+            v-model="nft_num"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectNftnum2"
+          >
+            <el-option
+              v-for="(item, index) in nft_num_list"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </div>
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont5.text4_4') }}</p>
-          <el-select class="el-select-type select_width" v-model="local2" :placeholder="$t('long_rule.cont4.text6')" @change='SelectLocal2'>
-            <el-option v-for="(item, index) in options3 " :key="item.value" :label="item.name" :value="item.value +'_'+index"></el-option>
+          <el-select
+            class="el-select-type select_width"
+            v-model="local2"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectLocal2"
+          >
+            <el-option
+              v-for="(item, index) in options3"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value + '_' + index"
+            ></el-option>
           </el-select>
         </div>
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont5.text4_5') }}</p>
-          <el-select class="el-select-type select_width210" v-model="stak_dlc_num" :placeholder="$t('long_rule.cont4.text6')" @change='SelectStakDLC2'>
-            <el-option v-for="(item, index) in stak_dlc_list " :key="item.value" :label="item.label" :value="item.value"></el-option>
-          </el-select> 
+          <el-select
+            class="el-select-type select_width210"
+            v-model="stak_dlc_num"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectStakDLC2"
+          >
+            <el-option
+              v-for="(item, index) in stak_dlc_list"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </div>
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont5.text4_6') }}</p>
-          <el-select class="el-select-type select_width" v-model="race_stage" :placeholder="$t('long_rule.cont4.text6')" @change='SelectRace2'>
-            <el-option v-for="(item, index) in race_stage_list " :key="item.value" :label="item.label" :value="item.value"></el-option>
-          </el-select> 
+          <el-select
+            class="el-select-type select_width"
+            v-model="race_stage"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectRace2"
+          >
+            <el-option
+              v-for="(item, index) in race_stage_list"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </div>
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont5.text4_7') }}</p>
-          <el-select class="el-select-type select_width210" v-model="join_gpu_num" :placeholder="$t('long_rule.cont4.text6')" @change='SelectJoinGPU2'>
-            <el-option v-for="(item, index) in join_gpu_list " :key="item.value" :label="item.label" :value="item.value"></el-option>
-          </el-select> 
+          <el-select
+            class="el-select-type select_width210"
+            v-model="join_gpu_num"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectJoinGPU2"
+          >
+            <el-option
+              v-for="(item, index) in join_gpu_list"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </div>
       </div>
       <div class="text">{{ $t('long_rule.cont5.text4_8') }}</div>
-      <div class="title1">{{ $t('long_rule.cont5.title5', {dlc_num: dlc_earning, usdt_num: dlc_usdt_earning }) }}</div>
+      <div class="title1">
+        {{
+          $t('long_rule.cont5.title5', {
+            dlc_num: dlc_earning,
+            usdt_num: dlc_usdt_earning,
+            price: dlcPrice?.dlc_price || 0,
+          })
+        }}
+      </div>
     </div>
-    <div class="page_cont2 delay300 animation_hide" v-animate="{delay: 300, class:'fadeInUp'}">
+    <div class="page_cont2 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
       <div class="title">{{ $t('long_rule.cont2.title') }}</div>
-      <div class="text">{{ $t('long_rule.cont2.text1_1') }} <a href="https://www.deeplink.cloud/node" target="_blank">https://www.deeplink.cloud/node</a> {{ $t('long_rule.cont2.text1_2') }}</div>
+      <div class="text">
+        {{ $t('long_rule.cont2.text1_1') }}
+        <a href="https://www.deeplink.cloud/node" target="_blank">https://www.deeplink.cloud/node</a>
+        {{ $t('long_rule.cont2.text1_2') }}
+      </div>
       <div class="text1">{{ $t('long_rule.cont2.text2_1') }}</div>
       <div class="btns">
         <div class="btn">
@@ -90,7 +174,7 @@
         </div>
       </div>
     </div>
-    <div class="page_cont3 delay300 animation_hide" v-animate="{delay: 300, class:'fadeInUp'}">
+    <div class="page_cont3 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
       <div class="page3_bg"></div>
       <div class="title">{{ $t('long_rule.cont3.title') }}</div>
       <div class="text">{{ $t('long_rule.cont3.text') }}</div>
@@ -385,7 +469,7 @@
         </el-scrollbar>
       </div>
     </div>
-    <div class="page_cont4 delay300 animation_hide" v-animate="{delay: 300, class:'fadeInUp'}">
+    <div class="page_cont4 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
       <div class="title">{{ $t('long_rule.cont4.title') }}</div>
       <div class="page_cont">
         <div class="cont_table">
@@ -445,9 +529,19 @@
       <div class="text2">
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont4.text2') }}</p>
-          <el-select class="el-select-type select_width" v-model="gpu_type1" :placeholder="$t('long_rule.cont4.text6')" @change='SelectGPU1'>
-            <el-option v-for="(item, index) in options " :key="item.value" :label="item.name + '-Mem:' + item.men" :value="item.cuda+'_'+item.men+'_'+item.large+'_'+index"></el-option>
-          </el-select> 
+          <el-select
+            class="el-select-type select_width"
+            v-model="gpu_type1"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectGPU1"
+          >
+            <el-option
+              v-for="(item, index) in options"
+              :key="item.value"
+              :label="item.name + '-Mem:' + item.men"
+              :value="item.cuda + '_' + item.men + '_' + item.large + '_' + index"
+            ></el-option>
+          </el-select>
         </div>
         <!-- <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont4.text3') }}</p>
@@ -457,20 +551,40 @@
         </div> -->
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont4.text4') }}</p>
-          <el-select class="select_width210" v-model="mem_num1" :placeholder="$t('long_rule.cont4.text6')" @change='SelectMem1'>
-            <el-option v-for="(item, index) in options2_1 " :key="item.value" :label="item.name" :value="item.value"></el-option>
-          </el-select> 
+          <el-select
+            class="select_width210"
+            v-model="mem_num1"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectMem1"
+          >
+            <el-option
+              v-for="(item, index) in options2_1"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </div>
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont4.text5') }}</p>
-          <el-select class="select_width" v-model="local1" :placeholder="$t('long_rule.cont4.text6')" @change='SelectLocal1'>
-            <el-option v-for="(item, index) in options3 " :key="item.value" :label="item.name" :value="item.value +'_'+index"></el-option>
-          </el-select> 
+          <el-select
+            class="select_width"
+            v-model="local1"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectLocal1"
+          >
+            <el-option
+              v-for="(item, index) in options3"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value + '_' + index"
+            ></el-option>
+          </el-select>
         </div>
       </div>
-      <div class="text1">{{ $t('long_rule.cont4.text7', {total: machinePoints}) }}</div>
+      <div class="text1">{{ $t('long_rule.cont4.text7', { total: machinePoints }) }}</div>
     </div>
-    <div class="page_cont5 delay300 animation_hide" v-animate="{delay: 300, class:'fadeInUp'}">
+    <div class="page_cont5 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
       <div class="title">{{ $t('long_rule.cont5.title') }}</div>
       <div class="text">{{ $t('long_rule.cont5.text1') }}</div>
       <div class="text">
@@ -493,9 +607,15 @@
         <div class="formula">
           <span>B<sub>i</sub> = </span>
           <div class="fraction">
-            <div class="numerator">H<sub>i</sub>&nbsp;&middot;&nbsp;T<sub>i</sub>&nbsp;&middot;&nbsp;ln(max(10000, P<sub style="font-size:12px">i</sub>))</div>
+            <div class="numerator">
+              H<sub>i</sub>&nbsp;&middot;&nbsp;T<sub>i</sub>&nbsp;&middot;&nbsp;ln(max(10000, P<sub
+                style="font-size: 12px"
+                >i</sub
+              >))
+            </div>
             <div class="denominator">
-                &sum;<sup>N</sup><sub style="margin-left: -10px;">j=1</sub> H<sub>j</sub> &middot; T<sub>j</sub>&nbsp;&middot;&nbsp;ln(max(10000, P<sub style="font-size:12px">j</sub>))
+              &sum;<sup>N</sup><sub style="margin-left: -10px">j=1</sub> H<sub>j</sub> &middot;
+              T<sub>j</sub>&nbsp;&middot;&nbsp;ln(max(10000, P<sub style="font-size: 12px">j</sub>))
             </div>
           </div>
           <span class="product"> <span>·</span> R</span>
@@ -521,21 +641,37 @@
       <div class="blockcon">
         <div class="block block1">
           <div class="top_title">{{ $t('long_rule.cont5.block_title1') }}</div>
-          <div class="top_text">{{ $t('long_rule.cont5.block_text1_1') }} <a href="https://galaxyrace.deepbrainchain.org/rule" target="_blank">https://galaxyrace.deepbrainchain.org/rule</a> {{ $t('long_rule.cont5.block_text1_2') }}</div>
+          <div class="top_text">
+            {{ $t('long_rule.cont5.block_text1_1') }}
+            <a href="https://galaxyrace.deepbrainchain.org/rule" target="_blank"
+              >https://galaxyrace.deepbrainchain.org/rule</a
+            >
+            {{ $t('long_rule.cont5.block_text1_2') }}
+          </div>
         </div>
         <!-- <div class="block block2">
           <div class="top_title">{{ $t('long_rule.cont5.block_title2') }}</div>
           <div class="top_text">{{ $t('long_rule.cont5.block_text2') }}</div>
         </div> -->
       </div>
-      <div class="title1">{{ $t('long_rule.cont5.block_title2') }} {{ $t('long_rule.cont5.block_text2') }} </div>
+      <div class="title1">{{ $t('long_rule.cont5.block_title2') }} {{ $t('long_rule.cont5.block_text2') }}</div>
       <!-- <div class="text">{{ $t('long_rule.cont5.block_text2') }}</div> -->
       <div class="text2">
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont4.text2') }}</p>
-          <el-select class="el-select-type select_width" v-model="gpu_type" :placeholder="$t('long_rule.cont4.text6')" @change='SelectGPU'>
-            <el-option v-for="(item, index) in options " :key="item.value" :label="item.name + '-Mem:' + item.men" :value="item.cuda+'_'+item.men+'_'+item.large+'_'+index"></el-option>
-          </el-select> 
+          <el-select
+            class="el-select-type select_width"
+            v-model="gpu_type"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectGPU"
+          >
+            <el-option
+              v-for="(item, index) in options"
+              :key="item.value"
+              :label="item.name + '-Mem:' + item.men"
+              :value="item.cuda + '_' + item.men + '_' + item.large + '_' + index"
+            ></el-option>
+          </el-select>
         </div>
         <!-- <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont4.text3') }}</p>
@@ -545,18 +681,48 @@
         </div> -->
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont4.text4') }}</p>
-          <el-select class="select_width210" v-model="mem_num" :placeholder="$t('long_rule.cont4.text6')" @change='SelectMem'>
-            <el-option v-for="(item, index) in options2" :key="item.value" :label="item.name" :value="item.value"></el-option>
-          </el-select> 
+          <el-select
+            class="select_width210"
+            v-model="mem_num"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectMem"
+          >
+            <el-option
+              v-for="(item, index) in options2"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </div>
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont4.text5') }}</p>
-          <el-select class="select_width" v-model="local" :placeholder="$t('long_rule.cont4.text6')" @change='SelectLocal'>
-            <el-option v-for="(item, index) in options3 " :key="item.value" :label="item.name" :value="item.value +'_'+index"></el-option>
-          </el-select> 
+          <el-select
+            class="select_width"
+            v-model="local"
+            :placeholder="$t('long_rule.cont4.text6')"
+            @change="SelectLocal"
+          >
+            <el-option
+              v-for="(item, index) in options3"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value + '_' + index"
+            ></el-option>
+          </el-select>
         </div>
       </div>
-      <div class="text">{{ $t('long_rule.cont5.text3_13', {usdt1: Income, dbc: price3, usdt2: price1, dbc_price: dbcPrice, usdt3: price2 }) }}</div>
+      <div class="text">
+        {{
+          $t('long_rule.cont5.text3_13', {
+            usdt1: Income,
+            dbc: price3,
+            usdt2: price1,
+            dbc_price: dbcPrice,
+            usdt3: price2,
+          })
+        }}
+      </div>
       <!-- <div class="title1">{{ $t('long_rule.cont5.title4') }}</div>
       <div class="text2">
         <div class="text_select">
@@ -623,435 +789,522 @@
 </template>
 
 <script>
-  import { defineComponent, computed, ref, onBeforeMount, onBeforeUnmount, onMounted, getCurrentInstance, watch, nextTick } from "vue";
-  import { useI18n } from "vue-i18n";
-  import { dbcPriceOcw } from '@/api/http'
-  import { getRewardInfo } from '@/api/wss'
-  import { useStore } from "vuex"
-  import { useRoute, useRouter } from 'vue-router'
-  export default defineComponent({
-    name: 'longTerm',
-    setup() {
-      const store = useStore()
-      const router = useRouter()
-      let lan = computed(() => {
-        return store.state.lan
-      })
-      const { t, locale } = useI18n();
-      const instance = getCurrentInstance()
-      const timer = ref(null)
-      const long_num = ref(0)
-      const linkHref = (el) => {
-        window.open(el, 'target')
-      }
-      const options = ref([
-        {name: '2080', cuda: '2944', men: '8', large: 1},
-        {name: '2080s', cuda: '3072', men: '8', large: 1},
-        {name: '2080ti', cuda: '4352', men: '11', large: 1},
-        {name: '3060', cuda: '3584', men: '12', large: 1},
-        {name: '3060ti', cuda: '4864', men: '8', large: 1},
-        {name: '3070', cuda: '5888', men: '8', large: 1},
-        {name: '3070ti', cuda: '6144', men: '8', large: 1},
-        {name: '3080', cuda: '8704', men: '10', large: 1},
-        {name: '3080ti', cuda: '10240', men: '12', large: 1},
-        {name: '3090', cuda: '10496', men: '24', large: 1},
-        {name: '4060', cuda: '3072', men: '8', large: 1},
-        {name: '4060ti', cuda: '4352', men: '8', large: 1},
-        {name: '4060ti', cuda: '4352', men: '16', large: 1},
-        {name: '4070', cuda: '5888', men: '12', large: 1},
-        {name: '4070 SUPER', cuda: '7168', men: '12', large: 1},
-        {name: '4070ti', cuda: '7680', men: '12', large: 1},
-        {name: '4070 Ti Super', cuda: '8448', men: '16', large: 1},
-        {name: '4080', cuda: '9728', men: '16', large: 1},
-        {name: '4080 SUPER', cuda: '10240', men: '16', large: 1},
-        {name: '4080ti', cuda: '14080', men: '20', large: 1},
-        {name: '4090', cuda: '16384', men: '24', large: 1},
-        {name: '4090ti', cuda: '18176', men: '24', large: 1},
-        {name: '5070', cuda: '10240', men: '12', large: 1},
-        {name: '5070ti', cuda: '12288', men: '16', large: 1},
-        {name: '5080', cuda: '16384', men: '16', large: 1},
-        {name: '5090', cuda: '18432', men: '32', large: 1}
-      ])
-      const options1 = ref([
-        {label: 1, value: 1},
-        // {label: 2, value: 2},
-        // {label: 3, value: 3},
-        // {label: 4, value: 4},
-        // {label: 5, value: 5},
-        // {label: 6, value: 6},
-        // {label: 7, value: 7},
-        // {label: 8, value: 8}
-      ])
-      const options2 = ref([])
-      const options2_1 = ref([])
-      const options3 = ref([
-        { name: t('country.country1'), key: 1, value: 1 },
-        { name: t('country.country2'), key: 2, value: 1.2 },
-        { name: t('country.country3'), key: 3, value: 1.3 },
-        { name: t('country.country4'), key: 4, value: 1.5 },
-        { name: t('country.country5'), key: 5, value: 1.6 },
-        { name: t('country.country6'), key: 6, value: 1.6 },
-        { name: t('country.country7'), key: 7, value: 1.7 },
-        { name: t('country.country8'), key: 8, value: 1.3 },
-        { name: t('country.country9'), key: 9, value: 1.3 },
-        { name: t('country.country10'), key: 10, value: 1.5 },
-        { name: t('country.country11'), key: 11, value: 1.5 },
-        { name: t('country.country12'), key: 12, value: 1.5 },
-        { name: t('country.country13'), key: 13, value: 1.3 }
-      ])
-      const gpu_type = ref('')
-      const gpu_num = ref(1)
-      const mem_num = ref('')
-      const local = ref('')
+import {
+  defineComponent,
+  computed,
+  ref,
+  onBeforeMount,
+  onBeforeUnmount,
+  onMounted,
+  getCurrentInstance,
+  watch,
+  nextTick,
+} from 'vue';
+import { useI18n } from 'vue-i18n';
+import { dbcPriceOcw, dlcPriceOcw } from '@/api/http';
+import { getRewardInfo } from '@/api/wss';
+import { useStore } from 'vuex';
+import { useRoute, useRouter } from 'vue-router';
+import { useIntervalFn } from '@vueuse/core';
 
-      const gpu_type1 = ref('')
-      const gpu_num1 = ref(1)
-      const mem_num1 = ref('')
-      const local1 = ref('')
+export default defineComponent({
+  name: 'longTerm',
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+    let lan = computed(() => {
+      return store.state.lan;
+    });
+    const { t, locale } = useI18n();
+    const instance = getCurrentInstance();
+    const timer = ref(null);
+    const long_num = ref(500);
+    const linkHref = (el) => {
+      window.open(el, 'target');
+    };
 
-      const numList = ref([])
-      const Income = ref(0) // 月收益
-      const dbcPrice = ref(0.0019) // dbc价格
-      const price1 = ref(0)  // 链上收益奖励DBC数量等值USDT数量
-      const price2 = ref(0)  // 租金收益
-      const price3 = ref(0) // 链上收益奖励DBC数量
-      const countVideo_num = ref(0) // 显存
-      const countGpu_num = ref(1) // 显卡数量
-      const countMem_num = ref(0) // 内存
-      const countLarge_num = ref(1) // 大模型系数
-      const countCuda_core = ref(0) // cuda数量
-      const countLocal_num = ref(0) // 地域系数
-      const totalCalcPoints = ref(0) // 总算力值
-      const machineCalcPoints = ref(0) // 整机算力值
-      const machinePoints = ref(0) // 整机算力值
-      
-      const countVideo_num1 = ref(0) // 显存
-      const countGpu_num1 = ref(0) // 显卡数量
-      const countMem_num1 = ref(0) // 内存
-      const countLarge_num1 = ref(1) // 大模型系数
-      const countCuda_core1 = ref(0) // cuda数量
-      const countLocal_num1 = ref(0) // 地域系数
-      const SelectGPU = (val) => {
-        const arr = val.split('_')
-        countCuda_core.value = arr[0]
-        countVideo_num.value = arr[1]
-        countLarge_num.value = arr[2]
-        MonthlyIncome()
-      }
-      const SelectGpuNum = (val) => {
-        countGpu_num.value = val
-        options2.value = []
-        mem_num.value = ''
-        for (let i = 0; i < numList.value.length; i ++) {
-          let mem_value = val * numList.value[i]
-          options2.value.push({ name: mem_value, value: mem_value })
+    // 获取DLC价格
+    let dlcPrice = ref(null);
+    const { pause, resume, isActive } = useIntervalFn(
+      async () => {
+        const res = await dlcPriceOcw();
+        if (res.code === '10502') {
+          console.log(res, 'KKKKK');
+          dlcPrice.value = res.content;
+        } else {
+          window.$message.error('DLC价格获取失败');
         }
-        mem_num.value = val * numList.value[0]
-        countMem_num.value = val * numList.value[0]
-        MonthlyIncome()
-      }
-      const SelectMem = (val) => {
-        countMem_num.value = val
-        console.log(countMem_num.value, 'countMem_num.value')
-        MonthlyIncome()
-      }
-      const SelectLocal = (val) => {
-        const arr = val.split('_')
-        countLocal_num.value = arr[0]
-        MonthlyIncome()
-      }
+      },
+      10000,
+      { immediateCallback: true }
+    );
+    const options = ref([
+      { name: '2080', cuda: '2944', men: '8', large: 1 },
+      { name: '2080s', cuda: '3072', men: '8', large: 1 },
+      { name: '2080ti', cuda: '4352', men: '11', large: 1 },
+      { name: '3060', cuda: '3584', men: '12', large: 1 },
+      { name: '3060ti', cuda: '4864', men: '8', large: 1 },
+      { name: '3070', cuda: '5888', men: '8', large: 1 },
+      { name: '3070ti', cuda: '6144', men: '8', large: 1 },
+      { name: '3080', cuda: '8704', men: '10', large: 1 },
+      { name: '3080ti', cuda: '10240', men: '12', large: 1 },
+      { name: '3090', cuda: '10496', men: '24', large: 1 },
+      { name: '4060', cuda: '3072', men: '8', large: 1 },
+      { name: '4060ti', cuda: '4352', men: '8', large: 1 },
+      { name: '4060ti', cuda: '4352', men: '16', large: 1 },
+      { name: '4070', cuda: '5888', men: '12', large: 1 },
+      { name: '4070 SUPER', cuda: '7168', men: '12', large: 1 },
+      { name: '4070ti', cuda: '7680', men: '12', large: 1 },
+      { name: '4070 Ti Super', cuda: '8448', men: '16', large: 1 },
+      { name: '4080', cuda: '9728', men: '16', large: 1 },
+      { name: '4080 SUPER', cuda: '10240', men: '16', large: 1 },
+      { name: '4080ti', cuda: '14080', men: '20', large: 1 },
+      { name: '4090', cuda: '16384', men: '24', large: 1 },
+      { name: '4090ti', cuda: '18176', men: '24', large: 1 },
+      { name: '5070', cuda: '10240', men: '12', large: 1 },
+      { name: '5070ti', cuda: '12288', men: '16', large: 1 },
+      { name: '5080', cuda: '16384', men: '16', large: 1 },
+      { name: '5090', cuda: '18432', men: '32', large: 1 },
+    ]);
+    const options1 = ref([
+      { label: 1, value: 1 },
+      // {label: 2, value: 2},
+      // {label: 3, value: 3},
+      // {label: 4, value: 4},
+      // {label: 5, value: 5},
+      // {label: 6, value: 6},
+      // {label: 7, value: 7},
+      // {label: 8, value: 8}
+    ]);
+    const options2 = ref([]);
+    const options2_1 = ref([]);
+    const options3 = ref([
+      { name: t('country.country1'), key: 1, value: 1 },
+      { name: t('country.country2'), key: 2, value: 1.2 },
+      { name: t('country.country3'), key: 3, value: 1.3 },
+      { name: t('country.country4'), key: 4, value: 1.5 },
+      { name: t('country.country5'), key: 5, value: 1.6 },
+      { name: t('country.country6'), key: 6, value: 1.6 },
+      { name: t('country.country7'), key: 7, value: 1.7 },
+      { name: t('country.country8'), key: 8, value: 1.3 },
+      { name: t('country.country9'), key: 9, value: 1.3 },
+      { name: t('country.country10'), key: 10, value: 1.5 },
+      { name: t('country.country11'), key: 11, value: 1.5 },
+      { name: t('country.country12'), key: 12, value: 1.5 },
+      { name: t('country.country13'), key: 13, value: 1.3 },
+    ]);
+    const gpu_type = ref('');
+    const gpu_num = ref(1);
+    const mem_num = ref('');
+    const local = ref('');
 
+    const gpu_type1 = ref('');
+    const gpu_num1 = ref(1);
+    const mem_num1 = ref('');
+    const local1 = ref('');
 
-      const SelectGPU1 = (val) => {
-        const arr = val.split('_')
-        countCuda_core1.value = arr[0]
-        countVideo_num1.value = arr[1]
-        countLarge_num1.value = arr[2]
-        machineCalc()
-      }
-      const SelectGpuNum1 = (val) => {
-        countGpu_num1.value = val
-        options2_1.value = []
-        mem_num1.value = ''
-        for (let i = 0; i < numList.value.length; i ++) {
-          let mem_value = val * numList.value[i]
-          options2_1.value.push({ name: mem_value, value: mem_value })
-        }
-        mem_num1.value = val * numList.value[0]
-        countMem_num1.value = val * numList.value[0]
-        machineCalc()
-      }
-      const SelectMem1 = (val) => {
-        countMem_num1.value = val
-        machineCalc()
-      }
-      const SelectLocal1 = (val) => {
-        const arr = val.split('_')
-        countLocal_num1.value = arr[0]
-        machineCalc()
-      }
-      const machineCalc = () => {
-        if (countCuda_core1.value&&countVideo_num1.value&&countGpu_num1.value
-        &&countMem_num1.value&&countLarge_num1.value&&countLocal_num1.value) {
-          machinePoints.value = countPoint(countGpu_num1.value, countMem_num1.value, countCuda_core1.value, countVideo_num1.value, countLocal_num1.value)*countLarge_num1.value
-        }
-      }
-      const countPoint = (Gpu_Num, Mem, Cuda, M_value, coe) => {
-        var num = Math.round(((Gpu_Num*25+ Mem/3.5 + Math.sqrt(Cuda) * Math.sqrt(M_value/10)*Gpu_Num)*coe) * 100) / 100
-        return num
-      }
-      const MonthlyIncome = () => {
-        console.log(countCuda_core.value, countVideo_num.value, dbcPrice.value, countGpu_num.value, countMem_num.value, countLarge_num.value);
-        console.log(countLocal_num.value, totalCalcPoints.value);
-        if (countCuda_core.value&&countVideo_num.value
-        &&dbcPrice.value&&countGpu_num.value
-        &&countMem_num.value&&countLarge_num.value
-        &&countLocal_num.value&&totalCalcPoints.value) {
-          machineCalcPoints.value = countPoint(countGpu_num.value, countMem_num.value, countCuda_core.value, countVideo_num.value, countLocal_num.value)
-          
-          price1.value = Math.round((machineCalcPoints.value/totalCalcPoints.value*547945*dbcPrice.value*1.3)*countLarge_num.value*100) / 100
-          price2.value = Math.round((machineCalcPoints.value*0.01693)*countLarge_num.value*100*0.3) / 100
-          price3.value = Math.round((machineCalcPoints.value/totalCalcPoints.value*547945*1.3)*countLarge_num.value*100) / 100
-          Income.value = Math.round((machineCalcPoints.value/totalCalcPoints.value*547945*dbcPrice.value*1.3 - machineCalcPoints.value*0.01693*0.3)*countLarge_num.value*100) / 100
-        }
-      }
-      const getPrice = async () => {
-        const priceData = await dbcPriceOcw()
-        if (priceData.status == 1) {
-          dbcPrice.value = priceData.content.dbc_price
-        }
-        const rewardInfo = await getRewardInfo();
-        totalCalcPoints.value = rewardInfo.totalCalcPoints/100
-      }
+    const numList = ref([]);
+    const Income = ref(0); // 月收益
+    const dbcPrice = ref(0.0019); // dbc价格
+    const price1 = ref(0); // 链上收益奖励DBC数量等值USDT数量
+    const price2 = ref(0); // 租金收益
+    const price3 = ref(0); // 链上收益奖励DBC数量
+    const countVideo_num = ref(0); // 显存
+    const countGpu_num = ref(1); // 显卡数量
+    const countMem_num = ref(0); // 内存
+    const countLarge_num = ref(1); // 大模型系数
+    const countCuda_core = ref(0); // cuda数量
+    const countLocal_num = ref(0); // 地域系数
+    const totalCalcPoints = ref(0); // 总算力值
+    const machineCalcPoints = ref(0); // 整机算力值
+    const machinePoints = ref(0); // 整机算力值
 
-      // 计算DLC每天DLC收益
-      const dlc_price = ref(0.003)
-      const gpu_type2 = ref('')
-      const mem_num2 = ref('')
-      const nft_num = ref('')
-      const local2 = ref('')
-      const stak_dlc_num = ref('')
-      const race_stage = ref('')
-      const join_gpu_num = ref('')
-      const mem_num_list = ref([])
-      const nft_num_list = ref([
-        {label: 1, value: 1},
-        {label: 2, value: 2},
-        {label: 3, value: 3},
-        {label: 4, value: 4},
-        {label: 5, value: 5},
-        {label: 6, value: 6},
-        {label: 7, value: 7},
-        {label: 8, value: 8},
-        {label: 9, value: 9},
-        {label: 10, value: 10},
-        {label: 11, value: 11},
-        {label: 12, value: 12},
-        {label: 13, value: 13},
-        {label: 14, value: 14},
-        {label: 15, value: 15},
-        {label: 16, value: 16},
-        {label: 17, value: 17},
-        {label: 18, value: 18},
-        {label: 19, value: 19},
-        {label: 20, value: 20}
-      ])
-      const stak_dlc_list = ref([
-        {label: '0', value: 1},
-        {label: '10,000', value: 10000},
-        {label: '50,000', value: 20000},
-        {label: '100,000', value: 100000},
-        {label: '200,000', value: 200000},
-        {label: '500,000', value: 500000},
-        {label: '1,000,000', value: 1000000},
-        {label: '5,000,000', value: 5000000},
-        {label: '10,000,000', value: 10000000}
-      ])
-      const race_stage_list = ref([
-        {label: t('long_rule.cont5.text4_6_1'), value: 6000000},
-        {label: t('long_rule.cont5.text4_6_2'), value: 8000000},
-        {label: t('long_rule.cont5.text4_6_3'), value: 19330000},
-      ])
+    const countVideo_num1 = ref(0); // 显存
+    const countGpu_num1 = ref(0); // 显卡数量
+    const countMem_num1 = ref(0); // 内存
+    const countLarge_num1 = ref(1); // 大模型系数
+    const countCuda_core1 = ref(0); // cuda数量
+    const countLocal_num1 = ref(0); // 地域系数
+    const SelectGPU = (val) => {
+      const arr = val.split('_');
+      countCuda_core.value = arr[0];
+      countVideo_num.value = arr[1];
+      countLarge_num.value = arr[2];
+      MonthlyIncome();
+    };
+    const SelectGpuNum = (val) => {
+      countGpu_num.value = val;
+      options2.value = [];
+      mem_num.value = '';
+      for (let i = 0; i < numList.value.length; i++) {
+        let mem_value = val * numList.value[i];
+        options2.value.push({ name: mem_value, value: mem_value });
+      }
+      mem_num.value = val * numList.value[0];
+      countMem_num.value = val * numList.value[0];
+      MonthlyIncome();
+    };
+    const SelectMem = (val) => {
+      countMem_num.value = val;
+      console.log(countMem_num.value, 'countMem_num.value');
+      MonthlyIncome();
+    };
+    const SelectLocal = (val) => {
+      const arr = val.split('_');
+      countLocal_num.value = arr[0];
+      MonthlyIncome();
+    };
 
-      const join_gpu_list = ref([
-        {label: 500, value: 500},
-        {label: 600, value: 600},
-        {label: 700, value: 700},
-        {label: 800, value: 800},
-        {label: 900, value: 900},
-        {label: 1000, value: 1000},
-        {label: 1500, value: 1500},
-        {label: 2000, value: 2000},
-        {label: 3000, value: 3000},
-        {label: 4000, value: 4000},
-        {label: 5000, value: 5000}
-      ])
-      const countCuda_core2 = ref(0)  // cuda数量
-      const selectlocal_num2 = ref(0)  // 大模型系数 
-      const countVideo_num2 = ref(0)  // 显存
-      const SelectGPU2 = (val) => {
-        const arr = val.split('_')
-        countCuda_core2.value = arr[0]
-        countVideo_num2.value = arr[1]
-        DayDLCIncome()
+    const SelectGPU1 = (val) => {
+      const arr = val.split('_');
+      countCuda_core1.value = arr[0];
+      countVideo_num1.value = arr[1];
+      countLarge_num1.value = arr[2];
+      machineCalc();
+    };
+    const SelectGpuNum1 = (val) => {
+      countGpu_num1.value = val;
+      options2_1.value = [];
+      mem_num1.value = '';
+      for (let i = 0; i < numList.value.length; i++) {
+        let mem_value = val * numList.value[i];
+        options2_1.value.push({ name: mem_value, value: mem_value });
       }
-      const SelectMem2 = (val) => {
-        DayDLCIncome()
+      mem_num1.value = val * numList.value[0];
+      countMem_num1.value = val * numList.value[0];
+      machineCalc();
+    };
+    const SelectMem1 = (val) => {
+      countMem_num1.value = val;
+      machineCalc();
+    };
+    const SelectLocal1 = (val) => {
+      const arr = val.split('_');
+      countLocal_num1.value = arr[0];
+      machineCalc();
+    };
+    const machineCalc = () => {
+      if (
+        countCuda_core1.value &&
+        countVideo_num1.value &&
+        countGpu_num1.value &&
+        countMem_num1.value &&
+        countLarge_num1.value &&
+        countLocal_num1.value
+      ) {
+        machinePoints.value =
+          countPoint(
+            countGpu_num1.value,
+            countMem_num1.value,
+            countCuda_core1.value,
+            countVideo_num1.value,
+            countLocal_num1.value
+          ) * countLarge_num1.value;
       }
-      const SelectNftnum2 = (val) => {
-        DayDLCIncome()
-      }
-      const SelectLocal2 = (val) => {
-        const arr = val.split('_')
-        selectlocal_num2.value = arr[0]
-        DayDLCIncome()
-      }
-      const SelectStakDLC2 = (val) => {
-        DayDLCIncome()
-      }
-      const SelectRace2 = (val) => {
-        DayDLCIncome()
-      }
-      const SelectJoinGPU2 = (val) => {
-        DayDLCIncome()
-      }
-      const dlc_earning = ref(0)
-      const dlc_usdt_earning = ref(0)
-      const DayDLCIncome = () => {
-        if (gpu_type2.value&&mem_num2.value
-        &&nft_num.value&&local2.value
-        &&stak_dlc_num.value&&race_stage.value
-        &&join_gpu_num.value) {
-          // 单个GPU的算力值
-          const signle_gpu_num = countPoint(1, mem_num2.value, countCuda_core2.value, countVideo_num2.value, selectlocal_num2.value)
-          console.log(signle_gpu_num, 'signle_gpu_num');
-          // // 计算基础奖励
+    };
+    const countPoint = (Gpu_Num, Mem, Cuda, M_value, coe) => {
+      var num =
+        Math.round((Gpu_Num * 25 + Mem / 3.5 + Math.sqrt(Cuda) * Math.sqrt(M_value / 10) * Gpu_Num) * coe * 100) / 100;
+      return num;
+    };
+    const MonthlyIncome = () => {
+      console.log(
+        countCuda_core.value,
+        countVideo_num.value,
+        dbcPrice.value,
+        countGpu_num.value,
+        countMem_num.value,
+        countLarge_num.value
+      );
+      console.log(countLocal_num.value, totalCalcPoints.value);
+      if (
+        countCuda_core.value &&
+        countVideo_num.value &&
+        dbcPrice.value &&
+        countGpu_num.value &&
+        countMem_num.value &&
+        countLarge_num.value &&
+        countLocal_num.value &&
+        totalCalcPoints.value
+      ) {
+        machineCalcPoints.value = countPoint(
+          countGpu_num.value,
+          countMem_num.value,
+          countCuda_core.value,
+          countVideo_num.value,
+          countLocal_num.value
+        );
 
-          // const top_num = signle_gpu_num * 86400 * nft_num.value
-          // // 底部求和公式 // 4060 1卡 32G 中国 算力 83.72
-          // const bottom_num = 83.72 * 86400 * 10 * join_gpu_num.value
-          // const basic_reward = (top_num / bottom_num) * race_stage.value
-          // // 计算非线性奖励
-
-          // // 计算 max(0, P_i - P_0)
-          // const maxValue = Math.max(0, stak_dlc_num.value - 10000);
-          // // 计算分数 max(0, P_i - P_0) / P_0
-          // const fraction = maxValue / 10000;
-          // // 计算 ln(1 + fraction)
-          // const result = Math.log(1 + fraction);
-          // // 非线性奖励 α 为 0.1
-          // const log_reward = 0.1 * result
-          // console.log(basic_reward, log_reward, 'basic_reward');
-
-          // 计算奖励
-          // 非线性ln
-          const result1 = Math.log(Math.max(10000, stak_dlc_num.value == 1 ? 10000 : stak_dlc_num.value))
-          const result = Math.log(Math.max(10000, 100000))
-          const top_num = signle_gpu_num * 86400 * nft_num.value * result1
-          const bottom_num = 83.72 * 86400 * 10 * join_gpu_num.value * result
-          dlc_earning.value = ((top_num / bottom_num) * race_stage.value).toFixed(4)
-          dlc_usdt_earning.value = (((top_num / bottom_num) * race_stage.value) * 0.003).toFixed(2)
-        }
+        price1.value =
+          Math.round(
+            (machineCalcPoints.value / totalCalcPoints.value) *
+              547945 *
+              dbcPrice.value *
+              1.3 *
+              countLarge_num.value *
+              100
+          ) / 100;
+        price2.value = Math.round(machineCalcPoints.value * 0.01693 * countLarge_num.value * 100 * 0.3) / 100;
+        price3.value =
+          Math.round((machineCalcPoints.value / totalCalcPoints.value) * 547945 * 1.3 * countLarge_num.value * 100) /
+          100;
+        Income.value =
+          Math.round(
+            ((machineCalcPoints.value / totalCalcPoints.value) * 547945 * dbcPrice.value * 1.3 -
+              machineCalcPoints.value * 0.01693 * 0.3) *
+              countLarge_num.value *
+              100
+          ) / 100;
       }
+    };
+    const getPrice = async () => {
+      const priceData = await dbcPriceOcw();
+      if (priceData.status == 1) {
+        dbcPrice.value = priceData.content.dbc_price;
+      }
+      const rewardInfo = await getRewardInfo();
+      totalCalcPoints.value = rewardInfo.totalCalcPoints / 100;
+    };
 
-      onMounted(async () => {
-        await getPrice();
-        await nextTick();
-        for (let i = 1; i < 33; i ++) {
-          numList.value.push(16*i)
-          mem_num_list.value.push({ name: 16*i, value: 16*i })
-          options2_1.value.push({ name: 16*i, value: 16*i })
-          options2.value.push({ name: 16*i, value: 16*i })
-        }
-      })
-      onBeforeUnmount(() => {
-        if (timer.value) {
-          clearInterval(timer.value);
-          timer.value = null;
-        }
-      })
-      watch(
-        () => locale.value,
-        () => {
-          options3.value = [
-            { name: t('country.country1'), key: 1, value: 1 },
-            { name: t('country.country2'), key: 2, value: 1.2 },
-            { name: t('country.country3'), key: 3, value: 1.3 },
-            { name: t('country.country4'), key: 4, value: 1.5 },
-            { name: t('country.country5'), key: 5, value: 1.6 },
-            { name: t('country.country6'), key: 6, value: 1.6 },
-            { name: t('country.country7'), key: 7, value: 1.7 },
-            { name: t('country.country8'), key: 8, value: 1.3 },
-            { name: t('country.country9'), key: 9, value: 1.3 },
-            { name: t('country.country10'), key: 10, value: 1.5 },
-            { name: t('country.country11'), key: 11, value: 1.5 },
-            { name: t('country.country12'), key: 12, value: 1.5 },
-            { name: t('country.country13'), key: 13, value: 1.3 }
-          ],
-          race_stage_list.value = [
-            {label: t('long_rule.cont5.text4_6_1'), value: 6000000},
-            {label: t('long_rule.cont5.text4_6_2'), value: 8000000},
-            {label: t('long_rule.cont5.text4_6_3'), value: 19330000},
-          ]
-        }
-      )
-      return {
-        lan,
-        gpu_type,
-        gpu_num,
-        mem_num,
-        local,
-        gpu_type1,
-        gpu_num1,
-        mem_num1,
-        local1,
-        Income,
-        dbcPrice,
-        price1,
-        price2,
-        price3,
-        options,
-        options1,
-        options2,
-        options2_1,
-        options3,
-        long_num,
-        machinePoints,
-        SelectGPU,
-        SelectGpuNum,
-        SelectMem,
-        SelectLocal,
-        SelectGPU1,
-        SelectGpuNum1,
-        SelectMem1,
-        SelectLocal1,
+    // 计算DLC每天DLC收益
+    const dlc_price = ref(0.003);
+    const gpu_type2 = ref('');
+    const mem_num2 = ref('');
+    const nft_num = ref('');
+    const local2 = ref('');
+    const stak_dlc_num = ref('');
+    const race_stage = ref('');
+    const join_gpu_num = ref('');
+    const mem_num_list = ref([]);
+    const nft_num_list = ref([
+      { label: 1, value: 1 },
+      { label: 2, value: 2 },
+      { label: 3, value: 3 },
+      { label: 4, value: 4 },
+      { label: 5, value: 5 },
+      { label: 6, value: 6 },
+      { label: 7, value: 7 },
+      { label: 8, value: 8 },
+      { label: 9, value: 9 },
+      { label: 10, value: 10 },
+      { label: 11, value: 11 },
+      { label: 12, value: 12 },
+      { label: 13, value: 13 },
+      { label: 14, value: 14 },
+      { label: 15, value: 15 },
+      { label: 16, value: 16 },
+      { label: 17, value: 17 },
+      { label: 18, value: 18 },
+      { label: 19, value: 19 },
+      { label: 20, value: 20 },
+    ]);
+    const stak_dlc_list = ref([
+      { label: '0', value: 1 },
+      { label: '10,000', value: 10000 },
+      { label: '50,000', value: 20000 },
+      { label: '100,000', value: 100000 },
+      { label: '200,000', value: 200000 },
+      { label: '500,000', value: 500000 },
+      { label: '1,000,000', value: 1000000 },
+      { label: '5,000,000', value: 5000000 },
+      { label: '10,000,000', value: 10000000 },
+    ]);
+    const race_stage_list = ref([
+      { label: t('long_rule.cont5.text4_6_1'), value: 6000000 },
+      { label: t('long_rule.cont5.text4_6_2'), value: 8000000 },
+      { label: t('long_rule.cont5.text4_6_3'), value: 19330000 },
+    ]);
 
-        // DLC收益字段
-        gpu_type2,
-        mem_num2,
-        nft_num,
-        local2,
-        stak_dlc_num,
-        race_stage,
-        join_gpu_num,
-        nft_num_list,
-        stak_dlc_list,
-        race_stage_list,
-        join_gpu_list,
-        mem_num_list,
-        dlc_earning,
-        dlc_usdt_earning,
-        SelectGPU2,
-        SelectMem2,
-        SelectNftnum2,
-        SelectLocal2,
-        SelectStakDLC2,
-        SelectRace2,
-        SelectJoinGPU2
-      };
-    }
-  })
-</script> 
+    const join_gpu_list = ref([
+      { label: 500, value: 500 },
+      { label: 600, value: 600 },
+      { label: 700, value: 700 },
+      { label: 800, value: 800 },
+      { label: 900, value: 900 },
+      { label: 1000, value: 1000 },
+      { label: 1500, value: 1500 },
+      { label: 2000, value: 2000 },
+      { label: 3000, value: 3000 },
+      { label: 4000, value: 4000 },
+      { label: 5000, value: 5000 },
+    ]);
+    const countCuda_core2 = ref(0); // cuda数量
+    const selectlocal_num2 = ref(0); // 大模型系数
+    const countVideo_num2 = ref(0); // 显存
+    const SelectGPU2 = (val) => {
+      const arr = val.split('_');
+      countCuda_core2.value = arr[0];
+      countVideo_num2.value = arr[1];
+      DayDLCIncome();
+    };
+    const SelectMem2 = (val) => {
+      DayDLCIncome();
+    };
+    const SelectNftnum2 = (val) => {
+      DayDLCIncome();
+    };
+    const SelectLocal2 = (val) => {
+      const arr = val.split('_');
+      selectlocal_num2.value = arr[0];
+      DayDLCIncome();
+    };
+    const SelectStakDLC2 = (val) => {
+      DayDLCIncome();
+    };
+    const SelectRace2 = (val) => {
+      DayDLCIncome();
+    };
+    const SelectJoinGPU2 = (val) => {
+      DayDLCIncome();
+    };
+    const dlc_earning = ref(0);
+    const dlc_usdt_earning = ref(0);
+    const DayDLCIncome = () => {
+      if (
+        gpu_type2.value &&
+        mem_num2.value &&
+        nft_num.value &&
+        local2.value &&
+        stak_dlc_num.value &&
+        race_stage.value &&
+        join_gpu_num.value
+      ) {
+        // 单个GPU的算力值
+        const signle_gpu_num = countPoint(
+          1,
+          mem_num2.value,
+          countCuda_core2.value,
+          countVideo_num2.value,
+          selectlocal_num2.value
+        );
+        console.log(signle_gpu_num, 'signle_gpu_num');
+        // // 计算基础奖励
+
+        // const top_num = signle_gpu_num * 86400 * nft_num.value
+        // // 底部求和公式 // 4060 1卡 32G 中国 算力 83.72
+        // const bottom_num = 83.72 * 86400 * 10 * join_gpu_num.value
+        // const basic_reward = (top_num / bottom_num) * race_stage.value
+        // // 计算非线性奖励
+
+        // // 计算 max(0, P_i - P_0)
+        // const maxValue = Math.max(0, stak_dlc_num.value - 10000);
+        // // 计算分数 max(0, P_i - P_0) / P_0
+        // const fraction = maxValue / 10000;
+        // // 计算 ln(1 + fraction)
+        // const result = Math.log(1 + fraction);
+        // // 非线性奖励 α 为 0.1
+        // const log_reward = 0.1 * result
+        // console.log(basic_reward, log_reward, 'basic_reward');
+
+        // 计算奖励
+        // 非线性ln
+        const result1 = Math.log(Math.max(10000, stak_dlc_num.value == 1 ? 10000 : stak_dlc_num.value));
+        const result = Math.log(Math.max(10000, 100000));
+        const top_num = signle_gpu_num * 86400 * nft_num.value * result1;
+        const bottom_num = 83.72 * 86400 * 10 * join_gpu_num.value * result;
+        dlc_earning.value = ((top_num / bottom_num) * race_stage.value).toFixed(4);
+        dlc_usdt_earning.value = ((top_num / bottom_num) * race_stage.value * 0.003).toFixed(2);
+      }
+    };
+
+    onMounted(async () => {
+      await getPrice();
+      await nextTick();
+      for (let i = 1; i < 33; i++) {
+        numList.value.push(16 * i);
+        mem_num_list.value.push({ name: 16 * i, value: 16 * i });
+        options2_1.value.push({ name: 16 * i, value: 16 * i });
+        options2.value.push({ name: 16 * i, value: 16 * i });
+      }
+    });
+    onBeforeUnmount(() => {
+      if (timer.value) {
+        clearInterval(timer.value);
+        timer.value = null;
+      }
+    });
+    watch(
+      () => locale.value,
+      () => {
+        (options3.value = [
+          { name: t('country.country1'), key: 1, value: 1 },
+          { name: t('country.country2'), key: 2, value: 1.2 },
+          { name: t('country.country3'), key: 3, value: 1.3 },
+          { name: t('country.country4'), key: 4, value: 1.5 },
+          { name: t('country.country5'), key: 5, value: 1.6 },
+          { name: t('country.country6'), key: 6, value: 1.6 },
+          { name: t('country.country7'), key: 7, value: 1.7 },
+          { name: t('country.country8'), key: 8, value: 1.3 },
+          { name: t('country.country9'), key: 9, value: 1.3 },
+          { name: t('country.country10'), key: 10, value: 1.5 },
+          { name: t('country.country11'), key: 11, value: 1.5 },
+          { name: t('country.country12'), key: 12, value: 1.5 },
+          { name: t('country.country13'), key: 13, value: 1.3 },
+        ]),
+          (race_stage_list.value = [
+            { label: t('long_rule.cont5.text4_6_1'), value: 6000000 },
+            { label: t('long_rule.cont5.text4_6_2'), value: 8000000 },
+            { label: t('long_rule.cont5.text4_6_3'), value: 19330000 },
+          ]);
+      }
+    );
+    return {
+      lan,
+      gpu_type,
+      gpu_num,
+      mem_num,
+      local,
+      gpu_type1,
+      gpu_num1,
+      mem_num1,
+      local1,
+      Income,
+      dbcPrice,
+      price1,
+      price2,
+      price3,
+      options,
+      options1,
+      options2,
+      options2_1,
+      options3,
+      long_num,
+      machinePoints,
+      SelectGPU,
+      SelectGpuNum,
+      SelectMem,
+      SelectLocal,
+      SelectGPU1,
+      SelectGpuNum1,
+      SelectMem1,
+      SelectLocal1,
+      dlcPrice,
+      // DLC收益字段
+      gpu_type2,
+      mem_num2,
+      nft_num,
+      local2,
+      stak_dlc_num,
+      race_stage,
+      join_gpu_num,
+      nft_num_list,
+      stak_dlc_list,
+      race_stage_list,
+      join_gpu_list,
+      mem_num_list,
+      dlc_earning,
+      dlc_usdt_earning,
+      SelectGPU2,
+      SelectMem2,
+      SelectNftnum2,
+      SelectLocal2,
+      SelectStakDLC2,
+      SelectRace2,
+      SelectJoinGPU2,
+    };
+  },
+});
+</script>
 
 <style lang="scss" scoped>
 .longTerm {
@@ -1172,7 +1425,7 @@
         .btn_title {
           font-size: 20px;
           font-weight: 600;
-          color: #00FF4D;
+          color: #00ff4d;
           margin-bottom: 10px;
         }
         .btn_text {
@@ -1208,7 +1461,7 @@
         // color: #fff;
         font-size: 20px;
         font-weight: 600;
-        color: #00FF4D;
+        color: #00ff4d;
         font-family: Monda;
         margin-bottom: 20px;
       }
@@ -1276,7 +1529,7 @@
             font-size: 20px;
             font-weight: 600;
             font-family: Monda;
-            background: #03FF91;
+            background: #03ff91;
             th {
               border: none;
               line-height: 1;
@@ -1346,7 +1599,7 @@
             font-size: 20px;
             font-weight: 600;
             font-family: Monda;
-            background: #03FF91;
+            background: #03ff91;
             th {
               border: none;
               padding: 10px 15px;
@@ -1396,12 +1649,13 @@
         font-size: 20px;
         font-family: Monda;
         margin-bottom: 12px;
+        width: max-content;
       }
       .select_width210 {
         width: 120px;
         margin: 0 20px 12px 10px;
       }
-      
+
       .select_width {
         margin: 0 20px 12px 10px;
       }
@@ -1457,7 +1711,7 @@
         justify-content: space-between;
       }
       .block1 {
-        background: #03FF91;
+        background: #03ff91;
       }
       .block2 {
         background: rgba(255, 255, 255, 0.05);
@@ -1500,12 +1754,13 @@
         font-size: 20px;
         font-family: Monda;
         margin-bottom: 12px;
+        min-width: fit-content;
       }
       .select_width210 {
         width: 120px;
         margin: 0 20px 12px 10px;
       }
-      
+
       .select_width {
         margin: 0 20px 12px 10px;
       }
@@ -1551,26 +1806,26 @@
       font-family: 'MJXTEX-I';
     }
     .fraction {
-        display: inline-block;
-        vertical-align: middle;
-        text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
     }
     .fraction .numerator {
       // display: flex;
       // align-items: center;
       // justify-content: center;
-      border-bottom: 1px solid rgba(255, 255, 255, .6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
       padding: 5px;
     }
     .fraction .denominator {
       padding-top: 2px;
     }
-    .product, .sum {
+    .product,
+    .sum {
       display: inline-block;
       vertical-align: middle;
       margin: 0 5px;
     }
-
 
     .formula1 {
       display: flex;
@@ -1581,29 +1836,27 @@
       font-family: 'MJXTEX-I';
     }
     .formula1 .fraction {
-        display: inline-block;
-        vertical-align: middle;
-        text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
     }
     .formula1 .fraction .numerator {
-      border-bottom: 1px solid rgba(255, 255, 255, .6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
       padding: 5px;
     }
     .formula1 .fraction .denominator {
-        padding-top: 2px;
+      padding-top: 2px;
     }
     .formula1 .max-function {
-        display: inline-block;
-        vertical-align: middle;
+      display: inline-block;
+      vertical-align: middle;
     }
   }
 }
 
 @media screen and (max-width: 1300px) {
   .longTerm {
-    
   }
-  
 }
 
 @media screen and (max-width: 900px) {
@@ -1628,6 +1881,11 @@
     }
   }
 }
+
+:deep(.el-select__wrapper) {
+  background: transparent !important;
+  min-width: 120px !important;
+}
 </style>
 
 <style>
@@ -1635,7 +1893,6 @@
   background: transparent !important;
 }
 .el-input__inner {
-  color: #38EED6 !important;
+  color: #38eed6 !important;
 }
 </style>
-

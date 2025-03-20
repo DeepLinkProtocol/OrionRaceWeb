@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<script>
+<script lang="js" setup>
 import {
   defineComponent,
   computed,
@@ -39,14 +39,7 @@ import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
 import { getLongMachinesList, getShortMachinesList } from '@/utils/getWeb3Connect.js';
 import DeviceTable from './device-modules/device-table.vue';
-
-export default defineComponent({
-  name: 'device',
-  components: {
-    DeviceTable, // 注册组件
-  },
-  setup() {
-    const store = useStore();
+const store = useStore();
     const loading = inject('$loading');
     let lan = computed(() => {
       return store.state.lan;
@@ -75,14 +68,6 @@ export default defineComponent({
         timer.value = null;
       }
     });
-
-    return {
-      lan,
-      model_type,
-      getData,
-    };
-  },
-});
 </script>
 
 <style lang="scss" scoped>
@@ -173,6 +158,12 @@ export default defineComponent({
     display: flex;
     max-width: 1200px;
   }
+}
+:deep(.el-select__selected-item) {
+  color: #38eed6 !important;
+}
+:deep(.el-select__wrapper) {
+  background: transparent !important;
 }
 </style>
 
