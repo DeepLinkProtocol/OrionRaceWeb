@@ -1,7 +1,7 @@
 import { request, gql } from 'graphql-request';
 
 // 测试网 GraphQL 端点
-const endpoint = 'http://8.214.55.62:8022/subgraphs/name/long-staking-state';
+const endpoint = 'https://test.dbcswap.io/api/graph/subgraphs/name/long-staking-state';
 
 // 查询 stateSummaries
 export async function getStateSummaries() {
