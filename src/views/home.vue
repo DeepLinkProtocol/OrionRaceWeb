@@ -130,8 +130,8 @@ const { t } = useI18n();
 
 // 模拟数据
 const model_type = ref('long');
-const long_term = ref(500);
-const short_term = ref(500);
+const long_term = ref(100);
+const short_term = ref(100);
 
 // 第一部分按钮数据
 const btnList = ref([
@@ -224,7 +224,7 @@ const getStateSummariesH = async () => {
   const res = await getStateSummaries();
   console.log(res, 'Pppppp');
   const totalStaking = new BN(res.stateSummaries[0].totalStakingGPUCount);
-  const result = new BN(500).sub(totalStaking);
+  const result = new BN(100).sub(totalStaking);
   btnList.value[0].value = result.toNumber(); // 直接更新 btnList 中的值
   // text1: '总算力值',
   //     text2: 'GPU总数',
