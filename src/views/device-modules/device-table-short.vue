@@ -109,7 +109,12 @@
 <script setup>
 import { ref, computed, watch, onMounted, h, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { getAllMachineInfos, getIdleMachineInfos, getRentedMachineInfos, getGpuTypeValues } from '@/api/home';
+import {
+  getAllMachineInfosShort,
+  getIdleMachineInfosShort,
+  getRentedMachineInfosShort,
+  getGpuTypeValuesShort,
+} from '@/api/home-short';
 import BN from 'bn.js';
 import { Icon } from '@iconify/vue';
 import { useClipboard } from '@vueuse/core';
@@ -138,6 +143,8 @@ const copyText = async (text) => {
 };
 // 机器列表（更新为新字段）
 const machine_list = ref([]);
+// GPU 型号
+const gpuModels = ref([]);
 // 表格表头（使用指定字段）
 const tableHeaders = ref([
   {
@@ -172,7 +179,7 @@ const tableHeaders = ref([
 // 初始化表格数据长租
 const getMachineInfosH = async (gpuType) => {
   tableLoading.value = true;
-  const response = await getAllMachineInfos(gpuType);
+  const response = await getAllMachineInfosShort(gpuType);
   tableLoading.value = false;
   machine_list.value = response.machineInfos;
   console.log(machine_list.value, response, '初始化表格数据长租');
@@ -182,7 +189,7 @@ const getMachineInfosH = async (gpuType) => {
 // 查询空闲机器
 const getIdleMachineInfosH = async (gpuType) => {
   tableLoading.value = true;
-  const response = await getIdleMachineInfos(gpuType);
+  const response = await getIdleMachineInfosShort(gpuType);
   tableLoading.value = false;
   machine_list.value = response.machineInfos;
   filters.value[1].v = machine_list.value.length;
@@ -190,7 +197,7 @@ const getIdleMachineInfosH = async (gpuType) => {
 // 查询租用机器
 const getRentedMachineInfosH = async (gpuType) => {
   tableLoading.value = true;
-  const response = await getRentedMachineInfos(gpuType);
+  const response = await getRentedMachineInfosShort(gpuType);
   tableLoading.value = false;
   machine_list.value = response.machineInfos;
   filters.value[1].v = machine_list.value.length;
@@ -198,9 +205,9 @@ const getRentedMachineInfosH = async (gpuType) => {
 
 // 获取gpu列表
 const getGpusH = async () => {
-  const res = await getGpuTypeValues();
+  const res = await getGpuTypeValuesShort();
   console.log(res, '获取gpu列表');
-  filters.value[2].options = res.gpuTypeValues.map((item) => {
+  filters.value[1].options = res.gpuTypeValues.map((item) => {
     return {
       label: item.value,
       value: item.id,
@@ -274,6 +281,7 @@ watchEffect(async () => {
   getMachineInfosH();
   console.log('是时候获取短租表格了');
 });
+
 // 监听machine_list
 watch(
   () => machine_list.value,
@@ -335,12 +343,11 @@ watch(
   border: 1px solid rgba(255, 255, 255, 0.2);
   .right_top {
     .text2_tx {
-      display: flex;
-      align-items: center;
-
       color: #fff;
+      display: flex;
       font-size: 20px;
       font-family: Monda;
+      align-items: center;
       margin-bottom: 12px;
 
       span {

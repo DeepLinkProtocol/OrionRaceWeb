@@ -1,11 +1,10 @@
 import { request, gql } from 'graphql-request';
 
 // 测试网 GraphQL 端点
-const endpoint = process.env.VUE_APP_API_URL;
-// const endpoint = 'http://8.214.55.62:8022/subgraphs/name/long-staking-state';
+const endpoint = process.env.VUE_APP_API_URL_SHORT;
 
 // 查询 stateSummaries
-export async function getStateSummaries() {
+export async function getStateSummariesShort() {
   const query = gql`
     query StateSummaries {
       stateSummaries(first: 1) {
@@ -22,9 +21,8 @@ export async function getStateSummaries() {
   `;
   return await request(endpoint, query);
 }
-
 // 获取长租表格数据
-export async function getLongStakeHolders() {
+export async function getShortStakeHoldersShort() {
   const query = gql`
     query LongStakeHolders {
       stakeHolders(first: 1000, orderBy: totalCalcPoint, orderDirection: desc, where: { totalStakingGPUCount_gt: 0 }) {
@@ -43,7 +41,7 @@ export async function getLongStakeHolders() {
 }
 
 // 获取长租GPU
-export async function getGpuTypeValues() {
+export async function getGpuTypeValuesShort() {
   const query = gql`
     query GetGpuTypeValues {
       gpuTypeValues {
@@ -59,7 +57,7 @@ export async function getGpuTypeValues() {
 const getCurrentTimestamp = () => Math.floor(Date.now() / 1000);
 
 // 查询所有机器 (isStaking: true)
-export async function getAllMachineInfos(gpuType) {
+export async function getAllMachineInfosShort(gpuType) {
   const query = gql`
     query AllMachineInfos($gpuType: String) {
       machineInfos(
@@ -95,7 +93,7 @@ export async function getAllMachineInfos(gpuType) {
 }
 
 // 查询空闲机器
-export async function getIdleMachineInfos(gpuType) {
+export async function getIdleMachineInfosShort(gpuType) {
   const currentTimestamp = getCurrentTimestamp();
   const query = gql`
     query IdleMachineInfos($gpuType: String, $currentTimestamp: BigInt!) {
@@ -138,7 +136,7 @@ export async function getIdleMachineInfos(gpuType) {
 }
 
 // 查询已租用机器
-export async function getRentedMachineInfos(gpuType) {
+export async function getRentedMachineInfosShort(gpuType) {
   const query = gql`
     query RentedMachineInfos($gpuType: String) {
       machineInfos(

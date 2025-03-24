@@ -16,7 +16,8 @@
       <div class="text">{{ $t('device.title1') }}</div>
     </div>
     <div class="page_cont2 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
-      <DeviceTable />
+      <DeviceTable v-if="model_type == 'long'" />
+      <DeviceTableShort v-else />
     </div>
   </div>
 </template>
@@ -39,6 +40,7 @@ import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
 import { getLongMachinesList, getShortMachinesList } from '@/utils/getWeb3Connect.js';
 import DeviceTable from './device-modules/device-table.vue';
+import DeviceTableShort from './device-modules//device-table-short.vue';
 const store = useStore();
     const loading = inject('$loading');
     let lan = computed(() => {
@@ -56,12 +58,10 @@ const store = useStore();
       } else {
         model_type.value = 'short';
       }
+      console.log(888);
       data_loading.value.close();
     };
-    onMounted(async () => {
-      await nextTick();
-      // await getData('long')
-    });
+
     onBeforeUnmount(() => {
       if (timer.value) {
         clearInterval(timer.value);

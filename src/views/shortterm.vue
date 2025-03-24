@@ -11,7 +11,7 @@
       <div class="text1 animation_hide" v-animate="{ delay: 0, class: 'amplify' }">{{ $t('short_rule.text2') }}</div>
     </div>
     <div class="page_cont5 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
-      <div class="title1">{{ $t('short_rule.cont5.title4') }}</div>
+      <div class="title1">{{ $t('short_rule.cont5.title4', { price: dlcPrice?.dlc_price || 0 }) }}</div>
       <div class="text2">
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont5.text4_1') }}</p>
@@ -118,7 +118,13 @@
       </div>
       <div class="text">{{ $t('short_rule.cont5.text4_8') }}</div>
       <div class="title1">
-        {{ $t('short_rule.cont5.title5', { dlc_num: dlc_earning, usdt_num: dlc_usdt_earning }) }}
+        {{
+          $t('short_rule.cont5.title5', {
+            dlc_num: dlc_earning,
+            usdt_num: dlc_usdt_earning,
+            price: dlcPrice?.dlc_price || 0,
+          })
+        }}
       </div>
     </div>
     <div class="page_cont2 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
@@ -777,6 +783,9 @@ import {
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
+import { dlcPriceOcw } from '@/api/http';
+import { useIntervalFn } from '@vueuse/core';
+
 export default defineComponent({
   name: 'shortTerm',
   setup() {
@@ -788,7 +797,24 @@ export default defineComponent({
     const { t, locale } = useI18n();
     const instance = getCurrentInstance();
     const timer = ref(null);
-    const short_num = ref(0);
+    const short_num = ref(100);
+
+    // 获取DLC价格
+    let dlcPrice = ref(null);
+    const { pause, resume, isActive } = useIntervalFn(
+      async () => {
+        const res = await dlcPriceOcw();
+        if (res.code === '10502') {
+          console.log(res, 'KKKKK');
+          dlcPrice.value = res.content;
+        } else {
+          window.$message.error('DLC价格获取失败');
+        }
+      },
+      10000,
+      { immediateCallback: true }
+    );
+
     const linkHref = (el) => {
       window.open(el, 'target');
     };
@@ -913,8 +939,6 @@ export default defineComponent({
       return num;
     };
 
-    // 计算DLC每天DLC收益
-    const dlc_price = ref(0.003);
     const gpu_type2 = ref('');
     const mem_num2 = ref('');
     const nft_num = ref('');
@@ -1112,7 +1136,7 @@ export default defineComponent({
       SelectGpuNum1,
       SelectMem1,
       SelectLocal1,
-
+      dlcPrice,
       // DLC收益字段
       gpu_type2,
       mem_num2,
@@ -1588,6 +1612,7 @@ export default defineComponent({
         font-family: Monda;
         margin-bottom: 12px;
         width: fit-content;
+        white-space: nowrap;
       }
       .select_width210 {
         width: 120px;

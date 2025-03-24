@@ -35,15 +35,16 @@
         {{ $t('home.cont2_text1') }}
       </div>
       <div class="cont2_btns delay600 animation_hide" v-animate="{ delay: 600, class: 'fadeInUp' }">
-        <div
+        <el-button
           v-for="(btn, index) in cont2Buttons"
           :key="index"
+          :loading="btn.loading"
           class="cont2_btn"
           :class="{ active: model_type === btn.type }"
-          @click="changeModelType(btn.type)"
+          @click="changeModelType(btn)"
         >
           {{ $t(btn.label) }}
-        </div>
+        </el-button>
       </div>
     </div>
 
@@ -120,88 +121,45 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
 import BN from 'bn.js';
 import { getStateSummaries, getLongStakeHolders } from '@/api/home';
+import { getStateSummariesShort, getShortStakeHoldersShort } from '@/api/home-short';
 
 // i18n
 const { t } = useI18n();
 
 // 模拟数据
 const model_type = ref('long');
-const long_term = ref(100);
-const short_term = ref(100);
 
 // 第一部分按钮数据
 const btnList = ref([
-  { textKey: 'home.btn_text1', titleKey: 'home.btn_title1', valueKey: 'long_term', value: long_term.value },
-  { textKey: 'home.btn_text2', titleKey: 'home.btn_title2', valueKey: 'short_term', value: short_term.value },
+  { textKey: 'home.btn_text1', titleKey: 'home.btn_title1', valueKey: 'long_term', value: 100 },
+  { textKey: 'home.btn_text2', titleKey: 'home.btn_title2', valueKey: 'short_term', value: 100 },
 ]);
 
 // 第二部分切换按钮
-const cont2Buttons = [
-  { type: 'long', label: 'home.cont2_btn1' },
-  { type: 'short', label: 'home.cont2_btn2' },
-];
+const cont2Buttons = ref([
+  { type: 'long', label: 'home.cont2_btn1', loading: false },
+  { type: 'short', label: 'home.cont2_btn2', loading: false },
+]);
 
 // 第三部分统计数据
 const OrionDataList = ref([
-  { titleKey: 'home.cont3.text1', value: '' }, // total_calc_point
-  { titleKey: 'home.cont3.text2', value: '' }, // total_gpu_num
-  { titleKey: 'home.cont3.text3', value: '' }, // total_address
-  { titleKey: 'home.cont3.text4', value: '' }, // rental_rate
-  { titleKey: 'home.cont3.text5', value: '' }, // total_dlc
-  { titleKey: 'home.cont3.text6', value: '' }, // total_dlc (重复)
-  { titleKey: 'home.cont3.text7', value: '' }, // total_rent_dlc
+  { titleKey: 'home.cont3.text1', value: 0 }, // total_calc_point
+  { titleKey: 'home.cont3.text2', value: 0 }, // total_gpu_num
+  { titleKey: 'home.cont3.text3', value: 0 }, // total_address
+  { titleKey: 'home.cont3.text4', value: 0 }, // rental_rate
+  { titleKey: 'home.cont3.text5', value: 0 }, // total_dlc
+  { titleKey: 'home.cont3.text6', value: 0 }, // total_dlc (重复)
+  { titleKey: 'home.cont3.text7', value: 0 }, // total_rent_dlc
 ]);
 
 // 长租和短租表格数据，统一管理在一个响应式对象中
 const tableData = ref({
-  long: [
-    {
-      index: 1,
-      holder: '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',
-      calc_point: 12500,
-      gpu_num: 10,
-      rent_gpu: 8,
-      rent_reward: 150.75,
-      released_reward: 50.25,
-      total_reward: 200.0,
-    },
-    {
-      index: 2,
-      holder: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
-      calc_point: 9800,
-      gpu_num: 8,
-      rent_gpu: 4,
-      rent_reward: 80.5,
-      released_reward: 20.0,
-      total_reward: 100.5,
-    },
-  ],
-  short: [
-    {
-      index: 1,
-      holder: '0x9876543210fedcba9876543210fedcba9876543210fedcba9876543210fedcba',
-      calc_point: 7500,
-      gpu_num: 5,
-      rent_gpu: 3,
-      rent_reward: 60.0,
-      released_reward: 15.0,
-      total_reward: 75.0,
-    },
-    {
-      index: 2,
-      holder: '0xfedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210',
-      calc_point: 3200,
-      gpu_num: 3,
-      rent_gpu: 1,
-      rent_reward: 25.0,
-      released_reward: 5.0,
-      total_reward: 30.0,
-    },
-  ],
+  long: [],
+  short: [],
 });
 
 // 根据 model_type 计算当前显示的表格数据
@@ -219,32 +177,78 @@ const tableHeaders = [
   { label: 'home.cont4.li8', class: '', suffix: '(DLC)' },
 ];
 
-// 获取门槛数据（不动）
+// 获取门槛数据长租
 const getStateSummariesH = async () => {
   const res = await getStateSummaries();
-  console.log(res, 'Pppppp');
-  const totalStaking = new BN(res.stateSummaries[0].totalStakingGPUCount);
-  const result = new BN(100).sub(totalStaking);
-  btnList.value[0].value = result.toNumber(); // 直接更新 btnList 中的值
-  // text1: '总算力值',
-  //     text2: 'GPU总数',
-  //     text3: '算池总数',
-  //     text4: 'GPU租用率',
-  //     text5: 'DLC租金数',
-  //     text6: 'DLC销毁数',
-  //     text7: '矿机DLC质押数'
-  OrionDataList.value[0].value = res.stateSummaries[0].totalCalcPoint;
-  OrionDataList.value[1].value = res.stateSummaries[0].totalGPUCount;
-  OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
-  OrionDataList.value[3].value = `${
-    (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) * 100
-  }%`;
+  console.log(res, 'Pppppp获取门槛数据长租');
+  if (res.stateSummaries.length === 0) {
+    btnList.value[0].value = 100; // 直接更新 btnList 中的值
+    OrionDataList.value[0].value = 0;
+    OrionDataList.value[1].value = 0;
+    OrionDataList.value[2].value = 0;
+    OrionDataList.value[3].value = 0;
 
-  OrionDataList.value[4].value = res.stateSummaries[0].totalBurnedRentFee;
-  OrionDataList.value[5].value = res.stateSummaries[0].totalBurnedRentFee;
-  OrionDataList.value[6].value = res.stateSummaries[0].totalReservedAmount;
+    OrionDataList.value[4].value = 0;
+    OrionDataList.value[5].value = 0;
+    OrionDataList.value[6].value = 0;
+  } else {
+    const totalStaking = new BN(res.stateSummaries[0].totalGPUCount);
+    const result = new BN(100).sub(totalStaking);
+    btnList.value[0].value = result.toNumber(); // 直接更新 btnList 中的值
+    OrionDataList.value[0].value = res.stateSummaries[0].totalCalcPoint;
+    OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
+    OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
+    OrionDataList.value[3].value = `${
+      (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) * 100
+    }%`;
+
+    OrionDataList.value[4].value = res.stateSummaries[0].totalBurnedRentFee / 1e18;
+    OrionDataList.value[5].value = res.stateSummaries[0].totalBurnedRentFee / 1e18;
+    OrionDataList.value[6].value = res.stateSummaries[0].totalReservedAmount / 1e18;
+  }
 };
-// 请求并同步长租数据
+
+// 获取门槛数据短租
+const getStateSummariesShortH = async () => {
+  const res = await getStateSummariesShort();
+  console.log(res, 'Pppppp获取门槛数据短租');
+  if (res.stateSummaries.length === 0) {
+    btnList.value[0].value = 100; // 直接更新 btnList 中的值
+    OrionDataList.value[0].value = 0;
+    OrionDataList.value[1].value = 0;
+    OrionDataList.value[2].value = 0;
+    OrionDataList.value[3].value = 0;
+
+    OrionDataList.value[4].value = 0;
+    OrionDataList.value[5].value = 0;
+    OrionDataList.value[6].value = 0;
+  } else {
+    const totalStaking = new BN(res.stateSummaries[0].totalStakingGPUCount);
+    const result = new BN(100).sub(totalStaking);
+    btnList.value[1].value = result.toNumber(); // 直接更新 btnList 中的值
+    OrionDataList.value[0].value = res.stateSummaries[0].totalCalcPoint;
+    OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
+    OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
+    OrionDataList.value[3].value = `${
+      (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) * 100
+    }%`;
+
+    OrionDataList.value[4].value = res.stateSummaries[0].totalBurnedRentFee / 1e18;
+    OrionDataList.value[5].value = res.stateSummaries[0].totalBurnedRentFee / 1e18;
+    OrionDataList.value[6].value = res.stateSummaries[0].totalReservedAmount / 1e18;
+  }
+};
+
+// 获取门槛数据短租
+const getStateSummariesShortH2 = async () => {
+  const res = await getStateSummariesShort();
+  console.log(res, 'Pppppp获取门槛数据短租');
+  const totalStaking = new BN(res.stateSummaries[0].totalGPUCount);
+  const result = new BN(100).sub(totalStaking);
+  btnList.value[1].value = result.toNumber(); // 直接更新 btnList 中的值
+};
+getStateSummariesShortH2();
+// 请求并同步长租表格数据
 const fetchLongStakeHolders = async () => {
   try {
     const response = await getLongStakeHolders();
@@ -264,14 +268,50 @@ const fetchLongStakeHolders = async () => {
     tableData.value.long = []; // 请求失败时清空长租数据
   }
 };
+
+// 请求并同步短租表格数据
+const fetchShortStakeHolders = async () => {
+  try {
+    const response = await getShortStakeHoldersShort();
+    const stakeHolders = response.stakeHolders || [];
+    tableData.value.short = stakeHolders.map((el, index) => ({
+      index: index + 1, // 竞赛排名
+      holder: el.holder, // 矿工名称
+      calc_point: Number(el.totalCalcPoint), // 算力值
+      gpu_num: Number(el.totalStakingGPUCount), // GPU数量
+      rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
+      rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
+      released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4), // 已解锁奖励数 (DLC)
+      total_reward: ((Number(el.totalClaimedRewardAmount) + Number(el.totalReleasedRewardAmount)) / 1e18).toFixed(4), // 奖励总数 (DLC)
+    }));
+  } catch (error) {
+    console.error('Failed to fetch long stake holders:', error);
+    tableData.value.short = []; // 请求失败时清空长租数据
+  }
+};
 // 切换长租和短租
-const changeModelType = (type) => {
-  model_type.value = type;
+const changeModelType = async (btn) => {
+  console.log(btn, 'typetype');
+  model_type.value = btn.type;
+  if (btn.type === 'long') {
+    btn.loading = true;
+  } else {
+    btn.loading = true;
+  }
+  btn.loading = false;
+
+  console.log(btn, 'typetype');
 };
 
-onMounted(() => {
-  getStateSummariesH();
-  fetchLongStakeHolders();
+watchEffect(() => {
+  if (model_type.value === 'long') {
+    getStateSummariesH();
+    fetchLongStakeHolders();
+  } else {
+    getStateSummariesShortH();
+    fetchShortStakeHolders();
+    getStateSummariesShortH2();
+  }
 });
 
 // 映射表
@@ -289,6 +329,9 @@ onMounted(() => {
 <!-- 样式保持不变 -->
 
 <style lang="scss" scoped>
+:deep(.el-button + .el-button) {
+  margin-left: 0 !important;
+}
 .homepage {
   position: relative;
   z-index: 2;

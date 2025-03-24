@@ -3,40 +3,19 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import i18n from './locales/i18n';
-import {
-  ElDropdown,
-  ElDropdownMenu,
-  ElDropdownItem,
-  ElDialog,
-  ElCarousel,
-  ElCarouselItem,
-  ElDrawer,
-  ElScrollbar,
-  ElSelect,
-  ElOption,
-  ElLoading,
-  ElMessage,
-  ElMessageBox,
-} from 'element-plus';
+import ElementPlus from 'element-plus';
+
 import 'element-plus/dist/index.css';
 import '@/style/index.css';
 import { Icon } from '@iconify/vue';
-
+import { ElLoading, ElMessage, ElMessageBox } from 'element-plus';
 const app = createApp(App);
 app.use(i18n);
 app.use(router);
 app.use(store);
-app.component(ElDialog.name, ElDialog);
-app.component(ElSelect.name, ElSelect);
-app.component(ElOption.name, ElOption);
-app.component(ElDropdown.name, ElDropdown);
-app.component(ElDropdownMenu.name, ElDropdownMenu);
-app.component(ElDropdownItem.name, ElDropdownItem);
-app.component(ElCarousel.name, ElCarousel);
-app.component(ElCarouselItem.name, ElCarouselItem);
-app.component(ElDrawer.name, ElDrawer);
-app.component(ElScrollbar.name, ElScrollbar);
+
 app.component('Icon', Icon);
+app.use(ElementPlus);
 
 app.provide('$loading', ElLoading);
 app.mount('#app');

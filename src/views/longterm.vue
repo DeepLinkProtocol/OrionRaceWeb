@@ -818,7 +818,7 @@ export default defineComponent({
     const { t, locale } = useI18n();
     const instance = getCurrentInstance();
     const timer = ref(null);
-    const long_num = ref(500);
+    const long_num = ref(100);
     const linkHref = (el) => {
       window.open(el, 'target');
     };

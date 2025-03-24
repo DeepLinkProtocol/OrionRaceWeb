@@ -177,7 +177,8 @@ export default {
       text4_7: 'Gesamtzahl der teilnehmenden GPUs:',
       text4_8:
         '(Die Gesamtzahl der GPUs wird einheitlich auf der Grundlage des 4060-Modells, 32 GB, mit durchschnittlich 10 NFTs und einem durchschnittlichen Einsatz von 100.000 Tokens berechnet)',
-      title5: 'On-Chain-Belohnungen: {dlc_num} DLC (entspricht {usdt_num} USD beim aktuellen DLC-Preis von 0 USD).',
+      title5:
+        'On-Chain-Belohnungen: {dlc_num} DLC (entspricht {usdt_num} USD beim aktuellen DLC-Preis von {price} USD).',
       req_title1:
         '5. Melde- und Überprüfungsmechanismus (Basierend auf EVM-kompatiblen DLC in der DBC AI Public Chain)',
       req_text1:
@@ -337,4 +338,12 @@ export default {
       text4: 'Anzahl der Leerlaufmaschinen:',
     },
   },
+  machine_id: 'Maschinen-ID',
+  machine_is_rented: 'Ist sie vermietet',
+  machine_rented: 'Vermietet',
+  machine_idle: 'Leer',
+  machine_is_online: 'Ist sie online',
+  machine_yes: 'Ja',
+  machine_no: 'Nein',
+  machine_no_data: 'Keine Daten verfügbar',
 };

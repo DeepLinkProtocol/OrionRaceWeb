@@ -171,7 +171,7 @@ export default {
       text4_7: 'Tổng số GPU tham gia:',
       text4_8:
         '(Tổng số GPU được tính toán đồng nhất dựa trên mẫu 4060, 32GB, với trung bình 10 NFT và trung bình đặt cọc 100.000 token)',
-      title5: 'Phần thưởng trên chuỗi: {dlc_num} DLC (tương đương {usdt_num} USD với giá DLC hiện tại là 0 USD).',
+      title5: 'Phần thưởng trên chuỗi: {dlc_num} DLC (tương đương {usdt_num} USD với giá DLC hiện tại là {price} USD).',
       req_title1: '5. Cơ Chế Báo Cáo Và Xác Minh (Dựa trên DLC tương thích EVM trên chuỗi công khai DBC AI)',
       req_text1:
         'Người dùng thuê máy DLC có thể báo cáo bất kỳ lúc nào. Cần đặt cược 10.000 DLC để bắt đầu báo cáo. Khi báo cáo, thông tin báo cáo sẽ được đưa vào quy trình xác minh của người xác nhận DBC.',
@@ -325,4 +325,12 @@ export default {
       text4: 'Số Lượng Máy Nhàn Rỗi:',
     },
   },
+  machine_id: 'ID máy',
+  machine_is_rented: 'Có được thuê không',
+  machine_rented: 'Đã được thuê',
+  machine_idle: 'Rảnh rỗi',
+  machine_is_online: 'Có trực tuyến không',
+  machine_yes: 'Có',
+  machine_no: 'Không',
+  machine_no_data: 'Không có dữ liệu',
 };

@@ -173,7 +173,7 @@ export default {
       text4_6_3: 'Aşama 3: Günlük 19,33 milyon DLC.',
       text4_7: 'Katılan GPU sayısı:',
       text4_8: '(Toplam GPU, 4060 modeli, 32GB, ortalama 10 NFT ve ortalama 100.000 token stake edilerek hesaplanır)',
-      title5: 'Zincir üzerindeki ödüller: {dlc_num} DLC (mevcut DLC fiyatı 0 USD iken {usdt_num} USD eşdeğeri).',
+      title5: 'Zincir üzerindeki ödüller: {dlc_num} DLC (mevcut DLC fiyatı {price} USD iken {usdt_num} USD eşdeğeri).',
       req_title1: "5. Bildirme ve Doğrulama Mekanizması (DBC AI Genel Zincirindeki EVM uyumlu DLC'ye dayalı)",
       req_text1:
         'DLC makinelerini kiralayan kullanıcılar istedikleri zaman bildirimde bulunabilirler. Bildirim başlatmak için 10.000 DLC depozitosu gereklidir. Bildirim sırasında bildirim bilgileri DBC doğrulayıcı doğrulama sürecine girer.',
@@ -278,7 +278,7 @@ export default {
       text2_1:
         "Ödüller 24 saatte bir çekilebilir. Her çekimde yeni kazanılan ödüllerin %10'u hemen çekilebilir, kalan %90'ı 180 gün boyunca kilitlenir. Kilitli kısım her çekimde %0.5 serbest bırakılır ve 180 gün sonra tamamen serbest kalır.",
 
-      title4: 'Günlük DLC Gelir Hesaplama Formülü: DLC, 0.003 USD fiyatıyla hesaplanır.',
+      title4: 'Günlük DLC Gelir Hesaplama Formülü: DLC, {price} USD fiyatıyla hesaplanır.',
       text4_8:
         '(Toplam GPU, 4060 32G baz alınarak, ortalama 10 NFT ve ortalama 10.000 token stake edilerek hesaplanır)',
       title5:
@@ -327,4 +327,12 @@ export default {
       text4: 'Boşta Olan Makine Sayısı:',
     },
   },
+  machine_id: 'Makine Kimliği',
+  machine_is_rented: 'Kiralık mı',
+  machine_rented: 'Kiralandı',
+  machine_idle: 'Boşta',
+  machine_is_online: 'Çevrimiçi mi',
+  machine_yes: 'Evet',
+  machine_no: 'Hayır',
+  machine_no_data: 'Veri yok',
 };

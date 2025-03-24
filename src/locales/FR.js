@@ -181,7 +181,7 @@ export default {
       text4_8:
         '(Le nombre total de GPU est uniformément calculé sur la base du modèle 4060, 32 Go, avec une moyenne de 10 NFTs et une mise moyenne de 100 000 tokens)',
       title5:
-        'Récompenses sur la chaîne : {dlc_num} DLC (équivalents à {usdt_num} USD au prix actuel du DLC de 0 USD).',
+        'Récompenses sur la chaîne : {dlc_num} DLC (équivalents à {usdt_num} USD au prix actuel du DLC de {price} USD).',
       req_title1:
         '5. Mécanisme de Signalement et de Vérification (Basé sur le DLC compatible EVM sur la chaîne publique DBC AI)',
       req_text1:
@@ -343,4 +343,12 @@ export default {
       text4: 'Nombre de Machines Inactives :',
     },
   },
+  machine_id: 'ID de la machine',
+  machine_is_rented: 'Est-elle louée',
+  machine_rented: 'Louée',
+  machine_idle: 'Inactif',
+  machine_is_online: 'Est-elle en ligne',
+  machine_yes: 'Oui',
+  machine_no: 'Non',
+  machine_no_data: 'Aucune donnée disponible',
 };

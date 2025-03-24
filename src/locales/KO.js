@@ -170,7 +170,7 @@ export default {
       text4_6_3: '3단계: 하루 1933만 DLC.',
       text4_7: '참여 GPU 총 수:',
       text4_8: '(총 GPU는 4060 모델, 32GB, 평균 10개의 NFT, 평균 10만 개의 스테이킹 토큰을 기준으로 계산됩니다)',
-      title5: '온체인 보상: {dlc_num} DLC (현재 DLC 가격 0 USD일 때 {usdt_num} USD에 해당).',
+      title5: '온체인 보상: {dlc_num} DLC (현재 DLC 가격 {price} USD일 때 {usdt_num} USD에 해당).',
       req_title1: '5. 신고 및 검증 메커니즘 (DBC AI 퍼블릭 체인의 EVM 호환 DLC 기반)',
       req_text1:
         'DLC 머신을 렌탈한 사용자는 언제든지 신고할 수 있습니다. 신고를 시작하려면 10,000 DLC의 보증금이 필요합니다. 신고 시 신고 정보는 DBC 검증자 검증 프로세스에 들어갑니다.',
@@ -269,7 +269,7 @@ export default {
       text2_1:
         '24시간마다 보상을 추출할 수 있습니다. 각 추출 시 새로 생성된 보상의 10%는 즉시 사용 가능하며, 90%는 180일 동안 잠금 상태로 유지됩니다. 잠금된 부분은 각 추출 시 0.5%씩 해제되며, 180일 후에 완전히 해제됩니다.',
 
-      title4: '일일 DLC 수익 계산 공식: DLC는 0.003 USD로 계산됩니다.',
+      title4: '일일 DLC 수익 계산 공식: DLC는 {price} USD로 계산됩니다.',
       text4_8:
         '(총 GPU는 4060 32G를 기준으로 일관되게 계산되며, 평균 10개의 NFT와 평균 1만 개의 스테이킹 토큰으로 계산됩니다)',
       title5: '온체인 보상 수익: {dlc_num} DLC (현재 DLC 가격 {price} USD일 때 {usdt_num} USD에 해당).',
@@ -317,4 +317,12 @@ export default {
       text4: '유휴 기기 수:',
     },
   },
+  machine_id: '기계 ID',
+  machine_is_rented: '임대 여부',
+  machine_rented: '임대됨',
+  machine_idle: '유휴',
+  machine_is_online: '온라인 여부',
+  machine_yes: '예',
+  machine_no: '아니요',
+  machine_no_data: '데이터 없음',
 };

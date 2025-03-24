@@ -178,7 +178,7 @@ export default {
       text4_7: 'Total number of participating GPUs:',
       text4_8:
         '(The total GPU is uniformly calculated based on 4060 model, 32GB, with an average of 10 NFTs and an average stake of 100,000 tokens)',
-      title5: 'On-chain rewards: {dlc_num} DLC (equivalent to {usdt_num} USD at the current DLC price of 0 USD).',
+      title5: 'On-chain rewards: {dlc_num} DLC (equivalent to {usdt_num} USD at the current DLC price of {price} USD).',
       req_title1: '5. Reporting and Verification Mechanism (Based on EVM-compatible DLC on the DBC AI Public Chain)',
       req_text1:
         'Users renting DLC machines can report at any time. A deposit of 10,000 DLC is required to initiate a report. When reporting, the report information will enter the DBC verifier validation process.',
@@ -286,7 +286,7 @@ export default {
       text2_1:
         'You can extract rewards every 24 hours. For each extraction, 10% of the newly generated rewards are immediately available, while 90% are locked for 180 days. The locked portion releases 0.5% at each extraction, with full release after 180 days.',
 
-      title4: 'Daily DLC Revenue Calculation Formula: DLC is calculated at a price of 0.003 USD.',
+      title4: 'Daily DLC Revenue Calculation Formula: DLC is calculated at a price of {price} USD.',
       text4_8:
         '(The total GPU is calculated uniformly based on 4060 32G, with an average of 10 NFTs and an average stake of 10,000 tokens)',
       title5:
@@ -335,4 +335,12 @@ export default {
       text4: 'Number of Idle Machines:',
     },
   },
+  machine_id: 'Machine ID',
+  machine_is_rented: 'Whether it is rented',
+  machine_rented: 'Rented',
+  machine_idle: 'Idle',
+  machine_is_online: 'Whether it is online',
+  machine_yes: 'Yes',
+  machine_no: 'No',
+  machine_no_data: 'No data available',
 };

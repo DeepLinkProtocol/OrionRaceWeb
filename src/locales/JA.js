@@ -167,7 +167,7 @@ export default {
       text4_6_3: 'フェーズ3: 1日あたり1933万DLC。',
       text4_7: '参加GPUの総数:',
       text4_8: '(総GPUは4060モデル、32GB、平均10個のNFT、および平均ステーク10万トークンに基づいて一律に計算されます)',
-      title5: 'オンチェーン報酬: {dlc_num} DLC (現在のDLC価格0 USDで {usdt_num} USDに相当)。',
+      title5: 'オンチェーン報酬: {dlc_num} DLC (現在のDLC価格{price} USDで {usdt_num} USDに相当)。',
       req_title1: '5. 通報および検証メカニズム (DBC AIパブリックチェーンのEVM互換のDLCに基づく)',
       req_text1:
         'DLCマシンをレンタルしているユーザーは、いつでも通報を開始できます。通報を開始するには、10000DLCのデポジットが必要です。通報時には、通報情報がDBCのバリデーター検証プロセスに入ります。',
@@ -271,7 +271,7 @@ export default {
       text2_1:
         '報酬は24時間ごとに引き出すことができます。各引き出し時に、新たに生成された報酬の10％が即座に引き出し可能で、90％は180日間ロックされます。ロックされた部分は各引き出しごとに0.5％ずつ解放され、180日後に完全に解放されます。',
 
-      title4: '1日あたりのDLC収益計算式：DLCは0.003 USDで計算されます。',
+      title4: '1日あたりのDLC収益計算式：DLCは{price} USDで計算されます。',
       text4_8: '(総GPUは4060 32Gを基準に統一して計算され、平均10個のNFTと平均10,000トークンのステークで計算されます)',
       title5: 'オンチェーン報酬収益：{dlc_num} DLC（現在のDLC価格{price} USDで{usdt_num} USDに相当）。',
 
@@ -318,4 +318,12 @@ export default {
       text4: 'アイドル状態の機械の数：',
     },
   },
+  machine_id: 'マシンID',
+  machine_is_rented: 'レンタルされているかどうか',
+  machine_rented: 'レンタル済み',
+  machine_idle: 'アイドル',
+  machine_is_online: 'オンラインかどうか',
+  machine_yes: 'はい',
+  machine_no: 'いいえ',
+  machine_no_data: 'データがありません',
 };

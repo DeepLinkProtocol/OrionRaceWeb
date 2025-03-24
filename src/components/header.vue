@@ -2,17 +2,23 @@
   <div class="header">
     <div class="meau" :class="{ w1200: isphone && href == '/Protocol' }">
       <div class="content hide">
-        <img class="logo" src="../assets/logo.png" alt="deeplink logo">
+        <img class="logo" src="../assets/logo.png" alt="deeplink logo" />
         <div class="nav">
-          <div class="nav1" :class="{active: href == '/'}" @click="linkHref('/')">{{$t('meau.nav1')}}</div>
-          <div class="nav1" :class="{active: href == '/longterm'}" @click="linkHref('/longterm')">{{$t('meau.nav2')}}</div>
-          <div class="nav1" :class="{active: href == '/shortterm'}" @click="linkHref('/shortterm')">{{$t('meau.nav3')}}</div>
-          <div class="nav1" :class="{active: href == '/device'}" @click="linkHref('/device')">{{$t('meau.nav4')}}</div>
+          <div class="nav1" :class="{ active: href == '/' }" @click="linkHref('/')">{{ $t('meau.nav1') }}</div>
+          <div class="nav1" :class="{ active: href == '/longterm' }" @click="linkHref('/longterm')">
+            {{ $t('meau.nav2') }}
+          </div>
+          <div class="nav1" :class="{ active: href == '/shortterm' }" @click="linkHref('/shortterm')">
+            {{ $t('meau.nav3') }}
+          </div>
+          <div class="nav1" :class="{ active: href == '/device' }" @click="linkHref('/device')">
+            {{ $t('meau.nav4') }}
+          </div>
         </div>
         <div class="nav2">
-          <img class="icon1" src="../assets/icon.png" alt="">
+          <img class="icon1" src="../assets/icon.png" alt="" />
           <el-dropdown popper-class="demo-dropdown" @command="handleCommand">
-            <span class="el-dropdown-link">{{text}}</span>
+            <span class="el-dropdown-link">{{ text }}</span>
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item command="en">ENGLISH</el-dropdown-item>
@@ -28,23 +34,32 @@
               </el-dropdown-menu>
             </template>
           </el-dropdown>
-          <img class="icon2" src="../assets/arrow.png" alt="">
+          <img class="icon2" src="../assets/arrow.png" alt="" />
         </div>
       </div>
       <div class="content show">
-        <img class="logo" src="../assets/mobile/logo.png" alt="deeplink logo">
-        <div class="nav1 active" @click="linkHref1()">{{meauText}}<img class="icon2" src="../assets/arrow.png" alt=""></div>
+        <img class="logo" src="../assets/mobile/logo.png" alt="deeplink logo" />
+        <div class="nav1 active" @click="linkHref1()">
+          {{ meauText }}<img class="icon2" src="../assets/arrow.png" alt="" />
+        </div>
         <div class="nav2" @click="drawer1 = true">
-          <img class="icon1" src="../assets/icon.png" alt="">{{text}}<img class="icon2" src="../assets/arrow.png" alt="">
+          <img class="icon1" src="../assets/icon.png" alt="" />{{ text
+          }}<img class="icon2" src="../assets/arrow.png" alt="" />
         </div>
       </div>
       <el-drawer v-model="drawer" custom-class="drawerInfo" :lock-scroll="true" :with-header="false" direction="btt">
         <template #default>
           <div class="meauInfo">
-            <div class="meaulist" :class="{active: href == '/'}" @click="linkHref('/')">{{$t('meau.nav1')}}</div>
-            <div class="meaulist" :class="{active: href == '/longterm'}" @click="linkHref('/longterm')">{{$t('meau.nav2')}}</div>
-            <div class="meaulist" :class="{active: href == '/shortterm'}" @click="linkHref('/shortterm')">{{$t('meau.nav3')}}</div>
-            <div class="meaulist" :class="{active: href == '/device'}" @click="linkHref('/device')">{{$t('meau.nav4')}}</div>
+            <div class="meaulist" :class="{ active: href == '/' }" @click="linkHref('/')">{{ $t('meau.nav1') }}</div>
+            <div class="meaulist" :class="{ active: href == '/longterm' }" @click="linkHref('/longterm')">
+              {{ $t('meau.nav2') }}
+            </div>
+            <div class="meaulist" :class="{ active: href == '/shortterm' }" @click="linkHref('/shortterm')">
+              {{ $t('meau.nav3') }}
+            </div>
+            <div class="meaulist" :class="{ active: href == '/device' }" @click="linkHref('/device')">
+              {{ $t('meau.nav4') }}
+            </div>
           </div>
         </template>
       </el-drawer>
@@ -70,142 +85,144 @@
 </template>
 
 <script>
-  // @ is an alias to /src
-  import { defineComponent, ref, onMounted ,computed, watch} from "vue";
-  import { useI18n } from "vue-i18n";
-  import { useRoute, useRouter } from 'vue-router'
-  import { useStore } from "vuex"
-  export default defineComponent({
-    name: 'Header',
-    setup() {
-      const { t, locale } = useI18n()
-      const router = useRouter()
-      const route = useRoute()
-      const store = useStore()
-      let lan = computed(() => store.state.lan)
-      const text = ref('ENGLISH')
-      const dialogTableVisible = ref(false)
-      const ishover = ref(false)
-      const dialogTitle = ref('')
-      const lanObj = {
-        'en': 'ENGLISH',
-        'ko': '한국어',
-        'zh': '简体中文',
-        'ja': '日本語',
-        'ru': 'Русский',
-        'vn': 'Việt nam',
-        'es': 'Español',
-        'fr': 'Français',
-        'de': 'Deutsch',
-        'tr': 'Türkçe'
+// @ is an alias to /src
+import { defineComponent, ref, onMounted, computed, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useRoute, useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+export default defineComponent({
+  name: 'Header',
+  setup() {
+    const { t, locale } = useI18n();
+    const router = useRouter();
+    const route = useRoute();
+    const store = useStore();
+    let lan = computed(() => store.state.lan);
+    const text = ref('ENGLISH');
+    const dialogTableVisible = ref(false);
+    const ishover = ref(false);
+    const dialogTitle = ref('');
+    const lanObj = {
+      en: 'ENGLISH',
+      ko: '한국어',
+      zh: '简体中文',
+      ja: '日本語',
+      ru: 'Русский',
+      vn: 'Việt nam',
+      es: 'Español',
+      fr: 'Français',
+      de: 'Deutsch',
+      tr: 'Türkçe',
+    };
+    const showObj = ref({});
+    const href = ref('/');
+    const meauText = ref('');
+    const handleCommand = (command) => {
+      text.value = lanObj[command];
+      locale.value = command;
+      localStorage.setItem('lan', command);
+      store.commit('changeLan', command);
+      drawer1.value = false;
+      if (href.value == '/') {
+        meauText.value = t('meau.nav1');
+      } else if (href.value == '/longterm') {
+        meauText.value = t('meau.nav2');
+      } else if (href.value == '/shortterm') {
+        meauText.value = t('meau.nav3');
+      } else if (href.value == '/device') {
+        meauText.value = t('meau.nav4');
       }
-      const showObj = ref({})
-      const href = ref('/')
-      const meauText = ref('')
-      const handleCommand = (command) => {
-        text.value = lanObj[command]
-        locale.value = command
-        localStorage.setItem('lan', command)
-        store.commit('changeLan', command)
-        drawer1.value = false
-        if (href.value == '/') {
-          meauText.value = t('meau.nav1')
-        } else if (href.value == '/longterm') {
-          meauText.value = t('meau.nav2')
-        } else if (href.value == '/shortterm') {
-          meauText.value = t('meau.nav3')
-        }   else if (href.value == '/device') {
-          meauText.value = t('meau.nav4')
-        }
+    };
+    const change = (el) => {
+      ishover.value = el;
+    };
+    const linkHref = (el) => {
+      router.push({ path: el });
+      href.value = el;
+      localStorage.setItem('path', el);
+      store.commit('changePath', el);
+      console.log(el, 'el');
+      if (el == '/') {
+        meauText.value = t('meau.nav1');
+      } else if (el == '/longterm') {
+        meauText.value = t('meau.nav2');
+      } else if (el == '/shortterm') {
+        meauText.value = t('meau.nav3');
+      } else if (el == '/device') {
+        meauText.value = t('meau.nav4');
       }
-      const change = (el) => {
-        ishover.value = el
+      drawer.value = false;
+    };
+    const drawer = ref(false);
+    const drawer1 = ref(false);
+    const drawer2 = ref(false);
+    const linkHref1 = () => {
+      drawer.value = true;
+    };
+    const openDraw2 = () => {
+      drawer.value = false;
+      drawer2.value = true;
+    };
+    const isPc = () => {
+      if (
+        window.navigator.userAgent.match(
+          /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+        )
+      ) {
+        return true; // 移动端
+      } else {
+        return false; // PC端
       }
-      const linkHref = (el) => {
-        router.push({path: el})
-        href.value = el
-        localStorage.setItem('path', el)
-        store.commit('changePath', el)
-        console.log(el, 'el');
-        if (el == '/') {
-          meauText.value = t('meau.nav1')
-        } else if (el == '/longterm') {
-          meauText.value = t('meau.nav2')
-        } else if (el == '/shortterm') {
-          meauText.value = t('meau.nav3')
-        }   else if (el == '/device') {
-          meauText.value = t('meau.nav4')
-        }
-        drawer.value = false
+    };
+    const isphone = ref(false);
+    onMounted(() => {
+      text.value = lanObj[lan.value];
+      href.value = store.state.path;
+      if (href.value == '/') {
+        meauText.value = t('meau.nav1');
+      } else if (href.value == '/longterm') {
+        meauText.value = t('meau.nav2');
+      } else if (href.value == '/shortterm') {
+        meauText.value = t('meau.nav3');
+      } else if (href.value == '/device') {
+        meauText.value = t('meau.nav4');
       }
-      const drawer = ref(false)
-      const drawer1 = ref(false)
-      const drawer2 = ref(false)
-      const linkHref1 = () => {
-        drawer.value = true
+      isphone.value = isPc();
+    });
+    watch(route, (newValue) => {
+      if (href.value == '/') {
+        meauText.value = t('meau.nav1');
+      } else if (href.value == '/longterm') {
+        meauText.value = t('meau.nav2');
+      } else if (href.value == '/shortterm') {
+        meauText.value = t('meau.nav3');
+      } else if (href.value == '/device') {
+        meauText.value = t('meau.nav4');
       }
-      const openDraw2 = () => {
-        drawer.value = false
-        drawer2.value = true
-      }
-      const isPc = () => {
-        if(window.navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)) {
-          return true; // 移动端
-        }else{
-          return false; // PC端
-        }
-      }
-      const isphone = ref(false)
-      onMounted(() => {
-        text.value = lanObj[lan.value]
-        href.value = store.state.path
-        if (href.value == '/') {
-          meauText.value = t('meau.nav1')
-        } else if (href.value == '/longterm') {
-          meauText.value = t('meau.nav2')
-        } else if (href.value == '/shortterm') {
-          meauText.value = t('meau.nav3')
-        }   else if (href.value == '/device') {
-          meauText.value = t('meau.nav4')
-        }
-        isphone.value = isPc()
-      });
-      watch( route, (newValue) => {
-        if (href.value == '/') {
-          meauText.value = t('meau.nav1')
-        } else if (href.value == '/longterm') {
-          meauText.value = t('meau.nav2')
-        } else if (href.value == '/shortterm') {
-          meauText.value = t('meau.nav3')
-        }   else if (href.value == '/device') {
-          meauText.value = t('meau.nav4')
-        }
-        href.value = newValue.path
-      })
-      watch(lan, (newValue) => {
-       
-      })
-      return {
-        lan,
-        text,
-        dialogTableVisible,
-        dialogTitle,
-        showObj,
-        ishover,
-        href,
-        isphone,
-        handleCommand,
-        change,
-        linkHref,
-        drawer,
-        linkHref1,
-        meauText,
-        drawer1,
-        drawer2,
-        openDraw2
-      };
-    }
-  })
+      href.value = newValue.path;
+    });
+    watch(lan, (newValue) => {});
+    return {
+      lan,
+      text,
+      dialogTableVisible,
+      dialogTitle,
+      showObj,
+      ishover,
+      href,
+      isphone,
+      handleCommand,
+      change,
+      linkHref,
+      drawer,
+      linkHref1,
+      meauText,
+      drawer1,
+      drawer2,
+      openDraw2,
+    };
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -255,20 +272,19 @@
           text-decoration: none;
           color: rgba(255, 255, 255, 0.6);
           &.active {
-            color: #FFFFFF;
+            color: #ffffff;
             // font-weight: 600;
           }
           &:hover {
-            color: #FFFFFF;
+            color: #ffffff;
             // font-weight: 600;
           }
           .el-dropdown-link {
             font-size: 16px;
             &.active {
-              color: #FFFFFF;
+              color: #ffffff;
             }
             // color: rgba(255, 255, 255, 0.6);
-            
           }
         }
         .nav_new {
@@ -278,7 +294,7 @@
           margin-right: 50px;
           align-items: center;
           &:hover {
-            color: #FFFFFF;
+            color: #ffffff;
           }
           .el-dropdown {
             font-weight: 500;
@@ -287,10 +303,10 @@
             color: rgba(255, 255, 255, 0.6);
             &:hover {
               font-weight: 600;
-              color: #FFFFFF;
+              color: #ffffff;
             }
             &.active {
-              color: #FFFFFF;
+              color: #ffffff;
               font-weight: 600;
             }
           }
@@ -309,13 +325,13 @@
         display: flex;
         align-items: center;
         font-weight: 500;
-        color: #FFFFFF;
+        color: #ffffff;
         &:hover {
-          color: #FFFFFF;
+          color: #ffffff;
         }
         .el-dropdown {
           font-weight: 500;
-          color: #FFFFFF;
+          color: #ffffff;
           margin: 0 5px;
         }
         .icon1 {
@@ -336,7 +352,7 @@
     .content {
       padding: 0 120px;
       font-size: 14px;
-      .nav  {
+      .nav {
         .nav1 {
           margin-right: 20px;
         }
@@ -366,16 +382,15 @@
   }
   p {
     font-size: 14px;
-    color: #1F1F1F;
+    color: #1f1f1f;
     margin-top: 10px;
     a {
       text-decoration: none;
     }
   }
- 
 }
 
-@media screen and (max-width: 1400px){
+@media screen and (max-width: 1400px) {
   .header {
     .meau {
       .content {
@@ -434,20 +449,19 @@
             margin-left: 5px;
           }
           &.active {
-            color: #FFFFFF;
+            color: #ffffff;
             font-weight: 600;
           }
           &:hover {
-            color: #FFFFFF;
+            color: #ffffff;
             font-weight: 600;
           }
           .el-dropdown-link {
             font-size: 16px;
             &.active {
-              color: #FFFFFF;
+              color: #ffffff;
             }
             // color: rgba(255, 255, 255, 0.6);
-            
           }
         }
         .nav2 {
@@ -456,13 +470,13 @@
           align-items: center;
           font-weight: 500;
           font-size: 18px;
-          color: #FFFFFF;
+          color: #ffffff;
           &:hover {
-            color: #FFFFFF;
+            color: #ffffff;
           }
           .el-dropdown {
             font-weight: 500;
-            color: #FFFFFF;
+            color: #ffffff;
             margin: 0 5px;
           }
           .icon1 {
@@ -487,7 +501,6 @@
     }
   }
 }
-
 </style>
 
 <style lang="scss">
@@ -498,30 +511,30 @@
   .el-drawer__body {
     padding: 0;
   }
-  .meauInfo {
+}
+.meauInfo {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  .meaulist {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    .meaulist {
-      width: 100%;
-      cursor: pointer;
-      padding: 20px 0;
-      font-size: 34px;
-      font-weight: 400;
-      text-align: center;
-      text-decoration: none;
-      color: rgba(54, 63, 94, 0.6);
-      &.active {
-        font-weight: 600;
-        color: #363F5E;
-        background: rgba(54, 63, 94, 0.08);
-      }
-      &:hover {
-        font-weight: 600;
-        color: #363F5E;
-        background: rgba(54, 63, 94, 0.08);
-      }
+    cursor: pointer;
+    padding: 20px 0;
+    font-size: 34px;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(54, 63, 94, 0.6);
+    &.active {
+      font-weight: 600;
+      color: #363f5e;
+      background: rgba(54, 63, 94, 0.08);
+    }
+    &:hover {
+      font-weight: 600;
+      color: #363f5e;
+      background: rgba(54, 63, 94, 0.08);
     }
   }
 }

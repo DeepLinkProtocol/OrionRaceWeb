@@ -20,7 +20,7 @@ export default {
     title2: 'GPU算力竞赛',
     text: 'DeepLink协议的Orion GPU算力竞赛是一项重要的激励竞赛，旨在鼓励矿工积极参与DeepLink网络测试。这一竞赛是全球最大云游戏协议平台DeepLink正式推出前的重要准备步骤，为未来的全球用户提供坚实的技术基础和高效的算力保障。',
     text1: '当前DeepLink网络中GPU总数量为{gpu_num}张',
-    text2: '竞赛将在3月合适时间启动',
+    text2: '竞赛已经启动，一旦GPU数量达到标准，奖励将会开始！',
     btn_text1: '长租模式距离竞赛一开始',
     btn_title1: '还剩余 {long_term} GPU',
     btn_text2: '短租模式距离竞赛一开始',
@@ -112,7 +112,7 @@ export default {
       text7: '当前机器算力值为: {total}',
     },
     cont5: {
-      title: '四.奖励机制（基于DBC AI公链的EVM兼容的DLC，浏览器地址：https://test.dbcscan.io/）',
+      title: '四.奖励机制（基于DBC AI公链的EVM兼容的DLC，浏览器地址：https://www.dbcscan.io/）',
       text1:
         '猎户座算力竞赛的IDC长租模式GPU机器Token奖励总数为20亿枚，时间持续180天。竞赛总共分为3次。每次间隔5-10天时间。',
       text2: '竞赛一：每个类型GPU数量只有达到500个，竞赛才开始正式启动。',
@@ -165,7 +165,7 @@ export default {
       text4_6_3: '阶段三： 每天1933万DLC',
       text4_7: '参赛GPU总数：',
       text4_8: '(总GPU统一按照4060 32G，NFT 平均10个, 平均质押10万个 计算)',
-      title5: '链上奖励收益: {dlc_num} DLC(等值 {usdt_num} USD 当前DLC价格: 0 USD)',
+      title5: '链上奖励收益: {dlc_num} DLC(等值 {usdt_num} USD 当前DLC价格: {price} USD)',
       req_title1: '五.举报以及验证机制 (基于DBC AI公链的EVM兼容的 DLC)',
       req_text1:
         'DLC租用机器的用户随时可以发起举报，举报的时候需要质押10000个DLC，当举报的时候，举报的人举报信息会进入DBC的验证人验证流程',
@@ -216,7 +216,7 @@ export default {
       text7: '当前机器算力值为: {total}',
     },
     cont5: {
-      title: '四.奖励机制 （基于DBC AI公链的EVM兼容的DLC，浏览器地址：https://test.dbcscan.io/）',
+      title: '四.奖励机制 （基于DBC AI公链的EVM兼容的DLC，浏览器地址：https://www.dbcscan.io/）',
       text1:
         '猎户座算力竞赛的个人短租GPU机器Token奖励总数为10亿枚，时间持续180天。竞赛总共分为3次。每次间隔5-10天时间。',
       text2: '竞赛一：每个类型GPU数量只有达到500个，竞赛才开始正式启动。',
@@ -248,9 +248,9 @@ export default {
       text2_1:
         '每24小时可以提取一次，每次提取时，对于新产生的奖励，其中10%可立即提取，其中90%锁定180天，锁定的部分每次提取时可提取0.5%，180天后可全部提取',
 
-      title4: '机器每天DLC收益计算公式：DLC按照0.003U的价格计算',
+      title4: '机器每天DLC收益计算公式：DLC按照{price}U的价格计算',
       text4_8: '(总GPU统一按照4060 32G，NFT 平均10个, 平均质押1万个 计算)',
-      title5: '链上奖励收益: {dlc_num} DLC(等值 {usdt_num} USD 当前DLC价格: 0.003 USD)',
+      title5: '链上奖励收益: {dlc_num} DLC(等值 {usdt_num} USD 当前DLC价格: {price} USD)',
 
       req_title1: '五. 在线检测机制',
       req_text1_1:
@@ -292,4 +292,12 @@ export default {
       text4: '空闲机器数:',
     },
   },
+  machine_id: '机器ID',
+  machine_is_rented: '是否被租用',
+  machine_rented: '被租用',
+  machine_idle: '空闲',
+  machine_is_online: '是否在线',
+  machine_yes: '是',
+  machine_no: '否',
+  machine_no_data: '暂无数据',
 };
