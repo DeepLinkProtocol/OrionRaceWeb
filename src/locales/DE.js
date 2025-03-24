@@ -20,7 +20,8 @@ export default {
     title2: 'GPU-Rechenleistung Wettbewerb',
     text: 'Der Orion GPU-Rechenwettbewerb des DeepLink-Protokolls ist ein bedeutender Anreizwettbewerb, der darauf abzielt, Miner zur aktiven Teilnahme an der DeepLink-Netzwerk-Testphase zu motivieren. Dieser Wettbewerb stellt einen wichtigen Vorbereitungsschritt vor dem offiziellen Start von DeepLink, der weltweit größten Cloud-Gaming-Protokollplattform, dar und bietet eine solide technische Grundlage und effiziente Rechenleistung für zukünftige Nutzer weltweit.',
     text1: 'Die aktuelle Gesamtzahl der GPUs im DeepLink-Netzwerk beträgt {gpu_num}',
-    text2: 'Der Wettbewerb wird zu einem geeigneten Zeitpunkt im März starten',
+    text2:
+      'Der Wettbewerb hat begonnen, und die Belohnungen starten, sobald die Anzahl der GPUs den Standard erreicht!',
     btn_text1: 'Countdown für den Start des Wettbewerbs im Langzeitmietmodus',
     btn_title1: '{long_term} GPUs verbleibend',
     btn_text2: 'Countdown für den Start des Wettbewerbs im Kurzzeitmietmodus',

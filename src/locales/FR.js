@@ -21,7 +21,7 @@ export default {
     title2: 'Compétition de puissance de calcul GPU',
     text: "La compétition de puissance de calcul GPU Orion sous le protocole DeepLink est une compétition d'incitation importante visant à encourager les mineurs à participer activement aux tests du réseau DeepLink. Cette compétition est une étape préparatoire essentielle avant le lancement officiel de DeepLink, la plus grande plateforme de protocole de cloud gaming au monde, fournissant une base technique solide et un support de calcul efficace pour les futurs utilisateurs mondiaux",
     text1: 'Le nombre total actuel de GPU dans le réseau DeepLink est de {gpu_num}',
-    text2: 'La compétition commencera à un moment approprié en mars',
+    text2: 'La compétition a commencé, et les récompenses débuteront dès que le nombre de GPU atteindra le standard !',
     btn_text1: 'Compte à rebours du mode location longue durée avant le début de la compétition',
     btn_title1: 'Il reste {long_term} GPU',
     btn_text2: 'Compte à rebours du mode location courte durée avant le début de la compétition',

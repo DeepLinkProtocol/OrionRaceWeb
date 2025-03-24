@@ -20,7 +20,7 @@ export default {
     title2: 'Cuộc thi Sức mạnh Tính toán GPU',
     text: 'Cuộc thi Sức mạnh Tính toán GPU Orion của Giao thức DeepLink là một cuộc thi khuyến khích quan trọng nhằm khuyến khích các thợ đào tham gia tích cực vào việc thử nghiệm mạng DeepLink. Cuộc thi này là một bước chuẩn bị thiết yếu trước khi ra mắt chính thức nền tảng giao thức trò chơi đám mây lớn nhất thế giới DeepLink, cung cấp nền tảng kỹ thuật vững chắc và hỗ trợ sức mạnh tính toán hiệu quả cho người dùng toàn cầu trong tương lai',
     text1: 'Tổng số GPU hiện tại trong mạng DeepLink là {gpu_num}',
-    text2: 'Cuộc thi sẽ bắt đầu vào thời điểm thích hợp trong tháng 3',
+    text2: 'Cuộc thi đã bắt đầu, phần thưởng sẽ được khởi động khi số lượng GPU đạt tiêu chuẩn!',
     btn_text1: 'Chế độ thuê dài hạn đếm ngược đến khi cuộc thi bắt đầu',
     btn_title1: 'Còn lại {long_term} GPU',
     btn_text2: 'Chế độ thuê ngắn hạn đếm ngược đến khi cuộc thi bắt đầu',
