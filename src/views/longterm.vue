@@ -829,8 +829,8 @@ export default defineComponent({
       async () => {
         const res = await dlcPriceOcw();
         if (res.code === '10502') {
-          console.log(res, 'KKKKK');
           dlcPrice.value = res.content;
+          dlc_price.value = res.content.dlc_price
         } else {
           window.$message.error('DLC价格获取失败');
         }
@@ -1067,7 +1067,7 @@ export default defineComponent({
     };
 
     // 计算DLC每天DLC收益
-    const dlc_price = ref(0.003);
+    const dlc_price = ref(0);
     const gpu_type2 = ref('');
     const mem_num2 = ref('');
     const nft_num = ref('');
@@ -1203,7 +1203,7 @@ export default defineComponent({
         const top_num = signle_gpu_num * 86400 * nft_num.value * result1;
         const bottom_num = 83.72 * 86400 * 10 * join_gpu_num.value * result;
         dlc_earning.value = ((top_num / bottom_num) * race_stage.value).toFixed(4);
-        dlc_usdt_earning.value = ((top_num / bottom_num) * race_stage.value * 0.003).toFixed(2);
+        dlc_usdt_earning.value = ((top_num / bottom_num) * race_stage.value * dlc_price.value).toFixed(2);
       }
     };
 

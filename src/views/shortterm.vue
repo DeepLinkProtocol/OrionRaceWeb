@@ -1069,7 +1069,7 @@ export default defineComponent({
         // // 非线性奖励 α 为 0.1
         // const log_reward = 0.1 * result
         // dlc_earning.value = (basic_reward *( 1 + log_reward)).toFixed(4)
-        // dlc_usdt_earning.value = ((basic_reward *( 1 + log_reward)) * 0.003).toFixed(2)
+        // dlc_usdt_earning.value = ((basic_reward *( 1 + log_reward)) * dlcPrice.value.dlc_price).toFixed(2)
         // 计算奖励
         // 非线性ln
         const result1 = Math.log(Math.max(1000, stak_dlc_num.value == 1 ? 1000 : stak_dlc_num.value));
@@ -1077,7 +1077,7 @@ export default defineComponent({
         const top_num = signle_gpu_num * 86400 * nft_num.value * result1;
         const bottom_num = 83.72 * 86400 * 10 * join_gpu_num.value * result;
         dlc_earning.value = ((top_num / bottom_num) * race_stage.value).toFixed(4);
-        dlc_usdt_earning.value = ((top_num / bottom_num) * race_stage.value * 0.003).toFixed(2);
+        dlc_usdt_earning.value = ((top_num / bottom_num) * race_stage.value * dlcPrice.value.dlc_price).toFixed(2);
       }
     };
 
