@@ -333,4 +333,16 @@ export default {
   machine_yes: 'Có',
   machine_no: 'Không',
   machine_no_data: 'Không có dữ liệu',
+
+  deviceUniqueId: 'ID Máy',
+  minerLocation: 'Địa chỉ thợ mỏ',
+  gpuCount: 'Số lượng GPU',
+  computeCapacity: 'Tổng sức mạnh tính toán',
+  isActive: 'Trạng thái trực tuyến',
+  isPledged: 'Trạng thái đặt cược',
+  pledgeTotal: 'Tổng số tiền đặt cược',
+  pledgeExpiration: 'Thời gian kết thúc đặt cược',
+
+  yesOption: 'Có',
+  noOption: 'Không',
 };

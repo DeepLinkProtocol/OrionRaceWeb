@@ -139,35 +139,46 @@ const copyText = async (text) => {
 // 机器列表（更新为新字段）
 const machine_list = ref([]);
 // 表格表头（使用指定字段）
-const tableHeaders = ref([
-  {
-    label: '机器ID',
-    key: 'machineId',
-    class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
-    c: () => h(Icon, { icon: `mdi:content-copy` }),
-  },
-  {
-    label: '旷工地址',
-    key: 'holder',
-    class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
-    c: () => h(Icon, { icon: `mdi:content-copy` }),
-  }, // 地址较长，占两列
-  { label: 'GPU数量', key: 'totalGPUCount', class: '!max-w-[30px] text-nowrap overflow-ellipsis overflow-hidden' },
-  { label: '总算力', key: 'totalCalcPoint', class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden' },
-  { label: '是否在线', key: 'online', class: '!max-w-[40px] text-nowrap overflow-ellipsis overflow-hidden' },
-  // { label: '是否被租用', key: 'isRented' },
-  { label: '是否质押', key: 'isStaking', class: '!max-w-[40px] text-nowrap overflow-ellipsis overflow-hidden' },
-  {
-    label: '质押总金额',
-    key: 'totalReservedAmount',
-    class: '!max-w-[90px] text-nowrap overflow-ellipsis overflow-hidden',
-  },
-  {
-    label: '质押结束时间',
-    key: 'stakeEndTimestamp',
-    class: '!max-w-[90px] text-nowrap overflow-ellipsis overflow-hidden',
-  },
-]);
+
+const tableHeaders = computed(() => {
+  return [
+    {
+      label: t('deviceUniqueId'),
+      key: 'machineId',
+      class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
+      c: () => h(Icon, { icon: `mdi:content-copy` }),
+    },
+    {
+      label: t('minerLocation'),
+      key: 'holder',
+      class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
+      c: () => h(Icon, { icon: `mdi:content-copy` }),
+    }, // 地址较长，占两列
+    {
+      label: t('gpuCount'),
+      key: 'totalGPUCount',
+      class: '!max-w-[30px] text-nowrap overflow-ellipsis overflow-hidden',
+    },
+    {
+      label: t('computeCapacity'),
+      key: 'totalCalcPoint',
+      class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
+    },
+    { label: t('isActive'), key: 'online', class: '!max-w-[40px] text-nowrap overflow-ellipsis overflow-hidden' },
+    // { label: '是否被租用', key: 'isRented' },
+    { label: t('isPledged'), key: 'isStaking', class: '!max-w-[40px] text-nowrap overflow-ellipsis overflow-hidden' },
+    {
+      label: t('pledgeTotal'),
+      key: 'totalReservedAmount',
+      class: '!max-w-[90px] text-nowrap overflow-ellipsis overflow-hidden',
+    },
+    {
+      label: t('pledgeExpiration'),
+      key: 'stakeEndTimestamp',
+      class: '!max-w-[90px] text-nowrap overflow-ellipsis overflow-hidden',
+    },
+  ];
+});
 
 // 初始化表格数据长租
 const getMachineInfosH = async (gpuType) => {

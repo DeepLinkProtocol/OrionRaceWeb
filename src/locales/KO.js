@@ -325,4 +325,16 @@ export default {
   machine_yes: '예',
   machine_no: '아니요',
   machine_no_data: '데이터 없음',
+
+  deviceUniqueId: '기계 ID',
+  minerLocation: '광부 주소',
+  gpuCount: 'GPU 수량',
+  computeCapacity: '총 계산 능력',
+  isActive: '온라인 상태',
+  isPledged: '스테이킹 상태',
+  pledgeTotal: '총 스테이킹 금액',
+  pledgeExpiration: '스테이킹 종료 시간',
+
+  yesOption: '예',
+  noOption: '아니요',
 };

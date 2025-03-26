@@ -300,4 +300,16 @@ export default {
   machine_yes: '是',
   machine_no: '否',
   machine_no_data: '暂无数据',
+
+  deviceUniqueId: '机器ID',
+  minerLocation: '旷工地址',
+  gpuCount: 'GPU数量',
+  computeCapacity: '总算力',
+  isActive: '是否在线',
+  isPledged: '是否质押',
+  pledgeTotal: '质押总金额',
+  pledgeExpiration: '质押结束时间',
+
+  yesOption: '是',
+  noOption: '否',
 };

@@ -335,4 +335,16 @@ export default {
   machine_yes: 'Evet',
   machine_no: 'Hayır',
   machine_no_data: 'Veri yok',
+
+  deviceUniqueId: 'Makine Kimliği',
+  minerLocation: 'Madenci Adresi',
+  gpuCount: 'GPU Miktarı',
+  computeCapacity: 'Toplam Hesaplama Gücü',
+  isActive: 'Çevrimiçi Durum',
+  isPledged: 'Stake Durumu',
+  pledgeTotal: 'Toplam Stake Miktarı',
+  pledgeExpiration: 'Stake Bitiş Zamanı',
+
+  yesOption: 'Evet',
+  noOption: 'Hayır',
 };

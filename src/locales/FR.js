@@ -351,4 +351,15 @@ export default {
   machine_yes: 'Oui',
   machine_no: 'Non',
   machine_no_data: 'Aucune donnée disponible',
+  deviceUniqueId: 'Identifiant de la machine',
+  minerLocation: 'Adresse du mineur',
+  gpuCount: 'Quantité de GPU',
+  computeCapacity: 'Puissance de calcul totale',
+  isActive: 'État en ligne',
+  isPledged: 'État de mise',
+  pledgeTotal: 'Montant total misé',
+  pledgeExpiration: 'Date de fin de mise',
+
+  yesOption: 'Oui',
+  noOption: 'Non',
 };

@@ -326,4 +326,16 @@ export default {
   machine_yes: 'はい',
   machine_no: 'いいえ',
   machine_no_data: 'データがありません',
+
+  deviceUniqueId: 'マシンID',
+  minerLocation: 'マイナーアドレス',
+  gpuCount: 'GPU数量',
+  computeCapacity: '総計算能力',
+  isActive: 'オンライン状態',
+  isPledged: 'ステーキング状態',
+  pledgeTotal: 'ステーキング総額',
+  pledgeExpiration: 'ステーキング終了時間',
+
+  yesOption: 'はい',
+  noOption: 'いいえ',
 };

@@ -1,23 +1,5 @@
 <template>
   <div class="flex flex-col md:flex-row w-full">
-    <!-- 左侧型号选择 -->
-    <!-- <div class="cont_left">
-      <el-tooltip v-for="(model, index) in gpuModels" :key="index" v-if="gpuModels.length !== 0">
-        <template #content> {{ model.label }}</template>
-
-        <ElButton
-          class="model !max-w-[300px] text-nowrap overflow-ellipsis overflow-hidden"
-          :class="{ active: choosetype === model.label }"
-          :loading="model.loading"
-          :disabled="model.loading"
-          @click="choose(model)"
-        >
-          {{ getAfterNvidia(model.label) }}
-        </ElButton>
-      </el-tooltip>
-      <ElButton v-else :diasabled="true" class="model"> NO GPU </ElButton>
-    </div> -->
-
     <!-- 右侧内容 -->
     <div class="cont_right" v-loading="tableLoading">
       <!-- 筛选部分 -->
@@ -146,35 +128,45 @@ const machine_list = ref([]);
 // GPU 型号
 const gpuModels = ref([]);
 // 表格表头（使用指定字段）
-const tableHeaders = ref([
-  {
-    label: '机器ID',
-    key: 'machineId',
-    class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
-    c: () => h(Icon, { icon: `mdi:content-copy` }),
-  },
-  {
-    label: '旷工地址',
-    key: 'holder',
-    class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
-    c: () => h(Icon, { icon: `mdi:content-copy` }),
-  }, // 地址较长，占两列
-  { label: 'GPU数量', key: 'totalGPUCount', class: '!max-w-[30px] text-nowrap overflow-ellipsis overflow-hidden' },
-  { label: '总算力', key: 'totalCalcPoint', class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden' },
-  { label: '是否在线', key: 'online', class: '!max-w-[40px] text-nowrap overflow-ellipsis overflow-hidden' },
-  // { label: '是否被租用', key: 'isRented' },
-  { label: '是否质押', key: 'isStaking', class: '!max-w-[40px] text-nowrap overflow-ellipsis overflow-hidden' },
-  {
-    label: '质押总金额',
-    key: 'totalReservedAmount',
-    class: '!max-w-[90px] text-nowrap overflow-ellipsis overflow-hidden',
-  },
-  {
-    label: '质押结束时间',
-    key: 'stakeEndTimestamp',
-    class: '!max-w-[90px] text-nowrap overflow-ellipsis overflow-hidden',
-  },
-]);
+const tableHeaders = computed(() => {
+  return [
+    {
+      label: t('deviceUniqueId'),
+      key: 'machineId',
+      class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
+      c: () => h(Icon, { icon: `mdi:content-copy` }),
+    },
+    {
+      label: t('minerLocation'),
+      key: 'holder',
+      class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
+      c: () => h(Icon, { icon: `mdi:content-copy` }),
+    }, // 地址较长，占两列
+    {
+      label: t('gpuCount'),
+      key: 'totalGPUCount',
+      class: '!max-w-[30px] text-nowrap overflow-ellipsis overflow-hidden',
+    },
+    {
+      label: t('computeCapacity'),
+      key: 'totalCalcPoint',
+      class: '!max-w-[60px] text-nowrap overflow-ellipsis overflow-hidden',
+    },
+    { label: t('isActive'), key: 'online', class: '!max-w-[40px] text-nowrap overflow-ellipsis overflow-hidden' },
+    // { label: '是否被租用', key: 'isRented' },
+    { label: t('isPledged'), key: 'isStaking', class: '!max-w-[40px] text-nowrap overflow-ellipsis overflow-hidden' },
+    {
+      label: t('pledgeTotal'),
+      key: 'totalReservedAmount',
+      class: '!max-w-[90px] text-nowrap overflow-ellipsis overflow-hidden',
+    },
+    {
+      label: t('pledgeExpiration'),
+      key: 'stakeEndTimestamp',
+      class: '!max-w-[90px] text-nowrap overflow-ellipsis overflow-hidden',
+    },
+  ];
+});
 
 // 初始化表格数据长租
 const getMachineInfosH = async (gpuType) => {
@@ -261,7 +253,7 @@ const filters = ref([
 const formatCellValue = (machine, key) => {
   if (!machine) return 'N/A';
   if (key === 'isRented' || key === 'online' || key === 'isStaking') {
-    return machine[key] ? '是' : '否';
+    return machine[key] ? t('yesOption') : t('noOption');
   }
   if (key === 'stakeEndTimestamp') {
     return machine[key] ? new Date(machine[key] * 1000).toLocaleDateString() : '未质押';

@@ -341,4 +341,16 @@ export default {
   machine_yes: 'Да',
   machine_no: 'Нет',
   machine_no_data: 'Данные отсутствуют',
+
+  deviceUniqueId: 'Идентификатор машины',
+  minerLocation: 'Адрес майнера',
+  gpuCount: 'Количество GPU',
+  computeCapacity: 'Общая вычислительная мощность',
+  isActive: 'Статус онлайн',
+  isPledged: 'Статус залога',
+  pledgeTotal: 'Общая сумма залога',
+  pledgeExpiration: 'Время окончания залога',
+
+  yesOption: 'Да',
+  noOption: 'Нет',
 };

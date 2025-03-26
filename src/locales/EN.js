@@ -343,4 +343,16 @@ export default {
   machine_yes: 'Yes',
   machine_no: 'No',
   machine_no_data: 'No data available',
+
+  deviceUniqueId: 'Machine ID',
+  minerLocation: 'Miner Address',
+  gpuCount: 'GPU Quantity',
+  computeCapacity: 'Total Computing Power',
+  isActive: 'Online Status',
+  isPledged: 'Staked Status',
+  pledgeTotal: 'Total Staked Amount',
+  pledgeExpiration: 'Stake End Time',
+
+  yesOption: 'Yes',
+  noOption: 'No',
 };
