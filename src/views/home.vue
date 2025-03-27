@@ -182,7 +182,7 @@ const getStateSummariesH = async () => {
   const res = await getStateSummaries();
   console.log(res, 'Pppppp获取门槛数据长租');
   if (res.stateSummaries.length === 0) {
-    btnList.value[0].value = 100; // 直接更新 btnList 中的值
+    btnList.value[0].value = 0; // 直接更新 btnList 中的值
     OrionDataList.value[0].value = 0;
     OrionDataList.value[1].value = 0;
     OrionDataList.value[2].value = 0;
@@ -218,7 +218,7 @@ const getStateSummariesShortH = async () => {
   const res = await getStateSummariesShort();
   console.log(res, 'Pppppp获取门槛数据短租');
   if (res.stateSummaries.length === 0) {
-    btnList.value[1].value = 100; // 直接更新 btnList 中的值
+    btnList.value[1].value = 0; // 直接更新 btnList 中的值
     OrionDataList.value[0].value = 0;
     OrionDataList.value[1].value = 0;
     OrionDataList.value[2].value = 0;
