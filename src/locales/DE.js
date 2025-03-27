@@ -22,10 +22,10 @@ export default {
     text1: 'Die aktuelle Gesamtzahl der GPUs im DeepLink-Netzwerk beträgt {gpu_num}',
     text2:
       'Der Wettbewerb hat begonnen, und die Belohnungen starten, sobald die Anzahl der GPUs den Standard erreicht!',
-    btn_text1: 'Countdown für den Start des Wettbewerbs im Langzeitmietmodus',
-    btn_title1: '{long_term} GPUs verbleibend',
-    btn_text2: 'Countdown für den Start des Wettbewerbs im Kurzzeitmietmodus',
-    btn_title2: '{short_term} GPUs verbleibend',
+    btn_text1: 'Wettbewerb im Langzeitmietmodus - Hat begonnen',
+    btn_title1: 'Aktuell {long_term} GPU',
+    btn_text2: 'Wettbewerb im Kurzzeitmietmodus - Hat begonnen',
+    btn_title2: 'Aktuell {short_term} GPU',
     cont2_text1:
       'Die Gesamtanzahl der Token-Belohnungen für den Orion-Rechenwettbewerb beträgt 3 Milliarden, davon 2 Milliarden DLC für den Langzeitmietmodus und 1 Milliarde DLC für den Kurzzeitmietmodus. Der Wettbewerb dauert 180 Tage und ist in drei Runden unterteilt, die jeweils 60 Tage dauern und Pausen von 5 bis 10 Tagen haben.',
     cont2_btn1: 'Langzeitmietmodus',
@@ -122,13 +122,13 @@ export default {
         '4. Belohnungsmechanismus (Basierend auf dem EVM-kompatiblen DLC auf der DBC AI Public Chain, Browser-Adresse: https://test.dbcscan.io/)',
       text1:
         'Die Gesamtsumme der Token-Belohnungen für die GPU-Maschinen im IDC-Langzeitmietmodus beim Orion-Wettbewerb für Rechenleistung beträgt 2 Milliarden und dauert 180 Tage. Der Wettbewerb ist in 3 Runden unterteilt, mit einem Intervall von 5-10 Tagen zwischen jeder Runde.',
-      text2: 'Wettbewerb 1: Der Wettbewerb beginnt offiziell, wenn die Anzahl der GPUs jedes Typs 500 erreicht.',
+      text2: 'Wettbewerb 1: Der Wettbewerb beginnt offiziell, wenn die Anzahl der GPUs jedes Typs {n_gpu1} erreicht.',
       text3:
         '60 Tage, 6 Millionen Token pro Tag, 10 % sofort erhalten, 90 % über 180 Tage freigeschaltet, mit einer täglichen Freischaltung von 0,5 %.',
-      text4: 'Wettbewerb 2: Der Wettbewerb beginnt offiziell, wenn die Anzahl der GPUs jedes Typs 1.000 erreicht.',
+      text4: 'Wettbewerb 2: Der Wettbewerb beginnt offiziell, wenn die Anzahl der GPUs jedes Typs {n_gpu2} erreicht.',
       text5:
         '60 Tage, 8 Millionen Token pro Tag, 10 % sofort erhalten, 90 % über 180 Tage freigeschaltet, mit einer täglichen Freischaltung von 0,5 %.',
-      text6: 'Wettbewerb 3: Der Wettbewerb beginnt offiziell, wenn die Anzahl der GPUs jedes Typs 1.500 erreicht.',
+      text6: 'Wettbewerb 3: Der Wettbewerb beginnt offiziell, wenn die Anzahl der GPUs jedes Typs {n_gpu3} erreicht.',
       text7:
         '60 Tage, 19,33 Millionen Token pro Tag, 10 % sofort erhalten, 90 % über 180 Tage freigeschaltet, mit einer täglichen Freischaltung von 0,5 %.',
       text8: 'Nach dem Listing an der Börse können Test-Token im Verhältnis 1:1 gegen Mainnet-Token getauscht werden.',
@@ -256,15 +256,15 @@ export default {
       text1:
         'Die Gesamtbelohnung in Tokens für einzelne kurzzeitig gemietete GPU-Maschinen im Orion-Wettbewerb beträgt 1 Milliarde und läuft über 180 Tage. Der Wettbewerb ist in 3 Phasen unterteilt, mit einem Intervall von 5-10 Tagen zwischen jeder Phase.',
       text2:
-        'Wettbewerbsphase 1: Der Wettbewerb startet offiziell erst, wenn die Anzahl der GPUs jeder Art 500 erreicht.',
+        'Wettbewerbsphase 1: Der Wettbewerb startet offiziell erst, wenn die Anzahl der GPUs jeder Art {n_gpu1} erreicht.',
       text3:
         '60 Tage, 3 Millionen Tokens pro Tag, 10 % sofort freigeschaltet, 90 % freigeschaltet über 180 Tage, mit täglicher Freischaltung von 0,5 %.',
       text4:
-        'Wettbewerbsphase 2: Der Wettbewerb startet offiziell erst, wenn die Anzahl der GPUs jeder Art 1.000 erreicht.',
+        'Wettbewerbsphase 2: Der Wettbewerb startet offiziell erst, wenn die Anzahl der GPUs jeder Art {n_gpu2} erreicht.',
       text5:
         '60 Tage, 4 Millionen Tokens pro Tag, 10 % sofort freigeschaltet, 90 % freigeschaltet über 180 Tage, mit täglicher Freischaltung von 0,5 %.',
       text6:
-        'Wettbewerbsphase 3: Der Wettbewerb startet offiziell erst, wenn die Anzahl der GPUs jeder Art 2.000 erreicht.',
+        'Wettbewerbsphase 3: Der Wettbewerb startet offiziell erst, wenn die Anzahl der GPUs jeder Art {n_gpu3} erreicht.',
       text7:
         '60 Tage, 9,665 Millionen Tokens pro Tag, 10 % sofort freigeschaltet, 90 % freigeschaltet über 180 Tage, mit täglicher Freischaltung von 0,5 %.',
       text8: 'Nach dem Listing an der Börse können Test-Token im Verhältnis 1:1 gegen Mainnet-Token getauscht werden.',
@@ -359,4 +359,5 @@ export default {
 
   yesOption: 'Ja',
   noOption: 'Nein',
+  gpuType: 'GPU-Typ',
 };

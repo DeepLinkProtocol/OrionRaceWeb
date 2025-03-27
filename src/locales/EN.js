@@ -21,10 +21,11 @@ export default {
     text: "The Orion GPU Race under the DeepLink Protocol is a significant incentive competition aimed at encouraging miners to actively participate in testing the DeepLink network. This competition is an essential preparatory step before the official launch of DeepLink, the world's largest cloud gaming protocol platform, providing a solid technical foundation and efficient computing power support for future global users",
     text1: 'The current total number of GPUs in the DeepLink network is {gpu_num}',
     text2: 'The competition has started, and rewards will begin once the number of GPUs meets the standard!',
-    btn_text1: 'Long-term rental mode countdown to competition start',
-    btn_title1: '{long_term} GPUs remaining',
-    btn_text2: 'Short-term rental mode countdown to competition start',
-    btn_title2: '{short_term} GPUs remaining',
+    btn_text1: 'Long-term Rental Mode Competition - Has Started',
+    btn_title1: 'Current {long_term} GPUs ',
+    btn_text2: 'Short-term Rental Mode Competition - Has Started',
+    btn_title2: 'Current {short_term} GPUs ',
+
     cont2_text1:
       'The total token reward for the Orion computing power competition is 3 billion, with 2 billion DLC for long-term rental mode and 1 billion DLC for short-term rental mode, lasting 180 days. The competition is divided into three rounds, each lasting 60 days with intervals of 5-10 days.',
     cont2_btn1: 'Long-term rental mode',
@@ -121,15 +122,15 @@ export default {
       text1:
         'The total token reward for the IDC long-term rental mode GPU machines in the Orion computing power competition is 2 billion, lasting for 180 days. The competition is divided into 3 rounds, with a 5-10 day interval between each round.',
       text2:
-        'Competition 1: The competition will officially start only when the number of GPUs of each type reaches 500.',
+        'Competition 1: The competition will officially start only when the number of GPUs of each type reaches {n_gpu1}.',
       text3:
         '60 days, 6 million tokens per day, 10% received immediately, 90% unlocked over 180 days, with 0.5% unlocking daily.',
       text4:
-        'Competition 2: The competition will officially start only when the number of GPUs of each type reaches 1,000.',
+        'Competition 2: The competition will officially start only when the number of GPUs of each type reaches {n_gpu2}.',
       text5:
         '60 days, 8 million tokens per day, 10% received immediately, 90% unlocked over 180 days, with 0.5% unlocking daily.',
       text6:
-        'Competition 3: The competition will officially start only when the number of GPUs of each type reaches 1,500.',
+        'Competition 3: The competition will officially start only when the number of GPUs of each type reaches {n_gpu3}.',
       text7:
         '60 days, 19.33 million tokens per day, 10% received immediately, 90% unlocked over 180 days, with 0.5% unlocking daily.',
       text8: 'After listing on the exchange, test tokens can be exchanged 1:1 for mainnet tokens.',
@@ -253,15 +254,15 @@ export default {
       text1:
         'The total token reward for individual short-term rental GPU machines in the Orion computing power competition is 1 billion, lasting for 180 days. The competition is divided into 3 phases, with an interval of 5-10 days between each.',
       text2:
-        'Competition Phase 1: The competition officially starts only when the number of each type of GPU reaches 500.',
+        'Competition Phase 1: The competition officially starts only when the number of each type of GPU reaches {n_gpu1}.',
       text3:
         '60 days, 3 million tokens per day, 10% unlocked immediately, 90% unlocked over 180 days, with 0.5% unlocked daily.',
       text4:
-        'Competition Phase 2: The competition officially starts only when the number of each type of GPU reaches 1,000.',
+        'Competition Phase 2: The competition officially starts only when the number of each type of GPU reaches {n_gpu2}.',
       text5:
         '60 days, 4 million tokens per day, 10% unlocked immediately, 90% unlocked over 180 days, with 0.5% unlocked daily.',
       text6:
-        'Competition Phase 3: The competition officially starts only when the number of each type of GPU reaches 2,000.',
+        'Competition Phase 3: The competition officially starts only when the number of each type of GPU reaches {n_gpu3}.',
       text7:
         '60 days, 9.665 million tokens per day, 10% unlocked immediately, 90% unlocked over 180 days, with 0.5% unlocked daily.',
       text8: 'After listing on the exchange, test tokens can be exchanged 1:1 for mainnet tokens.',

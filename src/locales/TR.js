@@ -21,10 +21,10 @@ export default {
     text: "DeepLink Protokolü kapsamındaki Orion GPU İşlem Gücü Yarışması, madencilerin DeepLink ağ testi sürecine aktif olarak katılmalarını teşvik etmeyi amaçlayan önemli bir teşvik yarışmasıdır. Bu yarışma, dünyanın en büyük bulut oyun protokol platformu olan DeepLink'in resmi lansmanı öncesindeki önemli bir hazırlık adımı olup, gelecekteki küresel kullanıcılar için sağlam bir teknik altyapı ve verimli işlem gücü desteği sağlar",
     text1: 'Şu anda DeepLink ağındaki toplam GPU sayısı {gpu_num}',
     text2: 'Yarışma başladı ve GPU sayısı standarda ulaştığında ödüller başlayacak!',
-    btn_text1: 'Uzun dönem kiralama modu yarışmanın başlamasına geri sayım',
-    btn_title1: '{long_term} GPU kaldı',
-    btn_text2: 'Kısa dönem kiralama modu yarışmanın başlamasına geri sayım',
-    btn_title2: '{short_term} GPU kaldı',
+    btn_text1: 'Uzun vadeli kiralama modu yarışması - Başladı',
+    btn_title1: 'Güncel {long_term} GPU',
+    btn_text2: 'Kısa vadeli kiralama modu yarışması - Başladı',
+    btn_title2: 'Güncel {short_term} GPU',
     cont2_text1:
       "Orion hesaplama gücü yarışmasının toplam ödül miktarı 3 milyar token olup, uzun dönem kiralama modu için 2 milyar DLC ve kısa dönem kiralama modu için 1 milyar DLC'dir. Yarışma 180 gün sürecek ve 60 gün süren 3 turdan oluşacak, her tur arasında 5-10 gün aralık olacaktır.",
     cont2_btn1: 'Uzun dönem kiralama modu',
@@ -121,13 +121,13 @@ export default {
         "4. Ödül Mekanizması (DBC AI Genel Zincirinde EVM uyumlu DLC'ye Dayalı, Tarayıcı Adresi: https://test.dbcscan.io/)",
       text1:
         'Orion hesaplama gücü yarışmasındaki IDC uzun dönem kiralama modu GPU makineleri için toplam token ödülü 2 milyar olup, 180 gün sürmektedir. Yarışma 3 turdan oluşur ve her tur arasında 5-10 günlük bir ara vardır.',
-      text2: "Yarışma 1: Yarışma, her türden GPU sayısı 500'e ulaştığında resmen başlayacaktır.",
+      text2: "Yarışma 1: Yarışma, her türden GPU sayısı {n_gpu1}'e ulaştığında resmen başlayacaktır.",
       text3:
         "60 gün, günde 6 milyon token, %10'u hemen alınır, %90'ı 180 gün boyunca kilidi açılır ve günlük %0.5 kilidi açılır.",
-      text4: "Yarışma 2: Yarışma, her türden GPU sayısı 1.000'e ulaştığında resmen başlayacaktır.",
+      text4: "Yarışma 2: Yarışma, her türden GPU sayısı {n_gpu2}'e ulaştığında resmen başlayacaktır.",
       text5:
         "60 gün, günde 8 milyon token, %10'u hemen alınır, %90'ı 180 gün boyunca kilidi açılır ve günlük %0.5 kilidi açılır.",
-      text6: "Yarışma 3: Yarışma, her türden GPU sayısı 1.500'e ulaştığında resmen başlayacaktır.",
+      text6: "Yarışma 3: Yarışma, her türden GPU sayısı {n_gpu3}'e ulaştığında resmen başlayacaktır.",
       text7:
         "60 gün, günde 19,33 milyon token, %10'u hemen alınır, %90'ı 180 gün boyunca kilidi açılır ve günlük %0.5 kilidi açılır.",
       text8: "Borsa listelendikten sonra, test token'ları ana ağ token'ları ile 1:1 oranında değiştirilebilir.",
@@ -247,13 +247,13 @@ export default {
         "4. Ödül Mekanizması (DBC AI Genel Zincirinin EVM uyumlu DLC'sine dayanmaktadır, tarayıcı adresi: https://test.dbcscan.io/)",
       text1:
         'Orion hesaplama gücü yarışmasında bireysel kısa süreli kiralık GPU makineleri için toplam token ödülü 1 milyar olup, 180 gün sürer. Yarışma 3 aşamaya ayrılmıştır ve her bir aşama arasında 5-10 gün ara verilir.',
-      text2: "Yarışma Aşama 1: Her tür GPU sayısı 500'e ulaştığında yarışma resmi olarak başlar.",
+      text2: "Yarışma Aşama 1: Her tür GPU sayısı {n_gpu1}'e ulaştığında yarışma resmi olarak başlar.",
       text3:
         '60 gün boyunca, günde 3 milyon token, %10 hemen serbest bırakılır, %90 ise 180 gün boyunca serbest bırakılır ve günlük %0,5 serbest bırakılır.',
-      text4: "Yarışma Aşama 2: Her tür GPU sayısı 1.000'e ulaştığında yarışma resmi olarak başlar.",
+      text4: "Yarışma Aşama 2: Her tür GPU sayısı {n_gpu2}'e ulaştığında yarışma resmi olarak başlar.",
       text5:
         '60 gün boyunca, günde 4 milyon token, %10 hemen serbest bırakılır, %90 ise 180 gün boyunca serbest bırakılır ve günlük %0,5 serbest bırakılır.',
-      text6: "Yarışma Aşama 3: Her tür GPU sayısı 2.000'e ulaştığında yarışma resmi olarak başlar.",
+      text6: "Yarışma Aşama 3: Her tür GPU sayısı {n_gpu3}'e ulaştığında yarışma resmi olarak başlar.",
       text7:
         '60 gün boyunca, günde 9,665 milyon token, %10 hemen serbest bırakılır, %90 ise 180 gün boyunca serbest bırakılır ve günlük %0,5 serbest bırakılır.',
       text8: "Borsa listelendikten sonra, test token'ları ana ağ token'ları ile 1:1 oranında değiştirilebilir.",
@@ -347,4 +347,5 @@ export default {
 
   yesOption: 'Evet',
   noOption: 'Hayır',
+  gpuType: 'GPU Türü',
 };

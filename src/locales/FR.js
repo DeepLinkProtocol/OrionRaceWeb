@@ -22,10 +22,10 @@ export default {
     text: "La compétition de puissance de calcul GPU Orion sous le protocole DeepLink est une compétition d'incitation importante visant à encourager les mineurs à participer activement aux tests du réseau DeepLink. Cette compétition est une étape préparatoire essentielle avant le lancement officiel de DeepLink, la plus grande plateforme de protocole de cloud gaming au monde, fournissant une base technique solide et un support de calcul efficace pour les futurs utilisateurs mondiaux",
     text1: 'Le nombre total actuel de GPU dans le réseau DeepLink est de {gpu_num}',
     text2: 'La compétition a commencé, et les récompenses débuteront dès que le nombre de GPU atteindra le standard !',
-    btn_text1: 'Compte à rebours du mode location longue durée avant le début de la compétition',
-    btn_title1: 'Il reste {long_term} GPU',
-    btn_text2: 'Compte à rebours du mode location courte durée avant le début de la compétition',
-    btn_title2: 'Il reste {short_term} GPU',
+    btn_text1: 'Compétition en mode location longue durée - A commencé',
+    btn_title1: 'Actuel {long_term} GPU',
+    btn_text2: 'Compétition en mode location courte durée - A commencé',
+    btn_title2: 'Actuel {short_term} GPU',
     cont2_text1:
       'La récompense totale en tokens pour la compétition de puissance de calcul Orion est de 3 milliards, avec 2 milliards de DLC pour le mode location longue durée et 1 milliard de DLC pour le mode location courte durée, sur une durée de 180 jours. La compétition est divisée en trois manches, chacune durant 60 jours, avec des intervalles de 5 à 10 jours.',
     cont2_btn1: 'Mode location longue durée',
@@ -123,15 +123,15 @@ export default {
       text1:
         'La récompense totale en jetons pour les machines GPU en mode location longue durée IDC dans la compétition de puissance de calcul Orion est de 2 milliards, sur une durée de 180 jours. La compétition est divisée en 3 tours, avec un intervalle de 5 à 10 jours entre chaque tour.',
       text2:
-        'Compétition 1 : La compétition commencera officiellement lorsque le nombre de GPU de chaque type atteindra 500.',
+        'Compétition 1 : La compétition commencera officiellement lorsque le nombre de GPU de chaque type atteindra {n_gpu1}.',
       text3:
         '60 jours, 6 millions de jetons par jour, 10 % reçus immédiatement, 90 % débloqués sur 180 jours, avec un déblocage quotidien de 0,5 %.',
       text4:
-        'Compétition 2 : La compétition commencera officiellement lorsque le nombre de GPU de chaque type atteindra 1 000.',
+        'Compétition 2 : La compétition commencera officiellement lorsque le nombre de GPU de chaque type atteindra {n_gpu2}.',
       text5:
         '60 jours, 8 millions de jetons par jour, 10 % reçus immédiatement, 90 % débloqués sur 180 jours, avec un déblocage quotidien de 0,5 %.',
       text6:
-        'Compétition 3 : La compétition commencera officiellement lorsque le nombre de GPU de chaque type atteindra 1 500.',
+        'Compétition 3 : La compétition commencera officiellement lorsque le nombre de GPU de chaque type atteindra {n_gpu3}.',
       text7:
         '60 jours, 19,33 millions de jetons par jour, 10 % reçus immédiatement, 90 % débloqués sur 180 jours, avec un déblocage quotidien de 0,5 %.',
       text8:
@@ -258,15 +258,15 @@ export default {
       text1:
         'La récompense totale en tokens pour les machines GPU individuelles en location courte durée dans le concours de puissance de calcul Orion est de 1 milliard, pendant 180 jours. Le concours est divisé en 3 phases, avec un intervalle de 5 à 10 jours entre chaque.',
       text2:
-        'Phase 1 du Concours : Le concours démarre officiellement uniquement lorsque le nombre de chaque type de GPU atteint 500.',
+        'Phase 1 du Concours : Le concours démarre officiellement uniquement lorsque le nombre de chaque type de GPU atteint {n_gpu1}.',
       text3:
         '60 jours, 3 millions de tokens par jour, 10 % débloqué immédiatement, 90 % débloqué sur 180 jours, avec 0,5 % débloqué quotidiennement.',
       text4:
-        'Phase 2 du Concours : Le concours démarre officiellement uniquement lorsque le nombre de chaque type de GPU atteint 1 000.',
+        'Phase 2 du Concours : Le concours démarre officiellement uniquement lorsque le nombre de chaque type de GPU atteint {n_gpu2}.',
       text5:
         '60 jours, 4 millions de tokens par jour, 10 % débloqué immédiatement, 90 % débloqué sur 180 jours, avec 0,5 % débloqué quotidiennement.',
       text6:
-        'Phase 3 du Concours : Le concours démarre officiellement uniquement lorsque le nombre de chaque type de GPU atteint 2 000.',
+        'Phase 3 du Concours : Le concours démarre officiellement uniquement lorsque le nombre de chaque type de GPU atteint {n_gpu3}.',
       text7:
         '60 jours, 9,665 millions de tokens par jour, 10 % débloqué immédiatement, 90 % débloqué sur 180 jours, avec 0,5 % débloqué quotidiennement.',
       text8:
@@ -362,4 +362,5 @@ export default {
 
   yesOption: 'Oui',
   noOption: 'Non',
+  gpuType: 'Type de GPU',
 };

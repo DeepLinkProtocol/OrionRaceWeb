@@ -235,7 +235,7 @@ const filters = ref([
     },
   },
   {
-    label: 'GPU类型', // 机器状态
+    label: t('gpuType'), // 机器状态
     type: 'select',
     model: null,
     options: [],

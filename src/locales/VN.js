@@ -21,10 +21,10 @@ export default {
     text: 'Cuộc thi Sức mạnh Tính toán GPU Orion của Giao thức DeepLink là một cuộc thi khuyến khích quan trọng nhằm khuyến khích các thợ đào tham gia tích cực vào việc thử nghiệm mạng DeepLink. Cuộc thi này là một bước chuẩn bị thiết yếu trước khi ra mắt chính thức nền tảng giao thức trò chơi đám mây lớn nhất thế giới DeepLink, cung cấp nền tảng kỹ thuật vững chắc và hỗ trợ sức mạnh tính toán hiệu quả cho người dùng toàn cầu trong tương lai',
     text1: 'Tổng số GPU hiện tại trong mạng DeepLink là {gpu_num}',
     text2: 'Cuộc thi đã bắt đầu, phần thưởng sẽ được khởi động khi số lượng GPU đạt tiêu chuẩn!',
-    btn_text1: 'Chế độ thuê dài hạn đếm ngược đến khi cuộc thi bắt đầu',
-    btn_title1: 'Còn lại {long_term} GPU',
-    btn_text2: 'Chế độ thuê ngắn hạn đếm ngược đến khi cuộc thi bắt đầu',
-    btn_title2: 'Còn lại {short_term} GPU',
+    btn_text1: 'Cuộc thi chế độ thuê dài hạn - Đã bắt đầu',
+    btn_title1: 'Hiện tại {long_term} GPU',
+    btn_text2: 'Cuộc thi chế độ thuê ngắn hạn - Đã bắt đầu',
+    btn_title2: 'Hiện tại {short_term} GPU',
     cont2_text1:
       'Tổng phần thưởng token cho cuộc thi sức mạnh tính toán Orion là 3 tỷ, với 2 tỷ DLC cho chế độ thuê dài hạn và 1 tỷ DLC cho chế độ thuê ngắn hạn, kéo dài 180 ngày. Cuộc thi được chia thành ba đợt, mỗi đợt kéo dài 60 ngày với khoảng cách từ 5-10 ngày.',
     cont2_btn1: 'Chế độ thuê dài hạn',
@@ -119,13 +119,13 @@ export default {
         '4. Cơ chế Thưởng (Dựa trên DLC tương thích EVM trên Chuỗi công khai DBC AI, Địa chỉ trình duyệt: https://test.dbcscan.io/)',
       text1:
         'Tổng phần thưởng token cho các máy GPU ở chế độ thuê dài hạn IDC trong cuộc thi sức mạnh tính toán Orion là 2 tỷ, kéo dài 180 ngày. Cuộc thi được chia thành 3 vòng, với khoảng cách 5-10 ngày giữa mỗi vòng.',
-      text2: 'Cuộc thi 1: Cuộc thi sẽ chính thức bắt đầu khi số lượng GPU của mỗi loại đạt 500.',
+      text2: 'Cuộc thi 1: Cuộc thi sẽ chính thức bắt đầu khi số lượng GPU của mỗi loại đạt {n_gpu1}.',
       text3:
         '60 ngày, 6 triệu token mỗi ngày, 10% nhận ngay lập tức, 90% mở khóa trong vòng 180 ngày, với 0,5% mở khóa hàng ngày.',
-      text4: 'Cuộc thi 2: Cuộc thi sẽ chính thức bắt đầu khi số lượng GPU của mỗi loại đạt 1.000.',
+      text4: 'Cuộc thi 2: Cuộc thi sẽ chính thức bắt đầu khi số lượng GPU của mỗi loại đạt {n_gpu2}.',
       text5:
         '60 ngày, 8 triệu token mỗi ngày, 10% nhận ngay lập tức, 90% mở khóa trong vòng 180 ngày, với 0,5% mở khóa hàng ngày.',
-      text6: 'Cuộc thi 3: Cuộc thi sẽ chính thức bắt đầu khi số lượng GPU của mỗi loại đạt 1.500.',
+      text6: 'Cuộc thi 3: Cuộc thi sẽ chính thức bắt đầu khi số lượng GPU của mỗi loại đạt {n_gpu3}.',
       text7:
         '60 ngày, 19,33 triệu token mỗi ngày, 10% nhận ngay lập tức, 90% mở khóa trong vòng 180 ngày, với 0,5% mở khóa hàng ngày.',
       text8: 'Sau khi niêm yết trên sàn giao dịch, token thử nghiệm có thể đổi 1:1 cho token mạng chính.',
@@ -245,13 +245,13 @@ export default {
         '4. Cơ Chế Thưởng (Dựa trên DLC tương thích EVM của Chuỗi Công Cộng DBC AI, địa chỉ trình duyệt: https://test.dbcscan.io/)',
       text1:
         'Tổng phần thưởng token cho các máy GPU cá nhân cho thuê ngắn hạn trong cuộc thi tính toán Orion là 1 tỷ, kéo dài trong 180 ngày. Cuộc thi được chia thành 3 giai đoạn, với khoảng cách 5-10 ngày giữa mỗi giai đoạn.',
-      text2: 'Giai đoạn 1 của Cuộc Thi: Cuộc thi chỉ chính thức bắt đầu khi số lượng mỗi loại GPU đạt 500.',
+      text2: 'Giai đoạn 1 của Cuộc Thi: Cuộc thi chỉ chính thức bắt đầu khi số lượng mỗi loại GPU đạt {n_gpu1}.',
       text3:
         '60 ngày, 3 triệu token mỗi ngày, 10% được mở khóa ngay lập tức, 90% được mở khóa trong vòng 180 ngày, với 0,5% được mở khóa mỗi ngày.',
-      text4: 'Giai đoạn 2 của Cuộc Thi: Cuộc thi chỉ chính thức bắt đầu khi số lượng mỗi loại GPU đạt 1.000.',
+      text4: 'Giai đoạn 2 của Cuộc Thi: Cuộc thi chỉ chính thức bắt đầu khi số lượng mỗi loại GPU đạt {n_gpu2}.',
       text5:
         '60 ngày, 4 triệu token mỗi ngày, 10% được mở khóa ngay lập tức, 90% được mở khóa trong vòng 180 ngày, với 0,5% được mở khóa mỗi ngày.',
-      text6: 'Giai đoạn 3 của Cuộc Thi: Cuộc thi chỉ chính thức bắt đầu khi số lượng mỗi loại GPU đạt 2.000.',
+      text6: 'Giai đoạn 3 của Cuộc Thi: Cuộc thi chỉ chính thức bắt đầu khi số lượng mỗi loại GPU đạt {n_gpu3}.',
       text7:
         '60 ngày, 9,665 triệu token mỗi ngày, 10% được mở khóa ngay lập tức, 90% được mở khóa trong vòng 180 ngày, với 0,5% được mở khóa mỗi ngày.',
       text8: 'Sau khi niêm yết trên sàn giao dịch, token thử nghiệm có thể đổi 1:1 cho token mạng chính.',
@@ -345,4 +345,5 @@ export default {
 
   yesOption: 'Có',
   noOption: 'Không',
+  gpuType: 'Loại GPU',
 };

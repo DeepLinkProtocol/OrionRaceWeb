@@ -194,8 +194,13 @@ const getStateSummariesH = async () => {
   } else {
     const totalStaking = new BN(res.stateSummaries[0].totalGPUCount);
     const result = new BN(100).sub(totalStaking);
-    btnList.value[0].value = result.toNumber(); // 直接更新 btnList 中的值
-    OrionDataList.value[0].value = res.stateSummaries[0].totalCalcPoint;
+    if (result.toNumber() < 0) {
+      btnList.value[0].value = 0;
+    } else {
+      btnList.value[0].value = result.toNumber(); // 直接更新 btnList 中的值
+    }
+
+    OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 10000;
     OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
     OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
     OrionDataList.value[3].value = `${
@@ -213,7 +218,7 @@ const getStateSummariesShortH = async () => {
   const res = await getStateSummariesShort();
   console.log(res, 'Pppppp获取门槛数据短租');
   if (res.stateSummaries.length === 0) {
-    btnList.value[0].value = 100; // 直接更新 btnList 中的值
+    btnList.value[1].value = 100; // 直接更新 btnList 中的值
     OrionDataList.value[0].value = 0;
     OrionDataList.value[1].value = 0;
     OrionDataList.value[2].value = 0;
@@ -225,8 +230,14 @@ const getStateSummariesShortH = async () => {
   } else {
     const totalStaking = new BN(res.stateSummaries[0].totalStakingGPUCount);
     const result = new BN(100).sub(totalStaking);
-    btnList.value[1].value = result.toNumber(); // 直接更新 btnList 中的值
-    OrionDataList.value[0].value = res.stateSummaries[0].totalCalcPoint;
+
+    if (result.toNumber() < 0) {
+      btnList.value[1].value = 0; // 直接更新 btnList 中的值
+    } else {
+      btnList.value[1].value = result.toNumber(); // 直接更新 btnList 中的值
+    }
+
+    OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 10000;
     OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
     OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
     OrionDataList.value[3].value = `${
@@ -242,12 +253,23 @@ const getStateSummariesShortH = async () => {
 // 获取门槛数据短租
 const getStateSummariesShortH2 = async () => {
   const res = await getStateSummariesShort();
-  console.log(res, 'Pppppp获取门槛数据短租');
-  const totalStaking = new BN(res.stateSummaries[0].totalGPUCount);
-  const result = new BN(100).sub(totalStaking);
-  btnList.value[1].value = result.toNumber(); // 直接更新 btnList 中的值
+  console.log(res, '门槛数据短租66666666666');
+  if (res.stateSummaries.length === 0) {
+    btnList.value[1].value = 100;
+  } else {
+    const totalStaking = new BN(res.stateSummaries[0].totalGPUCount);
+    const result = new BN(100).sub(totalStaking);
+    console.log(result.toNumber(), '>>>', result.toNumber() <= 0);
+    if (result.toNumber() < 0) {
+      btnList.value[1].value = 0;
+      console.log(btnList.value);
+    } else {
+      btnList.value[1].value = result.toNumber(); // 直接更新 btnList 中的值
+    }
+  }
 };
 getStateSummariesShortH2();
+
 // 请求并同步长租表格数据
 const fetchLongStakeHolders = async () => {
   try {
@@ -273,6 +295,7 @@ const fetchLongStakeHolders = async () => {
 const fetchShortStakeHolders = async () => {
   try {
     const response = await getShortStakeHoldersShort();
+    console.log(response, '短租表格数据');
     const stakeHolders = response.stakeHolders || [];
     tableData.value.short = stakeHolders.map((el, index) => ({
       index: index + 1, // 竞赛排名

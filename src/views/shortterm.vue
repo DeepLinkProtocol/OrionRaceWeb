@@ -570,15 +570,15 @@
       <div class="title">{{ $t('short_rule.cont5.title') }}</div>
       <div class="text">{{ $t('short_rule.cont5.text1') }}</div>
       <div class="text">
-        <p>{{ $t('short_rule.cont5.text2') }}</p>
+        <p>{{ $t('short_rule.cont5.text2', { n_gpu1: 100 }) }}</p>
         <p>{{ $t('short_rule.cont5.text3') }}</p>
       </div>
       <div class="text">
-        <p>{{ $t('short_rule.cont5.text4') }}</p>
+        <p>{{ $t('short_rule.cont5.text4', { n_gpu2: 200 }) }}</p>
         <p>{{ $t('short_rule.cont5.text5') }}</p>
       </div>
       <div class="text">
-        <p>{{ $t('short_rule.cont5.text6') }}</p>
+        <p>{{ $t('short_rule.cont5.text6', { n_gpu3: 400 }) }}</p>
         <p>{{ $t('short_rule.cont5.text7') }}</p>
       </div>
       <div class="text">{{ $t('short_rule.cont5.text8') }}</div>

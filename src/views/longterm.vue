@@ -588,18 +588,18 @@
       <div class="title">{{ $t('long_rule.cont5.title') }}</div>
       <div class="text">{{ $t('long_rule.cont5.text1') }}</div>
       <div class="text">
-        <p>{{ $t('long_rule.cont5.text2') }}</p>
+        <p>{{ $t('long_rule.cont5.text2', { n_gpu1: 100 }) }}</p>
         <p>{{ $t('long_rule.cont5.text3') }}</p>
       </div>
       <div class="text">
-        <p>{{ $t('long_rule.cont5.text4') }}</p>
+        <p>{{ $t('long_rule.cont5.text4', { n_gpu2: 200 }) }}</p>
         <p>{{ $t('long_rule.cont5.text5') }}</p>
       </div>
       <div class="text">
-        <p>{{ $t('long_rule.cont5.text6') }}</p>
+        <p>{{ $t('long_rule.cont5.text6', { n_gpu3: 300 }) }}</p>
         <p>{{ $t('long_rule.cont5.text7') }}</p>
       </div>
-      <div class="text">{{ $t('long_rule.cont5.text8') }}</div>
+      <!-- <div class="text">{{ $t('long_rule.cont5.text8') }}</div> -->
       <div class="text">{{ $t('long_rule.cont5.text9') }}</div>
       <div class="text">
         <p>{{ $t('long_rule.cont5.text10') }}</p>
@@ -830,7 +830,7 @@ export default defineComponent({
         const res = await dlcPriceOcw();
         if (res.code === '10502') {
           dlcPrice.value = res.content;
-          dlc_price.value = res.content.dlc_price
+          dlc_price.value = res.content.dlc_price;
         } else {
           window.$message.error('DLC价格获取失败');
         }

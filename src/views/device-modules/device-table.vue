@@ -247,7 +247,7 @@ const filters = ref([
     },
   },
   {
-    label: 'GPU类型', // 机器状态
+    label: t('gpuType'), // 机器状态
     type: 'select',
     model: null,
     options: [],
@@ -265,7 +265,7 @@ const filters = ref([
 const formatCellValue = (machine, key) => {
   if (!machine) return 'N/A';
   if (key === 'isRented' || key === 'online' || key === 'isStaking') {
-    return machine[key] ? '是' : '否';
+    return machine[key] ? t('yesOption') : t('noOption');
   }
   if (key === 'stakeEndTimestamp') {
     return machine[key] ? new Date(machine[key] * 1000).toLocaleDateString() : '未质押';
