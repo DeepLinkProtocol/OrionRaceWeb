@@ -37,13 +37,13 @@ export const useCalc = () => {
         return false;
       }
       console.log(calcPoint, nftCount, dlcCount);
-      console.log(web3.utils.toWei(calcPoint.toString(), 'ether'));
+      console.log(web3.utils.toWei(dlcCount.toString(), 'ether'));
       // 调用合约方法
       const result = await contract.methods
         .preCalculateRewards(
           (calcPoint * 10000).toFixed(0), // 转换为 wei
           nftCount,
-          dlcCount
+          web3.utils.toWei(dlcCount.toString(), 'ether')
         )
         .call();
       console.log(result, '原始结果', '2999667954082392398899440');
