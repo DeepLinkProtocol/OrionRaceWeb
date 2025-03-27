@@ -13,6 +13,14 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# zip
+*.zip
+*.rar
+*.tar
+*.gz
+*.bz2
+*.7z
+
 # Editor directories and files
 .idea
 .vscode
