@@ -109,7 +109,7 @@
             ></el-option>
           </el-select>
         </div>
-        <div class="text_select">
+        <!-- <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont5.text4_7') }}</p>
           <el-select
             class="el-select-type select_width210"
@@ -124,7 +124,7 @@
               :value="item.value"
             ></el-option>
           </el-select>
-        </div>
+        </div> -->
       </div>
       <div class="text">{{ $t('long_rule.cont5.text4_8') }}</div>
       <div class="title1">

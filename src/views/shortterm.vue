@@ -99,7 +99,7 @@
             ></el-option>
           </el-select>
         </div>
-        <div class="text_select">
+        <!-- <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont5.text4_7') }}</p>
           <el-select
             class="el-select-type select_width210"
@@ -114,18 +114,27 @@
               :value="item.value"
             ></el-option>
           </el-select>
-        </div>
+        </div> -->
       </div>
-      <div class="text">{{ $t('short_rule.cont5.text4_8') }}</div>
-      <div class="title1">
-        {{
-          $t('short_rule.cont5.title5', {
-            dlc_num: dlc_earning,
-            usdt_num: dlc_usdt_earning,
-            price: dlcPrice?.dlc_price || 0,
-          })
-        }}
-      </div>
+      <!-- <div class="text">{{ $t('short_rule.cont5.text4_8') }}</div> -->
+
+      <el-skeleton :rows="1" :loading="calcLoading" animated>
+        <!-- 自定义骨架屏模板，确保一行 -->
+        <template #template>
+          <el-skeleton-item variant="text" style="width: 100%; height: 30px" />
+        </template>
+        <template #default>
+          <div class="title1">
+            {{
+              $t('short_rule.cont5.title5', {
+                dlc_num: dlc_earning,
+                usdt_num: dlc_usdt_earning,
+                price: dlcPrice?.dlc_price || 0,
+              })
+            }}
+          </div>
+        </template>
+      </el-skeleton>
     </div>
     <div class="page_cont2 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
       <div class="title">{{ $t('short_rule.cont2.title') }}</div>
@@ -786,17 +795,16 @@ import { useRoute, useRouter } from 'vue-router';
 import { dlcPriceOcw } from '@/api/http';
 import { useIntervalFn } from '@vueuse/core';
 import { getStateSummariesShort } from '@/api/home-short';
+import { useCalc } from '@/hooks/short-rent/useProfit';
 
 export default defineComponent({
   name: 'shortTerm',
   setup() {
     const store = useStore();
-    const router = useRouter();
     let lan = computed(() => {
       return store.state.lan;
     });
     const { t, locale } = useI18n();
-    const instance = getCurrentInstance();
     const timer = ref(null);
     const short_num = ref(0);
 
@@ -828,9 +836,6 @@ export default defineComponent({
       { immediateCallback: true }
     );
 
-    const linkHref = (el) => {
-      window.open(el, 'target');
-    };
     const options = ref([
       { name: '2080', cuda: '2944', men: '8', large: 1 },
       { name: '2080s', cuda: '3072', men: '8', large: 1 },
@@ -899,6 +904,7 @@ export default defineComponent({
     const countCuda_core1 = ref(0); // cuda数量
     const countLocal_num1 = ref(1); // 地域系数
     const SelectGPU1 = (val) => {
+      console.log(val, 'KKKK');
       const arr = val.split('_');
       countCuda_core1.value = arr[0];
       countVideo_num1.value = arr[1];
@@ -1133,6 +1139,58 @@ export default defineComponent({
           ]);
       }
     );
+
+    // 收集的用户选择的数据
+    const calcUserData = computed(() => {
+      return {
+        // GPU型号
+        gpuType: gpu_type2.value,
+        // 内存数量
+        ramNumber: mem_num2.value,
+        // 节点NFT数量
+        nftNumber: nft_num.value,
+        // 质押DLC数量
+        dlcNumber: stak_dlc_num.value,
+        // 竞赛阶段
+        step: race_stage.value,
+      };
+    });
+
+    // hook
+    const { calculateMachinePoints, fetchRewards, calcLoading } = useCalc();
+    watch(
+      () => calcUserData.value,
+      async () => {
+        if (calcUserData.value.gpuType && calcUserData.value.ramNumber) {
+          const rs = calculateMachinePoints(calcUserData.value.gpuType, calcUserData.value.ramNumber);
+          console.log(rs, '最终计算的结果');
+          if (calcUserData.value.nftNumber && calcUserData.value.dlcNumber) {
+            // 调用合约
+            console.log('开始调用合约');
+            fetchRewards(rs, calcUserData.value.nftNumber, calcUserData.value.dlcNumber);
+            if (calcUserData.value.step) {
+              calcLoading.value = true;
+
+              console.log(calcUserData.value.step);
+              const finalRewardValue = await fetchRewards(
+                rs,
+                calcUserData.value.nftNumber,
+                calcUserData.value.dlcNumber,
+                calcUserData.value.step
+              );
+              console.log(finalRewardValue, '最终的结果');
+              dlc_earning.value = finalRewardValue;
+              console.log(
+                dlcPrice.value?.dlc_price,
+                finalRewardValue,
+                Number(dlcPrice.value?.dlc_price) * Number(finalRewardValue)
+              );
+              dlc_usdt_earning.value = (Number(dlcPrice.value?.dlc_price) * Number(finalRewardValue)).toFixed(3);
+            }
+          }
+        }
+      }
+    );
     return {
       lan,
       options,
@@ -1172,6 +1230,7 @@ export default defineComponent({
       SelectStakDLC2,
       SelectRace2,
       SelectJoinGPU2,
+      calcLoading,
     };
   },
 });

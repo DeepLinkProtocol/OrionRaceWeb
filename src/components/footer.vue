@@ -92,26 +92,26 @@ export default defineComponent({
         img: medium,
         link: 'https://medium.com/@DeepLinkGlobal',
       },
-      {
-        img: telegram,
-        img_cry: in_cry,
-        link: 'https://t.me/DeepLinkIndia',
-      },
+      // {
+      //   img: telegram,
+      //   img_cry: in_cry,
+      //   link: 'https://t.me/DeepLinkIndia',
+      // },
       {
         img: telegram,
         img_cry: kr_cry,
         link: 'https://t.me/deeplinkkorea',
       },
-      {
-        img: telegram,
-        img_cry: ve_cry,
-        link: 'https://t.me/DeepLinkVietnamese',
-      },
-      {
-        img: telegram,
-        img_cry: ar_cry,
-        link: 'https://t.me/DeepLinkAfrica',
-      },
+      // {
+      //   img: telegram,
+      //   img_cry: ve_cry,
+      //   link: 'https://t.me/DeepLinkVietnamese',
+      // },
+      // {
+      //   img: telegram,
+      //   img_cry: ar_cry,
+      //   link: 'https://t.me/DeepLinkAfrica',
+      // },
       {
         img: telegram,
         img_cry: ja_cry,
@@ -122,10 +122,10 @@ export default defineComponent({
         img_cry: zh_cry,
         link: 'https://t.me/DeepLinkChina',
       },
-      {
-        img: telegram,
-        link: 'https://t.me/deeplinkglobal',
-      },
+      // {
+      //   img: telegram,
+      //   link: 'https://t.me/deeplinkglobal',
+      // },
       {
         img: twitter,
         img_cry: ja_cry,
@@ -234,6 +234,8 @@ export default defineComponent({
         .follow {
           display: flex;
           flex-wrap: wrap;
+          justify-content: center;
+
           // flex-direction: row-reverse;
           .list {
             padding: 10px;
@@ -244,6 +246,7 @@ export default defineComponent({
             align-items: center;
             backdrop-filter: blur(6px);
             background: hsla(0, 0%, 100%, 0.1);
+
             .li_img {
               width: 40px;
               height: 40px;
