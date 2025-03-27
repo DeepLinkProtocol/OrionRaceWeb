@@ -22,8 +22,8 @@ export default {
     text1: 'Die aktuelle Gesamtzahl der GPUs im DeepLink-Netzwerk beträgt {gpu_num}',
     text2:
       'Der Wettbewerb hat begonnen, und die Belohnungen starten, sobald die Anzahl der GPUs den Standard erreicht!',
-    btn_text1: 'Wettbewerb im Langzeitmietmodus - Hat begonnen',
-    btn_title1: 'Aktuell {long_term} GPU',
+    btn_text1: 'Wettbewerb über Distanz im Langzeitmietmodus - Hat begonnen',
+    btn_title1: 'Verbleibende {long_term} GPU',
     btn_text2: 'Wettbewerb im Kurzzeitmietmodus - Hat begonnen',
     btn_title2: 'Aktuell {short_term} GPU',
     cont2_text1:

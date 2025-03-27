@@ -23,6 +23,8 @@ export default {
     text2: '대회가 시작되었습니다. GPU 수가 기준에 도달하면 보상이 시작됩니다!',
     btn_text1: '장기 임대 모드 대회 - 시작됨',
     btn_title1: '현재 {long_term} GPU',
+    btn_text1: '장기 임대 모드 거리 대회 - 시작',
+    btn_title1: '남은 {long_term} GPU',
     btn_text2: '단기 임대 모드 대회 - 시작됨',
     btn_title2: '현재 {short_term} GPU',
     cont2_text1:

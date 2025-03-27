@@ -21,8 +21,8 @@ export default {
     text: "DeepLink Protokolü kapsamındaki Orion GPU İşlem Gücü Yarışması, madencilerin DeepLink ağ testi sürecine aktif olarak katılmalarını teşvik etmeyi amaçlayan önemli bir teşvik yarışmasıdır. Bu yarışma, dünyanın en büyük bulut oyun protokol platformu olan DeepLink'in resmi lansmanı öncesindeki önemli bir hazırlık adımı olup, gelecekteki küresel kullanıcılar için sağlam bir teknik altyapı ve verimli işlem gücü desteği sağlar",
     text1: 'Şu anda DeepLink ağındaki toplam GPU sayısı {gpu_num}',
     text2: 'Yarışma başladı ve GPU sayısı standarda ulaştığında ödüller başlayacak!',
-    btn_text1: 'Uzun vadeli kiralama modu yarışması - Başladı',
-    btn_title1: 'Güncel {long_term} GPU',
+    btn_text1: 'Uzun vadeli kiralama modu mesafe yarışması - Başladı',
+    btn_title1: 'Kalan {long_term} GPU',
     btn_text2: 'Kısa vadeli kiralama modu yarışması - Başladı',
     btn_title2: 'Güncel {short_term} GPU',
     cont2_text1:

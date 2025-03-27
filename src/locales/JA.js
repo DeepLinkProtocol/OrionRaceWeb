@@ -21,8 +21,8 @@ export default {
     text: 'DeepLinkプロトコルのOrion GPU算力コンペティションは、マイナーがDeepLinkネットワークのテストに積極的に参加することを奨励するための重要なインセンティブコンペティションです。このコンペティションは、世界最大のクラウドゲームプロトコルプラットフォームであるDeepLinkの正式な開始に向けた重要な準備ステップであり、将来のグローバルユーザーに対して堅固な技術基盤と効率的な算力サポートを提供します',
     text1: '現在、DeepLinkネットワーク内のGPUの総数は{gpu_num}枚です',
     text2: 'コンテストが開始しました。GPUの数が基準に達すると報酬が開始されます！',
-    btn_text1: '長期レンタルモード競技 - 開始済み',
-    btn_title1: '現在 {long_term} GPU',
+    btn_text1: '長期レンタルモード距離競技 - 開始',
+    btn_title1: '残り {long_term} GPU',
     btn_text2: '短期レンタルモード競技 - 開始済み',
     btn_title2: '現在 {short_term} GPU',
     cont2_text1:

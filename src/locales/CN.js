@@ -21,8 +21,8 @@ export default {
     text: 'DeepLink协议的Orion GPU算力竞赛是一项重要的激励竞赛，旨在鼓励矿工积极参与DeepLink网络测试。这一竞赛是全球最大云游戏协议平台DeepLink正式推出前的重要准备步骤，为未来的全球用户提供坚实的技术基础和高效的算力保障。',
     text1: '当前DeepLink网络中GPU总数量为{gpu_num}张',
     text2: '竞赛已经启动，一旦GPU数量达到标准，奖励将会开始！',
-    btn_text1: '长租模式竞赛 —— 已经开始',
-    btn_title1: '当前 {long_term} GPU',
+    btn_text1: '长租模式距离竞赛 —— 开始',
+    btn_title1: '还剩余 {long_term} GPU',
     btn_text2: '短租模式竞赛 —— 已经开始',
     btn_title2: '当前 {short_term} GPU',
     cont2_text1:

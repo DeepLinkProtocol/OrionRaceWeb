@@ -785,6 +785,7 @@ import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
 import { dlcPriceOcw } from '@/api/http';
 import { useIntervalFn } from '@vueuse/core';
+import { getStateSummariesShort } from '@/api/home-short';
 
 export default defineComponent({
   name: 'shortTerm',
@@ -797,7 +798,19 @@ export default defineComponent({
     const { t, locale } = useI18n();
     const instance = getCurrentInstance();
     const timer = ref(null);
-    const short_num = ref(100);
+    const short_num = ref(0);
+
+    // 获取门槛数据短租
+    const getStateSummariesShortH2 = async () => {
+      const res = await getStateSummariesShort();
+      console.log(res, '门槛数据短租66666666666');
+      if (res.stateSummaries.length === 0) {
+        short_num.value = 100;
+      } else {
+        short_num.value = res.stateSummaries[0].totalStakingGPUCount;
+      }
+    };
+    getStateSummariesShortH2();
 
     // 获取DLC价格
     let dlcPrice = ref(null);

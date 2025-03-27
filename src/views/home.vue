@@ -182,7 +182,7 @@ const getStateSummariesH = async () => {
   const res = await getStateSummaries();
   console.log(res, 'Pppppp获取门槛数据长租');
   if (res.stateSummaries.length === 0) {
-    btnList.value[0].value = 0; // 直接更新 btnList 中的值
+    btnList.value[0].value = 100; // 直接更新 btnList 中的值
     OrionDataList.value[0].value = 0;
     OrionDataList.value[1].value = 0;
     OrionDataList.value[2].value = 0;
@@ -194,12 +194,13 @@ const getStateSummariesH = async () => {
   } else {
     const totalStaking = new BN(res.stateSummaries[0].totalGPUCount);
     const result = new BN(100).sub(totalStaking);
-    if (result.toNumber() < 0) {
-      btnList.value[0].value = 0;
-    } else {
-      btnList.value[0].value = result.toNumber(); // 直接更新 btnList 中的值
-    }
-
+    // if (result.toNumber() < 0) {
+    //   btnList.value[0].value = 0;
+    // } else {
+    //   btnList.value[0].value = result.toNumber(); // 直接更新 btnList 中的值
+    // }
+    // btnList.value[0].value = res.stateSummaries[0].totalStakingGPUCount;
+    btnList.value[0].value = result.toNumber();
     OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 10000;
     OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
     OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
@@ -209,7 +210,7 @@ const getStateSummariesH = async () => {
 
     OrionDataList.value[4].value = res.stateSummaries[0].totalBurnedRentFee / 1e18;
     OrionDataList.value[5].value = res.stateSummaries[0].totalBurnedRentFee / 1e18;
-    OrionDataList.value[6].value = res.stateSummaries[0].totalReservedAmount / 1e18;
+    OrionDataList.value[6].value = (res.stateSummaries[0].totalReservedAmount / 1e18).toFixed(0);
   }
 };
 
@@ -228,15 +229,15 @@ const getStateSummariesShortH = async () => {
     OrionDataList.value[5].value = 0;
     OrionDataList.value[6].value = 0;
   } else {
-    const totalStaking = new BN(res.stateSummaries[0].totalStakingGPUCount);
-    const result = new BN(100).sub(totalStaking);
+    // const totalStaking = new BN(res.stateSummaries[0].totalStakingGPUCount);
+    // const result = new BN(100).sub(totalStaking);
 
-    if (result.toNumber() < 0) {
-      btnList.value[1].value = 0; // 直接更新 btnList 中的值
-    } else {
-      btnList.value[1].value = result.toNumber(); // 直接更新 btnList 中的值
-    }
-
+    // if (result.toNumber() < 0) {
+    //   btnList.value[1].value = 0; // 直接更新 btnList 中的值
+    // } else {
+    //   btnList.value[1].value = result.toNumber(); // 直接更新 btnList 中的值
+    // }
+    btnList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
     OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 10000;
     OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
     OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
@@ -246,7 +247,7 @@ const getStateSummariesShortH = async () => {
 
     OrionDataList.value[4].value = res.stateSummaries[0].totalBurnedRentFee / 1e18;
     OrionDataList.value[5].value = res.stateSummaries[0].totalBurnedRentFee / 1e18;
-    OrionDataList.value[6].value = res.stateSummaries[0].totalReservedAmount / 1e18;
+    OrionDataList.value[6].value = (res.stateSummaries[0].totalReservedAmount / 1e18).toFixed(0);
   }
 };
 
@@ -257,15 +258,7 @@ const getStateSummariesShortH2 = async () => {
   if (res.stateSummaries.length === 0) {
     btnList.value[1].value = 100;
   } else {
-    const totalStaking = new BN(res.stateSummaries[0].totalGPUCount);
-    const result = new BN(100).sub(totalStaking);
-    console.log(result.toNumber(), '>>>', result.toNumber() <= 0);
-    if (result.toNumber() < 0) {
-      btnList.value[1].value = 0;
-      console.log(btnList.value);
-    } else {
-      btnList.value[1].value = result.toNumber(); // 直接更新 btnList 中的值
-    }
+    btnList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
   }
 };
 getStateSummariesShortH2();
@@ -278,7 +271,7 @@ const fetchLongStakeHolders = async () => {
     tableData.value.long = stakeHolders.map((el, index) => ({
       index: index + 1, // 竞赛排名
       holder: el.holder, // 矿工名称
-      calc_point: Number(el.totalCalcPoint), // 算力值
+      calc_point: Number(el.totalCalcPoint) / 10000, // 算力值
       gpu_num: Number(el.totalStakingGPUCount), // GPU数量
       rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
       rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
@@ -300,7 +293,7 @@ const fetchShortStakeHolders = async () => {
     tableData.value.short = stakeHolders.map((el, index) => ({
       index: index + 1, // 竞赛排名
       holder: el.holder, // 矿工名称
-      calc_point: Number(el.totalCalcPoint), // 算力值
+      calc_point: Number(el.totalCalcPoint) / 10000, // 算力值
       gpu_num: Number(el.totalStakingGPUCount), // GPU数量
       rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
       rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)

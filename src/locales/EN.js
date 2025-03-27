@@ -21,8 +21,8 @@ export default {
     text: "The Orion GPU Race under the DeepLink Protocol is a significant incentive competition aimed at encouraging miners to actively participate in testing the DeepLink network. This competition is an essential preparatory step before the official launch of DeepLink, the world's largest cloud gaming protocol platform, providing a solid technical foundation and efficient computing power support for future global users",
     text1: 'The current total number of GPUs in the DeepLink network is {gpu_num}',
     text2: 'The competition has started, and rewards will begin once the number of GPUs meets the standard!',
-    btn_text1: 'Long-term Rental Mode Competition - Has Started',
-    btn_title1: 'Current {long_term} GPUs ',
+    btn_text1: 'Long-term Rental Mode Distance Competition - Started',
+    btn_title1: 'Remaining {long_term} GPU',
     btn_text2: 'Short-term Rental Mode Competition - Has Started',
     btn_title2: 'Current {short_term} GPUs ',
 
