@@ -789,40 +789,39 @@
 </template>
 
 <script>
-import {
-  defineComponent,
-  computed,
-  ref,
-  onBeforeMount,
-  onBeforeUnmount,
-  onMounted,
-  getCurrentInstance,
-  watch,
-  nextTick,
-} from 'vue';
+import { defineComponent, computed, ref, onBeforeUnmount, onMounted, watch, nextTick } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { dbcPriceOcw, dlcPriceOcw } from '@/api/http';
 import { getRewardInfo } from '@/api/wss';
 import { useStore } from 'vuex';
-import { useRoute, useRouter } from 'vue-router';
 import { useIntervalFn } from '@vueuse/core';
+import { getStateSummaries } from '@/api/home';
 
 export default defineComponent({
   name: 'longTerm',
   setup() {
     const store = useStore();
-    const router = useRouter();
+
     let lan = computed(() => {
       return store.state.lan;
     });
     const { t, locale } = useI18n();
-    const instance = getCurrentInstance();
+
     const timer = ref(null);
     const long_num = ref(0);
-    const linkHref = (el) => {
-      window.open(el, 'target');
+
+    // 获取门槛数据长租
+    const getStateSummariesH = async () => {
+      const res = await getStateSummaries();
+      console.log(res, 'Pppppp获取门槛数据长租');
+      if (res.stateSummaries.length === 0) {
+        long_num.value = res.stateSummaries[0].totalStakingGPUCount;
+      } else {
+        long_num.value = res.stateSummaries[0].totalStakingGPUCount;
+      }
     };
 
+    getStateSummariesH();
     // 获取DLC价格
     let dlcPrice = ref(null);
     const { pause, resume, isActive } = useIntervalFn(

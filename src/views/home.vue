@@ -264,7 +264,7 @@ const fetchLongStakeHolders = async () => {
     tableData.value.long = stakeHolders.map((el, index) => ({
       index: index + 1, // 竞赛排名
       holder: el.holder, // 矿工名称
-      calc_point: Number(el.totalCalcPoint) / 10000, // 算力值
+      calc_point: Number(el.totalCalcPoint) / 100, // 算力值
       gpu_num: Number(el.totalStakingGPUCount), // GPU数量
       rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
       rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
