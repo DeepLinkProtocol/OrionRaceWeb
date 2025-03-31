@@ -105,7 +105,7 @@ export async function getIdleMachineInfosShort(gpuType) {
           isRented: false,
           online: true,
           registered: true,
-          nextCanRentTimestamp_gt: $currentTimestamp
+          nextCanRentTimestamp_lt: $currentTimestamp
           ${gpuType && gpuType !== '' ? 'gpuType: $gpuType' : ''}
         }
       ) {
