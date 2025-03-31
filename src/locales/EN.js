@@ -21,10 +21,10 @@ export default {
     text: "The Orion GPU Race under the DeepLink Protocol is a significant incentive competition aimed at encouraging miners to actively participate in testing the DeepLink network. This competition is an essential preparatory step before the official launch of DeepLink, the world's largest cloud gaming protocol platform, providing a solid technical foundation and efficient computing power support for future global users",
     text1: 'The current total number of GPUs in the DeepLink network is {gpu_num}',
     text2: 'The competition has started, and rewards will begin once the number of GPUs meets the standard!',
-    btn_text1: 'Long-term Rental Mode Distance Competition - Started',
-    btn_title1: 'Remaining {long_term} GPU',
+    btn_text1: 'Long-term Rental Mode Competition - Has Started',
+    btn_title1: 'Current {long_term} GPUS',
     btn_text2: 'Short-term Rental Mode Competition - Has Started',
-    btn_title2: 'Current {short_term} GPUs ',
+    btn_title2: 'Current {short_term} GPUS ',
 
     cont2_text1:
       'The total token reward for the Orion computing power competition is 3 billion, with 2 billion DLC for long-term rental mode and 1 billion DLC for short-term rental mode, lasting 180 days. The competition is divided into three rounds, each lasting 60 days with intervals of 5-10 days.',
@@ -58,7 +58,7 @@ export default {
     cont2: {
       title: '1. Participation Rules',
       text1_1:
-        'Miners participating in the Orion computing power competition need to hold a Node NFT (each node comes with a 30,000 DLC airdrop, worth 90 USD, learn more about the node: ',
+        'Miners participating in the Orion computing power competition need to hold a Node NFT ( learn more about the node: ',
       text1_2:
         '). During the competition, a single GPU machine can hold multiple nodes, and the number of reward tokens is multiplied by the number of nodes. The maximum number of Node NFTs per machine is 20.',
       text2_1:
@@ -199,7 +199,7 @@ export default {
     cont2: {
       title: '1. Participation Rules',
       text1_1:
-        'Miners participating in the Orion computing power competition need to hold a Node NFT (each node comes with a 30,000 DLC airdrop worth 90 USD. For more information on nodes:',
+        'Miners participating in the Orion computing power competition need to hold a Node NFT ( For more information on nodes:',
       text1_2:
         '). During the competition, a single GPU machine can hold multiple nodes, and the number of reward tokens is proportional to the number of nodes. The maximum number of Node NFTs a single machine can hold is 20.',
       text2_1:

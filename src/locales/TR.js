@@ -21,10 +21,10 @@ export default {
     text: "DeepLink Protokolü kapsamındaki Orion GPU İşlem Gücü Yarışması, madencilerin DeepLink ağ testi sürecine aktif olarak katılmalarını teşvik etmeyi amaçlayan önemli bir teşvik yarışmasıdır. Bu yarışma, dünyanın en büyük bulut oyun protokol platformu olan DeepLink'in resmi lansmanı öncesindeki önemli bir hazırlık adımı olup, gelecekteki küresel kullanıcılar için sağlam bir teknik altyapı ve verimli işlem gücü desteği sağlar",
     text1: 'Şu anda DeepLink ağındaki toplam GPU sayısı {gpu_num}',
     text2: 'Yarışma başladı ve GPU sayısı standarda ulaştığında ödüller başlayacak!',
-    btn_text1: 'Uzun vadeli kiralama modu mesafe yarışması - Başladı',
-    btn_title1: 'Kalan {long_term} GPU',
+    btn_text1: 'Uzun Vadeli Kiralama Modu Yarışması - Başladı',
+    btn_title1: 'Mevcut {long_term} GPUS',
     btn_text2: 'Kısa vadeli kiralama modu yarışması - Başladı',
-    btn_title2: 'Güncel {short_term} GPU',
+    btn_title2: 'Güncel {short_term} GPUS',
     cont2_text1:
       "Orion hesaplama gücü yarışmasının toplam ödül miktarı 3 milyar token olup, uzun dönem kiralama modu için 2 milyar DLC ve kısa dönem kiralama modu için 1 milyar DLC'dir. Yarışma 180 gün sürecek ve 60 gün süren 3 turdan oluşacak, her tur arasında 5-10 gün aralık olacaktır.",
     cont2_btn1: 'Uzun dönem kiralama modu',
@@ -57,7 +57,7 @@ export default {
     cont2: {
       title: '1. Katılım Kuralları',
       text1_1:
-        "Orion hesaplama gücü yarışmasına katılan madencilerin bir Node NFT'ye sahip olmaları gerekir (her bir node 30.000 DLC airdrop ile birlikte gelir, değeri 90 USD, node hakkında daha fazla bilgi: ",
+        "Orion hesaplama gücü yarışmasına katılan madencilerin bir Node NFT'ye sahip olmaları gerekir ( node hakkında daha fazla bilgi: ",
       text1_2:
         "). Yarışma sırasında, tek bir GPU makinesi birden fazla node'a sahip olabilir ve ödül tokenlarının sayısı node sayısıyla çarpılır. Makine başına maksimum Node NFT sayısı 20'dir.",
       text2_1:
@@ -193,7 +193,7 @@ export default {
     cont2: {
       title: '1. Katılım Kuralları',
       text1_1:
-        "Orion hesaplama gücü yarışmasına katılan madenciler, bir Düğüm NFT'sine sahip olmalıdır (her düğüm, değeri 90 USD olan 30.000 DLC'lik bir airdrop içerir. Düğümler hakkında daha fazla bilgi için:",
+        "Orion hesaplama gücü yarışmasına katılan madenciler, bir Düğüm NFT'sine sahip olmalıdır ( Düğümler hakkında daha fazla bilgi için:",
       text1_2:
         "). Yarışma sırasında, tek bir GPU makinesi birden fazla düğümü barındırabilir ve ödül tokenlerinin sayısı düğüm sayısına orantılıdır. Tek bir makinenin sahip olabileceği maksimum Düğüm NFT sayısı 20'dir.",
       text2_1:

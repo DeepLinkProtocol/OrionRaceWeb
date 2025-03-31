@@ -22,10 +22,10 @@ export default {
     text: "La compétition de puissance de calcul GPU Orion sous le protocole DeepLink est une compétition d'incitation importante visant à encourager les mineurs à participer activement aux tests du réseau DeepLink. Cette compétition est une étape préparatoire essentielle avant le lancement officiel de DeepLink, la plus grande plateforme de protocole de cloud gaming au monde, fournissant une base technique solide et un support de calcul efficace pour les futurs utilisateurs mondiaux",
     text1: 'Le nombre total actuel de GPU dans le réseau DeepLink est de {gpu_num}',
     text2: 'La compétition a commencé, et les récompenses débuteront dès que le nombre de GPU atteindra le standard !',
-    btn_text1: 'Compétition de distance en mode location longue durée - A commencé',
-    btn_title1: 'Restant {long_term} GPU',
+    btn_text1: 'Compétition en mode location longue durée - A commencé',
+    btn_title1: 'GPUS {long_term} actuel',
     btn_text2: 'Compétition en mode location courte durée - A commencé',
-    btn_title2: 'Actuel {short_term} GPU',
+    btn_title2: 'Actuel {short_term} GPUS',
     cont2_text1:
       'La récompense totale en tokens pour la compétition de puissance de calcul Orion est de 3 milliards, avec 2 milliards de DLC pour le mode location longue durée et 1 milliard de DLC pour le mode location courte durée, sur une durée de 180 jours. La compétition est divisée en trois manches, chacune durant 60 jours, avec des intervalles de 5 à 10 jours.',
     cont2_btn1: 'Mode location longue durée',
@@ -58,7 +58,7 @@ export default {
     cont2: {
       title: '1. Règles de participation',
       text1_1:
-        "Les mineurs participant à la compétition de puissance de calcul Orion doivent détenir un NFT de nœud (chaque nœud est accompagné d'un airdrop de 30 000 DLC, d'une valeur de 90 USD, en savoir plus sur le nœud : ",
+        'Les mineurs participant à la compétition de puissance de calcul Orion doivent détenir un NFT de nœud ( en savoir plus sur le nœud : ',
       text1_2:
         '). Pendant la compétition, une machine GPU peut détenir plusieurs nœuds, et le nombre de jetons de récompense est multiplié par le nombre de nœuds. Le nombre maximum de NFT de nœuds par machine est de 20.',
       text2_1:
@@ -203,7 +203,7 @@ export default {
     cont2: {
       title: '1. Règles de Participation',
       text1_1:
-        "Les mineurs participant au concours de puissance de calcul Orion doivent détenir un NFT de nœud (chaque nœud inclut un airdrop de 30 000 DLC d'une valeur de 90 USD. Pour plus d'informations sur les nœuds :",
+        "Les mineurs participant au concours de puissance de calcul Orion doivent détenir un NFT de nœud (Pour plus d'informations sur les nœuds :",
       text1_2:
         "). Pendant la compétition, une machine GPU unique peut détenir plusieurs nœuds, et le nombre de tokens de récompense est proportionnel au nombre de nœuds. Le nombre maximum de NFTs de nœud qu'une seule machine peut détenir est de 20.",
       text2_1:

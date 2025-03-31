@@ -22,10 +22,10 @@ export default {
     text1: 'Die aktuelle Gesamtzahl der GPUs im DeepLink-Netzwerk beträgt {gpu_num}',
     text2:
       'Der Wettbewerb hat begonnen, und die Belohnungen starten, sobald die Anzahl der GPUs den Standard erreicht!',
-    btn_text1: 'Wettbewerb über Distanz im Langzeitmietmodus - Hat begonnen',
-    btn_title1: 'Verbleibende {long_term} GPU',
+    btn_text1: 'Wettbewerb im Langzeitmietmodus - Hat begonnen',
+    btn_title1: 'Aktuelles {long_term} GPUS',
     btn_text2: 'Wettbewerb im Kurzzeitmietmodus - Hat begonnen',
-    btn_title2: 'Aktuell {short_term} GPU',
+    btn_title2: 'Aktuell {short_term} GPUS',
     cont2_text1:
       'Die Gesamtanzahl der Token-Belohnungen für den Orion-Rechenwettbewerb beträgt 3 Milliarden, davon 2 Milliarden DLC für den Langzeitmietmodus und 1 Milliarde DLC für den Kurzzeitmietmodus. Der Wettbewerb dauert 180 Tage und ist in drei Runden unterteilt, die jeweils 60 Tage dauern und Pausen von 5 bis 10 Tagen haben.',
     cont2_btn1: 'Langzeitmietmodus',
@@ -58,7 +58,7 @@ export default {
     cont2: {
       title: '1. Teilnahmebedingungen',
       text1_1:
-        'Miner, die am Orion-Wettbewerb für Rechenleistung teilnehmen, müssen ein Node-NFT besitzen (jedes Node enthält ein Airdrop von 30.000 DLC im Wert von 90 USD, mehr über das Node erfahren: ',
+        'Miner, die am Orion-Wettbewerb für Rechenleistung teilnehmen, müssen ein Node-NFT besitzen ( mehr über das Node erfahren: ',
       text1_2:
         '). Während des Wettbewerbs kann eine einzelne GPU-Maschine mehrere Nodes besitzen, und die Anzahl der Belohnungstoken wird mit der Anzahl der Nodes multipliziert. Die maximale Anzahl an Node-NFTs pro Maschine beträgt 20.',
       text2_1:
@@ -201,7 +201,7 @@ export default {
     cont2: {
       title: '1. Teilnahmebedingungen',
       text1_1:
-        'Miner, die am Orion-Wettbewerb für Rechenleistung teilnehmen, müssen ein Node-NFT besitzen (jedes Node enthält einen Airdrop von 30.000 DLC im Wert von 90 USD. Weitere Informationen zu Nodes:',
+        'Miner, die am Orion-Wettbewerb für Rechenleistung teilnehmen, müssen ein Node-NFT besitzen ( Weitere Informationen zu Nodes:',
       text1_2:
         '). Während des Wettbewerbs kann eine einzelne GPU-Maschine mehrere Nodes halten, und die Anzahl der Belohnungs-Token ist proportional zur Anzahl der Nodes. Die maximale Anzahl an Node-NFTs, die eine einzelne Maschine halten kann, beträgt 20.',
       text2_1:

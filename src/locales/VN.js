@@ -21,10 +21,10 @@ export default {
     text: 'Cuộc thi Sức mạnh Tính toán GPU Orion của Giao thức DeepLink là một cuộc thi khuyến khích quan trọng nhằm khuyến khích các thợ đào tham gia tích cực vào việc thử nghiệm mạng DeepLink. Cuộc thi này là một bước chuẩn bị thiết yếu trước khi ra mắt chính thức nền tảng giao thức trò chơi đám mây lớn nhất thế giới DeepLink, cung cấp nền tảng kỹ thuật vững chắc và hỗ trợ sức mạnh tính toán hiệu quả cho người dùng toàn cầu trong tương lai',
     text1: 'Tổng số GPU hiện tại trong mạng DeepLink là {gpu_num}',
     text2: 'Cuộc thi đã bắt đầu, phần thưởng sẽ được khởi động khi số lượng GPU đạt tiêu chuẩn!',
-    btn_text1: 'Cuộc thi khoảng cách chế độ thuê dài hạn - Đã bắt đầu',
-    btn_title1: 'Còn lại {long_term} GPU',
+    btn_text1: 'Cuộc thi chế độ thuê dài hạn - Đã bắt đầu',
+    btn_title1: 'GPUS {long_term} hiện tại',
     btn_text2: 'Cuộc thi chế độ thuê ngắn hạn - Đã bắt đầu',
-    btn_title2: 'Hiện tại {short_term} GPU',
+    btn_title2: 'Hiện tại {short_term} GPUS',
     cont2_text1:
       'Tổng phần thưởng token cho cuộc thi sức mạnh tính toán Orion là 3 tỷ, với 2 tỷ DLC cho chế độ thuê dài hạn và 1 tỷ DLC cho chế độ thuê ngắn hạn, kéo dài 180 ngày. Cuộc thi được chia thành ba đợt, mỗi đợt kéo dài 60 ngày với khoảng cách từ 5-10 ngày.',
     cont2_btn1: 'Chế độ thuê dài hạn',
@@ -56,8 +56,7 @@ export default {
       'Trong suốt cuộc thi, các thợ đào có thể nhận được tổng cộng 2 tỷ DLC phần thưởng, và 100% tiền thuê DLC do người dùng thanh toán sẽ bị đốt cháy',
     cont2: {
       title: '1. Quy tắc tham gia',
-      text1_1:
-        'Thợ đào tham gia cuộc thi sức mạnh tính toán Orion cần sở hữu một NFT nút (mỗi nút đi kèm với một airdrop 30.000 DLC, trị giá 90 USD, tìm hiểu thêm về nút: ',
+      text1_1: 'Thợ đào tham gia cuộc thi sức mạnh tính toán Orion cần sở hữu một NFT nút ( tìm hiểu thêm về nút: ',
       text1_2:
         '). Trong thời gian diễn ra cuộc thi, một máy GPU đơn lẻ có thể sở hữu nhiều nút, và số lượng token phần thưởng được nhân với số lượng nút. Giới hạn số lượng NFT nút trên mỗi máy là 20.',
       text2_1:
@@ -190,8 +189,7 @@ export default {
       'Trong suốt cuộc thi, các thợ đào có thể nhận được tổng cộng 1 tỷ DLC tiền thưởng, và phí thuê DLC do người dùng thanh toán sẽ được đốt cháy hoàn toàn.',
     cont2: {
       title: '1. Quy Tắc Tham Gia',
-      text1_1:
-        'Người tham gia cuộc thi tính toán Orion cần phải sở hữu một Node NFT (mỗi nút sẽ nhận được airdrop 30.000 DLC, trị giá 90 USD. Thông tin chi tiết về các nút:',
+      text1_1: 'Người tham gia cuộc thi tính toán Orion cần phải sở hữu một Node NFT (Thông tin chi tiết về các nút:',
       text1_2:
         '). Trong thời gian thi đấu, một máy GPU có thể giữ nhiều nút, số lượng token thưởng tỷ lệ thuận với số lượng nút. Số lượng tối đa Node NFT mà một máy có thể giữ là 20.',
       text2_1:

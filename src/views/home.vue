@@ -121,14 +121,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watchEffect } from 'vue';
-import { useI18n } from 'vue-i18n';
-import BN from 'bn.js';
+import { ref, computed, watchEffect } from 'vue';
 import { getStateSummaries, getLongStakeHolders } from '@/api/home';
 import { getStateSummariesShort, getShortStakeHoldersShort } from '@/api/home-short';
-
-// i18n
-const { t } = useI18n();
 
 // 模拟数据
 const model_type = ref('long');
@@ -192,16 +187,14 @@ const getStateSummariesH = async () => {
     OrionDataList.value[5].value = 0;
     OrionDataList.value[6].value = 0;
   } else {
-    const totalStaking = new BN(res.stateSummaries[0].totalGPUCount);
-    const result = new BN(100).sub(totalStaking);
     // if (result.toNumber() < 0) {
     //   btnList.value[0].value = 0;
     // } else {
     //   btnList.value[0].value = result.toNumber(); // 直接更新 btnList 中的值
     // }
     // btnList.value[0].value = res.stateSummaries[0].totalStakingGPUCount;
-    btnList.value[0].value = result.toNumber();
-    OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 10000;
+    btnList.value[0].value = res.stateSummaries[0].totalStakingGPUCount;
+    OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 100;
     OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
     OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
     OrionDataList.value[3].value = `${
