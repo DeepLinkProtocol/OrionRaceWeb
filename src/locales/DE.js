@@ -23,9 +23,9 @@ export default {
     text2:
       'Der Wettbewerb hat begonnen, und die Belohnungen starten, sobald die Anzahl der GPUs den Standard erreicht!',
     btn_text1: 'Wettbewerb im Langzeitmietmodus - Hat begonnen',
-    btn_title1: 'Aktuelles {long_term} GPUS',
+    btn_title1: 'Aktuelles {long_term} GPUs',
     btn_text2: 'Wettbewerb im Kurzzeitmietmodus - Hat begonnen',
-    btn_title2: 'Aktuell {short_term} GPUS',
+    btn_title2: 'Aktuell {short_term} GPUs',
     cont2_text1:
       'Die Gesamtanzahl der Token-Belohnungen für den Orion-Rechenwettbewerb beträgt 3 Milliarden, davon 2 Milliarden DLC für den Langzeitmietmodus und 1 Milliarde DLC für den Kurzzeitmietmodus. Der Wettbewerb dauert 180 Tage und ist in drei Runden unterteilt, die jeweils 60 Tage dauern und Pausen von 5 bis 10 Tagen haben.',
     cont2_btn1: 'Langzeitmietmodus',

@@ -22,9 +22,9 @@ export default {
     text1: '現在、DeepLinkネットワーク内のGPUの総数は{gpu_num}枚です',
     text2: 'コンテストが開始しました。GPUの数が基準に達すると報酬が開始されます！',
     btn_text1: '長期レンタルモード競争 - 開始済み',
-    btn_title1: '現在の {long_term} GPUS',
+    btn_title1: '現在の {long_term} GPUs',
     btn_text2: '短期レンタルモード競技 - 開始済み',
-    btn_title2: '現在 {short_term} GPUS',
+    btn_title2: '現在 {short_term} GPUs',
     cont2_text1:
       'Orion計算パワー競技のトークン報酬総額は30億枚で、長期レンタルモードには20億DLC、短期レンタルモードには10億DLCが割り当てられ、期間は180日間です。競技は3回に分かれており、それぞれ60日間続き、5〜10日の間隔があります。',
     cont2_btn1: '長期レンタルモード',

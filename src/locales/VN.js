@@ -22,9 +22,9 @@ export default {
     text1: 'Tổng số GPU hiện tại trong mạng DeepLink là {gpu_num}',
     text2: 'Cuộc thi đã bắt đầu, phần thưởng sẽ được khởi động khi số lượng GPU đạt tiêu chuẩn!',
     btn_text1: 'Cuộc thi chế độ thuê dài hạn - Đã bắt đầu',
-    btn_title1: 'GPUS {long_term} hiện tại',
+    btn_title1: 'GPUs {long_term} hiện tại',
     btn_text2: 'Cuộc thi chế độ thuê ngắn hạn - Đã bắt đầu',
-    btn_title2: 'Hiện tại {short_term} GPUS',
+    btn_title2: 'Hiện tại {short_term} GPUs',
     cont2_text1:
       'Tổng phần thưởng token cho cuộc thi sức mạnh tính toán Orion là 3 tỷ, với 2 tỷ DLC cho chế độ thuê dài hạn và 1 tỷ DLC cho chế độ thuê ngắn hạn, kéo dài 180 ngày. Cuộc thi được chia thành ba đợt, mỗi đợt kéo dài 60 ngày với khoảng cách từ 5-10 ngày.',
     cont2_btn1: 'Chế độ thuê dài hạn',

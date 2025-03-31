@@ -22,9 +22,9 @@ export default {
     text1: 'The current total number of GPUs in the DeepLink network is {gpu_num}',
     text2: 'The competition has started, and rewards will begin once the number of GPUs meets the standard!',
     btn_text1: 'Long-term Rental Mode Competition - Has Started',
-    btn_title1: 'Current {long_term} GPUS',
+    btn_title1: 'Current {long_term} GPUs',
     btn_text2: 'Short-term Rental Mode Competition - Has Started',
-    btn_title2: 'Current {short_term} GPUS ',
+    btn_title2: 'Current {short_term} GPUs ',
 
     cont2_text1:
       'The total token reward for the Orion computing power competition is 3 billion, with 2 billion DLC for long-term rental mode and 1 billion DLC for short-term rental mode, lasting 180 days. The competition is divided into three rounds, each lasting 60 days with intervals of 5-10 days.',

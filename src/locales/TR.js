@@ -22,9 +22,9 @@ export default {
     text1: 'Şu anda DeepLink ağındaki toplam GPU sayısı {gpu_num}',
     text2: 'Yarışma başladı ve GPU sayısı standarda ulaştığında ödüller başlayacak!',
     btn_text1: 'Uzun Vadeli Kiralama Modu Yarışması - Başladı',
-    btn_title1: 'Mevcut {long_term} GPUS',
+    btn_title1: 'Mevcut {long_term} GPUs',
     btn_text2: 'Kısa vadeli kiralama modu yarışması - Başladı',
-    btn_title2: 'Güncel {short_term} GPUS',
+    btn_title2: 'Güncel {short_term} GPUs',
     cont2_text1:
       "Orion hesaplama gücü yarışmasının toplam ödül miktarı 3 milyar token olup, uzun dönem kiralama modu için 2 milyar DLC ve kısa dönem kiralama modu için 1 milyar DLC'dir. Yarışma 180 gün sürecek ve 60 gün süren 3 turdan oluşacak, her tur arasında 5-10 gün aralık olacaktır.",
     cont2_btn1: 'Uzun dönem kiralama modu',

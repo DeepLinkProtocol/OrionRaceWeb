@@ -22,9 +22,9 @@ export default {
     text1: '当前DeepLink网络中GPU总数量为{gpu_num}张',
     text2: '竞赛已经启动，一旦GPU数量达到标准，奖励将会开始！',
     btn_text1: '长租模式竞赛 - 已经开始',
-    btn_title1: '当前 {long_term} GPUS',
+    btn_title1: '当前 {long_term} GPUs',
     btn_text2: '短租模式竞赛 - 已经开始',
-    btn_title2: '当前 {short_term} GPUS',
+    btn_title2: '当前 {short_term} GPUs',
     cont2_text1:
       'Orion算力竞赛的Token奖励总数为30亿枚，其中长租模式总共奖励为20亿DLC，短租模式总奖励10亿DLC奖励，持续180天时间，竞赛总共分为3次，每次持续60天时间，每次间隔5-10天时间',
     cont2_btn1: '长租模式',

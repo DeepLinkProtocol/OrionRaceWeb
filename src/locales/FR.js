@@ -23,9 +23,9 @@ export default {
     text1: 'Le nombre total actuel de GPU dans le réseau DeepLink est de {gpu_num}',
     text2: 'La compétition a commencé, et les récompenses débuteront dès que le nombre de GPU atteindra le standard !',
     btn_text1: 'Compétition en mode location longue durée - A commencé',
-    btn_title1: 'GPUS {long_term} actuel',
+    btn_title1: 'GPUs {long_term} actuel',
     btn_text2: 'Compétition en mode location courte durée - A commencé',
-    btn_title2: 'Actuel {short_term} GPUS',
+    btn_title2: 'Actuel {short_term} GPUs',
     cont2_text1:
       'La récompense totale en tokens pour la compétition de puissance de calcul Orion est de 3 milliards, avec 2 milliards de DLC pour le mode location longue durée et 1 milliard de DLC pour le mode location courte durée, sur une durée de 180 jours. La compétition est divisée en trois manches, chacune durant 60 jours, avec des intervalles de 5 à 10 jours.',
     cont2_btn1: 'Mode location longue durée',

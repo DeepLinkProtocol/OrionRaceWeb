@@ -22,9 +22,9 @@ export default {
     text1: '현재 DeepLink 네트워크의 GPU 총 수는 {gpu_num}입니다',
     text2: '대회가 시작되었습니다. GPU 수가 기준에 도달하면 보상이 시작됩니다!',
     btn_text1: '장기 렌탈 모드 대회 - 시작됨',
-    btn_title1: '현재 {long_term} GPUS',
+    btn_title1: '현재 {long_term} GPUs',
     btn_text2: '단기 임대 모드 대회 - 시작됨',
-    btn_title2: '현재 {short_term} GPUS',
+    btn_title2: '현재 {short_term} GPUs',
     cont2_text1:
       'Orion 연산 성능 대회의 총 토큰 보상은 30억 개이며, 장기 대여 모드에는 20억 DLC, 단기 대여 모드에는 10억 DLC가 제공되며, 총 180일 동안 지속됩니다. 대회는 60일씩 3회에 걸쳐 진행되며, 각 회차 간에는 5~10일 간의 간격이 있습니다.',
     cont2_btn1: '장기 대여 모드',
