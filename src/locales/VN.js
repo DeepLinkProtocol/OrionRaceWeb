@@ -255,7 +255,7 @@ export default {
       text8: 'Sau khi niêm yết trên sàn giao dịch, token thử nghiệm có thể đổi 1:1 cho token mạng chính.',
       text9: 'DeepLink sử dụng thuật toán thưởng phi tuyến.',
       text10:
-        'Tổng số token được thưởng trong hệ thống này được cố định hàng ngày. Phần thưởng mà một máy nhận được liên quan đến sức mạnh tính toán X của máy, thời gian khai thác hiệu quả Y và số lượng token đặt cọc. Càng đặt cọc nhiều token, phần thưởng càng cao; tuy nhiên, không tuân theo mối quan hệ tăng trưởng tuyến tính. Cơ sở phần thưởng cho 0-1.000 token là giống nhau, nhưng đối với số lượng trên 1.000 token, phần thưởng được tính dựa trên một hàm. Nếu máy đang ở trạng thái cho thuê, sức mạnh tính toán của nó sẽ tăng 30%.',
+        'Tổng số token được thưởng trong hệ thống này được cố định hàng ngày. Phần thưởng mà một máy nhận được liên quan đến sức mạnh tính toán X của máy, thời gian khai thác hiệu quả Y và số lượng token đặt cọc. Càng đặt cọc nhiều token, phần thưởng càng cao; tuy nhiên, không tuân theo mối quan hệ tăng trưởng tuyến tính. Cơ sở phần thưởng cho 0-10.000 token là giống nhau, nhưng đối với số lượng trên 10.000 token, phần thưởng được tính dựa trên một hàm. Nếu máy đang ở trạng thái thuê, sức mạnh tính toán của nó sẽ tăng 30%.',
       text11: 'Công thức tính phần thưởng:',
       text12: 'R: Tổng số lượng token phần thưởng hàng ngày (giá trị cố định)',
       text13: 'Số lượng token đặt cọc cho máy i',
@@ -265,11 +265,11 @@ export default {
       title1: 'Số lượng đặt cọc:',
       text1_1: '1) Bạn có thể chọn bất kỳ số lượng token nào để đặt cọc hoặc không đặt cọc.',
       text1_2:
-        '2) Đối với số lượng đặt cọc từ 0-1.000, số phần thưởng là như nhau; đối với số lượng trên 1.000, phần thưởng tăng theo cách không tuyến tính.',
+        '2) Đối với số lượng đặt cọc từ 0-10.000, số phần thưởng là như nhau; đối với số lượng trên 10.000, phần thưởng tăng theo cách không tuyến tính.',
       text1_3:
-        '3) Khi số lượng đặt cọc dưới 1.000, mỗi lần rút phần thưởng sẽ đóng góp trước vào số lượng đặt cọc cho đến khi đạt đủ 1.000.',
+        '3) Khi số lượng đặt cọc dưới 10.000, mỗi lần rút phần thưởng sẽ đóng góp trước vào số lượng đặt cọc cho đến khi đạt đủ 10.000.',
       text1_4:
-        '4) Phần thưởng cho 10.000 token là 1.23026 lần so với phần thưởng cho 1.000 token, tức là tăng khoảng 23.03%. Đối với 100.000 token, phần thưởng là 1.46052 lần, tức là tăng khoảng 46.05%. Đối với 1.000.000 token, phần thưởng là 1.69078 lần, tức là tăng khoảng 69.08%, và đối với 10.000.000 token, phần thưởng là 1.92103 lần, tức là tăng khoảng 92.10%.',
+        '4) Phần thưởng cho 100.000 token là 1.23026 lần so với phần thưởng cho 10.000 token, tức là tăng khoảng 23.03%. Đối với 1.000.000 token, phần thưởng là 1.46052 lần, tức là tăng khoảng 46.05%. Đối với 10.000.000 token, phần thưởng là 1.69078 lần, tức là tăng khoảng 69.08%, và đối với 100.000.000 token, phần thưởng là 1.92103 lần, tức là tăng khoảng 92.10%.',
       title2: 'Rút phần thưởng:',
       text2_1:
         'Bạn có thể rút phần thưởng mỗi 24 giờ. Mỗi lần rút, 10% phần thưởng mới sinh ra có thể rút ngay lập tức, trong khi 90% còn lại bị khóa trong 180 ngày. Phần bị khóa được mở khóa 0.5% mỗi lần rút, và sẽ hoàn toàn mở khóa sau 180 ngày.',

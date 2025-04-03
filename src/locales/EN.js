@@ -268,7 +268,7 @@ export default {
       text8: 'After listing on the exchange, test tokens can be exchanged 1:1 for mainnet tokens.',
       text9: 'DeepLink uses a non-linear reward algorithm.',
       text10:
-        "The total number of tokens rewarded by this system is fixed daily. The rewards a machine receives are related to the machine's computing power X, the effective mining time Y, and the amount of staked tokens. The more tokens staked, the greater the reward; however, it does not follow a linear growth relationship. The reward base for 0-1,000 tokens is the same, but for amounts over 1,000 tokens, the reward is calculated based on a function. If the machine is in a rented state, its computing power increases by 30%.",
+        "The total number of tokens rewarded by this system is fixed daily. The rewards a machine receives are related to the machine's computing power X, the effective mining time Y, and the number of staked tokens. The more tokens staked, the greater the reward; however, it does not follow a linear growth relationship. The reward base for 0-10,000 tokens is the same, but for amounts over 10,000 tokens, the reward is calculated based on a function. If the machine is in a rented state, its computing power increases by 30%.",
       text11: 'Reward Calculation Formula:',
       text12: 'R: Total daily reward token amount (fixed value)',
       text13: 'Staked token amount for machine i',
@@ -276,13 +276,13 @@ export default {
       text15: 'Effective mining time of machine i',
       text16: '',
       title1: 'Staked Amount:',
-      text1_1: '1) You can choose any amount to stake or choose not to stake.',
+      text1_1: '1) You can choose any amount of staked tokens or choose not to stake.',
       text1_2:
-        '2) For staked amounts between 0-1,000, the reward amount is the same; for amounts over 1,000, rewards grow non-linearly.',
+        '2) For staked amounts between 0-10,000, the reward amount is the same; for amounts over 10,000, rewards grow non-linearly.',
       text1_3:
-        '3) When the staked amount is below 1,000, each reward extraction will first contribute to the stake until 1,000 is met.',
+        '3) When the staked amount is below 10,000, each reward extraction will first contribute to the stake until 10,000 is met.',
       text1_4:
-        '4) The reward for 10,000 tokens is 1.23026 times the reward for staking 1,000 tokens, which is an increase of about 23.03%. For 100,000 tokens, the reward is 1.46052 times, or an increase of about 46.05%. For 1,000,000 tokens, the reward is 1.69078 times, an increase of about 69.08%, and for 10,000,000 tokens, the reward is 1.92103 times, about a 92.10% increase.',
+        '4) The reward for 100,000 tokens is 1.23026 times the reward for staking 10,000 tokens, which is an increase of about 23.03%. For 1,000,000 tokens, the reward is 1.46052 times, or an increase of about 46.05%. For 10,000,000 tokens, the reward is 1.69078 times, an increase of about 69.08%, and for 100,000,000 tokens, the reward is 1.92103 times, about a 92.10% increase.',
       title2: 'Reward Extraction:',
       text2_1:
         'You can extract rewards every 24 hours. For each extraction, 10% of the newly generated rewards are immediately available, while 90% are locked for 180 days. The locked portion releases 0.5% at each extraction, with full release after 180 days.',

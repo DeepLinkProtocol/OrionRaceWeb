@@ -273,7 +273,7 @@ export default {
         "Après l'inscription sur l'échange, les jetons de test peuvent être échangés à un ratio de 1:1 contre les jetons du réseau principal.",
       text9: 'DeepLink utilise un algorithme de récompense non linéaire.',
       text10:
-        "Le nombre total de tokens récompensés par ce système est fixe quotidiennement. Les récompenses qu'une machine reçoit sont liées à la puissance de calcul X de la machine, au temps de minage effectif Y, et au nombre de tokens mis en jeu. Plus il y a de tokens mis en jeu, plus la récompense est grande; cependant, cela ne suit pas une relation de croissance linéaire. La base de récompense pour 0-1 000 tokens est la même, mais pour des montants supérieurs à 1 000 tokens, la récompense est calculée sur la base d'une fonction. Si la machine est en location, sa puissance de calcul augmente de 30 %. ",
+        "Le nombre total de tokens récompensés par ce système est fixe quotidiennement. Les récompenses qu'une machine reçoit sont liées à la puissance de calcul X de la machine, au temps de minage effectif Y, et au nombre de tokens mis en jeu. Plus il y a de tokens mis en jeu, plus la récompense est grande; cependant, cela ne suit pas une relation de croissance linéaire. La base de récompense pour 0-10 000 tokens est la même, mais pour des montants supérieurs à 10 000 tokens, la récompense est calculée sur la base d'une fonction. Si la machine est en location, sa puissance de calcul augmente de 30 %.",
       text11: 'Formule de calcul des récompenses :',
       text12: 'R : Nombre total de tokens de récompense quotidien (valeur fixe)',
       text13: 'Montant de tokens mis en jeu pour la machine i',
@@ -284,11 +284,11 @@ export default {
       text1_1:
         "1) Vous pouvez choisir n'importe quel montant de tokens à mettre en jeu ou choisir de ne pas en mettre en jeu.",
       text1_2:
-        '2) Pour les montants mis en jeu entre 0 et 1 000, le montant de la récompense est le même; pour des montants supérieurs à 1 000, les récompenses augmentent de manière non linéaire.',
+        '2) Pour les montants mis en jeu entre 0 et 10 000, le montant de la récompense est le même; pour les montants supérieurs à 10 000, les récompenses augmentent de manière non linéaire.',
       text1_3:
-        "3) Lorsque le montant mis en jeu est inférieur à 1 000, chaque extraction de récompense contribue d'abord au staking jusqu'à ce que 1 000 soient atteints.",
+        "3) Lorsque le montant mis en jeu est inférieur à 10 000, chaque extraction de récompense contribue d'abord au staking jusqu'à ce que 10 000 soient atteints.",
       text1_4:
-        "4) La récompense pour 10 000 tokens est de 1,23026 fois celle pour 1 000 tokens mis en jeu, soit une augmentation d'environ 23,03 %. Pour 100 000 tokens, la récompense est de 1,46052 fois, soit une augmentation d'environ 46,05 %. Pour 1 000 000 tokens, la récompense est de 1,69078 fois, soit une augmentation d'environ 69,08 %, et pour 10 000 000 tokens, la récompense est de 1,92103 fois, soit une augmentation d'environ 92,10 %.",
+        "4) La récompense pour 100 000 tokens est de 1,23026 fois celle pour 10 000 tokens mis en jeu, soit une augmentation d'environ 23,03 %. Pour 1 000 000 de tokens, la récompense est de 1,46052 fois, soit une augmentation d'environ 46,05 %. Pour 10 000 000 de tokens, la récompense est de 1,69078 fois, soit une augmentation d'environ 69,08 %, et pour 100 000 000 de tokens, la récompense est de 1,92103 fois, soit une augmentation d'environ 92,10 %.",
       title2: 'Extraction des récompenses :',
       text2_1:
         'Vous pouvez extraire les récompenses toutes les 24 heures. Pour chaque extraction, 10 % des nouvelles récompenses générées sont immédiatement disponibles, tandis que 90 % sont bloqués pendant 180 jours. La portion bloquée est libérée à hauteur de 0,5 % à chaque extraction, avec une libération totale après 180 jours.',

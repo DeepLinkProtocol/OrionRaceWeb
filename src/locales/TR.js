@@ -259,7 +259,7 @@ export default {
       text8: "Borsa listelendikten sonra, test token'ları ana ağ token'ları ile 1:1 oranında değiştirilebilir.",
       text9: 'DeepLink, doğrusal olmayan bir ödül algoritması kullanır.',
       text10:
-        "Bu sistemde günlük ödül olarak verilen toplam token sayısı sabittir. Bir makinenin aldığı ödüller, makinenin işlem gücü X, etkin madencilik süresi Y ve yatırılan token miktarı ile ilişkilidir. Yatırılan token sayısı arttıkça ödüller de artar; ancak bu artış doğrusal bir ilişki göstermez. 0-1,000 token için ödül tabanı aynıdır, ancak 1,000 token'dan fazlası için ödül bir fonksiyon temelinde hesaplanır. Makine kiralandığında işlem gücü %30 artar.",
+        "Bu sistemde günlük ödül olarak verilen toplam token sayısı sabittir. Bir makinenin aldığı ödüller, makinenin işlem gücü X, etkin madencilik süresi Y ve yatırılan token miktarı ile ilişkilidir. Yatırılan token sayısı arttıkça ödüller de artar; ancak bu, doğrusal bir büyüme ilişkisini takip etmez. 0-10.000 token için ödül tabanı aynıdır, ancak 10.000 token'ı aştığında ödül bir fonksiyon temelinde hesaplanır. Makine kiralandığında işlem gücü %30 artar.",
       text11: 'Ödül Hesaplama Formülü:',
       text12: 'R: Günlük toplam ödül token miktarı (sabit değer)',
       text13: "Makine i'nin yatırılan token sayısı",
@@ -269,11 +269,11 @@ export default {
       title1: 'Yatırılan Miktar:',
       text1_1: '1) İstediğiniz kadar token yatırabilir veya yatırım yapmamayı seçebilirsiniz.',
       text1_2:
-        "2) 0-1,000 arası yatırılan miktar için ödül aynıdır; 1,000'i aştığında ödüller doğrusal olmayan şekilde artar.",
+        "2) 0-10.000 arası yatırılan miktar için ödül aynı kalır; 10.000'i aştığında ödüller doğrusal olmayan şekilde artar.",
       text1_3:
-        "3) Yatırılan miktar 1,000'den az olduğunda, her ödül çekimi önce yatırılan miktarı artıracak şekilde kullanılacaktır ve 1,000'e ulaşana kadar devam eder.",
+        "3) Yatırılan miktar 10.000'den az olduğunda, her ödül çekimi önce yatırıma eklenir ve 10.000'e ulaşana kadar devam eder.",
       text1_4:
-        "4) 10,000 token için ödül, 1,000 token yatırmanın 1.23026 katıdır, bu yaklaşık %23.03'lük bir artışa eşittir. 100,000 token için ödül 1.46052 kat olup, %46.05 artışı ifade eder. 1,000,000 token için 1.69078 kat, yaklaşık %69.08 artış ve 10,000,000 token için 1.92103 kat, yaklaşık %92.10 artış sağlar.",
+        "4) 100.000 token için ödül, 10.000 token yatırımı için ödülün 1.23026 katıdır, bu yaklaşık %23.03'lük bir artıştır. 1.000.000 token için ödül, 1.46052 katı, yani %46.05'lik bir artış sağlar. 10.000.000 token için 1.69078 kat artışla yaklaşık %69.08 ve 100.000.000 token için 1.92103 kat yani yaklaşık %92.10 artış sağlar.",
       title2: 'Ödül Çekme:',
       text2_1:
         "Ödüller 24 saatte bir çekilebilir. Her çekimde yeni kazanılan ödüllerin %10'u hemen çekilebilir, kalan %90'ı 180 gün boyunca kilitlenir. Kilitli kısım her çekimde %0.5 serbest bırakılır ve 180 gün sonra tamamen serbest kalır.",

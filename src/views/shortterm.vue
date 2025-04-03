@@ -600,14 +600,14 @@
           <span>B<sub>i</sub> = </span>
           <div class="fraction">
             <div class="numerator">
-              H<sub>i</sub>&nbsp;&middot;&nbsp;T<sub>i</sub>&nbsp;&middot;&nbsp;ln(max(1000, P<sub
+              H<sub>i</sub>&nbsp;&middot;&nbsp;T<sub>i</sub>&nbsp;&middot;&nbsp;ln(max(10000, P<sub
                 style="font-size: 12px"
                 >i</sub
               >))
             </div>
             <div class="denominator">
               &sum;<sup>N</sup><sub style="margin-left: -10px">j=1</sub> H<sub>j</sub> &middot;
-              T<sub>j</sub>&nbsp;&middot;&nbsp;ln(max(1000, P<sub style="font-size: 12px">j</sub>))
+              T<sub>j</sub>&nbsp;&middot;&nbsp;ln(max(10000, P<sub style="font-size: 12px">j</sub>))
             </div>
           </div>
           <span class="product"> <span>·</span> R</span>
@@ -990,8 +990,6 @@ export default defineComponent({
     ]);
     const stak_dlc_list = ref([
       { label: '0', value: 1 },
-      { label: '1,000', value: 1000 },
-      { label: '5,000', value: 5000 },
       { label: '10,000', value: 10000 },
       { label: '20,000', value: 20000 },
       { label: '50,000', value: 50000 },

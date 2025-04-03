@@ -270,7 +270,7 @@ export default {
       text8: 'Nach dem Listing an der Börse können Test-Token im Verhältnis 1:1 gegen Mainnet-Token getauscht werden.',
       text9: 'DeepLink verwendet einen nicht-linearen Belohnungsalgorithmus.',
       text10:
-        'Die Gesamtzahl der täglich ausgeschütteten Tokens in diesem System ist festgelegt. Die Belohnung, die eine Maschine erhält, hängt von der Rechenleistung X der Maschine, der effektiven Mining-Zeit Y und der Anzahl der gestakten Tokens ab. Je mehr Tokens gestakt werden, desto höher die Belohnung, allerdings ohne lineare Wachstumsbeziehung. Die Belohnungsbasis für 0–1.000 Tokens ist gleich, aber bei über 1.000 Tokens wird die Belohnung gemäß einer Funktion berechnet. Befindet sich die Maschine im Vermietungszustand, erhöht sich die Rechenleistung um 30 %. ',
+        'Die Gesamtzahl der täglich ausgeschütteten Tokens in diesem System ist festgelegt. Die Belohnung, die eine Maschine erhält, hängt von der Rechenleistung X der Maschine, der effektiven Mining-Zeit Y und der Anzahl der gestakten Tokens ab. Je mehr Tokens gestakt werden, desto höher die Belohnung, allerdings ohne lineare Wachstumsbeziehung. Die Belohnungsbasis für 0–10.000 Tokens ist gleich, aber bei über 10.000 Tokens wird die Belohnung gemäß einer Funktion berechnet. Befindet sich die Maschine im Vermietungszustand, erhöht sich die Rechenleistung um 30 %.',
       text11: 'Belohnungsberechnungsformel:',
       text12: 'R: Die tägliche Gesamtmenge der Belohnungstoken (fester Wert)',
       text13: 'Die Anzahl der gestakten Token der Maschine i',
@@ -280,11 +280,11 @@ export default {
       title1: 'Gestakte Menge:',
       text1_1: '1) Sie können die Anzahl der gestakten Tokens beliebig wählen oder auch keine Tokens staken.',
       text1_2:
-        '2) Die Belohnungsmenge für 0-1.000 Tokens ist gleich; ab mehr als 1.000 Tokens wächst sie nicht linear.',
+        '2) Die Belohnungsmenge für 0-10.000 Tokens ist gleich; ab mehr als 10.000 Tokens wächst sie nicht linear.',
       text1_3:
-        '3) Wenn weniger als 1.000 Tokens gestakt werden, wird jede Belohnung zuerst in das Staking investiert, bis 1.000 erreicht sind.',
+        '3) Wenn weniger als 10.000 Tokens gestakt werden, wird jede Belohnung zuerst in das Staking investiert, bis 10.000 erreicht sind.',
       text1_4:
-        '4) Der Bonus für 10.000 Tokens ist 1,23026 mal so hoch wie für 1.000 gestakte Tokens, was eine Steigerung von etwa 23,03 % bedeutet. Der Bonus für 100.000 Tokens ist 1,46052 mal so hoch, was eine Steigerung von etwa 46,05 % bedeutet. Der Bonus für 1.000.000 Tokens ist 1,69078 mal so hoch, was eine Steigerung von etwa 69,08 % bedeutet, und der Bonus für 10.000.000 Tokens ist 1,92103 mal so hoch, was eine Steigerung von etwa 92,10 % bedeutet.',
+        '4) Der Bonus für 100.000 Tokens ist 1,23026 mal so hoch wie für 10.000 gestakte Tokens, was eine Steigerung von etwa 23,03 % bedeutet. Der Bonus für 1.000.000 Tokens ist 1,46052 mal so hoch, was eine Steigerung von etwa 46,05 % bedeutet. Der Bonus für 10.000.000 Tokens ist 1,69078 mal so hoch, was eine Steigerung von etwa 69,08 % bedeutet, und der Bonus für 100.000.000 Tokens ist 1,92103 mal so hoch, was eine Steigerung von etwa 92,10 % bedeutet.',
       title2: 'Belohnungsausschüttung:',
       text2_1:
         'Jede 24 Stunden kann eine Auszahlung erfolgen. Bei jeder Auszahlung kann 10 % der neu generierten Belohnung sofort ausgezahlt werden, und 90 % wird für 180 Tage gesperrt. Der gesperrte Betrag kann bei jeder Auszahlung 0,5 % entnommen werden. Nach 180 Tagen kann der gesperrte Betrag vollständig ausgezahlt werden.',
