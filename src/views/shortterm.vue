@@ -628,7 +628,7 @@
       </div>
       <div class="title1">{{ $t('short_rule.cont5.title2') }}</div>
       <div class="text">
-        <p>{{ $t('short_rule.cont5.text2_1') }}</p>
+        <p v-html="$t('short_rule.cont5.text2_1')"></p>
       </div>
 
       <!-- <div class="text">

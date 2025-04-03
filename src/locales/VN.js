@@ -272,7 +272,7 @@ export default {
         '4) Phần thưởng cho 100.000 token là 1.23026 lần so với phần thưởng cho 10.000 token, tức là tăng khoảng 23.03%. Đối với 1.000.000 token, phần thưởng là 1.46052 lần, tức là tăng khoảng 46.05%. Đối với 10.000.000 token, phần thưởng là 1.69078 lần, tức là tăng khoảng 69.08%, và đối với 100.000.000 token, phần thưởng là 1.92103 lần, tức là tăng khoảng 92.10%.',
       title2: 'Rút phần thưởng:',
       text2_1:
-        'Bạn có thể rút phần thưởng mỗi 24 giờ. Mỗi lần rút, 10% phần thưởng mới sinh ra có thể rút ngay lập tức, trong khi 90% còn lại bị khóa trong 180 ngày. Phần bị khóa được mở khóa 0.5% mỗi lần rút, và sẽ hoàn toàn mở khóa sau 180 ngày.',
+        'Phần thưởng có thể được rút bất kỳ lúc nào. Nếu ban đầu bạn không stake DLC hoặc số lượng stake dưới 10,000, lợi nhuận từ phần thưởng sẽ tích lũy dưới dạng DLC được stake cho đến khi đạt 10,000 DLC.<br>1) Tiền thuê sẽ tích lũy làm quỹ stake cho đến khi đạt 10,000 DLC.<br>2) Thời gian thuê tối thiểu là 2 giờ, không có giới hạn tối đa về thời gian thuê. Khi thời gian còn lại dưới 1 giờ, máy sẽ không thể cho thuê và không được tính vào phần thưởng trực tuyến. Thợ đào có thể gia hạn thời gian bất kỳ lúc nào, nhưng mỗi lần gia hạn phải thêm ít nhất 2 giờ.',
 
       title4: 'Công Thức Tính Toán Doanh Thu DLC Hàng Ngày: DLC được tính theo giá 0,003 USD.',
       text4_8:

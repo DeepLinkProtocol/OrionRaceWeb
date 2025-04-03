@@ -276,7 +276,7 @@ export default {
         "4) 100.000 token için ödül, 10.000 token yatırımı için ödülün 1.23026 katıdır, bu yaklaşık %23.03'lük bir artıştır. 1.000.000 token için ödül, 1.46052 katı, yani %46.05'lik bir artış sağlar. 10.000.000 token için 1.69078 kat artışla yaklaşık %69.08 ve 100.000.000 token için 1.92103 kat yani yaklaşık %92.10 artış sağlar.",
       title2: 'Ödül Çekme:',
       text2_1:
-        "Ödüller 24 saatte bir çekilebilir. Her çekimde yeni kazanılan ödüllerin %10'u hemen çekilebilir, kalan %90'ı 180 gün boyunca kilitlenir. Kilitli kısım her çekimde %0.5 serbest bırakılır ve 180 gün sonra tamamen serbest kalır.",
+        'Ödüller herhangi bir zamanda çekilebilir. Başlangıçta DLC stake etmediyseniz veya stake edilen miktar 10,000’den azsa, ödül kârları 10,000 DLC’ye ulaşana kadar stake edilen DLC olarak birikir.<br>1) Kira, 10,000 DLC’ye ulaşana kadar stake fonu olarak birikir.<br>2) Minimum kiralama süresi 2 saattir, maksimum kiralama süresi sınırsızdır. Kalan kullanılabilir süre 1 saatten az olduğunda, makine kiralanamaz ve çevrimiçi ödüllere dahil edilmez. Madenciler süreyi herhangi bir zamanda uzatabilir, ancak her uzatma en az 2 saat olmalıdır.',
 
       title4: 'Günlük DLC Gelir Hesaplama Formülü: DLC, {price} USD fiyatıyla hesaplanır.',
       text4_8:

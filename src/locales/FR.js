@@ -291,7 +291,7 @@ export default {
         "4) La récompense pour 100 000 tokens est de 1,23026 fois celle pour 10 000 tokens mis en jeu, soit une augmentation d'environ 23,03 %. Pour 1 000 000 de tokens, la récompense est de 1,46052 fois, soit une augmentation d'environ 46,05 %. Pour 10 000 000 de tokens, la récompense est de 1,69078 fois, soit une augmentation d'environ 69,08 %, et pour 100 000 000 de tokens, la récompense est de 1,92103 fois, soit une augmentation d'environ 92,10 %.",
       title2: 'Extraction des récompenses :',
       text2_1:
-        'Vous pouvez extraire les récompenses toutes les 24 heures. Pour chaque extraction, 10 % des nouvelles récompenses générées sont immédiatement disponibles, tandis que 90 % sont bloqués pendant 180 jours. La portion bloquée est libérée à hauteur de 0,5 % à chaque extraction, avec une libération totale après 180 jours.',
+        'Les récompenses peuvent être retirées à tout moment. Si vous n’avez pas misé de DLC au départ ou si la quantité mise en jeu est inférieure à 10,000, les bénéfices des récompenses s’accumuleront sous forme de DLC mis en jeu jusqu’à atteindre 10,000 DLC.<br>1) Le loyer s’accumulera sous forme de fonds mis en jeu jusqu’à atteindre 10,000 DLC.<br>2) La durée minimale de location est de 2 heures, sans limite maximale. Lorsque le temps disponible restant est inférieur à 1 heure, la machine ne pourra pas être louée et ne sera pas comptabilisée dans les récompenses en ligne. Les mineurs peuvent prolonger la durée à tout moment, mais chaque prolongation doit être d’au moins 2 heures.',
 
       title4: 'Formule de Calcul des Revenus Journaliers en DLC : Le DLC est calculé à un prix de 0,003 USD.',
       text4_8:

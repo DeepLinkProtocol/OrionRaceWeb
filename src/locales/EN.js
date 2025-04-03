@@ -285,7 +285,7 @@ export default {
         '4) The reward for 100,000 tokens is 1.23026 times the reward for staking 10,000 tokens, which is an increase of about 23.03%. For 1,000,000 tokens, the reward is 1.46052 times, or an increase of about 46.05%. For 10,000,000 tokens, the reward is 1.69078 times, an increase of about 69.08%, and for 100,000,000 tokens, the reward is 1.92103 times, about a 92.10% increase.',
       title2: 'Reward Extraction:',
       text2_1:
-        'You can extract rewards every 24 hours. For each extraction, 10% of the newly generated rewards are immediately available, while 90% are locked for 180 days. The locked portion releases 0.5% at each extraction, with full release after 180 days.',
+        'Rewards can be withdrawn at any time. If you did not stake DLC at the beginning or the staked amount is less than 10,000, the reward profits will accumulate as staked DLC until it reaches 10,000 DLC.<br>1) Rent will accumulate as staking funds until it reaches 10,000 DLC.<br>2) The minimum rental period is 2 hours, with no upper limit on rental duration. When the remaining available time falls below 1 hour, the machine cannot be rented and will not count toward online rewards. Miners can extend the duration at any time, but each extension must be at least 2 hours.',
 
       title4: 'Daily DLC Revenue Calculation Formula: DLC is calculated at a price of {price} USD.',
       text4_8:
