@@ -126,16 +126,25 @@
           </el-select>
         </div> -->
       </div>
-      <div class="text">{{ $t('long_rule.cont5.text4_8') }}</div>
-      <div class="title1">
-        {{
-          $t('long_rule.cont5.title5', {
-            dlc_num: dlc_earning,
-            usdt_num: dlc_usdt_earning,
-            price: dlcPrice?.dlc_price || 0,
-          })
-        }}
-      </div>
+      <!-- <div class="text">{{ $t('long_rule.cont5.text4_8') }}</div> -->
+
+      <el-skeleton :rows="1" :loading="calcLoading" animated>
+        <!-- 自定义骨架屏模板，确保一行 -->
+        <template #template>
+          <el-skeleton-item variant="text" style="width: 100%; height: 30px" />
+        </template>
+        <template #default>
+          <div class="title1">
+            {{
+              $t('long_rule.cont5.title5', {
+                dlc_num: dlc_earning,
+                usdt_num: dlc_usdt_earning,
+                price: dlcPrice?.dlc_price || 0,
+              })
+            }}
+          </div>
+        </template>
+      </el-skeleton>
     </div>
     <div class="page_cont2 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
       <div class="title">{{ $t('long_rule.cont2.title') }}</div>
@@ -796,6 +805,7 @@ import { getRewardInfo } from '@/api/wss';
 import { useStore } from 'vuex';
 import { useIntervalFn } from '@vueuse/core';
 import { getStateSummaries } from '@/api/home';
+import { useLong } from '@/hooks/lang-rent/useLong';
 
 export default defineComponent({
   name: 'longTerm',
@@ -1206,15 +1216,18 @@ export default defineComponent({
       }
     };
 
-    onMounted(async () => {
-      await getPrice();
-      await nextTick();
-      for (let i = 1; i < 33; i++) {
-        numList.value.push(16 * i);
-        mem_num_list.value.push({ name: 16 * i, value: 16 * i });
-        options2_1.value.push({ name: 16 * i, value: 16 * i });
-        options2.value.push({ name: 16 * i, value: 16 * i });
-      }
+    onMounted(() => {
+      getPrice();
+
+      nextTick(() => {
+        for (let i = 1; i < 33; i++) {
+          numList.value.push(16 * i);
+          mem_num_list.value.push({ name: 16 * i, value: 16 * i });
+          options2_1.value.push({ name: 16 * i, value: 16 * i });
+          console.log(options2_1.value, 'options2_1');
+          options2.value.push({ name: 16 * i, value: 16 * i });
+        }
+      });
     });
     onBeforeUnmount(() => {
       if (timer.value) {
@@ -1247,7 +1260,62 @@ export default defineComponent({
           ]);
       }
     );
+
+    // 收集的用户选择的数据
+    const calcUserData = computed(() => {
+      return {
+        // GPU型号
+        gpuType: gpu_type2.value,
+        // 内存数量
+        ramNumber: mem_num2.value,
+        // 节点NFT数量
+        nftNumber: nft_num.value,
+        // 地域
+        local: local2.value,
+        // 质押DLC数量
+        dlcNumber: stak_dlc_num.value,
+        // 竞赛阶段
+        step: race_stage.value,
+      };
+    });
+    // hook
+    const { calculateMiningPower, fetchRewards, calcLoading } = useLong();
+    watch(
+      () => calcUserData.value,
+      async () => {
+        console.log(calcUserData.value, '收集的用户选择的数据');
+        if ((calcUserData.value.gpuType && calcUserData.value.ramNumber, calcUserData.value.local)) {
+          const rs = calculateMiningPower(
+            calcUserData.value.gpuType,
+            calcUserData.value.local,
+            calcUserData.value.ramNumber
+          );
+          console.log(rs, '最终计算的结果');
+
+          if (calcUserData.value.nftNumber && calcUserData.value.dlcNumber && calcUserData.value.step) {
+            // 调用合约
+            console.log('开始调用合约');
+
+            const finalRewardValue = await fetchRewards(
+              rs,
+              calcUserData.value.nftNumber,
+              calcUserData.value.dlcNumber,
+              calcUserData.value.step
+            );
+            console.log(finalRewardValue, '最终的结果');
+            dlc_earning.value = finalRewardValue;
+            console.log(
+              dlcPrice.value?.dlc_price,
+              finalRewardValue,
+              Number(dlcPrice.value?.dlc_price) * Number(finalRewardValue)
+            );
+            dlc_usdt_earning.value = (Number(dlcPrice.value?.dlc_price) * Number(finalRewardValue)).toFixed(3);
+          }
+        }
+      }
+    );
     return {
+      calcLoading,
       lan,
       gpu_type,
       gpu_num,
@@ -1893,5 +1961,30 @@ export default defineComponent({
 }
 .el-input__inner {
   color: #38eed6 !important;
+}
+.el-skeleton.is-animated .el-skeleton__item {
+  /* 自定义骨架屏基础色和高光色 */
+  --el-skeleton-color: #2a2a2a; /* 深灰色，接近黑色主题 */
+  --el-skeleton-to-color: #3a3a3a; /* 稍亮的深灰色，用于高光 */
+
+  /* 渐变背景，保持动画效果 */
+  background: linear-gradient(
+    90deg,
+    var(--el-skeleton-color) 25%,
+    var(--el-skeleton-to-color) 37%,
+    var(--el-skeleton-color) 63%
+  );
+  background-size: 400% 100%; /* 确保动画有足够空间移动 */
+  animation: skeleton-loading 1.4s ease infinite; /* 保留默认动画 */
+}
+
+/* 确保动画 keyframes 存在（通常 Element Plus 已定义，但为完整性列出） */
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }
 </style>

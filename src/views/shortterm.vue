@@ -1160,6 +1160,7 @@ export default defineComponent({
       () => calcUserData.value,
       async () => {
         if (calcUserData.value.gpuType && calcUserData.value.ramNumber) {
+          console.log(calcUserData.value.gpuType, 'calcUserData.value.gpuType');
           const rs = calculateMachinePoints(calcUserData.value.gpuType, calcUserData.value.ramNumber);
           console.log(rs, '最终计算的结果');
           if (calcUserData.value.nftNumber && calcUserData.value.dlcNumber) {
@@ -1242,6 +1243,7 @@ export default defineComponent({
   min-width: 600px;
   font-style: normal;
   overflow: hidden;
+
   .home_bg {
     position: absolute;
     z-index: 2;
@@ -1251,11 +1253,13 @@ export default defineComponent({
     height: 1517px;
     background: url(../assets/home/bg1.png) no-repeat 100%/100%;
   }
+
   .page {
     position: relative;
     z-index: 10;
     min-width: 600px;
   }
+
   .page_cont1 {
     position: relative;
     width: 90%;
@@ -1263,6 +1267,7 @@ export default defineComponent({
     max-width: 1200px;
     overflow: hidden;
     text-align: left;
+
     .title {
       color: #fff;
       line-height: 1;
@@ -1271,13 +1276,16 @@ export default defineComponent({
       max-width: 1200px;
       margin-top: 200px;
       font-family: Monda;
+
       p {
         margin-bottom: 30px;
+
         :last-child {
           margin-bottom: 0;
         }
       }
     }
+
     .text {
       font-size: 24px;
       font-weight: 600;
@@ -1285,6 +1293,7 @@ export default defineComponent({
       margin-bottom: 100px;
       color: rgba(255, 255, 255, 0.5);
     }
+
     .text1 {
       color: #fff;
       font-size: 24px;
@@ -1293,6 +1302,7 @@ export default defineComponent({
       margin-bottom: 30px;
     }
   }
+
   .page_cont2 {
     position: relative;
     z-index: 5;
@@ -1303,6 +1313,7 @@ export default defineComponent({
     margin: 50px auto;
     align-items: center;
     justify-content: space-between;
+
     .title {
       width: 100%;
       color: #fff;
@@ -1311,6 +1322,7 @@ export default defineComponent({
       font-family: Monda;
       margin-bottom: 20px;
     }
+
     .text {
       width: 100%;
       font-size: 16px;
@@ -1318,11 +1330,13 @@ export default defineComponent({
       font-family: Monda;
       margin-bottom: 70px;
       color: rgba(255, 255, 255, 0.6);
+
       & a {
         // text-decoration: none;
         color: rgba(255, 255, 255, 0.6);
       }
     }
+
     .text1 {
       width: 540px;
       color: #fff;
@@ -1332,11 +1346,13 @@ export default defineComponent({
       margin-bottom: 90px;
       white-space: break-spaces;
     }
+
     .btns {
       flex: 1;
       display: flex;
       margin-bottom: 90px;
       justify-content: space-between;
+
       .btn {
         cursor: pointer;
         min-width: 260px;
@@ -1347,21 +1363,25 @@ export default defineComponent({
         border-radius: 16px;
         box-sizing: border-box;
         background: rgba(255, 255, 255, 0.1);
+
         &:last-child {
           margin-right: 0;
         }
+
         .btn_title {
           font-size: 20px;
           font-weight: 600;
           color: #00ff4d;
           margin-bottom: 10px;
         }
+
         .btn_text {
           color: #fff;
           font-size: 16px;
         }
       }
     }
+
     .require {
       gap: 5px;
       width: 100%;
@@ -1369,6 +1389,7 @@ export default defineComponent({
       flex-wrap: wrap;
       margin-bottom: 60px;
       justify-content: space-between;
+
       .req_text1 {
         width: 540px;
         margin-bottom: 30px;
@@ -1378,6 +1399,7 @@ export default defineComponent({
         box-sizing: border-box;
         background: rgba(255, 255, 255, 0.1);
       }
+
       .req_text2 {
         width: 260px;
         margin-bottom: 30px;
@@ -1387,6 +1409,7 @@ export default defineComponent({
         box-sizing: border-box;
         background: rgba(255, 255, 255, 0.1);
       }
+
       .text_top {
         // color: #fff;
         font-weight: 600;
@@ -1395,6 +1418,7 @@ export default defineComponent({
         font-family: Monda;
         margin-bottom: 20px;
       }
+
       .text_bottom {
         color: #fff;
         font-size: 16px;
@@ -1403,6 +1427,7 @@ export default defineComponent({
       }
     }
   }
+
   .page_cont3 {
     position: relative;
     width: 90%;
@@ -1413,6 +1438,7 @@ export default defineComponent({
     margin-bottom: 70px;
     align-items: center;
     justify-content: space-between;
+
     .page3_bg {
       position: absolute;
       top: -800px;
@@ -1421,6 +1447,7 @@ export default defineComponent({
       height: 1516px;
       background: url(../assets/home/page4_bg.png) no-repeat 100%/100%;
     }
+
     .title {
       width: 100%;
       color: #fff;
@@ -1429,47 +1456,56 @@ export default defineComponent({
       font-family: Monda;
       margin-bottom: 20px;
     }
+
     .text {
       width: 100%;
       font-size: 16px;
       font-family: Monda;
       margin-bottom: 50px;
       color: rgba(255, 255, 255, 0.6);
+
       & a {
         // text-decoration: none;
         color: rgba(255, 255, 255, 0.6);
       }
     }
+
     .page_cont {
       width: 100%;
       display: flex;
       overflow: hidden;
       border-radius: 8px;
       flex-direction: column;
+
       .cont_table {
         width: 100%;
         border-radius: 20px;
         box-sizing: border-box;
+
         .table_cont {
           width: 100%;
           min-width: 800px;
           border-collapse: collapse;
+
           tr.theader {
             color: #000;
             font-size: 20px;
             font-weight: 600;
             font-family: Monda;
             background: #03ff91;
+
             th {
               border: none;
               line-height: 1;
               padding: 10px 15px;
             }
           }
+
           th {
             text-align: center;
             padding: 0 15px;
           }
+
           td {
             font-size: 16px;
             font-family: Monda;
@@ -1479,18 +1515,21 @@ export default defineComponent({
             background: rgba(255, 255, 255, 0.1);
             border-top: 3px solid #000;
             border-bottom: 0;
+
             &.num {
               color: #fff;
               font-weight: 600;
             }
           }
         }
+
         .width270 {
           width: 270px;
         }
       }
     }
   }
+
   .page_cont4 {
     position: relative;
     width: 90%;
@@ -1501,6 +1540,7 @@ export default defineComponent({
     margin-bottom: 46px;
     align-items: center;
     justify-content: space-between;
+
     .title {
       width: 100%;
       color: #fff;
@@ -1509,6 +1549,7 @@ export default defineComponent({
       font-family: Monda;
       margin-bottom: 20px;
     }
+
     .page_cont {
       width: 100%;
       display: flex;
@@ -1516,29 +1557,35 @@ export default defineComponent({
       border-radius: 8px;
       margin-bottom: 70px;
       flex-direction: column;
+
       .cont_table {
         width: 100%;
         border-radius: 20px;
         box-sizing: border-box;
+
         .table_cont {
           width: 100%;
           text-align: left;
           border-collapse: collapse;
+
           tr.theader {
             color: #000;
             font-size: 20px;
             font-weight: 600;
             font-family: Monda;
             background: #03ff91;
+
             th {
               border: none;
               padding: 10px 15px;
             }
           }
+
           th {
             text-align: center;
             padding: 0 15px;
           }
+
           td {
             font-size: 16px;
             font-family: Monda;
@@ -1548,17 +1595,20 @@ export default defineComponent({
             background: rgba(255, 255, 255, 0.1);
             border-top: 3px solid #000;
             border-bottom: 0;
+
             &.num {
               color: #fff;
               font-weight: 600;
             }
           }
         }
+
         .width270 {
           width: 270px;
         }
       }
     }
+
     .text1 {
       width: 100%;
       color: #fff;
@@ -1566,29 +1616,35 @@ export default defineComponent({
       font-family: Monda;
       margin-bottom: 24px;
     }
+
     .text2 {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+
       .text_select {
         display: flex;
         align-items: center;
       }
+
       .text2_tx {
         color: #fff;
         font-size: 20px;
         font-family: Monda;
         margin-bottom: 12px;
       }
+
       .select_width210 {
         width: 120px;
         margin: 0 20px 12px 10px;
       }
+
       .select_width {
         margin: 0 20px 12px 10px;
       }
     }
   }
+
   .page_cont5 {
     position: relative;
     z-index: 10;
@@ -1599,6 +1655,7 @@ export default defineComponent({
     max-width: 1200px;
     align-items: center;
     justify-content: space-between;
+
     .title {
       width: 100%;
       color: #fff;
@@ -1607,6 +1664,7 @@ export default defineComponent({
       font-family: Monda;
       margin-bottom: 20px;
     }
+
     .text {
       width: 100%;
       font-size: 16px;
@@ -1615,6 +1673,7 @@ export default defineComponent({
       margin-bottom: 20px;
       color: rgba(255, 255, 255, 0.6);
     }
+
     .title1 {
       width: 100%;
       color: #fff;
@@ -1622,6 +1681,7 @@ export default defineComponent({
       font-size: 20px;
       font-family: Monda;
     }
+
     .blockcon {
       width: 100%;
       display: flex;
@@ -1629,6 +1689,7 @@ export default defineComponent({
       font-family: Monda;
       margin: 90px 0 35px;
       justify-content: space-between;
+
       .block {
         width: 49%;
         display: flex;
@@ -1638,19 +1699,24 @@ export default defineComponent({
         box-sizing: border-box;
         justify-content: space-between;
       }
+
       .block1 {
         background: #03ff91;
       }
+
       .block2 {
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.15);
+
         .top_title {
           color: #fff;
         }
+
         .top_text {
           color: rgba(255, 255, 255, 0.6);
         }
       }
+
       .top_title {
         width: 100%;
         color: #000;
@@ -1658,24 +1724,29 @@ export default defineComponent({
         font-weight: 600;
         margin-bottom: 20px;
       }
+
       .top_text {
         width: 100%;
         color: #000;
         font-size: 16px;
         color: rgba(0, 0, 0, 0.6);
+
         a {
           color: rgba(0, 0, 0, 0.6);
         }
       }
     }
+
     .text2 {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+
       .text_select {
         display: flex;
         align-items: center;
       }
+
       .text2_tx {
         color: #fff;
         font-size: 20px;
@@ -1684,44 +1755,53 @@ export default defineComponent({
         width: fit-content;
         white-space: nowrap;
       }
+
       .select_width210 {
         width: 120px;
         margin: 0 20px 12px 10px;
       }
+
       .select_width {
         margin: 0 20px 12px 10px;
       }
     }
+
     .require {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
       margin: 100px 0 60px;
       justify-content: space-between;
+
       .req_text1 {
         width: 540px;
         margin-bottom: 30px;
       }
+
       .req_text2 {
         width: 260px;
         margin-bottom: 30px;
       }
+
       .req_text3 {
         width: 360px;
         margin-bottom: 30px;
       }
+
       .text_top {
         color: #fff;
         font-size: 20px;
         font-family: Monda;
         margin-bottom: 20px;
       }
+
       .text_bottom {
         font-size: 16px;
         font-family: Monda;
         color: rgba(255, 255, 255, 0.6);
       }
     }
+
     .formula {
       display: flex;
       align-items: center;
@@ -1730,11 +1810,13 @@ export default defineComponent({
       font-size: 20px;
       font-family: 'MJXTEX-I';
     }
+
     .fraction {
       display: inline-block;
       vertical-align: middle;
       text-align: center;
     }
+
     .fraction .numerator {
       // display: flex;
       // align-items: center;
@@ -1742,9 +1824,11 @@ export default defineComponent({
       border-bottom: 1px solid rgba(255, 255, 255, 0.6);
       padding: 5px;
     }
+
     .fraction .denominator {
       padding-top: 2px;
     }
+
     .product,
     .sum {
       display: inline-block;
@@ -1760,18 +1844,22 @@ export default defineComponent({
       font-size: 20px;
       font-family: 'MJXTEX-I';
     }
+
     .formula1 .fraction {
       display: inline-block;
       vertical-align: middle;
       text-align: center;
     }
+
     .formula1 .fraction .numerator {
       border-bottom: 1px solid rgba(255, 255, 255, 0.6);
       padding: 5px;
     }
+
     .formula1 .fraction .denominator {
       padding-top: 2px;
     }
+
     .formula1 .max-function {
       display: inline-block;
       vertical-align: middle;
@@ -1783,6 +1871,7 @@ export default defineComponent({
   .shortTerm {
   }
 }
+
 @media screen and (max-width: 900px) {
   .shortTerm {
     .page_cont3 {
@@ -1796,6 +1885,7 @@ export default defineComponent({
         }
       }
     }
+
     .page_cont5 {
       .require {
         .req_text3 {
@@ -1805,6 +1895,7 @@ export default defineComponent({
     }
   }
 }
+
 :deep(.el-select__wrapper) {
   background: transparent !important;
   min-width: 120px !important;
@@ -1815,6 +1906,7 @@ export default defineComponent({
 .el-input__wrapper {
   background: transparent !important;
 }
+
 .el-input__inner {
   color: #38eed6 !important;
 }
