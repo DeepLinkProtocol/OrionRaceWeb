@@ -299,6 +299,7 @@ export default {
       req_text1_2:
         '1) If no coins are staked, only the current rental DLC earnings will be penalized, up to a maximum of 2 hours of rental fees.',
       req_text1_3: '2) If DLC is staked, a penalty of 1,000 DLC will be imposed.',
+      req_text1_4: 'The machine has a persistent detection mechanism from the DBC AI blockchain, reporting information to the DBC distributed detection cluster to determine if the machine is online. If not online, online rewards will be deducted. If interruptions occur during user operation, DLC will be deducted from the user. Currently, each interruption penalizes 1000 DLC, which will later adjust dynamically based on DLC price',
       req_title2: '6. Machine Reporting Rules',
       req_text2:
         "If any user suspects that the machine's configuration may be fraudulent, they can initiate a report. If successful, all staked coins will be deducted from the machine, and any rewards will be stopped.",

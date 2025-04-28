@@ -290,6 +290,7 @@ export default {
       req_text1_2:
         '1) Hiçbir coin stake edilmediyse, yalnızca mevcut kira DLC gelirleri ceza olarak kesilir ve maksimum 2 saat kira ücreti ceza olarak uygulanır.',
       req_text1_3: '2) DLC stake edildiyse, 1.000 DLC ceza uygulanır.',
+      req_text1_4: 'Makinede DBC AI blok zincirinin sürekli bir tespit mekanizması bulunur ve makinenin çevrimiçi durumunu belirlemek için bilgileri DBC dağıtılmış tespit kümesine bildirir. Çevrimiçi değilse, çevrimiçi ödüller kesilir. Kullanım sırasında kesintiler olursa, kullanıcıdan DLC kesilir. Şu anda her kesinti için 1000 DLC ceza uygulanır ve bu daha sonra DLC fiyatına göre dinamik olarak değişecektir',
       req_title2: '6. Makine Bildirim Kuralları',
       req_text2:
         'Herhangi bir kullanıcı, makinenin yapılandırmasının sahte olabileceğini düşünürse bildirim başlatabilir. Başarılı olursa, makinedeki tüm stake edilmiş coinler kesilir ve ödüller durdurulur.',
