@@ -286,8 +286,11 @@ export default {
       text1_4:
         '4) Der Bonus für 100.000 Tokens ist 1,23026 mal so hoch wie für 10.000 gestakte Tokens, was eine Steigerung von etwa 23,03 % bedeutet. Der Bonus für 1.000.000 Tokens ist 1,46052 mal so hoch, was eine Steigerung von etwa 46,05 % bedeutet. Der Bonus für 10.000.000 Tokens ist 1,69078 mal so hoch, was eine Steigerung von etwa 69,08 % bedeutet, und der Bonus für 100.000.000 Tokens ist 1,92103 mal so hoch, was eine Steigerung von etwa 92,10 % bedeutet.',
       title2: 'Belohnungsausschüttung:',
-      text2_1:
-        'Belohnungen können jederzeit abgehoben werden. Wenn Sie zu Beginn keine DLC gestaked haben oder die gestakete Menge weniger als 10,000 beträgt, werden die Gewinne aus den Belohnungen als gestakete DLC angespart, bis 10,000 DLC erreicht sind.<br>1) Die Miete wird als Staking-Fonds angespart, bis 10,000 DLC erreicht sind.<br>2) Die Mindestmietdauer beträgt 2 Stunden, ohne Obergrenze für die Mietdauer. Wenn die verbleibende verfügbare Zeit unter 1 Stunde liegt, kann die Maschine nicht vermietet werden und wird nicht für Online-Belohnungen gezählt. Miner können die Dauer jederzeit verlängern, aber jede Verlängerung muss mindestens 2 Stunden betragen.',
+      text2_1_line1:
+        'Belohnungen können jederzeit abgehoben werden. Wenn anfangs kein DLC gestakt wurde oder weniger als 10.000, werden die Belohnungen als gestakter DLC angesammelt, bis 10.000 erreicht sind.',
+      text2_1_line2: '1) Mieteinnahmen werden als Kaution angesammelt, bis 10.000 DLC erreicht sind.',
+      text2_1_line3:
+        '2) Die Mindestmietdauer beträgt 2 Stunden, die Höchstdauer ist unbegrenzt. Wenn die verbleibende Zeit weniger als 1 Stunde beträgt, kann die Maschine nicht vermietet werden und erhält keine Online-Belohnung. Miner können jederzeit Zeit hinzufügen, jedoch mindestens 2 Stunden pro Verlängerung.',
 
       title4: 'Berechnungsformel für den täglichen DLC-Ertrag: DLC wird zum Preis von {price} USD berechnet.',
       text4_8:
