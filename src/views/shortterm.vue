@@ -862,6 +862,7 @@ export default defineComponent({
       { name: '4090', cuda: '16384', men: '24', large: 1 },
       { name: '4090ti', cuda: '18176', men: '24', large: 1 },
       { name: '5060ti', cuda: '4608', men: '8', large: 1 },
+      { name: '5060ti', cuda: '4608', men: '16', large: 1 },
       { name: '5060', cuda: '7168', men: '12', large: 1 },
       { name: '5070', cuda: '10240', men: '12', large: 1 },
       { name: '5070ti', cuda: '12288', men: '16', large: 1 },
