@@ -305,6 +305,7 @@ export default {
       req_text1_2:
         "1) Si aucune pièce n'est stakée, seuls les gains actuels de location de DLC seront pénalisés, jusqu'à un maximum de 2 heures de frais de location.",
       req_text1_3: '2) Si des DLC sont stakés, une pénalité de 1 000 DLC sera imposée.',
+      req_text1_4: "La machine dispose d'un mécanisme de détection permanent de la blockchain DBC AI, transmettant des informations au cluster de détection distribué DBC pour déterminer si la machine est en ligne. Si elle n'est pas en ligne, les récompenses en ligne seront déduites. En cas d'interruption pendant l'utilisation, des DLC seront déduits à l'utilisateur. Actuellement, chaque interruption entraîne une pénalité de 1000 DLC, qui sera ensuite ajustée dynamiquement en fonction du prix du DLC",
       req_title2: '6. Règles de Signalement des Machines',
       req_text2:
         'Si un utilisateur soupçonne que la configuration de la machine est frauduleuse, il peut initier un signalement. En cas de succès, toutes les pièces stakées seront déduites de la machine, et les récompenses seront arrêtées.',

@@ -762,9 +762,9 @@
       <div class="require">
         <div class="req_text3">
           <p class="text_top">{{ $t('short_rule.cont5.req_title1') }}</p>
-          <p class="text_bottom">{{ $t('short_rule.cont5.req_text1_1') }}</p>
-          <p class="text_bottom">{{ $t('short_rule.cont5.req_text1_2') }}</p>
-          <p class="text_bottom">{{ $t('short_rule.cont5.req_text1_3') }}</p>
+          <!-- <p class="text_bottom">{{ $t('short_rule.cont5.req_text1_1') }}</p> -->
+          <p class="text_bottom">{{ $t('short_rule.cont5.req_text1_4') }}</p>
+          <!-- <p class="text_bottom">{{ $t('short_rule.cont5.req_text1_3') }}</p> -->
         </div>
         <div class="req_text3">
           <p class="text_top">{{ $t('short_rule.cont5.req_title2') }}</p>

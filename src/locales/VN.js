@@ -289,6 +289,7 @@ export default {
       req_text1_2:
         '1) Nếu không có đồng tiền nào được đặt cược, chỉ thu nhập từ DLC hiện tại sẽ bị phạt, tối đa là 2 giờ tiền thuê.',
       req_text1_3: '2) Nếu DLC được đặt cược, sẽ bị phạt 1.000 DLC.',
+      req_text1_4: 'Máy có cơ chế phát hiện thường trực từ blockchain DBC AI, báo cáo thông tin cho cụm phát hiện phân tán DBC để xác định xem máy có đang trực tuyến hay không. Nếu không trực tuyến, phần thưởng trực tuyến sẽ bị khấu trừ. Nếu có gián đoạn trong quá trình sử dụng, DLC sẽ bị khấu trừ từ người dùng. Hiện tại, mỗi lần gián đoạn sẽ phạt 1000 DLC, sau này sẽ thay đổi linh hoạt theo giá DLC',
       req_title2: '6. Quy Tắc Báo Cáo Máy',
       req_text2:
         'Nếu bất kỳ người dùng nào nghi ngờ cấu hình của máy có thể là giả mạo, họ có thể khởi xướng báo cáo. Nếu thành công, tất cả số tiền đặt cược sẽ bị khấu trừ từ máy và các phần thưởng sẽ bị dừng.',
