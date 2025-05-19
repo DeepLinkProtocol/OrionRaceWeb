@@ -172,6 +172,15 @@
           <p class="text_bottom">{{ $t('short_rule.cont2.text8_2') }}</p>
         </div>
       </div>
+      <div class="short_video">
+        <video ref="videoRef" src="https://static1.deeplink.cloud/deeplink_shortrent.mp4"
+          autoplay
+          loop="loop" 
+          muted="muted" 
+          controls="controls"
+          controlsList="noplaybackrate, nopip">
+        </video>
+      </div>
     </div>
     <div class="page_cont3 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
       <div class="page3_bg"></div>
@@ -1430,6 +1439,12 @@ export default defineComponent({
         font-size: 16px;
         font-family: Monda;
         // color: rgba(255, 255, 255, 0.6);
+      }
+    }
+    .short_video {
+      width: 100%;
+      video {
+        width: 100%;
       }
     }
   }
