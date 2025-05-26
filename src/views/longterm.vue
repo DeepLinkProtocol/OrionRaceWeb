@@ -8,8 +8,9 @@
       <div class="text animation_hide" v-animate="{ delay: 0, class: 'amplify' }">
         {{ $t('long_rule.text1', { long_num: long_num }) }}
       </div>
+      <!-- - {{ $t('long_rule.competition_phase_two_in_progress') }} -->
       <div class="text1 animation_hide" v-animate="{ delay: 0, class: 'amplify' }">
-        {{ $t('long_rule.text2') }} - {{ $t('long_rule.competition_phase_two_in_progress') }}
+        {{ $t('long_rule.text2') }}
       </div>
     </div>
     <div class="page_cont5 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
