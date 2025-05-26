@@ -259,30 +259,82 @@ const getStateSummariesShortH2 = async () => {
 getStateSummariesShortH2();
 
 // 请求并同步长租表格数据
+// 请求数据计算后的奖励数据
+async function fetchWalletRewards() {
+  try {
+    const response = await fetch('https://dbcscan.io/nestapi/machine/getAllWalletRewards');
+    const result = await response.json();
+    if (result.code === 200 && result.data.length > 0) {
+      return result.data;
+    }
+  } catch (error) {
+    return [];
+  }
+}
+// const fetchLongStakeHolders = async () => {
+//   try {
+//     const response = await getLongStakeHolders();
+//     // 请求数据
+//     const rs = await fetchWalletRewards();
+//     console.log(rs, '请求数据请求数据请求数据');
+//     const stakeHolders = response.stakeHolders || [];
+//     tableData.value.long = stakeHolders.map((el, index) => ({
+//       index: index + 1, // 竞赛排名
+//       holder: el.holder, // 矿工名称
+//       calc_point: Number(el.totalCalcPoint) / 100, // 算力值
+//       gpu_num: Number(el.totalStakingGPUCount), // GPU数量
+//       rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
+//       rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
+//       released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4), // 已解锁奖励数 (DLC)
+//       total_reward: (Number(el.totalClaimedRewardAmount) / 1e18).toFixed(4), // 奖励总数 (DLC)
+//     }));
+//   } catch (error) {
+//     console.error('Failed to fetch long stake holders:', error);
+//     tableData.value.long = []; // 请求失败时清空长租数据
+//   }
+// };
 const fetchLongStakeHolders = async () => {
   try {
     const response = await getLongStakeHolders();
+    // 请求数据
+    const rs = await fetchWalletRewards();
+    console.log(rs, '请求数据请求数据请求数据');
     const stakeHolders = response.stakeHolders || [];
-    tableData.value.long = stakeHolders.map((el, index) => ({
-      index: index + 1, // 竞赛排名
-      holder: el.holder, // 矿工名称
-      calc_point: Number(el.totalCalcPoint) / 100, // 算力值
-      gpu_num: Number(el.totalStakingGPUCount), // GPU数量
-      rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
-      rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
-      released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4), // 已解锁奖励数 (DLC)
-      total_reward: (Number(el.totalClaimedRewardAmount) / 1e18).toFixed(4), // 奖励总数 (DLC)
-    }));
+    tableData.value.long = stakeHolders.map((el, index) => {
+      // 查找匹配的 rs 记录
+      const matchingReward = rs.find((reward) => reward.walletAddress === el.holder);
+      console.log(matchingReward, 'matchingRewardmatchingRewardmatchingReward');
+      // 计算 total_reward
+      let totalReward;
+      if (matchingReward) {
+        // 如果找到匹配的记录，total_reward = totalReleasedRewardAmount + lockedReward
+        totalReward = (Number(el.totalReleasedRewardAmount) / 1e18 + Number(matchingReward.lockedReward)).toFixed(4);
+      } else {
+        // 如果没有匹配的记录，使用原来的 totalClaimedRewardAmount
+        totalReward = 0;
+      }
+
+      return {
+        index: index + 1, // 竞赛排名
+        holder: el.holder, // 矿工名称
+        calc_point: Number(el.totalCalcPoint) / 100, // 算力值
+        gpu_num: Number(el.totalStakingGPUCount), // GPU数量
+        rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
+        rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
+        released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4), // 已解锁奖励数 (DLC)
+        total_reward: totalReward, // 奖励总数 (DLC)
+      };
+    });
   } catch (error) {
     console.error('Failed to fetch long stake holders:', error);
     tableData.value.long = []; // 请求失败时清空长租数据
   }
 };
-
 // 请求并同步短租表格数据
 const fetchShortStakeHolders = async () => {
   try {
     const response = await getShortStakeHoldersShort();
+
     console.log(response, '短租表格数据');
     const stakeHolders = response.stakeHolders || [];
     tableData.value.short = stakeHolders.map((el, index) => ({
