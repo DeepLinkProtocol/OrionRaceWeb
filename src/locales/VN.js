@@ -54,6 +54,7 @@ export default {
     text1: 'Tổng số GPU hiện tại trong chế độ thuê dài hạn của mạng DeepLink là {long_num}',
     text2:
       'Trong suốt cuộc thi, các thợ đào có thể nhận được tổng cộng 2 tỷ DLC phần thưởng, và 100% tiền thuê DLC do người dùng thanh toán sẽ bị đốt cháy',
+    competition_phase_two_in_progress: 'Giai đoạn hai của cuộc thi đang diễn ra',
     cont2: {
       title: '1. Quy tắc tham gia',
       text1_1: 'Thợ đào tham gia cuộc thi sức mạnh tính toán Orion cần sở hữu một NFT nút ( tìm hiểu thêm về nút: ',
@@ -187,6 +188,7 @@ export default {
     text1: 'Số lượng GPU trong chế độ thuê ngắn hạn trên mạng DeepLink hiện tại là {short_num}.',
     text2:
       'Trong suốt cuộc thi, các thợ đào có thể nhận được tổng cộng 1 tỷ DLC tiền thưởng, và phí thuê DLC do người dùng thanh toán sẽ được đốt cháy hoàn toàn.',
+    competition_phase_two_in_progress: 'Giai đoạn hai của cuộc thi đang diễn ra',
     cont2: {
       title: '1. Quy Tắc Tham Gia',
       text1_1: 'Người tham gia cuộc thi tính toán Orion cần phải sở hữu một Node NFT (Thông tin chi tiết về các nút:',
@@ -289,7 +291,8 @@ export default {
       req_text1_2:
         '1) Nếu không có đồng tiền nào được đặt cược, chỉ thu nhập từ DLC hiện tại sẽ bị phạt, tối đa là 2 giờ tiền thuê.',
       req_text1_3: '2) Nếu DLC được đặt cược, sẽ bị phạt 1.000 DLC.',
-      req_text1_4: 'Máy có cơ chế phát hiện thường trực từ blockchain DBC AI, báo cáo thông tin cho cụm phát hiện phân tán DBC để xác định xem máy có đang trực tuyến hay không. Nếu không trực tuyến, phần thưởng trực tuyến sẽ bị khấu trừ. Nếu có gián đoạn trong quá trình sử dụng, DLC sẽ bị khấu trừ từ người dùng. Hiện tại, mỗi lần gián đoạn sẽ phạt 1000 DLC, sau này sẽ thay đổi linh hoạt theo giá DLC',
+      req_text1_4:
+        'Máy có cơ chế phát hiện thường trực từ blockchain DBC AI, báo cáo thông tin cho cụm phát hiện phân tán DBC để xác định xem máy có đang trực tuyến hay không. Nếu không trực tuyến, phần thưởng trực tuyến sẽ bị khấu trừ. Nếu có gián đoạn trong quá trình sử dụng, DLC sẽ bị khấu trừ từ người dùng. Hiện tại, mỗi lần gián đoạn sẽ phạt 1000 DLC, sau này sẽ thay đổi linh hoạt theo giá DLC',
       req_title2: '6. Quy Tắc Báo Cáo Máy',
       req_text2:
         'Nếu bất kỳ người dùng nào nghi ngờ cấu hình của máy có thể là giả mạo, họ có thể khởi xướng báo cáo. Nếu thành công, tất cả số tiền đặt cược sẽ bị khấu trừ từ máy và các phần thưởng sẽ bị dừng.',

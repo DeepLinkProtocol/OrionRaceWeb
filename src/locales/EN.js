@@ -55,6 +55,7 @@ export default {
     text1: 'The current total number of GPUs in long-term rental mode in the DeepLink network is {long_num}',
     text2:
       'During the competition, miners can receive a total reward of 2 billion DLC, and 100% of the DLC rental fees paid by users will be burned',
+    competition_phase_two_in_progress: 'Competition Phase Two is in progress',
     cont2: {
       title: '1. Participation Rules',
       text1_1:
@@ -196,6 +197,7 @@ export default {
     text1: 'The current number of GPUs in the short-term rental mode on the DeepLink network is {short_num}.',
     text2:
       'During the competition, miners can receive a total reward of 1 billion DLC, and the DLC rental fees paid by users will be 100% burned.',
+    competition_phase_two_in_progress: 'Competition Phase Two is in progress',
     cont2: {
       title: '1. Participation Rules',
       text1_1:
@@ -302,7 +304,8 @@ export default {
       req_text1_2:
         '1) If no coins are staked, only the current rental DLC earnings will be penalized, up to a maximum of 2 hours of rental fees.',
       req_text1_3: '2) If DLC is staked, a penalty of 1,000 DLC will be imposed.',
-      req_text1_4: 'The machine has a persistent detection mechanism from the DBC AI blockchain, reporting information to the DBC distributed detection cluster to determine if the machine is online. If not online, online rewards will be deducted. If interruptions occur during user operation, DLC will be deducted from the user. Currently, each interruption penalizes 1000 DLC, which will later adjust dynamically based on DLC price',
+      req_text1_4:
+        'The machine has a persistent detection mechanism from the DBC AI blockchain, reporting information to the DBC distributed detection cluster to determine if the machine is online. If not online, online rewards will be deducted. If interruptions occur during user operation, DLC will be deducted from the user. Currently, each interruption penalizes 1000 DLC, which will later adjust dynamically based on DLC price',
       req_title2: '6. Machine Reporting Rules',
       req_text2:
         "If any user suspects that the machine's configuration may be fraudulent, they can initiate a report. If successful, all staked coins will be deducted from the machine, and any rewards will be stopped.",

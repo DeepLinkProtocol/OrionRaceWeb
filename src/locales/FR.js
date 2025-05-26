@@ -55,6 +55,7 @@ export default {
     text1: 'Le nombre total actuel de GPU en mode location longue durée dans le réseau DeepLink est de {long_num}',
     text2:
       'Pendant la compétition, les mineurs peuvent recevoir un total de 2 milliards de DLC en récompense, et 100 % des frais de location en DLC payés par les utilisateurs seront brûlés',
+    competition_phase_two_in_progress: 'La deuxième phase de la compétition est en cours',
     cont2: {
       title: '1. Règles de participation',
       text1_1:
@@ -200,6 +201,7 @@ export default {
     text1: 'Le nombre actuel de GPU en mode location à court terme sur le réseau DeepLink est de {short_num}.',
     text2:
       'Pendant la compétition, les mineurs peuvent recevoir un total de 1 milliard de DLC en récompenses, et les frais de location de DLC payés par les utilisateurs seront entièrement brûlés.',
+    competition_phase_two_in_progress: 'La deuxième phase de la compétition est en cours',
     cont2: {
       title: '1. Règles de Participation',
       text1_1:
@@ -305,7 +307,8 @@ export default {
       req_text1_2:
         "1) Si aucune pièce n'est stakée, seuls les gains actuels de location de DLC seront pénalisés, jusqu'à un maximum de 2 heures de frais de location.",
       req_text1_3: '2) Si des DLC sont stakés, une pénalité de 1 000 DLC sera imposée.',
-      req_text1_4: "La machine dispose d'un mécanisme de détection permanent de la blockchain DBC AI, transmettant des informations au cluster de détection distribué DBC pour déterminer si la machine est en ligne. Si elle n'est pas en ligne, les récompenses en ligne seront déduites. En cas d'interruption pendant l'utilisation, des DLC seront déduits à l'utilisateur. Actuellement, chaque interruption entraîne une pénalité de 1000 DLC, qui sera ensuite ajustée dynamiquement en fonction du prix du DLC",
+      req_text1_4:
+        "La machine dispose d'un mécanisme de détection permanent de la blockchain DBC AI, transmettant des informations au cluster de détection distribué DBC pour déterminer si la machine est en ligne. Si elle n'est pas en ligne, les récompenses en ligne seront déduites. En cas d'interruption pendant l'utilisation, des DLC seront déduits à l'utilisateur. Actuellement, chaque interruption entraîne une pénalité de 1000 DLC, qui sera ensuite ajustée dynamiquement en fonction du prix du DLC",
       req_title2: '6. Règles de Signalement des Machines',
       req_text2:
         'Si un utilisateur soupçonne que la configuration de la machine est frauduleuse, il peut initier un signalement. En cas de succès, toutes les pièces stakées seront déduites de la machine, et les récompenses seront arrêtées.',

@@ -271,7 +271,7 @@ const fetchLongStakeHolders = async () => {
       rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
       rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
       released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4), // 已解锁奖励数 (DLC)
-      total_reward: ((Number(el.totalClaimedRewardAmount) + Number(el.totalReleasedRewardAmount)) / 1e18).toFixed(4), // 奖励总数 (DLC)
+      total_reward: (Number(el.totalClaimedRewardAmount) / 1e18).toFixed(4), // 奖励总数 (DLC)
     }));
   } catch (error) {
     console.error('Failed to fetch long stake holders:', error);
@@ -293,7 +293,7 @@ const fetchShortStakeHolders = async () => {
       rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
       rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
       released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4), // 已解锁奖励数 (DLC)
-      total_reward: ((Number(el.totalClaimedRewardAmount) + Number(el.totalReleasedRewardAmount)) / 1e18).toFixed(4), // 奖励总数 (DLC)
+      total_reward: (Number(el.totalClaimedRewardAmount) / 1e18).toFixed(4), // 奖励总数 (DLC)
     }));
   } catch (error) {
     console.error('Failed to fetch long stake holders:', error);

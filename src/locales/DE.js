@@ -55,6 +55,7 @@ export default {
     text1: 'Die aktuelle Gesamtzahl der GPUs im Langzeitmietmodus im DeepLink-Netzwerk beträgt {long_num}',
     text2:
       'Während des Wettbewerbs können Miner eine Gesamtbelohnung von 2 Milliarden DLC erhalten, und 100 % der von den Nutzern gezahlten DLC-Mietgebühren werden verbrannt',
+    competition_phase_two_in_progress: 'Die zweite Phase des Wettbewerbs läuft',
     cont2: {
       title: '1. Teilnahmebedingungen',
       text1_1:
@@ -198,6 +199,7 @@ export default {
     text1: 'Die aktuelle Anzahl der GPUs im Kurzzeitmietmodus im DeepLink-Netzwerk beträgt {short_num}.',
     text2:
       'Während des Wettbewerbs können Miner eine Gesamtbelohnung von 1 Milliarde DLC erhalten, und die von den Nutzern gezahlten DLC-Mietgebühren werden zu 100 % verbrannt.',
+    competition_phase_two_in_progress: 'Die zweite Phase des Wettbewerbs läuft',
     cont2: {
       title: '1. Teilnahmebedingungen',
       text1_1:
@@ -304,7 +306,8 @@ export default {
       req_text1_2:
         '1) Wenn keine Münzen eingesetzt sind, wird nur der aktuelle Mietertrag in DLC bestraft, bis zu maximal 2 Stunden Mietgebühren.',
       req_text1_3: '2) Wenn DLC eingesetzt ist, wird eine Strafe von 1.000 DLC verhängt.',
-      req_text1_4: 'Die Maschine verfügt über einen permanenten Erkennungsmechanismus der DBC AI-Blockchain, der Informationen an den verteilten DBC-Erkennungscluster meldet, um festzustellen, ob die Maschine online ist. Wenn sie nicht online ist, werden Online-Belohnungen abgezogen. Bei Unterbrechungen während der Nutzung werden dem Nutzer DLC abgezogen. Derzeit beträgt die Strafe für jede Unterbrechung 1000 DLC, was später dynamisch an den DLC-Preis angepasst wird',
+      req_text1_4:
+        'Die Maschine verfügt über einen permanenten Erkennungsmechanismus der DBC AI-Blockchain, der Informationen an den verteilten DBC-Erkennungscluster meldet, um festzustellen, ob die Maschine online ist. Wenn sie nicht online ist, werden Online-Belohnungen abgezogen. Bei Unterbrechungen während der Nutzung werden dem Nutzer DLC abgezogen. Derzeit beträgt die Strafe für jede Unterbrechung 1000 DLC, was später dynamisch an den DLC-Preis angepasst wird',
       req_title2: '6. Maschinen-Melderegeln',
       req_text2:
         'Wenn ein Benutzer den Verdacht hat, dass die Maschinenkonfiguration betrügerisch ist, kann er eine Meldung einreichen. Wenn erfolgreich, werden alle eingesetzten Münzen von der Maschine abgezogen, und alle Belohnungen werden gestoppt.',

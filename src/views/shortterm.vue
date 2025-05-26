@@ -8,7 +8,9 @@
       <div class="text animation_hide" v-animate="{ delay: 0, class: 'amplify' }">
         {{ $t('short_rule.text1', { short_num: short_num }) }}
       </div>
-      <div class="text1 animation_hide" v-animate="{ delay: 0, class: 'amplify' }">{{ $t('short_rule.text2') }}</div>
+      <div class="text1 animation_hide" v-animate="{ delay: 0, class: 'amplify' }">
+        {{ $t('short_rule.text2') }} - {{ $t('short_rule.competition_phase_two_in_progress') }}
+      </div>
     </div>
     <div class="page_cont5 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
       <div class="title1">{{ $t('short_rule.cont5.title4', { price: dlcPrice?.dlc_price || 0 }) }}</div>
@@ -173,13 +175,15 @@
         </div>
       </div>
       <div class="short_video">
-        <video ref="videoRef" src="https://static1.deeplink.cloud/deeplink_shortrent.mp4"
+        <video
+          ref="videoRef"
+          src="https://static1.deeplink.cloud/deeplink_shortrent.mp4"
           autoplay
-          loop="loop" 
-          muted="muted" 
+          loop="loop"
+          muted="muted"
           controls="controls"
-          controlsList="noplaybackrate, nopip">
-        </video>
+          controlsList="noplaybackrate, nopip"
+        ></video>
       </div>
     </div>
     <div class="page_cont3 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
