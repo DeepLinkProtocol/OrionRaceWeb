@@ -258,8 +258,7 @@ const getStateSummariesShortH2 = async () => {
 };
 getStateSummariesShortH2();
 
-// 请求并同步长租表格数据
-// 请求数据计算后的奖励数据
+// 请求数据计算后的奖励数据--长租
 async function fetchWalletRewards() {
   try {
     const response = await fetch('https://dbcscan.io/nestapi/machine/getAllWalletRewards');
@@ -271,28 +270,8 @@ async function fetchWalletRewards() {
     return [];
   }
 }
-// const fetchLongStakeHolders = async () => {
-//   try {
-//     const response = await getLongStakeHolders();
-//     // 请求数据
-//     const rs = await fetchWalletRewards();
-//     console.log(rs, '请求数据请求数据请求数据');
-//     const stakeHolders = response.stakeHolders || [];
-//     tableData.value.long = stakeHolders.map((el, index) => ({
-//       index: index + 1, // 竞赛排名
-//       holder: el.holder, // 矿工名称
-//       calc_point: Number(el.totalCalcPoint) / 100, // 算力值
-//       gpu_num: Number(el.totalStakingGPUCount), // GPU数量
-//       rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
-//       rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
-//       released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4), // 已解锁奖励数 (DLC)
-//       total_reward: (Number(el.totalClaimedRewardAmount) / 1e18).toFixed(4), // 奖励总数 (DLC)
-//     }));
-//   } catch (error) {
-//     console.error('Failed to fetch long stake holders:', error);
-//     tableData.value.long = []; // 请求失败时清空长租数据
-//   }
-// };
+
+// 处理长租数据
 const fetchLongStakeHolders = async () => {
   try {
     const response = await getLongStakeHolders();
@@ -330,26 +309,55 @@ const fetchLongStakeHolders = async () => {
     tableData.value.long = []; // 请求失败时清空长租数据
   }
 };
-// 请求并同步短租表格数据
+
+// 请求数据计算后的奖励数据--短租
+async function fetchWalletRewardsShort() {
+  try {
+    const response = await fetch('https://dbcscan.io/nestapi/machine/getAllWalletRewardsShort');
+    // const response = await fetch('http://localhost:3001/machine/getAllWalletRewardsShort');
+    const result = await response.json();
+    if (result.code === 200 && result.data.length > 0) {
+      return result.data;
+    }
+  } catch (error) {
+    return [];
+  }
+}
+// 处理短租数据
 const fetchShortStakeHolders = async () => {
   try {
-    const response = await getShortStakeHoldersShort();
+    const response = await getShortStakeHoldersShort(); // 获取子图短租数据
+    console.log(response, '短租总数据');
+    const rs = await fetchWalletRewardsShort(); // 获取后端计算的 lockedRewardShort
 
-    console.log(response, '短租表格数据');
+    console.log(response, '短租子图数据');
+    console.log(rs, '短租锁定奖励数据');
+
     const stakeHolders = response.stakeHolders || [];
-    tableData.value.short = stakeHolders.map((el, index) => ({
-      index: index + 1, // 竞赛排名
-      holder: el.holder, // 矿工名称
-      calc_point: Number(el.totalCalcPoint) / 10000, // 算力值
-      gpu_num: Number(el.totalStakingGPUCount), // GPU数量
-      rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
-      rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
-      released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4), // 已解锁奖励数 (DLC)
-      total_reward: (Number(el.totalClaimedRewardAmount) / 1e18).toFixed(4), // 奖励总数 (DLC)
-    }));
+    console.log(stakeHolders, '短租数据holder');
+    tableData.value.short = stakeHolders.map((el, index) => {
+      const matchingReward = rs.find((reward) => reward.walletAddress === el.holder);
+      console.log(matchingReward, '对应的数据');
+      // 计算 total_reward（lockedRewardShort + totalReleasedRewardAmount）
+      let totalReward = 0;
+      if (matchingReward) {
+        totalReward = (Number(el.totalReleasedRewardAmount) / 1e18 + Number(matchingReward.lockedReward)).toFixed(4);
+      }
+
+      return {
+        index: index + 1,
+        holder: el.holder,
+        calc_point: Number(el.totalCalcPoint) / 10000,
+        gpu_num: Number(el.totalStakingGPUCount),
+        rent_gpu: Number(el.rentedGPUCount),
+        rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4),
+        released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4),
+        total_reward: totalReward,
+      };
+    });
   } catch (error) {
-    console.error('Failed to fetch long stake holders:', error);
-    tableData.value.short = []; // 请求失败时清空长租数据
+    console.error('Failed to fetch short stake holders:', error);
+    tableData.value.short = []; // 请求失败清空
   }
 };
 // 切换长租和短租
