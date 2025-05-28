@@ -34,7 +34,7 @@ export default {
       text2: 'Toplam GPU \n Sayısı',
       text3: 'Toplam Hesaplama \n Havuzu Sayısı',
       text4: 'GPU Kiralama \n Oranı',
-      text5: 'DLC Kiralama \n Sayısı',
+      text5: 'Toplam DLC Ödülü',
       text6: 'Yok Edilen \n DLC Sayısı',
       text7: 'Madenciler İçin \n Rehin Verilen DLC Sayısı',
     },

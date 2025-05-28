@@ -34,7 +34,7 @@ export default {
       text2: 'Tổng số GPU',
       text3: 'Tổng số bể \n tính toán',
       text4: 'Tỷ lệ \n thuê GPU',
-      text5: 'Số lượng \n thuê DLC',
+      text5: 'Tổng phần thưởng DLC',
       text6: 'Số lượng \n DLC đã đốt',
       text7: 'Số lượng DLC đã cam \n kết cho máy khai thác',
     },

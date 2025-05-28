@@ -35,7 +35,7 @@ export default {
       text2: 'Total Number \n of GPUs',
       text3: 'Total Number of \n Computing Pools',
       text4: 'GPU Rental Rate',
-      text5: 'Number of \n DLC Rentals',
+      text5: 'Total DLC Rewards',
       text6: 'Number of \n DLC Burned',
       text7: 'Number of DLC \n Pledged for Miners',
     },

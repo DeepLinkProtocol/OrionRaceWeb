@@ -35,7 +35,7 @@ export default {
       text2: 'Nombre total de GPU',
       text3: 'Nombre total de \n pools de calcul',
       text4: 'Taux de \n location des GPU',
-      text5: 'Nombre de \n locations DLC',
+      text5: 'Total des récompenses DLC',
       text6: 'Nombre de \n DLC détruits',
       text7: 'Nombre de DLC mis \n en gage pour les mineurs',
     },

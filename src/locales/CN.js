@@ -34,7 +34,7 @@ export default {
       text2: 'GPU总数',
       text3: '算池总数',
       text4: 'GPU租用率',
-      text5: 'DLC租金数',
+      text5: 'DLC奖励总数',
       text6: 'DLC销毁数',
       text7: '矿机DLC质押数',
     },

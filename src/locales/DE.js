@@ -35,7 +35,7 @@ export default {
       text2: 'Gesamtanzahl \n der GPUs',
       text3: 'Gesamtzahl der \n Berechnungspools',
       text4: 'GPU-Mietrate',
-      text5: 'Anzahl der \n DLC-Mieten',
+      text5: 'Gesamte DLC-Belohnungen',
       text6: 'Anzahl der \n zerstörten DLC',
       text7: 'Anzahl der für \n Miner verpfändeten DLC',
     },

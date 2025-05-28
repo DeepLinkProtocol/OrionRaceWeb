@@ -183,7 +183,7 @@ const getStateSummariesH = async () => {
     OrionDataList.value[2].value = 0;
     OrionDataList.value[3].value = 0;
 
-    OrionDataList.value[4].value = 0;
+    // OrionDataList.value[4].value = 0;
     OrionDataList.value[5].value = 0;
     OrionDataList.value[6].value = 0;
   } else {
@@ -202,7 +202,7 @@ const getStateSummariesH = async () => {
       100
     ).toFixed(4)}%`;
 
-    OrionDataList.value[4].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
+    // OrionDataList.value[4].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
     OrionDataList.value[5].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
     OrionDataList.value[6].value = (res.stateSummaries[0].totalReservedAmount / 1e18).toFixed(0);
   }
@@ -219,7 +219,7 @@ const getStateSummariesShortH = async () => {
     OrionDataList.value[2].value = 0;
     OrionDataList.value[3].value = 0;
 
-    OrionDataList.value[4].value = 0;
+    // OrionDataList.value[4].value = 0;
     OrionDataList.value[5].value = 0;
     OrionDataList.value[6].value = 0;
   } else {
@@ -240,7 +240,7 @@ const getStateSummariesShortH = async () => {
       100
     ).toFixed(4)}%`;
 
-    OrionDataList.value[4].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
+    // OrionDataList.value[4].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
     OrionDataList.value[5].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
     OrionDataList.value[6].value = (res.stateSummaries[0].totalReservedAmount / 1e18).toFixed(0);
   }
@@ -304,6 +304,12 @@ const fetchLongStakeHolders = async () => {
         total_reward: totalReward, // 奖励总数 (DLC)
       };
     });
+    if (tableData.value.long.length > 0) {
+      const total = tableData.value.long.reduce((sum, item) => {
+        return sum + (Number(item.total_reward) || 0); // 处理空值或未定义字段
+      }, 0);
+      OrionDataList.value[4].value = total.toFixed(4);
+    }
   } catch (error) {
     console.error('Failed to fetch long stake holders:', error);
     tableData.value.long = []; // 请求失败时清空长租数据
@@ -355,6 +361,12 @@ const fetchShortStakeHolders = async () => {
         total_reward: totalReward,
       };
     });
+    if (tableData.value.short.length > 0) {
+      const total = tableData.value.short.reduce((sum, item) => {
+        return sum + (Number(item.total_reward) || 0); // 处理空值或未定义字段
+      }, 0);
+      OrionDataList.value[4].value = total.toFixed(4);
+    }
   } catch (error) {
     console.error('Failed to fetch short stake holders:', error);
     tableData.value.short = []; // 请求失败清空
@@ -384,17 +396,6 @@ watchEffect(() => {
     getStateSummariesShortH2();
   }
 });
-
-// 映射表
-
-// 竞赛排名	不做要求
-// 矿工名称	holder	直接显示地址
-// 算力值	totalCalcPoint
-// GPU数量	totalStakingGPUCount
-// 租用率	rentedGPUCount / totalStakingGPUCount
-// 租金数 (DLC)	burnedRentFee	除以 1e18
-// 已解锁奖励数 (DLC)	totalReleasedRewardAmount	除以 1e18
-// 奖励总数 (DLC)	totalClaimedRewardAmount + totalClaimedRewardAmount	除以 1e18
 </script>
 
 <!-- 样式保持不变 -->

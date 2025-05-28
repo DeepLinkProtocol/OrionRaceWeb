@@ -34,7 +34,7 @@ export default {
       text2: 'GPU総数',
       text3: '計算プール総数',
       text4: 'GPUレンタル率',
-      text5: 'DLCレンタル数',
+      text5: 'DLC報酬の合計',
       text6: 'DLC焼却数',
       text7: 'マイナーのために質押されたDLC数',
     },
