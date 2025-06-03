@@ -100,6 +100,7 @@ import {
 import BN from 'bn.js';
 import { Icon } from '@iconify/vue';
 import { useClipboard } from '@vueuse/core';
+import { formatWithThousandSeparator } from '@/utils/formatNumber';
 
 const props = defineProps({
   type: {
@@ -258,11 +259,15 @@ const formatCellValue = (machine, key) => {
   if (key === 'stakeEndTimestamp') {
     return machine[key] ? new Date(machine[key] * 1000).toLocaleDateString() : '未质押';
   }
+
   if (key === 'totalReservedAmount') {
-    return (Number(machine[key]) / 1e18).toFixed(2) + ' DLC';
+    return formatWithThousandSeparator((Number(machine[key]) / 1e18).toFixed(2)) + ' DLC';
   }
   if (key === 'holder') {
     return `${machine[key].substr(0, 6)}...${machine[key].substr(-4)}`;
+  }
+  if (key === 'totalCalcPoint') {
+    return formatWithThousandSeparator(machine[key]);
   }
   return machine[key];
 };

@@ -204,278 +204,26 @@
                 <th class="">{{ $t('long_rule.cont3.li7') }}</th>
                 <th class="">{{ $t('long_rule.cont3.li8') }}</th>
               </tr>
-              <tr>
-                <td class="" rowspan="2">4060</td>
-                <td class="" rowspan="2">3027</td>
-                <td class="" rowspan="2">8</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">334.87</td>
-                <td class="">170.11</td>
-                <td class="">42.53</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">444.58</td>
-                <td class="">225.85</td>
-                <td class="">56.46</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">4060ti</td>
-                <td class="" rowspan="2">4352</td>
-                <td class="" rowspan="2">8</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">372.59</td>
-                <td class="">189.28</td>
-                <td class="">47.32</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">482.31</td>
-                <td class="">245.01</td>
-                <td class="">61.25</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">4060ti</td>
-                <td class="" rowspan="2">4352</td>
-                <td class="" rowspan="2">16</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">470.35</td>
-                <td class="">238.94</td>
-                <td class="">59.74</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">580.07</td>
-                <td class="">294.67</td>
-                <td class="">73.67</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">4070</td>
-                <td class="" rowspan="2">5888</td>
-                <td class="" rowspan="2">12</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">472.80</td>
-                <td class="">240.18</td>
-                <td class="">60.05</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">582.51</td>
-                <td class="">295.92</td>
-                <td class="">73.98</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">4070 SUPER</td>
-                <td class="" rowspan="2">7168</td>
-                <td class="" rowspan="2">12</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">507.55</td>
-                <td class="">257.84</td>
-                <td class="">64.46</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">617.26</td>
-                <td class="">313.57</td>
-                <td class="">78.39</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">4070ti</td>
-                <td class="" rowspan="2">7680</td>
-                <td class="" rowspan="2">12</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">520.57</td>
-                <td class="">264.45</td>
-                <td class="">66.11</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">630.29</td>
-                <td class="">320.19</td>
-                <td class="">80.05</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">4070 Ti Super</td>
-                <td class="" rowspan="2">8448</td>
-                <td class="" rowspan="2">16</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">601.62</td>
-                <td class="">305.62</td>
-                <td class="">76.41</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">711.33</td>
-                <td class="">361.36</td>
-                <td class="">90.34</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">4080</td>
-                <td class="" rowspan="2">9728</td>
-                <td class="" rowspan="2">16</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">635.61</td>
-                <td class="">322.89</td>
-                <td class="">80.72</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">745.32</td>
-                <td class="">378.62</td>
-                <td class="">94.66</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">4080 SUPER</td>
-                <td class="" rowspan="2">10240</td>
-                <td class="" rowspan="2">16</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">648.57</td>
-                <td class="">329.47</td>
-                <td class="">82.37</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">758.29</td>
-                <td class="">385.21</td>
-                <td class="">96.30</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">4080ti</td>
-                <td class="" rowspan="2">14080</td>
-                <td class="" rowspan="2">20</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">807.81</td>
-                <td class="">410.37</td>
-                <td class="">102.59</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">917.52</td>
-                <td class="">466.10</td>
-                <td class="">116.53</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">4090</td>
-                <td class="" rowspan="2">16384</td>
-                <td class="" rowspan="2">24</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">929.76</td>
-                <td class="">472.32</td>
-                <td class="">118.08</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">1039.47</td>
-                <td class="">528.05</td>
-                <td class="">132.01</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">4090ti</td>
-                <td class="" rowspan="2">18176</td>
-                <td class="" rowspan="2">24</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">972.01</td>
-                <td class="">493.78</td>
-                <td class="">123.45</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">1081.72</td>
-                <td class="">549.52</td>
-                <td class="">137.38</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">5070</td>
-                <td class="" rowspan="2">10240</td>
-                <td class="" rowspan="2">12</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">579.98</td>
-                <td class="">294.63</td>
-                <td class="">73.66</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">689.69</td>
-                <td class="">350.36</td>
-                <td class="">87.59</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">5070ti</td>
-                <td class="" rowspan="2">12288</td>
-                <td class="" rowspan="2">16</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">697.44</td>
-                <td class="">354.30</td>
-                <td class="">88.57</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">807.15</td>
-                <td class="">410.03</td>
-                <td class="">102.51</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">5080</td>
-                <td class="" rowspan="2">16384</td>
-                <td class="" rowspan="2">16</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">784.21</td>
-                <td class="">398.38</td>
-                <td class="">99.59</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">893.92</td>
-                <td class="">454.11</td>
-                <td class="">113.53</td>
-              </tr>
-              <tr>
-                <td class="" rowspan="2">5090</td>
-                <td class="" rowspan="2">18432</td>
-                <td class="" rowspan="2">32</td>
-                <td class="">4</td>
-                <td class="">128</td>
-                <td class="">1108.02</td>
-                <td class="">562.87</td>
-                <td class="">140.72</td>
-              </tr>
-              <tr>
-                <td class="">4</td>
-                <td class="">512</td>
-                <td class="">1217.74</td>
-                <td class="">618.61</td>
-                <td class="">154.65</td>
-              </tr>
+
+              <template v-for="(gpu, i) in gpuTableData" :key="i">
+                <tr>
+                  <td :rowspan="gpu.configs.length">{{ gpu.model }}</td>
+                  <td :rowspan="gpu.configs.length">{{ gpu.cores }}</td>
+                  <td :rowspan="gpu.configs.length">{{ gpu.vram }}</td>
+                  <td>{{ gpu.configs[0].group }}</td>
+                  <td>{{ gpu.configs[0].bandwidth }}</td>
+                  <td>{{ formatWithThousandSeparator(gpu.configs[0].power) }}</td>
+                  <td>{{ formatWithThousandSeparator(gpu.configs[0].temp) }}</td>
+                  <td>{{ formatWithThousandSeparator(gpu.configs[0].noise) }}</td>
+                </tr>
+                <tr v-for="(config, j) in gpu.configs.slice(1)" :key="j">
+                  <td>{{ config.group }}</td>
+                  <td>{{ config.bandwidth }}</td>
+                  <td>{{ formatWithThousandSeparator(config.power) }}</td>
+                  <td>{{ formatWithThousandSeparator(config.temp) }}</td>
+                  <td>{{ formatWithThousandSeparator(config.noise) }}</td>
+                </tr>
+              </template>
             </table>
           </div>
         </el-scrollbar>
@@ -809,6 +557,7 @@ import { useStore } from 'vuex';
 import { useIntervalFn } from '@vueuse/core';
 import { getStateSummaries } from '@/api/home';
 import { useLong } from '@/hooks/lang-rent/useLong';
+import { formatWithThousandSeparator } from '@/utils/formatNumber';
 
 export default defineComponent({
   name: 'longTerm',
@@ -851,6 +600,7 @@ export default defineComponent({
       { immediateCallback: true }
     );
     const options = ref([
+      { name: '2070', cuda: '2304', men: '8', large: 1 },
       { name: '2080', cuda: '2944', men: '8', large: 1 },
       { name: '2080s', cuda: '3072', men: '8', large: 1 },
       { name: '2080ti', cuda: '4352', men: '11', large: 1 },
@@ -1318,7 +1068,157 @@ export default defineComponent({
         }
       }
     );
+
+    // GpuTableData.ts
+    const gpuTableData = [
+      {
+        model: '4060',
+        cores: 3027,
+        vram: 8,
+        configs: [
+          { group: 4, bandwidth: 128, power: 334.87, temp: 170.11, noise: 42.53 },
+          { group: 4, bandwidth: 512, power: 444.58, temp: 225.85, noise: 56.46 },
+        ],
+      },
+      {
+        model: '4060ti',
+        cores: 4352,
+        vram: 8,
+        configs: [
+          { group: 4, bandwidth: 128, power: 372.59, temp: 189.28, noise: 47.32 },
+          { group: 4, bandwidth: 512, power: 482.31, temp: 245.01, noise: 61.25 },
+        ],
+      },
+      {
+        model: '4060ti',
+        cores: 4352,
+        vram: 16,
+        configs: [
+          { group: 4, bandwidth: 128, power: 470.35, temp: 238.94, noise: 59.74 },
+          { group: 4, bandwidth: 512, power: 580.07, temp: 294.67, noise: 73.67 },
+        ],
+      },
+      {
+        model: '4070',
+        cores: 5888,
+        vram: 12,
+        configs: [
+          { group: 4, bandwidth: 128, power: 472.8, temp: 240.18, noise: 60.05 },
+          { group: 4, bandwidth: 512, power: 582.51, temp: 295.92, noise: 73.98 },
+        ],
+      },
+      {
+        model: '4070 SUPER',
+        cores: 7168,
+        vram: 12,
+        configs: [
+          { group: 4, bandwidth: 128, power: 507.55, temp: 257.84, noise: 64.46 },
+          { group: 4, bandwidth: 512, power: 617.26, temp: 313.57, noise: 78.39 },
+        ],
+      },
+      {
+        model: '4070ti',
+        cores: 7680,
+        vram: 12,
+        configs: [
+          { group: 4, bandwidth: 128, power: 520.57, temp: 264.45, noise: 66.11 },
+          { group: 4, bandwidth: 512, power: 630.29, temp: 320.19, noise: 80.05 },
+        ],
+      },
+      {
+        model: '4070 Ti Super',
+        cores: 8448,
+        vram: 16,
+        configs: [
+          { group: 4, bandwidth: 128, power: 601.62, temp: 305.62, noise: 76.41 },
+          { group: 4, bandwidth: 512, power: 711.33, temp: 361.36, noise: 90.34 },
+        ],
+      },
+      {
+        model: '4080',
+        cores: 9728,
+        vram: 16,
+        configs: [
+          { group: 4, bandwidth: 128, power: 635.61, temp: 322.89, noise: 80.72 },
+          { group: 4, bandwidth: 512, power: 745.32, temp: 378.62, noise: 94.66 },
+        ],
+      },
+      {
+        model: '4080 SUPER',
+        cores: 10240,
+        vram: 16,
+        configs: [
+          { group: 4, bandwidth: 128, power: 648.57, temp: 329.47, noise: 82.37 },
+          { group: 4, bandwidth: 512, power: 758.29, temp: 385.21, noise: 96.3 },
+        ],
+      },
+      {
+        model: '4080ti',
+        cores: 14080,
+        vram: 20,
+        configs: [
+          { group: 4, bandwidth: 128, power: 807.81, temp: 410.37, noise: 102.59 },
+          { group: 4, bandwidth: 512, power: 917.52, temp: 466.1, noise: 116.53 },
+        ],
+      },
+      {
+        model: '4090',
+        cores: 16384,
+        vram: 24,
+        configs: [
+          { group: 4, bandwidth: 128, power: 929.76, temp: 472.32, noise: 118.08 },
+          { group: 4, bandwidth: 512, power: 1039.47, temp: 528.05, noise: 132.01 },
+        ],
+      },
+      {
+        model: '4090ti',
+        cores: 18176,
+        vram: 24,
+        configs: [
+          { group: 4, bandwidth: 128, power: 972.01, temp: 493.78, noise: 123.45 },
+          { group: 4, bandwidth: 512, power: 1081.72, temp: 549.52, noise: 137.38 },
+        ],
+      },
+      {
+        model: '5070',
+        cores: 10240,
+        vram: 12,
+        configs: [
+          { group: 4, bandwidth: 128, power: 579.98, temp: 294.63, noise: 73.66 },
+          { group: 4, bandwidth: 512, power: 689.69, temp: 350.36, noise: 87.59 },
+        ],
+      },
+      {
+        model: '5070ti',
+        cores: 12288,
+        vram: 16,
+        configs: [
+          { group: 4, bandwidth: 128, power: 697.44, temp: 354.3, noise: 88.57 },
+          { group: 4, bandwidth: 512, power: 807.15, temp: 410.03, noise: 102.51 },
+        ],
+      },
+      {
+        model: '5080',
+        cores: 16384,
+        vram: 16,
+        configs: [
+          { group: 4, bandwidth: 128, power: 784.21, temp: 398.38, noise: 99.59 },
+          { group: 4, bandwidth: 512, power: 893.92, temp: 454.11, noise: 113.53 },
+        ],
+      },
+      {
+        model: '5090',
+        cores: 18432,
+        vram: 32,
+        configs: [
+          { group: 4, bandwidth: 128, power: 1108.02, temp: 562.87, noise: 140.72 },
+          { group: 4, bandwidth: 512, power: 1217.74, temp: 618.61, noise: 154.65 },
+        ],
+      },
+    ];
     return {
+      formatWithThousandSeparator,
+      gpuTableData,
       calcLoading,
       lan,
       gpu_type,

@@ -52,7 +52,7 @@
     <div class="page_cont3 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInDown' }">
       <div v-for="(item, index) in OrionDataList" :key="index" class="cont3_btn">
         <div class="title">{{ $t(item.titleKey) }}</div>
-        <div class="text">{{ item.value }}</div>
+        <div class="text">{{ formatWithThousandSeparator(item.value) }}</div>
       </div>
     </div>
 
@@ -79,22 +79,26 @@
                   {{ el.holder.substr(30, 100) }}
                 </td>
                 <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
-                  {{ el.calc_point }}
+                  {{ formatWithThousandSeparator(el.calc_point) }}
                 </td>
                 <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
-                  {{ el.gpu_num }}
+                  {{ formatWithThousandSeparator(el.gpu_num) }}
                 </td>
                 <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
-                  {{ el.gpu_num ? ((el.rent_gpu / el.gpu_num) * 100).toFixed(2) + '%' : '0.00%' }}
+                  {{
+                    formatWithThousandSeparator(
+                      el.gpu_num ? ((el.rent_gpu / el.gpu_num) * 100).toFixed(2) + '%' : '0.00%'
+                    )
+                  }}
                 </td>
                 <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
-                  {{ el.rent_reward }}
+                  {{ formatWithThousandSeparator(el.rent_reward) }}
                 </td>
                 <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
-                  {{ el.released_reward }}
+                  {{ formatWithThousandSeparator(el.released_reward) }}
                 </td>
                 <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
-                  {{ el.total_reward }}
+                  {{ formatWithThousandSeparator(el.total_reward) }}
                 </td>
               </tr>
             </table>
@@ -124,6 +128,7 @@
 import { ref, computed, watchEffect } from 'vue';
 import { getStateSummaries, getLongStakeHolders } from '@/api/home';
 import { getStateSummariesShort, getShortStakeHoldersShort } from '@/api/home-short';
+import { formatWithThousandSeparator } from '@/utils/formatNumber';
 
 // 模拟数据
 const model_type = ref('long');
