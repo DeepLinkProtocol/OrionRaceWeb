@@ -49,18 +49,21 @@ export const useCalc = () => {
       console.log(result, '原始结果', '2999667954082392398899440');
       const rewardValue = web3.utils.fromWei(result.toString(), 'ether');
       let finalRewardValue;
-      if (step === 3000000) {
-        // 阶段一：300万，直接返回
-        finalRewardValue = Number(rewardValue).toFixed(4);
-      } else if (step === 4000000) {
-        // 阶段二：400万，乘以 400万/300万
-        finalRewardValue = ((Number(rewardValue) * 4000000) / 3000000).toFixed(4);
-      } else if (step === 9665000) {
-        // 阶段三：966.5万，乘以 966.5万/300万
-        finalRewardValue = ((Number(rewardValue) * 9665000) / 3000000).toFixed(4);
-      } else {
-        return 0;
-      }
+      // if (step === 3000000) {
+      //   // 阶段一：300万，直接返回
+      //   finalRewardValue = Number(rewardValue).toFixed(4);
+      // } else if (step === 4000000) {
+      //   // 阶段二：400万，乘以 400万/300万
+      //   finalRewardValue = ((Number(rewardValue) * 4000000) / 3000000).toFixed(4);
+      // } else if (step === 9665000) {
+      //   // 阶段三：966.5万，乘以 966.5万/300万
+      //   finalRewardValue = ((Number(rewardValue) * 9665000) / 3000000).toFixed(4);
+      // } else {
+      //   return 0;
+      // }
+
+      finalRewardValue = Number(rewardValue).toFixed(4);
+
       calcLoading.value = false;
       return finalRewardValue;
     } catch (error) {
