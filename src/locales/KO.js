@@ -21,9 +21,11 @@ export default {
     text: 'DeepLink 프로토콜의 Orion GPU 연산력 대회는 채굴자들이 DeepLink 네트워크 테스트에 적극 참여하도록 독려하는 중요한 인센티브 대회입니다. 이 대회는 세계 최대의 클라우드 게임 프로토콜 플랫폼인 DeepLink의 공식 출시 전 중요한 준비 단계로, 향후 글로벌 사용자들에게 견고한 기술 기반과 효율적인 연산 지원을 제공합니다',
     text1: '현재 DeepLink 네트워크의 GPU 총 수는 {gpu_num}입니다',
     text2: '대회가 시작되었습니다. GPU 수가 기준에 도달하면 보상이 시작됩니다!',
-    btn_text1: '장기 렌탈 모드 대회 - 시작됨',
+    btn_text1: '장기 렌탈 모드 대회 - 종료됨',
     btn_title1: '현재 {long_term} GPUs',
-    btn_text2: '단기 임대 모드 대회 - 시작됨',
+
+    btn_text2: '단기 임대 모드 대회 - 4단계',
+
     btn_title2: '현재 {short_term} GPUs',
     cont2_text1:
       'Orion 연산 성능 대회의 총 토큰 보상은 30억 개이며, 장기 대여 모드에는 20억 DLC, 단기 대여 모드에는 10억 DLC가 제공되며, 총 180일 동안 지속됩니다. 대회는 60일씩 3회에 걸쳐 진행되며, 각 회차 간에는 5~10일 간의 간격이 있습니다.',
@@ -187,7 +189,7 @@ export default {
     title: '단기 임대 모드 대회 규칙',
     text1: 'DeepLink 네트워크의 단기 임대 모드에 있는 GPU 총 수는 현재 {short_num}입니다.',
     text2: '대회 기간 동안 채굴자는 총 10억 DLC의 보상을 받을 수 있으며, 사용자가 지불한 DLC 임대료는 100% 소각됩니다.',
-    competition_phase_two_in_progress: '대회 2단계가 진행 중입니다',
+    competition_phase_two_in_progress: '대회 4단계가 진행 중입니다',
     cont2: {
       title: '1. 참여 규칙',
       text1_1:
@@ -297,6 +299,8 @@ export default {
       text4_6_1: '1단계: 하루 300만 DLC.',
       text4_6_2: '2단계: 하루 400만 DLC.',
       text4_6_3: '3단계: 하루 966.5만 DLC.',
+      text4_6_4: '4단계: 하루 966.5만 DLC.',
+      text4_6_5: '5단계: 하루 966.5만 DLC.',
     },
   },
   country: {

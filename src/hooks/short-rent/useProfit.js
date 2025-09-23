@@ -29,7 +29,9 @@ export const useCalc = () => {
 
   const contract = new web3.eth.Contract(contractAbi, contractAddress);
   // 调用合约方法计算奖励
+
   async function fetchRewards(calcPoint, nftCount, dlcCount, step) {
+    calcLoading.value = true;
     try {
       // 先计算算力值
       if (!calcPoint || !nftCount || !dlcCount) {

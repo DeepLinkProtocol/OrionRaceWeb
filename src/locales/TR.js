@@ -21,9 +21,10 @@ export default {
     text: "DeepLink Protokolü kapsamındaki Orion GPU İşlem Gücü Yarışması, madencilerin DeepLink ağ testi sürecine aktif olarak katılmalarını teşvik etmeyi amaçlayan önemli bir teşvik yarışmasıdır. Bu yarışma, dünyanın en büyük bulut oyun protokol platformu olan DeepLink'in resmi lansmanı öncesindeki önemli bir hazırlık adımı olup, gelecekteki küresel kullanıcılar için sağlam bir teknik altyapı ve verimli işlem gücü desteği sağlar",
     text1: 'Şu anda DeepLink ağındaki toplam GPU sayısı {gpu_num}',
     text2: 'Yarışma başladı ve GPU sayısı standarda ulaştığında ödüller başlayacak!',
-    btn_text1: 'Uzun Vadeli Kiralama Modu Yarışması - Başladı',
+    btn_text1: 'Uzun Vadeli Kiralama Modu Yarışması - Sona Erdi',
     btn_title1: 'Mevcut {long_term} GPUs',
-    btn_text2: 'Kısa vadeli kiralama modu yarışması - Başladı',
+    btn_text2: 'Kısa vadeli kiralama modu yarışması - 4. Aşama',
+
     btn_title2: 'Güncel {short_term} GPUs',
     cont2_text1:
       "Orion hesaplama gücü yarışmasının toplam ödül miktarı 3 milyar token olup, uzun dönem kiralama modu için 2 milyar DLC ve kısa dönem kiralama modu için 1 milyar DLC'dir. Yarışma 180 gün sürecek ve 60 gün süren 3 turdan oluşacak, her tur arasında 5-10 gün aralık olacaktır.",
@@ -191,7 +192,7 @@ export default {
     text1: 'DeepLink ağında kısa süreli kiralama modundaki GPU sayısı şu anda {short_num}.',
     text2:
       'Yarışma sırasında, madenciler toplam 1 milyar DLC ödülü alabilir ve kullanıcıların ödediği DLC kiralama ücretleri %100 yakılacaktır.',
-    competition_phase_two_in_progress: 'Yarışmanın ikinci aşaması devam ediyor',
+    competition_phase_two_in_progress: 'Yarışmanın dördüncü aşaması devam ediyor',
     cont2: {
       title: '1. Katılım Kuralları',
       text1_1:
@@ -304,6 +305,8 @@ export default {
       text4_6_1: 'Aşama 1: Günde 3 milyon DLC.',
       text4_6_2: 'Aşama 2: Günde 4 milyon DLC.',
       text4_6_3: 'Aşama 3: Günde 9,665 milyon DLC.',
+      text4_6_4: 'Aşama 4: Günde 9,665 milyon DLC.',
+      text4_6_5: 'Aşama 5: Günde 9,665 milyon DLC.',
     },
   },
   country: {

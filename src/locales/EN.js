@@ -21,9 +21,11 @@ export default {
     text: "The Orion GPU Race under the DeepLink Protocol is a significant incentive competition aimed at encouraging miners to actively participate in testing the DeepLink network. This competition is an essential preparatory step before the official launch of DeepLink, the world's largest cloud gaming protocol platform, providing a solid technical foundation and efficient computing power support for future global users",
     text1: 'The current total number of GPUs in the DeepLink network is {gpu_num}',
     text2: 'The competition has started, and rewards will begin once the number of GPUs meets the standard!',
-    btn_text1: 'Long-term Rental Mode Competition - Has Started',
+    btn_text1: 'Long-term Rental Mode Competition - Has Ended',
     btn_title1: 'Current {long_term} GPUs',
-    btn_text2: 'Short-term Rental Mode Competition - Has Started',
+
+    btn_text2: 'Short-term Rental Mode Competition - Phase 4',
+
     btn_title2: 'Current {short_term} GPUs ',
 
     cont2_text1:
@@ -197,7 +199,7 @@ export default {
     text1: 'The current number of GPUs in the short-term rental mode on the DeepLink network is {short_num}.',
     text2:
       'During the competition, miners can receive a total reward of 1 billion DLC, and the DLC rental fees paid by users will be 100% burned.',
-    competition_phase_two_in_progress: 'Competition Phase Two is in progress',
+    competition_phase_two_in_progress: 'Competition Phase Four is in progress',
     cont2: {
       title: '1. Participation Rules',
       text1_1:
@@ -316,6 +318,8 @@ export default {
       text4_6_1: 'Phase 1: 3 million DLC per day.',
       text4_6_2: 'Phase 2: 4 million DLC per day.',
       text4_6_3: 'Phase 3: 9.665 million DLC per day.',
+      text4_6_4: 'Phase 4: 9.665 million DLC per day.',
+      text4_6_5: 'Phase 5: 9.665 million DLC per day.',
     },
   },
   country: {

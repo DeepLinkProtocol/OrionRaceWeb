@@ -21,9 +21,10 @@ export default {
     text: 'Cuộc thi Sức mạnh Tính toán GPU Orion của Giao thức DeepLink là một cuộc thi khuyến khích quan trọng nhằm khuyến khích các thợ đào tham gia tích cực vào việc thử nghiệm mạng DeepLink. Cuộc thi này là một bước chuẩn bị thiết yếu trước khi ra mắt chính thức nền tảng giao thức trò chơi đám mây lớn nhất thế giới DeepLink, cung cấp nền tảng kỹ thuật vững chắc và hỗ trợ sức mạnh tính toán hiệu quả cho người dùng toàn cầu trong tương lai',
     text1: 'Tổng số GPU hiện tại trong mạng DeepLink là {gpu_num}',
     text2: 'Cuộc thi đã bắt đầu, phần thưởng sẽ được khởi động khi số lượng GPU đạt tiêu chuẩn!',
-    btn_text1: 'Cuộc thi chế độ thuê dài hạn - Đã bắt đầu',
+    btn_text1: 'Cuộc thi chế độ thuê dài hạn - Đã kết thúc',
     btn_title1: 'GPUs {long_term} hiện tại',
-    btn_text2: 'Cuộc thi chế độ thuê ngắn hạn - Đã bắt đầu',
+    btn_text2: 'Cuộc thi chế độ thuê ngắn hạn - Giai đoạn 4',
+
     btn_title2: 'Hiện tại {short_term} GPUs',
     cont2_text1:
       'Tổng phần thưởng token cho cuộc thi sức mạnh tính toán Orion là 3 tỷ, với 2 tỷ DLC cho chế độ thuê dài hạn và 1 tỷ DLC cho chế độ thuê ngắn hạn, kéo dài 180 ngày. Cuộc thi được chia thành ba đợt, mỗi đợt kéo dài 60 ngày với khoảng cách từ 5-10 ngày.',
@@ -188,7 +189,7 @@ export default {
     text1: 'Số lượng GPU trong chế độ thuê ngắn hạn trên mạng DeepLink hiện tại là {short_num}.',
     text2:
       'Trong suốt cuộc thi, các thợ đào có thể nhận được tổng cộng 1 tỷ DLC tiền thưởng, và phí thuê DLC do người dùng thanh toán sẽ được đốt cháy hoàn toàn.',
-    competition_phase_two_in_progress: 'Giai đoạn hai của cuộc thi đang diễn ra',
+    competition_phase_two_in_progress: 'Giai đoạn bốn của cuộc thi đang diễn ra',
     cont2: {
       title: '1. Quy Tắc Tham Gia',
       text1_1: 'Người tham gia cuộc thi tính toán Orion cần phải sở hữu một Node NFT (Thông tin chi tiết về các nút:',
@@ -303,6 +304,8 @@ export default {
       text4_6_1: 'Giai đoạn 1: 3 triệu DLC mỗi ngày.',
       text4_6_2: 'Giai đoạn 2: 4 triệu DLC mỗi ngày.',
       text4_6_3: 'Giai đoạn 3: 9,665 triệu DLC mỗi ngày.',
+      text4_6_4: 'Giai đoạn 4: 9,665 triệu DLC mỗi ngày.',
+      text4_6_5: 'Giai đoạn 5: 9,665 triệu DLC mỗi ngày.',
     },
   },
   country: {

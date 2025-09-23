@@ -21,9 +21,9 @@ export default {
     text: 'DeepLink协议的Orion GPU算力竞赛是一项重要的激励竞赛，旨在鼓励矿工积极参与DeepLink网络测试。这一竞赛是全球最大云游戏协议平台DeepLink正式推出前的重要准备步骤，为未来的全球用户提供坚实的技术基础和高效的算力保障。',
     text1: '当前DeepLink网络中GPU总数量为{gpu_num}张',
     text2: '竞赛已经启动，一旦GPU数量达到标准，奖励将会开始！',
-    btn_text1: '长租模式竞赛 - 已经开始',
+    btn_text1: '长租模式竞赛 - 已经结束',
     btn_title1: '当前 {long_term} GPUs',
-    btn_text2: '短租模式竞赛 - 已经开始',
+    btn_text2: '短租模式竞赛 - 阶段四',
     btn_title2: '当前 {short_term} GPUs',
     cont2_text1:
       'Orion算力竞赛的Token奖励总数为30亿枚，其中长租模式总共奖励为20亿DLC，短租模式总奖励10亿DLC奖励，持续180天时间，竞赛总共分为3次，每次持续60天时间，每次间隔5-10天时间',
@@ -182,7 +182,7 @@ export default {
     title: '短租模式竞赛规则',
     text1: '当前DeepLink网络中短租模式GPU总数量为 {short_num}',
     text2: '竞赛期间矿工可以收到总共10亿DLC的奖励，用户支付的DLC租金 100%销毁',
-    competition_phase_two_in_progress: '竞赛第二阶段正在进行中',
+    competition_phase_two_in_progress: '竞赛第四阶段正在进行中',
     cont2: {
       title: '一.参与规则',
       text1_1: '参与猎户座算力竞赛的矿工，需要持有节点NFT（详细了解节点：',
@@ -272,6 +272,8 @@ export default {
       text4_6_1: '阶段一： 每天300万DLC',
       text4_6_2: '阶段二： 每天400万DLC',
       text4_6_3: '阶段三： 每天966.5万DLC',
+      text4_6_4: '阶段四： 每天966.5万DLC',
+      text4_6_5: '阶段五： 每天966.5万DLC',
     },
   },
   country: {

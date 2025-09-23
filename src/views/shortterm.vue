@@ -25,7 +25,7 @@
           >
             <el-option
               v-for="(item, index) in options"
-              :key="item.value"
+              :key="index"
               :label="item.name + '-Mem:' + item.men"
               :value="item.cuda + '_' + item.men + '_' + item.large + '_' + index"
             ></el-option>
@@ -41,7 +41,7 @@
           >
             <el-option
               v-for="(item, index) in mem_num_list"
-              :key="item.value"
+              :key="index"
               :label="item.name"
               :value="item.value"
             ></el-option>
@@ -57,18 +57,13 @@
           >
             <el-option
               v-for="(item, index) in nft_num_list"
-              :key="item.value"
+              :key="index"
               :label="item.label"
               :value="item.value"
             ></el-option>
           </el-select>
         </div>
-        <!-- <div class="text_select">
-          <p class="text2_tx">{{ $t('long_rule.cont5.text4_4') }}</p>
-          <el-select class="el-select-type select_width" v-model="local2" :placeholder="$t('long_rule.cont4.text6')" @change='SelectLocal2'>
-            <el-option v-for="(item, index) in options3 " :key="item.value" :label="item.name" :value="item.value +'_'+index"></el-option>
-          </el-select>
-        </div> -->
+
         <div class="text_select">
           <p class="text2_tx">{{ $t('long_rule.cont5.text4_5') }}</p>
           <el-select
@@ -79,47 +74,31 @@
           >
             <el-option
               v-for="(item, index) in stak_dlc_list"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
-        </div>
-        <div class="text_select">
-          <p class="text2_tx">{{ $t('long_rule.cont5.text4_6') }}</p>
-          <el-select
-            class="el-select-type select_width"
-            v-model="race_stage"
-            :placeholder="$t('long_rule.cont4.text6')"
-            @change="SelectRace2"
-          >
-            <el-option
-              v-for="(item, index) in race_stage_list"
-              :key="item.value"
+              :key="index"
               :label="item.label"
               :value="item.value"
             ></el-option>
           </el-select>
         </div>
         <!-- <div class="text_select">
-          <p class="text2_tx">{{ $t('long_rule.cont5.text4_7') }}</p>
+          <p class="text2_tx">{{ $t('long_rule.cont5.text4_6') }}</p>
           <el-select
-            class="el-select-type select_width210"
-            v-model="join_gpu_num"
+            class="el-select-type select_width"
+            v-model="race_stage"
             :placeholder="$t('long_rule.cont4.text6')"
-            @change="SelectJoinGPU2"
+            value-key="id"
+            @change="SelectRace2"
           >
             <el-option
-              v-for="(item, index) in join_gpu_list"
-              :key="item.value"
+              v-for="(item, index) in race_stage_list"
+              :key="item.id"
               :label="item.label"
-              :value="item.value"
+              :value="item"
             ></el-option>
           </el-select>
         </div> -->
       </div>
       <!-- <div class="text">{{ $t('short_rule.cont5.text4_8') }}</div> -->
-
       <el-skeleton :rows="1" :loading="calcLoading" animated>
         <!-- 自定义骨架屏模板，确保一行 -->
         <template #template>
@@ -229,63 +208,6 @@
       </div>
     </div>
     <div class="page_cont4 delay300 animation_hide" v-animate="{ delay: 300, class: 'fadeInUp' }">
-      <!-- <div class="title">{{ $t('short_rule.cont4.title') }}</div>
-      <div class="page_cont">
-        <el-scrollbar>
-          <div class="cont_table">
-            <table class="table_cont">
-              <tr class="theader">
-                <th class="">{{ $t('long_rule.cont4.li1') }}</th>
-                <th class="">{{ $t('long_rule.cont4.li2') }}</th>
-                <th class="">{{ $t('long_rule.cont4.li1') }}</th>
-                <th class="">{{ $t('long_rule.cont4.li2') }}</th>
-              </tr>
-              <tr>
-                <td class="">{{ $t('long_rule.cont4.li_text1') }}</td>
-                <td class="">1</td>
-                <td class="">{{ $t('long_rule.cont4.li_text2') }}</td>
-                <td class="">1.2</td>
-              </tr>
-              <tr>
-                <td class="">{{ $t('long_rule.cont4.li_text3') }}</td>
-                <td class="">1.3</td>
-                <td class="">{{ $t('long_rule.cont4.li_text4') }}</td>
-                <td class="">1.5</td>
-              </tr>
-              <tr>
-                <td class="">{{ $t('long_rule.cont4.li_text5') }}</td>
-                <td class="">1.6</td>
-                <td class="">{{ $t('long_rule.cont4.li_text6') }}</td>
-                <td class="">1.6</td>
-              </tr>
-              <tr>
-                <td class="">{{ $t('long_rule.cont4.li_text7') }}</td>
-                <td class="">1.7</td>
-                <td class="">{{ $t('long_rule.cont4.li_text8') }}</td>
-                <td class="">1.3</td>
-              </tr>
-              <tr>
-                <td class="">{{ $t('long_rule.cont4.li_text9') }}</td>
-                <td class="">1.3</td>
-                <td class="">{{ $t('long_rule.cont4.li_text10') }}</td>
-                <td class="">1.5</td>
-              </tr>
-              <tr>
-                <td class="">{{ $t('long_rule.cont4.li_text11') }}</td>
-                <td class="">1.5</td>
-                <td class="">{{ $t('long_rule.cont4.li_text12') }}</td>
-                <td class="">1.5</td>
-              </tr>
-              <tr>
-                <td class="">{{ $t('long_rule.cont4.li_text13') }}</td>
-                <td class="">1.3</td>
-                <td class=""></td>
-                <td class=""></td>
-              </tr>
-            </table>
-          </div>
-        </el-scrollbar>
-      </div> -->
       <div class="text1">{{ $t('short_rule.cont4.text1') }}</div>
       <div class="text2">
         <div class="text_select">
@@ -298,18 +220,13 @@
           >
             <el-option
               v-for="(item, index) in options"
-              :key="item.value"
+              :key="index"
               :label="item.name + '-Mem:' + item.men"
               :value="item.cuda + '_' + item.men + '_' + item.large + '_' + index"
             ></el-option>
           </el-select>
         </div>
-        <!-- <div class="text_select">
-          <p class="text2_tx">{{ $t('short_rule.cont4.text3') }}</p>
-          <el-select class="select_width210" v-model="gpu_num1" :placeholder="$t('short_rule.cont4.text6')" @change='SelectGpuNum1'>
-              <el-option v-for="(item, index) in options1 " :key="item.value" :label="item.label" :value="item.value"></el-option>
-            </el-select>
-        </div> -->
+
         <div class="text_select">
           <p class="text2_tx">{{ $t('short_rule.cont4.text4') }}</p>
           <el-select
@@ -320,18 +237,12 @@
           >
             <el-option
               v-for="(item, index) in options2"
-              :key="item.value"
+              :key="index"
               :label="item.name"
               :value="item.value"
             ></el-option>
           </el-select>
         </div>
-        <!-- <div class="text_select">
-          <p class="text2_tx">{{ $t('short_rule.cont4.text5') }}</p>
-          <el-select class="select_width" v-model="local1" :placeholder="$t('short_rule.cont4.text6')" @change='SelectLocal1'>
-            <el-option v-for="(item, index) in options3 " :key="item.value" :label="item.name" :value="item.value +'_'+index"></el-option>
-          </el-select> 
-        </div> -->
       </div>
       <div class="text1">{{ $t('short_rule.cont4.text7', { total: machinePoints }) }}</div>
     </div>
@@ -393,132 +304,6 @@
         <p>{{ $t('short_rule.cont5.text2_1_line3') }}</p>
       </div>
 
-      <!-- <div class="text">
-        <p>{{ $t('short_rule.cont5.text10') }}</p>
-        <p>{{ $t('short_rule.cont5.text11') }}</p>
-        <p>{{ $t('short_rule.cont5.text12') }}</p>
-        <p>{{ $t('short_rule.cont5.text13') }}</p>
-      </div>
-      <div class="text">
-        <p>{{ $t('short_rule.cont5.text14') }}</p>
-        <p>{{ $t('short_rule.cont5.text15') }}</p>
-        <p>{{ $t('short_rule.cont5.text16') }}</p>
-        <p>{{ $t('short_rule.cont5.text17') }}</p>
-        <p>{{ $t('short_rule.cont5.text18') }}</p>
-        <p>{{ $t('short_rule.cont5.text19') }}</p>
-        <p>{{ $t('short_rule.cont5.text20') }}</p>
-      </div>
-      <div class="title1">{{ $t('short_rule.cont5.title1') }}</div>
-      <div class="text">
-        <p>{{ $t('short_rule.cont5.text1_1') }}</p>
-        <div class="formula">
-          <span>B<sub>i</sub> = </span>
-          <div class="fraction">
-            <div class="numerator">H<sub>i</sub>&nbsp;&middot;&nbsp;T<sub>i</sub></div>
-            <div class="denominator">
-                &sum;<sup>N</sup><sub style="margin-left: -10px;">j=1</sub> H<sub>j</sub> &middot; T<sub>j</sub>
-            </div>
-          </div>
-          <span class="product"> <span>·</span> R</span>
-        </div>
-        <p>{{ $t('short_rule.cont5.text1_3_1') }} B<sub>i</sub> {{ $t('short_rule.cont5.text1_3_2') }}</p>
-      </div>
-      <div class="title1">{{ $t('short_rule.cont5.title2') }}</div>
-      <div class="text">
-        <p>{{ $t('short_rule.cont5.text2_1') }}</p>
-        <p>{{ $t('short_rule.cont5.text2_2_1') }} P<sub>0</sub> {{ $t('short_rule.cont5.text2_2_2') }}</p>
-        <p>{{ $t('short_rule.cont5.text2_3') }}</p>
-        <div class="formula1">
-            <span>R<sub>i</sub> = B<sub>i</sub> &middot; </span>
-            <span><span style="font-size:40px; font-weight: 100;vertical-align: sub;">(</span> 1 + α &middot; ln <span style="font-size:40px; font-weight: 100;vertical-align: sub;">(</span> 1 + &nbsp;</span>
-            <div class="fraction">
-                <div class="numerator">max( 0, P<sub style="font-size:12px">i</sub> - P<sub style="font-size:12px">0</sub>&nbsp;)</div>
-                <div class="denominator">P<sub style="font-size:12px">0</sub></div>
-            </div>
-            <span style="font-size:40px; font-weight: 100;vertical-align: sub;">))</span>
-        </div>
-        <p>{{ $t('short_rule.cont5.text2_4_1') }} R<sub>i</sub> {{ $t('short_rule.cont5.text2_4_2') }}</p>
-      </div>
-      <div class="title1">{{ $t('short_rule.cont5.title3') }}</div>
-      <div class="text">
-        <p>{{ $t('short_rule.cont5.text3_1') }} B<sub>i</sub>:</p>
-        <div class="formula">
-          <span>B<sub>i</sub> = </span>
-          <div class="fraction">
-            <div class="numerator">H<sub>i</sub>&nbsp;&middot;&nbsp;T<sub>i</sub></div>
-            <div class="denominator">
-                &sum;<sup>N</sup><sub style="margin-left: -10px;">j=1</sub> H<sub>j</sub> &middot; T<sub>j</sub>
-            </div>
-          </div>
-          <span class="product"> <span>·</span> R</span>
-        </div>
-        <p>{{ $t('short_rule.cont5.text3_2') }} R<sub>i</sub>:</p>
-        <div class="formula1">
-            <span>R<sub>i</sub> = B<sub>i</sub> &middot; </span>
-            <span><span style="font-size:40px; font-weight: 100;vertical-align: sub;">(</span> 1 + α &middot; ln <span style="font-size:40px; font-weight: 100;vertical-align: sub;">(</span> 1 + &nbsp;</span>
-            <div class="fraction">
-                <div class="numerator">max( 0, P<sub style="font-size:12px">i</sub> - P<sub style="font-size:12px">0</sub>&nbsp;)</div>
-                <div class="denominator">P<sub style="font-size:12px">0</sub></div>
-            </div>
-            <span style="font-size:40px; font-weight: 100;vertical-align: sub;">))</span>
-        </div>
-        <p>{{ $t('short_rule.cont5.text3_3') }}</p>
-        <p>{{ $t('short_rule.cont5.text3_4_1') }} P<sub>0</sub> {{ $t('short_rule.cont5.text3_4_2') }}</p>
-        <p>{{ $t('short_rule.cont5.text3_5') }}</p>
-        <p>{{ $t('short_rule.cont5.text3_6') }}</p>
-        <p>{{ $t('short_rule.cont5.text3_7') }}</p>
-        <p>{{ $t('short_rule.cont5.text3_8') }}</p>
-        <p>{{ $t('short_rule.cont5.text3_9') }}</p>
-      </div>
-      <div class="text">{{ $t('short_rule.cont5.text3_10') }}</div>
-      <div class="text">{{ $t('short_rule.cont5.text3_11') }}</div> -->
-      <!-- <div class="title1">{{ $t('short_rule.cont5.title4') }}</div>
-      <div class="text2">
-        <div class="text_select">
-          <p class="text2_tx">{{ $t('long_rule.cont5.text4_1') }}</p>
-          <el-select class="el-select-type select_width" v-model="gpu_type2" :placeholder="$t('long_rule.cont4.text6')" @change='SelectGPU2'>
-            <el-option v-for="(item, index) in options " :key="item.value" :label="item.name + '-Mem:' + item.men" :value="item.cuda+'_'+item.men+'_'+item.large+'_'+index"></el-option>
-          </el-select> 
-        </div>
-        <div class="text_select">
-          <p class="text2_tx">{{ $t('long_rule.cont5.text4_2') }}</p>
-          <el-select class="el-select-type select_width210" v-model="mem_num2" :placeholder="$t('long_rule.cont4.text6')" @change='SelectMem2'>
-            <el-option v-for="(item, index) in mem_num_list " :key="item.value" :label="item.name" :value="item.value"></el-option>
-          </el-select> 
-        </div>
-        <div class="text_select">
-          <p class="text2_tx">{{ $t('long_rule.cont5.text4_3') }}</p>
-          <el-select class="el-select-type select_width210" v-model="nft_num" :placeholder="$t('long_rule.cont4.text6')" @change='SelectNftnum2'>
-            <el-option v-for="(item, index) in nft_num_list " :key="item.value" :label="item.label" :value="item.value"></el-option>
-          </el-select> 
-        </div>
-        <div class="text_select">
-          <p class="text2_tx">{{ $t('long_rule.cont5.text4_4') }}</p>
-          <el-select class="el-select-type select_width" v-model="local2" :placeholder="$t('long_rule.cont4.text6')" @change='SelectLocal2'>
-            <el-option v-for="(item, index) in options3 " :key="item.value" :label="item.name" :value="item.value +'_'+index"></el-option>
-          </el-select>
-        </div>
-        <div class="text_select">
-          <p class="text2_tx">{{ $t('long_rule.cont5.text4_5') }}</p>
-          <el-select class="el-select-type select_width210" v-model="stak_dlc_num" :placeholder="$t('long_rule.cont4.text6')" @change='SelectStakDLC2'>
-            <el-option v-for="(item, index) in stak_dlc_list " :key="item.value" :label="item.label" :value="item.value"></el-option>
-          </el-select> 
-        </div>
-        <div class="text_select">
-          <p class="text2_tx">{{ $t('long_rule.cont5.text4_6') }}</p>
-          <el-select class="el-select-type select_width" v-model="race_stage" :placeholder="$t('long_rule.cont4.text6')" @change='SelectRace2'>
-            <el-option v-for="(item, index) in race_stage_list " :key="item.value" :label="item.label" :value="item.value"></el-option>
-          </el-select> 
-        </div>
-        <div class="text_select">
-          <p class="text2_tx">{{ $t('long_rule.cont5.text4_7') }}</p>
-          <el-select class="el-select-type select_width210" v-model="join_gpu_num" :placeholder="$t('long_rule.cont4.text6')" @change='SelectJoinGPU2'>
-            <el-option v-for="(item, index) in join_gpu_list " :key="item.value" :label="item.label" :value="item.value"></el-option>
-          </el-select> 
-        </div>
-      </div>
-      <div class="text">{{ $t('short_rule.cont5.text4_8') }}</div>
-      <div class="title1">{{ $t('short_rule.cont5.title5', {dlc_num: dlc_earning, usdt_num: dlc_usdt_earning }) }}</div> -->
       <div class="require">
         <div class="req_text3">
           <p class="text_top">{{ $t('short_rule.cont5.req_title1') }}</p>
@@ -766,9 +551,11 @@ export default defineComponent({
       { label: '1,000,000', value: 1000000 },
     ]);
     const race_stage_list = ref([
-      { label: t('short_rule.cont5.text4_6_1'), value: 3000000 },
-      { label: t('short_rule.cont5.text4_6_2'), value: 4000000 },
-      { label: t('short_rule.cont5.text4_6_3'), value: 9665000 },
+      { id: 'S1', label: t('short_rule.cont5.text4_6_1'), value: 3000000 },
+      { id: 'S2', label: t('short_rule.cont5.text4_6_2'), value: 4000000 },
+      { id: 'S3', label: t('short_rule.cont5.text4_6_3'), value: 9665000 },
+      { id: 'S4', label: t('short_rule.cont5.text4_6_4'), value: 9665000 },
+      { id: 'S5', label: t('short_rule.cont5.text4_6_5'), value: 9665000 },
     ]);
 
     const join_gpu_list = ref([
@@ -899,9 +686,11 @@ export default defineComponent({
           { name: t('country.country13'), key: 13, value: 1.3 },
         ]),
           (race_stage_list.value = [
-            { label: t('short_rule.cont5.text4_6_1'), value: 3000000 },
-            { label: t('short_rule.cont5.text4_6_2'), value: 4000000 },
-            { label: t('short_rule.cont5.text4_6_3'), value: 9665000 },
+            { id: 'S1', label: t('short_rule.cont5.text4_6_1'), value: 3000000 },
+            { id: 'S2', label: t('short_rule.cont5.text4_6_2'), value: 4000000 },
+            { id: 'S3', label: t('short_rule.cont5.text4_6_3'), value: 9665000 },
+            { id: 'S4', label: t('short_rule.cont5.text4_6_4'), value: 9665000 },
+            { id: 'S5', label: t('short_rule.cont5.text4_6_5'), value: 9665000 },
           ]);
       }
     );
@@ -934,8 +723,9 @@ export default defineComponent({
           if (calcUserData.value.nftNumber && calcUserData.value.dlcNumber) {
             // 调用合约
             console.log('开始调用合约');
-            fetchRewards(rs, calcUserData.value.nftNumber, calcUserData.value.dlcNumber);
             if (calcUserData.value.step) {
+              fetchRewards(rs, calcUserData.value.nftNumber, calcUserData.value.dlcNumber);
+
               calcLoading.value = true;
 
               console.log(calcUserData.value.step);

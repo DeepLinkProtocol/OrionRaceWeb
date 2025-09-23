@@ -202,10 +202,13 @@ const getStateSummariesH = async () => {
     OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 100;
     OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
     OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
-    OrionDataList.value[3].value = `${(
-      (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) *
-      100
-    ).toFixed(4)}%`;
+    OrionDataList.value[3].value =
+      Number(res.stateSummaries[0].totalRentedGPUCount) !== 0
+        ? `${(
+            (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) *
+            100
+          ).toFixed(4)}%`
+        : 0;
 
     // OrionDataList.value[4].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
     OrionDataList.value[5].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
@@ -240,10 +243,13 @@ const getStateSummariesShortH = async () => {
     OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 10000;
     OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
     OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
-    OrionDataList.value[3].value = `${(
-      (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) *
-      100
-    ).toFixed(4)}%`;
+    OrionDataList.value[3].value =
+      Number(res.stateSummaries[0].totalRentedGPUCount) !== 0
+        ? `${(
+            (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) *
+            100
+          ).toFixed(4)}%`
+        : 0;
 
     // OrionDataList.value[4].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
     OrionDataList.value[5].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);

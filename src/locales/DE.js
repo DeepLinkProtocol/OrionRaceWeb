@@ -22,9 +22,11 @@ export default {
     text1: 'Die aktuelle Gesamtzahl der GPUs im DeepLink-Netzwerk beträgt {gpu_num}',
     text2:
       'Der Wettbewerb hat begonnen, und die Belohnungen starten, sobald die Anzahl der GPUs den Standard erreicht!',
-    btn_text1: 'Wettbewerb im Langzeitmietmodus - Hat begonnen',
+    btn_text1: 'Wettbewerb im Langzeitmietmodus - Beendet',
+
     btn_title1: 'Aktuelles {long_term} GPUs',
-    btn_text2: 'Wettbewerb im Kurzzeitmietmodus - Hat begonnen',
+    btn_text2: 'Wettbewerb im Kurzzeitmietmodus - Phase 4',
+
     btn_title2: 'Aktuell {short_term} GPUs',
     cont2_text1:
       'Die Gesamtanzahl der Token-Belohnungen für den Orion-Rechenwettbewerb beträgt 3 Milliarden, davon 2 Milliarden DLC für den Langzeitmietmodus und 1 Milliarde DLC für den Kurzzeitmietmodus. Der Wettbewerb dauert 180 Tage und ist in drei Runden unterteilt, die jeweils 60 Tage dauern und Pausen von 5 bis 10 Tagen haben.',
@@ -199,7 +201,7 @@ export default {
     text1: 'Die aktuelle Anzahl der GPUs im Kurzzeitmietmodus im DeepLink-Netzwerk beträgt {short_num}.',
     text2:
       'Während des Wettbewerbs können Miner eine Gesamtbelohnung von 1 Milliarde DLC erhalten, und die von den Nutzern gezahlten DLC-Mietgebühren werden zu 100 % verbrannt.',
-    competition_phase_two_in_progress: 'Die zweite Phase des Wettbewerbs läuft',
+    competition_phase_two_in_progress: 'Die vierte Phase des Wettbewerbs läuft',
     cont2: {
       title: '1. Teilnahmebedingungen',
       text1_1:
@@ -318,6 +320,9 @@ export default {
       text4_6_1: 'Phase 1: 3 Millionen DLC pro Tag.',
       text4_6_2: 'Phase 2: 4 Millionen DLC pro Tag.',
       text4_6_3: 'Phase 3: 9,665 Millionen DLC pro Tag.',
+
+      text4_6_4: 'Phase 4: 9,665 Millionen DLC pro Tag.',
+      text4_6_5: 'Phase 5: 9,665 Millionen DLC pro Tag.',
     },
   },
   country: {
