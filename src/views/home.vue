@@ -244,7 +244,7 @@ const getStateSummariesShortH = async () => {
     OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
     OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
     OrionDataList.value[3].value =
-      Number(res.stateSummaries[0].totalRentedGPUCount) !== 0
+      Number(res.stateSummaries[0].totalRentedGPUCount) == 0
         ? `${(
             (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) *
             100
