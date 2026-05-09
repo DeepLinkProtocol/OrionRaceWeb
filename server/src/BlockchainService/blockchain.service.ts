@@ -16,7 +16,7 @@ import * as dayjs from 'dayjs';
 export class BlockchainService {
   private provider: ethers.JsonRpcProvider;
   private contract: ethers.Contract;
-  private signer: ethers.Wallet;
+  private signer: ethers.Wallet | null;
 
   constructor(
     private configService: ConfigService,
@@ -36,18 +36,14 @@ export class BlockchainService {
 
     this.provider = new ethers.JsonRpcProvider(rpcUrl);
 
-    // 读取私钥（建议从环境变量中获取）
+    // Signer is only required for write operations (stake / unStake /
+    // addStakeHours). Read-only endpoints (reward queries, machine info)
+    // work with just the provider, so a missing NODE_PRIVATEKEY is not
+    // fatal — write methods throw a clear error at invocation instead.
     const privateKey = process.env.NODE_PRIVATEKEY;
-    if (!privateKey) {
-      throw new Error('Private key is missing in environment variables');
-    }
-
-    console.log(process.env.NODE_PRIVATEKEY, '我的私钥');
-    // 使用私钥创建 signer
-    this.signer = new ethers.Wallet(privateKey, this.provider);
-
-    // 连接合约，使用 signer 进行交易
-    // const contractAddress = '0x7FDC6ed8387f3184De77E0cF6D6f3B361F906C21';
+    this.signer = privateKey
+      ? new ethers.Wallet(privateKey, this.provider)
+      : null;
 
     const contractAddress = this.configService.get<string>(
       env === 'production' ? 'CONTRACT_ADDRESS_PROD' : 'CONTRACT_ADDRESS_TEST',
@@ -56,12 +52,25 @@ export class BlockchainService {
     console.log(`环境: ${env}`);
     console.log(`RPC URL: ${rpcUrl}`);
     console.log(`长租质押合约地址: ${contractAddress}`);
+    console.log(
+      `Signer: ${this.signer ? 'configured (writes enabled)' : 'NOT configured (read-only mode)'}`,
+    );
 
     this.contract = new ethers.Contract(
       contractAddress,
       stakingContractAbi,
-      this.signer, // 使用 signer 进行写操作
+      this.signer ?? this.provider,
     );
+  }
+
+  private requireSigner(): ethers.Wallet {
+    if (!this.signer) {
+      throw new Error(
+        'NODE_PRIVATEKEY is not set; write operations are disabled. ' +
+          'Set NODE_PRIVATEKEY in the environment to enable stake/unStake/addStakeHours.',
+      );
+    }
+    return this.signer;
   }
 
   // 调用 getMachineInfoForDBCScan 方法
@@ -86,6 +95,7 @@ export class BlockchainService {
 
   // 解除质押
   async unstake(machineId: string): Promise<any> {
+    this.requireSigner();
     try {
       const result = await this.contract.getStakeEndTimestamp(machineId);
       console.log(`质押结束时间 for ${machineId}: ${result.toString()}`);
@@ -147,6 +157,7 @@ export class BlockchainService {
   }
   // 质押 NFT
   async stake(createMachineDto): Promise<any> {
+    this.requireSigner();
     try {
       console.log(createMachineDto, '质押传过来的参数');
 
@@ -437,6 +448,7 @@ holder
   // }
   // 查询全部机器，判断是否到期，自动解除质押（带链上验证）
   async getMachineInfoForDBCScanAndUnstake(): Promise<any> {
+    this.requireSigner();
     try {
       const arr = await this.getAllMachineInfos(); // 本地/子图拉取所有机器信息
       console.log(`总机器数: ${arr.length}`);
@@ -537,6 +549,7 @@ holder
   // }
 
   async renew(data: any) {
+    this.requireSigner();
     const validMachineIds: string[] = [];
     const additionHoursList: number[] = [];
 
