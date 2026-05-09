@@ -126,9 +126,38 @@
 
 <script setup>
 import { ref, computed, watchEffect } from 'vue';
-import { getStateSummaries, getLongStakeHolders } from '@/api/home';
-import { getStateSummariesShort, getShortStakeHoldersShort } from '@/api/home-short';
+import { getStateSummaries, getLongStakeHolders, getRentedMachineInfos } from '@/api/home';
+import {
+  getStateSummariesShort,
+  getShortStakeHoldersShort,
+  getRentedMachineInfosShort,
+} from '@/api/home-short';
 import { formatWithThousandSeparator } from '@/utils/formatNumber';
+
+// StateSummary.totalRentedGPUCount in both subgraphs has accumulated drift
+// (also drifts on-chain — Rent.rentGPUInfo.rentedGPUCount is no longer
+// maintained in the new Rent contract, only the legacy OldRent had a +=
+// without a matching --). Per-machine MachineInfo.isRented stays correct
+// because each machine's rentedGPUCount is set (not incremented) in the
+// handlers. So we compute the live rented count by summing rentedGPUCount
+// over all currently-rented, currently-staking machines.
+async function fetchLiveRentedGpuCount(fetcher) {
+  try {
+    const res = await fetcher('');
+    const machines = res?.machineInfos || [];
+    return machines.reduce((sum, m) => sum + Number(m.rentedGPUCount || 0), 0);
+  } catch (e) {
+    console.warn('fetchLiveRentedGpuCount failed:', e);
+    return null;
+  }
+}
+
+function formatRentRate(rented, staking) {
+  const r = Number(rented);
+  const s = Number(staking);
+  if (!s || !r) return 0;
+  return `${((r / s) * 100).toFixed(4)}%`;
+}
 
 // 模拟数据
 const model_type = ref('long');
@@ -202,13 +231,14 @@ const getStateSummariesH = async () => {
     OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 100;
     OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
     OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
-    OrionDataList.value[3].value =
-      Number(res.stateSummaries[0].totalRentedGPUCount) !== 0
-        ? `${(
-            (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) *
-            100
-          ).toFixed(4)}%`
-        : 0;
+
+    const liveRented = await fetchLiveRentedGpuCount(getRentedMachineInfos);
+    const rentedCount =
+      liveRented !== null ? liveRented : Number(res.stateSummaries[0].totalRentedGPUCount);
+    OrionDataList.value[3].value = formatRentRate(
+      rentedCount,
+      res.stateSummaries[0].totalStakingGPUCount
+    );
 
     // OrionDataList.value[4].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
     OrionDataList.value[5].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
@@ -243,13 +273,14 @@ const getStateSummariesShortH = async () => {
     OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 10000;
     OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
     OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
-    OrionDataList.value[3].value =
-      Number(res.stateSummaries[0].totalRentedGPUCount) !== 0
-        ? `${(
-            (Number(res.stateSummaries[0].totalRentedGPUCount) / Number(res.stateSummaries[0].totalStakingGPUCount)) *
-            100
-          ).toFixed(4)}%`
-        : 0;
+
+    const liveRented = await fetchLiveRentedGpuCount(getRentedMachineInfosShort);
+    const rentedCount =
+      liveRented !== null ? liveRented : Number(res.stateSummaries[0].totalRentedGPUCount);
+    OrionDataList.value[3].value = formatRentRate(
+      rentedCount,
+      res.stateSummaries[0].totalStakingGPUCount
+    );
 
     // OrionDataList.value[4].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
     OrionDataList.value[5].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
