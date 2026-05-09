@@ -259,14 +259,27 @@ async function fetchMachineCounts(fetcher) {
       if (m.isRented) rented += Number(m.rentedGPUCount || 0);
     }
 
+    // "在线" we display is "rentable-now OR currently-rented", with the
+    // whitelist gate. Currently-rented machines that have been put into
+    // Blocking state mid-rent should still be counted (they're earning rent
+    // fees), so the only hard exclusion is non-whitelist machines and
+    // machines that are subgraph-offline + not being rented.
     let onlineWhitelist = 0;
     let onlineWhitelistRented = 0;
-    if (onlineStaking.length > 0) {
+    // Need to also consult the rented pool, not just onlineStaking, because
+    // a rented-but-blocked machine should still count.
+    const allActiveStaking = machines.filter((m) => m.isStaking && (m.online || m.isRented));
+    if (allActiveStaking.length > 0) {
       try {
-        const statusMap = await batchMachineRentStatus(onlineStaking.map((m) => m.machineId));
-        for (const m of onlineStaking) {
+        const statusMap = await batchMachineRentStatus(allActiveStaking.map((m) => m.machineId));
+        for (const m of allActiveStaking) {
           const s = statusMap.get(m.machineId);
-          if (!s || !s.whitelist || s.blocked) continue;
+          if (!s || !s.whitelist) continue;
+          // exclude only when machine is offline-AND-not-rented and blocked
+          // is the actual penalty signal — a not-rented blocked machine
+          // can't be rented out anyway.
+          if (s.blocked && !m.isRented) continue;
+          if (!m.online && !m.isRented) continue;
           onlineWhitelist += Number(m.totalGPUCount || 0);
           if (m.isRented) onlineWhitelistRented += Number(m.rentedGPUCount || 0);
         }
