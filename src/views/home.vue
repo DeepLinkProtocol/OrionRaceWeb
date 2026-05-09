@@ -180,7 +180,11 @@ async function fetchRentedGpuCountByHolder(fetcher) {
 // JSON-RPC eth_call requests against the Rent contract.
 const RENT_CONTRACT_ADDRESS = '0xda9efdff9ca7b7065b7706406a1a79c0e483815a';
 const RPC_URL = 'https://rpc.dbcwallet.io';
-const IN_RENT_WHITELIST_SELECTOR = '0x04d96b42'; // keccak256("inRentWhiteList(string)") first 4 bytes
+// Use the explicit whitelist mapping getter (`rentWhitelist[machineId]`),
+// not `inRentWhiteList(machineId)`. The latter also returns true for
+// "personal" machines (stakingContract.isPersonalMachine), which inflates
+// the count by ~14 right now and is not what the user means by 白名单.
+const IN_RENT_WHITELIST_SELECTOR = '0x61e3391d'; // keccak256("rentWhitelist(string)") first 4 bytes
 
 function encodeStringArg(str) {
   // ABI-encode a single dynamic `string` argument:
