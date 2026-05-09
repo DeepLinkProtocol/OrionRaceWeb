@@ -142,12 +142,30 @@ import { formatWithThousandSeparator } from '@/utils/formatNumber';
 // handlers. So we compute the live rented count by summing rentedGPUCount
 // over all currently-rented, currently-staking machines.
 async function fetchLiveRentedGpuCount(fetcher) {
+  const byHolder = await fetchRentedGpuCountByHolder(fetcher);
+  if (!byHolder) return null;
+  let total = 0;
+  byHolder.forEach((n) => { total += n; });
+  return total;
+}
+
+// Map holder address -> currently-rented GPU count, summed across that
+// holder's machines. Subgraph's StakeHolder.rentedGPUCount drifts the
+// same way StateSummary.totalRentedGPUCount does, but per-machine
+// MachineInfo.rentedGPUCount is set (not incremented) so it stays correct.
+async function fetchRentedGpuCountByHolder(fetcher) {
   try {
     const res = await fetcher('');
     const machines = res?.machineInfos || [];
-    return machines.reduce((sum, m) => sum + Number(m.rentedGPUCount || 0), 0);
+    const map = new Map();
+    for (const m of machines) {
+      const key = (m.holder || '').toLowerCase();
+      const cur = map.get(key) || 0;
+      map.set(key, cur + Number(m.rentedGPUCount || 0));
+    }
+    return map;
   } catch (e) {
-    console.warn('fetchLiveRentedGpuCount failed:', e);
+    console.warn('fetchRentedGpuCountByHolder failed:', e);
     return null;
   }
 }
@@ -322,6 +340,7 @@ const fetchLongStakeHolders = async () => {
     const response = await getLongStakeHolders();
     // 请求数据
     const rs = await fetchWalletRewards();
+    const rentedByHolder = await fetchRentedGpuCountByHolder(getRentedMachineInfos);
     console.log(rs, '请求数据请求数据请求数据');
     const stakeHolders = response.stakeHolders || [];
     tableData.value.long = stakeHolders.map((el, index) => {
@@ -338,12 +357,15 @@ const fetchLongStakeHolders = async () => {
         totalReward = 0;
       }
 
+      const liveRent = rentedByHolder
+        ? rentedByHolder.get((el.holder || '').toLowerCase())
+        : undefined;
       return {
         index: index + 1, // 竞赛排名
         holder: el.holder, // 矿工名称
         calc_point: Number(el.totalCalcPoint) / 100, // 算力值
         gpu_num: Number(el.totalStakingGPUCount), // GPU数量
-        rent_gpu: Number(el.rentedGPUCount), // 租用GPU数
+        rent_gpu: liveRent !== undefined ? liveRent : Number(el.rentedGPUCount), // 租用GPU数 (live, falls back to drifted aggregate)
         rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4), // 租金数 (DLC)
         released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4), // 已解锁奖励数 (DLC)
         total_reward: totalReward, // 奖励总数 (DLC)
@@ -380,6 +402,7 @@ const fetchShortStakeHolders = async () => {
     const response = await getShortStakeHoldersShort(); // 获取子图短租数据
     console.log(response, '短租总数据');
     const rs = await fetchWalletRewardsShort(); // 获取后端计算的 lockedRewardShort
+    const rentedByHolder = await fetchRentedGpuCountByHolder(getRentedMachineInfosShort);
 
     console.log(response, '短租子图数据');
     console.log(rs, '短租锁定奖励数据');
@@ -395,12 +418,15 @@ const fetchShortStakeHolders = async () => {
         totalReward = (Number(el.totalReleasedRewardAmount) / 1e18 + Number(matchingReward.lockedReward)).toFixed(4);
       }
 
+      const liveRent = rentedByHolder
+        ? rentedByHolder.get((el.holder || '').toLowerCase())
+        : undefined;
       return {
         index: index + 1,
         holder: el.holder,
         calc_point: Number(el.totalCalcPoint) / 10000,
         gpu_num: Number(el.totalStakingGPUCount),
-        rent_gpu: Number(el.rentedGPUCount),
+        rent_gpu: liveRent !== undefined ? liveRent : Number(el.rentedGPUCount),
         rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4),
         released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4),
         total_reward: totalReward,
