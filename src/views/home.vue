@@ -303,7 +303,10 @@ getStateSummariesShortH2();
 // 请求数据计算后的奖励数据--长租
 async function fetchWalletRewards() {
   try {
-    const response = await fetch('https://dbcscan.io/nestapi/machine/getAllWalletRewards');
+    // Use the canonical www. host directly — dbcscan.io (no www) returns
+    // a 301 redirect that drops CORS headers, and browsers block the
+    // cross-origin redirect from orion.deeplink.cloud.
+    const response = await fetch('https://www.dbcscan.io/nestapi/machine/getAllWalletRewards');
     const result = await response.json();
     if (result.code === 200 && result.data.length > 0) {
       return result.data;
@@ -361,7 +364,7 @@ const fetchLongStakeHolders = async () => {
 // 请求数据计算后的奖励数据--短租
 async function fetchWalletRewardsShort() {
   try {
-    const response = await fetch('https://dbcscan.io/nestapi/machine/getAllWalletRewardsShort');
+    const response = await fetch('https://www.dbcscan.io/nestapi/machine/getAllWalletRewardsShort');
     // const response = await fetch('http://localhost:3001/machine/getAllWalletRewardsShort');
     const result = await response.json();
     if (result.code === 200 && result.data.length > 0) {
