@@ -171,24 +171,96 @@ async function fetchRentedGpuCountByHolder(fetcher) {
   }
 }
 
-// Per-machine subgraph derivations. Aggregates here stay consistent with
-// the per-machine rental-count and per-stakeholder rates because they
-// share the same source. Aggregate StateSummary.totalStakingGPUCount
-// undercounts in the live subgraph (322 vs the per-machine sum 376) so
-// using per-machine totals avoids the "online > total" inconsistency.
+// Per-machine subgraph derivations + on-chain whitelist filter.
+// Aggregate StateSummary.totalStakingGPUCount undercounts in the live
+// subgraph (322 vs the per-machine sum 376) so using per-machine totals
+// avoids the "online > total" inconsistency. Online count is further
+// narrowed to machines that pass `Rent.inRentWhiteList(machineId)` on
+// chain — the whitelist isn't tracked in the subgraph, so we batch
+// JSON-RPC eth_call requests against the Rent contract.
+const RENT_CONTRACT_ADDRESS = '0xda9efdff9ca7b7065b7706406a1a79c0e483815a';
+const RPC_URL = 'https://rpc.dbcwallet.io';
+const IN_RENT_WHITELIST_SELECTOR = '0x04d96b42'; // keccak256("inRentWhiteList(string)") first 4 bytes
+
+function encodeStringArg(str) {
+  // ABI-encode a single dynamic `string` argument:
+  //   offset (0x20) | length | utf8 bytes padded to 32-byte boundary
+  const bytes = new TextEncoder().encode(str);
+  const len = bytes.length;
+  const padded = Math.ceil(len / 32) * 32;
+  let hex = '';
+  for (const b of bytes) hex += b.toString(16).padStart(2, '0');
+  hex = hex.padEnd(padded * 2, '0');
+  const offset = '0000000000000000000000000000000000000000000000000000000000000020';
+  const lenHex = len.toString(16).padStart(64, '0');
+  return offset + lenHex + hex;
+}
+
+async function batchInRentWhiteList(machineIds) {
+  // Chunk to keep individual RPC requests reasonably sized.
+  const CHUNK = 100;
+  const results = new Map();
+  for (let i = 0; i < machineIds.length; i += CHUNK) {
+    const chunk = machineIds.slice(i, i + CHUNK);
+    const body = chunk.map((id, j) => ({
+      jsonrpc: '2.0',
+      id: i + j,
+      method: 'eth_call',
+      params: [
+        { to: RENT_CONTRACT_ADDRESS, data: IN_RENT_WHITELIST_SELECTOR + encodeStringArg(id) },
+        'latest',
+      ],
+    }));
+    const r = await fetch(RPC_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const out = await r.json();
+    for (const x of out) {
+      const idx = x.id - i;
+      if (idx >= 0 && idx < chunk.length) {
+        // last byte non-zero == true
+        results.set(chunk[idx], (x.result || '').endsWith('1'));
+      }
+    }
+  }
+  return results;
+}
+
 async function fetchMachineCounts(fetcher) {
   try {
     const res = await fetcher('');
     const machines = res?.machineInfos || [];
     let staking = 0, online = 0, rented = 0;
+    const onlineStaking = [];
     for (const m of machines) {
       const g = Number(m.totalGPUCount || 0);
       if (!m.isStaking) continue;
       staking += g;
-      if (m.online) online += g;
+      if (m.online) {
+        online += g;
+        onlineStaking.push(m);
+      }
       if (m.isRented) rented += Number(m.rentedGPUCount || 0);
     }
-    return { staking, online, rented };
+
+    let onlineWhitelist = 0;
+    let onlineWhitelistRented = 0;
+    if (onlineStaking.length > 0) {
+      try {
+        const wlMap = await batchInRentWhiteList(onlineStaking.map((m) => m.machineId));
+        for (const m of onlineStaking) {
+          if (!wlMap.get(m.machineId)) continue;
+          onlineWhitelist += Number(m.totalGPUCount || 0);
+          if (m.isRented) onlineWhitelistRented += Number(m.rentedGPUCount || 0);
+        }
+      } catch (e) {
+        console.warn('batchInRentWhiteList failed:', e);
+        // leave the whitelist counts at 0 so the caller can detect the failure
+      }
+    }
+    return { staking, online, rented, onlineWhitelist, onlineWhitelistRented };
   } catch (e) {
     console.warn('fetchMachineCounts failed:', e);
     return null;
@@ -320,7 +392,10 @@ const getStateSummariesShortH = async () => {
     const counts = await fetchMachineCounts(getAllMachineInfosShort);
     const stakingCount = counts ? counts.staking : Number(res.stateSummaries[0].totalStakingGPUCount);
     const rentedCount = counts ? counts.rented : Number(res.stateSummaries[0].totalRentedGPUCount);
-    const onlineCount = counts ? counts.online : 0;
+    // Online is whitelist-only — uncategorized "online" includes idle machines
+    // whose owners haven't been admitted to the rent whitelist yet.
+    const onlineCount = counts ? counts.onlineWhitelist : 0;
+    const onlineRented = counts ? counts.onlineWhitelistRented : 0;
 
     btnList.value[0].value = stakingCount;
     OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 10000;
@@ -328,7 +403,7 @@ const getStateSummariesShortH = async () => {
     OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
     OrionDataList.value[3].value = formatRentRate(rentedCount, stakingCount);
     OrionDataList.value[7].value = onlineCount;
-    OrionDataList.value[8].value = formatRentRate(rentedCount, onlineCount);
+    OrionDataList.value[8].value = formatRentRate(onlineRented, onlineCount);
 
     // OrionDataList.value[4].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
     OrionDataList.value[5].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
