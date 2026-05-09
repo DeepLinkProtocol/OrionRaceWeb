@@ -183,8 +183,14 @@ const RPC_URL = 'https://rpc.dbcwallet.io';
 // Use the explicit whitelist mapping getter (`rentWhitelist[machineId]`),
 // not `inRentWhiteList(machineId)`. The latter also returns true for
 // "personal" machines (stakingContract.isPersonalMachine), which inflates
-// the count by ~14 right now and is not what the user means by 白名单.
-const IN_RENT_WHITELIST_SELECTOR = '0x61e3391d'; // keccak256("rentWhitelist(string)") first 4 bytes
+// the count by ~14 and is not what 白名单 means here.
+const IN_RENT_WHITELIST_SELECTOR = '0x61e3391d'; // rentWhitelist(string)
+// Subgraph-side bug: handleExitStakingForBlocking does NOT set
+// machineInfo.online = false, so machines parked in "blocking" state still
+// appear with online=true even though _stopRewarding(true) ran on chain.
+// Filter them out by also calling NFTStaking.machineIsBlocked(machineId).
+const NFT_STAKING_ADDRESS = '0x6268Aba94D0d0e4FB917cC02765f631f309a7388';
+const MACHINE_IS_BLOCKED_SELECTOR = '0x4541e2b9'; // machineIsBlocked(string)
 
 function encodeStringArg(str) {
   // ABI-encode a single dynamic `string` argument:
@@ -200,33 +206,37 @@ function encodeStringArg(str) {
   return offset + lenHex + hex;
 }
 
-async function batchInRentWhiteList(machineIds) {
-  // Chunk to keep individual RPC requests reasonably sized.
-  const CHUNK = 100;
+// Batch eth_call for two booleans per machine: rentWhitelist + machineIsBlocked.
+// Returns Map<machineId, { whitelist: bool, blocked: bool }>.
+async function batchMachineRentStatus(machineIds) {
+  const CHUNK = 50; // 50 machines * 2 calls = 100 RPC calls per batch
   const results = new Map();
   for (let i = 0; i < machineIds.length; i += CHUNK) {
     const chunk = machineIds.slice(i, i + CHUNK);
-    const body = chunk.map((id, j) => ({
-      jsonrpc: '2.0',
-      id: i + j,
-      method: 'eth_call',
-      params: [
-        { to: RENT_CONTRACT_ADDRESS, data: IN_RENT_WHITELIST_SELECTOR + encodeStringArg(id) },
-        'latest',
-      ],
-    }));
-    const r = await fetch(RPC_URL, {
+    const body = [];
+    chunk.forEach((id, j) => {
+      const arg = encodeStringArg(id);
+      // even ids = whitelist; odd ids = blocked. base = (i + j) * 2.
+      const base = (i + j) * 2;
+      body.push({
+        jsonrpc: '2.0', id: base, method: 'eth_call',
+        params: [{ to: RENT_CONTRACT_ADDRESS, data: IN_RENT_WHITELIST_SELECTOR + arg }, 'latest'],
+      });
+      body.push({
+        jsonrpc: '2.0', id: base + 1, method: 'eth_call',
+        params: [{ to: NFT_STAKING_ADDRESS, data: MACHINE_IS_BLOCKED_SELECTOR + arg }, 'latest'],
+      });
+    });
+    const out = await fetch(RPC_URL, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(body),
-    });
-    const out = await r.json();
-    for (const x of out) {
-      const idx = x.id - i;
-      if (idx >= 0 && idx < chunk.length) {
-        // last byte non-zero == true
-        results.set(chunk[idx], (x.result || '').endsWith('1'));
-      }
+    }).then((r) => r.json());
+    const byId = new Map();
+    for (const x of out) byId.set(x.id, (x.result || '').endsWith('1'));
+    for (let j = 0; j < chunk.length; j++) {
+      const base = (i + j) * 2;
+      results.set(chunk[j], { whitelist: !!byId.get(base), blocked: !!byId.get(base + 1) });
     }
   }
   return results;
@@ -253,14 +263,15 @@ async function fetchMachineCounts(fetcher) {
     let onlineWhitelistRented = 0;
     if (onlineStaking.length > 0) {
       try {
-        const wlMap = await batchInRentWhiteList(onlineStaking.map((m) => m.machineId));
+        const statusMap = await batchMachineRentStatus(onlineStaking.map((m) => m.machineId));
         for (const m of onlineStaking) {
-          if (!wlMap.get(m.machineId)) continue;
+          const s = statusMap.get(m.machineId);
+          if (!s || !s.whitelist || s.blocked) continue;
           onlineWhitelist += Number(m.totalGPUCount || 0);
           if (m.isRented) onlineWhitelistRented += Number(m.rentedGPUCount || 0);
         }
       } catch (e) {
-        console.warn('batchInRentWhiteList failed:', e);
+        console.warn('batchMachineRentStatus failed:', e);
         // leave the whitelist counts at 0 so the caller can detect the failure
       }
     }
