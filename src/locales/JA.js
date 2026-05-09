@@ -51,6 +51,8 @@ export default {
       li6: 'レンタル数',
       li7: 'アンロックされた報酬数',
       li8: '総報酬数',
+      li9: 'オンラインGPU数',
+      li10: 'オンラインGPU使用率',
     },
   },
   long_rule: {

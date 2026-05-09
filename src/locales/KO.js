@@ -52,6 +52,8 @@ export default {
       li6: '대여 수',
       li7: '잠금 해제된 보상',
       li8: '총 보상',
+      li9: '온라인 GPU 수',
+      li10: '온라인 GPU 임대율',
     },
   },
   long_rule: {

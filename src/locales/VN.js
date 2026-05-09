@@ -50,6 +50,8 @@ export default {
       li6: 'Số lượng thuê',
       li7: 'Số phần thưởng đã mở khóa',
       li8: 'Tổng số phần thưởng',
+      li9: 'Số GPU đang trực tuyến',
+      li10: 'Tỷ lệ thuê GPU trực tuyến',
     },
   },
   long_rule: {

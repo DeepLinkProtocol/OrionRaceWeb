@@ -52,6 +52,8 @@ export default {
       li6: 'Number of Rentals',
       li7: 'Unlocked Rewards',
       li8: 'Total Rewards',
+      li9: 'Online GPU Count',
+      li10: 'Online GPU Rental Rate',
     },
   },
   long_rule: {

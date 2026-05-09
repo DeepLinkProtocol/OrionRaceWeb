@@ -52,6 +52,8 @@ export default {
       li6: 'Anzahl der Mieten',
       li7: 'Freigeschaltete Belohnungen',
       li8: 'Gesamtbelohnungen',
+      li9: 'Anzahl Online-GPUs',
+      li10: 'Online-GPU-Vermietungsrate',
     },
   },
   long_rule: {

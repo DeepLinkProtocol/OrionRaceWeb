@@ -50,6 +50,8 @@ export default {
       li6: 'Kiralama Sayısı',
       li7: 'Kilidi Açılmış Ödüller',
       li8: 'Toplam Ödüller',
+      li9: 'Çevrimiçi GPU Sayısı',
+      li10: 'Çevrimiçi GPU Kiralama Oranı',
     },
   },
   long_rule: {

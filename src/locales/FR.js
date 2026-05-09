@@ -52,6 +52,8 @@ export default {
       li6: 'Nombre de locations',
       li7: 'Récompenses déverrouillées',
       li8: 'Récompenses totales',
+      li9: 'Nombre de GPU en ligne',
+      li10: 'Taux de location des GPU en ligne',
     },
   },
   long_rule: {

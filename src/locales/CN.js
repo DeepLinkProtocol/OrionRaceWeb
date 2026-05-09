@@ -49,6 +49,8 @@ export default {
       li6: '租金数',
       li7: '已解锁奖励数',
       li8: '奖励总数',
+      li9: 'GPU在线数量',
+      li10: 'GPU在线租用率',
     },
   },
   long_rule: {

@@ -92,6 +92,12 @@
                   }}
                 </td>
                 <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
+                  {{ formatWithThousandSeparator(el.online_gpu) }}
+                </td>
+                <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
+                  {{ el.online_rent_rate }}
+                </td>
+                <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
                   {{ formatWithThousandSeparator(el.rent_reward) }}
                 </td>
                 <td class="text-[16px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)] p-[15px]">
@@ -110,7 +116,7 @@
               </tr>
               <tr>
                 <td
-                  colspan="8"
+                  colspan="10"
                   class="nodata h-[400px] text-center text-[40px] text-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.1)]"
                 >
                   No Data
@@ -242,6 +248,18 @@ async function batchMachineRentStatus(machineIds) {
   return results;
 }
 
+// Cache by fetcher reference so getStateSummariesShortH and
+// fetchShortStakeHolders share one round of subgraph + RPC calls.
+const _machineCountsCache = new Map(); // fetcher -> { promise, ts }
+function getMachineCounts(fetcher) {
+  const entry = _machineCountsCache.get(fetcher);
+  const now = Date.now();
+  if (entry && now - entry.ts < 30_000) return entry.promise;
+  const promise = fetchMachineCounts(fetcher);
+  _machineCountsCache.set(fetcher, { promise, ts: now });
+  return promise;
+}
+
 async function fetchMachineCounts(fetcher) {
   try {
     const res = await fetcher('');
@@ -266,6 +284,8 @@ async function fetchMachineCounts(fetcher) {
     // machines that are subgraph-offline + not being rented.
     let onlineWhitelist = 0;
     let onlineWhitelistRented = 0;
+    // holderLower -> { online: GPU count, rented: GPU count }
+    const onlineByHolder = new Map();
     // Need to also consult the rented pool, not just onlineStaking, because
     // a rented-but-blocked machine should still count.
     const allActiveStaking = machines.filter((m) => m.isStaking && (m.online || m.isRented));
@@ -280,15 +300,22 @@ async function fetchMachineCounts(fetcher) {
           // can't be rented out anyway.
           if (s.blocked && !m.isRented) continue;
           if (!m.online && !m.isRented) continue;
-          onlineWhitelist += Number(m.totalGPUCount || 0);
-          if (m.isRented) onlineWhitelistRented += Number(m.rentedGPUCount || 0);
+          const g = Number(m.totalGPUCount || 0);
+          const r = Number(m.rentedGPUCount || 0);
+          onlineWhitelist += g;
+          if (m.isRented) onlineWhitelistRented += r;
+          const key = (m.holder || '').toLowerCase();
+          const cur = onlineByHolder.get(key) || { online: 0, rented: 0 };
+          cur.online += g;
+          if (m.isRented) cur.rented += r;
+          onlineByHolder.set(key, cur);
         }
       } catch (e) {
         console.warn('batchMachineRentStatus failed:', e);
         // leave the whitelist counts at 0 so the caller can detect the failure
       }
     }
-    return { staking, online, rented, onlineWhitelist, onlineWhitelistRented };
+    return { staking, online, rented, onlineWhitelist, onlineWhitelistRented, onlineByHolder };
   } catch (e) {
     console.warn('fetchMachineCounts failed:', e);
     return null;
@@ -347,6 +374,8 @@ const tableHeaders = [
   { label: 'home.cont4.li3', class: '' },
   { label: 'home.cont4.li4', class: '' },
   { label: 'home.cont4.li5', class: '' },
+  { label: 'home.cont4.li9', class: '' },
+  { label: 'home.cont4.li10', class: '' },
   { label: 'home.cont4.li6', class: '', suffix: '(DLC)' },
   { label: 'home.cont4.li7', class: '', suffix: '(DLC)' },
   { label: 'home.cont4.li8', class: '', suffix: '(DLC)' },
@@ -417,7 +446,7 @@ const getStateSummariesShortH = async () => {
     // Pull per-machine truth once and derive the staking/online/rented totals
     // consistently. Falls back to the StateSummary aggregate if the query
     // fails so the page doesn't wipe to zeros on a transient subgraph hiccup.
-    const counts = await fetchMachineCounts(getAllMachineInfosShort);
+    const counts = await getMachineCounts(getAllMachineInfosShort);
     const stakingCount = counts ? counts.staking : Number(res.stateSummaries[0].totalStakingGPUCount);
     const rentedCount = counts ? counts.rented : Number(res.stateSummaries[0].totalRentedGPUCount);
     // Online is whitelist-only — uncategorized "online" includes idle machines
@@ -535,6 +564,8 @@ const fetchShortStakeHolders = async () => {
     console.log(response, '短租总数据');
     const rs = await fetchWalletRewardsShort(); // 获取后端计算的 lockedRewardShort
     const rentedByHolder = await fetchRentedGpuCountByHolder(getRentedMachineInfosShort);
+    const counts = await getMachineCounts(getAllMachineInfosShort);
+    const onlineByHolder = counts ? counts.onlineByHolder : null;
 
     console.log(response, '短租子图数据');
     console.log(rs, '短租锁定奖励数据');
@@ -553,12 +584,19 @@ const fetchShortStakeHolders = async () => {
       const liveRent = rentedByHolder
         ? rentedByHolder.get((el.holder || '').toLowerCase())
         : undefined;
+      const holderOnline = onlineByHolder
+        ? onlineByHolder.get((el.holder || '').toLowerCase())
+        : null;
+      const onlineGpu = holderOnline ? holderOnline.online : 0;
+      const onlineRented = holderOnline ? holderOnline.rented : 0;
       return {
         index: index + 1,
         holder: el.holder,
         calc_point: Number(el.totalCalcPoint) / 10000,
         gpu_num: Number(el.totalStakingGPUCount),
         rent_gpu: liveRent !== undefined ? liveRent : Number(el.rentedGPUCount),
+        online_gpu: onlineGpu,
+        online_rent_rate: onlineGpu > 0 ? ((onlineRented / onlineGpu) * 100).toFixed(2) + '%' : '0.00%',
         rent_reward: (Number(el.burnedRentFee) / 1e18).toFixed(4),
         released_reward: (Number(el.totalReleasedRewardAmount) / 1e18).toFixed(4),
         total_reward: totalReward,
