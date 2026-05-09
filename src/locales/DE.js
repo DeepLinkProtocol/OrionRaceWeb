@@ -40,6 +40,8 @@ export default {
       text5: 'Gesamte DLC-Belohnungen',
       text6: 'Anzahl der \n zerstörten DLC',
       text7: 'Anzahl der für \n Miner verpfändeten DLC',
+      text8: 'Anzahl Online-GPUs',
+      text9: 'Online-GPU-Vermietungsrate',
     },
     cont4: {
       li1: 'Wettbewerbsrang',

@@ -38,6 +38,8 @@ export default {
       text5: 'Tổng phần thưởng DLC',
       text6: 'Số lượng \n DLC đã đốt',
       text7: 'Số lượng DLC đã cam \n kết cho máy khai thác',
+      text8: 'Số GPU đang trực tuyến',
+      text9: 'Tỷ lệ thuê GPU trực tuyến',
     },
     cont4: {
       li1: 'Xếp hạng cuộc thi',

@@ -131,6 +131,7 @@ import {
   getStateSummariesShort,
   getShortStakeHoldersShort,
   getRentedMachineInfosShort,
+  getAllMachineInfosShort,
 } from '@/api/home-short';
 import { formatWithThousandSeparator } from '@/utils/formatNumber';
 
@@ -170,6 +171,30 @@ async function fetchRentedGpuCountByHolder(fetcher) {
   }
 }
 
+// Per-machine subgraph derivations. Aggregates here stay consistent with
+// the per-machine rental-count and per-stakeholder rates because they
+// share the same source. Aggregate StateSummary.totalStakingGPUCount
+// undercounts in the live subgraph (322 vs the per-machine sum 376) so
+// using per-machine totals avoids the "online > total" inconsistency.
+async function fetchMachineCounts(fetcher) {
+  try {
+    const res = await fetcher('');
+    const machines = res?.machineInfos || [];
+    let staking = 0, online = 0, rented = 0;
+    for (const m of machines) {
+      const g = Number(m.totalGPUCount || 0);
+      if (!m.isStaking) continue;
+      staking += g;
+      if (m.online) online += g;
+      if (m.isRented) rented += Number(m.rentedGPUCount || 0);
+    }
+    return { staking, online, rented };
+  } catch (e) {
+    console.warn('fetchMachineCounts failed:', e);
+    return null;
+  }
+}
+
 function formatRentRate(rented, staking) {
   const r = Number(rented);
   const s = Number(staking);
@@ -177,18 +202,19 @@ function formatRentRate(rented, staking) {
   return `${((r / s) * 100).toFixed(4)}%`;
 }
 
-// 模拟数据
-const model_type = ref('long');
+// Long-rental mode is hidden — contest already ended ("已经结束") and the
+// long-rental subgraph's StateSummary has stale residual values that look
+// confusing on the page. Default to short mode and remove the long entries
+// from the visible UI.
+const model_type = ref('short');
 
-// 第一部分按钮数据
+// 第一部分按钮数据 — long-rental hidden after contest ended.
 const btnList = ref([
-  { textKey: 'home.btn_text1', titleKey: 'home.btn_title1', valueKey: 'long_term', value: 100 },
   { textKey: 'home.btn_text2', titleKey: 'home.btn_title2', valueKey: 'short_term', value: 100 },
 ]);
 
-// 第二部分切换按钮
+// 第二部分切换按钮 — only short-rental remains.
 const cont2Buttons = ref([
-  { type: 'long', label: 'home.cont2_btn1', loading: false },
   { type: 'short', label: 'home.cont2_btn2', loading: false },
 ]);
 
@@ -198,9 +224,11 @@ const OrionDataList = ref([
   { titleKey: 'home.cont3.text2', value: 0 }, // total_gpu_num
   { titleKey: 'home.cont3.text3', value: 0 }, // total_address
   { titleKey: 'home.cont3.text4', value: 0 }, // rental_rate
-  { titleKey: 'home.cont3.text5', value: 0 }, // total_dlc
-  { titleKey: 'home.cont3.text6', value: 0 }, // total_dlc (重复)
+  { titleKey: 'home.cont3.text5', value: 0 }, // total_dlc reward
+  { titleKey: 'home.cont3.text6', value: 0 }, // total_dlc burned
   { titleKey: 'home.cont3.text7', value: 0 }, // total_rent_dlc
+  { titleKey: 'home.cont3.text8', value: 0 }, // online_gpu_count
+  { titleKey: 'home.cont3.text9', value: 0 }, // online_rent_rate
 ]);
 
 // 长租和短租表格数据，统一管理在一个响应式对象中
@@ -267,9 +295,8 @@ const getStateSummariesH = async () => {
 // 获取门槛数据短租
 const getStateSummariesShortH = async () => {
   const res = await getStateSummariesShort();
-  console.log(res, 'Pppppp获取门槛数据短租');
   if (res.stateSummaries.length === 0) {
-    btnList.value[1].value = 0; // 直接更新 btnList 中的值
+    btnList.value[0].value = 0; // 直接更新 btnList 中的值
     OrionDataList.value[0].value = 0;
     OrionDataList.value[1].value = 0;
     OrionDataList.value[2].value = 0;
@@ -287,18 +314,21 @@ const getStateSummariesShortH = async () => {
     // } else {
     //   btnList.value[1].value = result.toNumber(); // 直接更新 btnList 中的值
     // }
-    btnList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
-    OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 10000;
-    OrionDataList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
-    OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
+    // Pull per-machine truth once and derive the staking/online/rented totals
+    // consistently. Falls back to the StateSummary aggregate if the query
+    // fails so the page doesn't wipe to zeros on a transient subgraph hiccup.
+    const counts = await fetchMachineCounts(getAllMachineInfosShort);
+    const stakingCount = counts ? counts.staking : Number(res.stateSummaries[0].totalStakingGPUCount);
+    const rentedCount = counts ? counts.rented : Number(res.stateSummaries[0].totalRentedGPUCount);
+    const onlineCount = counts ? counts.online : 0;
 
-    const liveRented = await fetchLiveRentedGpuCount(getRentedMachineInfosShort);
-    const rentedCount =
-      liveRented !== null ? liveRented : Number(res.stateSummaries[0].totalRentedGPUCount);
-    OrionDataList.value[3].value = formatRentRate(
-      rentedCount,
-      res.stateSummaries[0].totalStakingGPUCount
-    );
+    btnList.value[0].value = stakingCount;
+    OrionDataList.value[0].value = Number(res.stateSummaries[0].totalCalcPoint) / 10000;
+    OrionDataList.value[1].value = stakingCount;
+    OrionDataList.value[2].value = res.stateSummaries[0].totalCalcPointPoolCount;
+    OrionDataList.value[3].value = formatRentRate(rentedCount, stakingCount);
+    OrionDataList.value[7].value = onlineCount;
+    OrionDataList.value[8].value = formatRentRate(rentedCount, onlineCount);
 
     // OrionDataList.value[4].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
     OrionDataList.value[5].value = (res.stateSummaries[0].totalBurnedRentFee / 1e18).toFixed(4);
@@ -306,14 +336,13 @@ const getStateSummariesShortH = async () => {
   }
 };
 
-// 获取门槛数据短租
+// 获取门槛数据短租 — short-rental is now btnList[0] after long-rental was hidden.
 const getStateSummariesShortH2 = async () => {
   const res = await getStateSummariesShort();
-  console.log(res, '门槛数据短租66666666666');
   if (res.stateSummaries.length === 0) {
-    btnList.value[1].value = 100;
+    btnList.value[0].value = 100;
   } else {
-    btnList.value[1].value = res.stateSummaries[0].totalStakingGPUCount;
+    btnList.value[0].value = res.stateSummaries[0].totalStakingGPUCount;
   }
 };
 getStateSummariesShortH2();

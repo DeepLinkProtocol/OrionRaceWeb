@@ -37,6 +37,8 @@ export default {
       text5: 'DLC奖励总数',
       text6: 'DLC销毁数',
       text7: '矿机DLC质押数',
+      text8: 'GPU在线数量',
+      text9: 'GPU在线租用率',
     },
     cont4: {
       li1: '竞赛排名',

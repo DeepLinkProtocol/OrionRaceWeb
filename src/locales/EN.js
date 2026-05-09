@@ -40,6 +40,8 @@ export default {
       text5: 'Total DLC Rewards',
       text6: 'Number of \n DLC Burned',
       text7: 'Number of DLC \n Pledged for Miners',
+      text8: 'Online GPU Count',
+      text9: 'Online GPU Rental Rate',
     },
     cont4: {
       li1: 'Competition Ranking',

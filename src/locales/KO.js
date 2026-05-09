@@ -40,6 +40,8 @@ export default {
       text5: 'DLC 대여 수',
       text6: 'DLC 소각 수',
       text7: '채굴기용 DLC 담보 수',
+      text8: '온라인 GPU 수',
+      text9: '온라인 GPU 임대율',
     },
     cont4: {
       li1: '경쟁 순위',

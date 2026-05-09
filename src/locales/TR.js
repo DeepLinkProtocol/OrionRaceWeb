@@ -38,6 +38,8 @@ export default {
       text5: 'Toplam DLC Ödülü',
       text6: 'Yok Edilen \n DLC Sayısı',
       text7: 'Madenciler İçin \n Rehin Verilen DLC Sayısı',
+      text8: 'Çevrimiçi GPU Sayısı',
+      text9: 'Çevrimiçi GPU Kiralama Oranı',
     },
     cont4: {
       li1: 'Yarışma Sıralaması',

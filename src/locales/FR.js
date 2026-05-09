@@ -40,6 +40,8 @@ export default {
       text5: 'Total des récompenses DLC',
       text6: 'Nombre de \n DLC détruits',
       text7: 'Nombre de DLC mis \n en gage pour les mineurs',
+      text8: 'Nombre de GPU en ligne',
+      text9: 'Taux de location des GPU en ligne',
     },
     cont4: {
       li1: 'Classement de la compétition',

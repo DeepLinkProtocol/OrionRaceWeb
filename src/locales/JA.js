@@ -39,6 +39,8 @@ export default {
       text5: 'DLC報酬の合計',
       text6: 'DLC焼却数',
       text7: 'マイナーのために質押されたDLC数',
+      text8: 'オンラインGPU数',
+      text9: 'オンラインGPU使用率',
     },
     cont4: {
       li1: '競技ランキング',
